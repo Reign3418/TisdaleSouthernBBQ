@@ -7,6 +7,7 @@ const STORAGE_KEY_MENU = 'tisdales_bbq_menu_v1';
 const STORAGE_KEY_SPECIALS = 'tisdales_bbq_specials_v1';
 const STORAGE_KEY_SCHEDULE = 'tisdales_bbq_schedule_v1';
 const STORAGE_KEY_ANNOUNCE = 'tisdales_bbq_announcements_v1';
+const STORAGE_KEY_THEME = 'tisdales_bbq_theme_v1';
 
 export function PitmasterProvider({ children }) {
   // Load from localStorage or defaults
@@ -46,11 +47,25 @@ export function PitmasterProvider({ children }) {
     }
   });
 
+  // Design Concept Switcher: 'smokehouse' | 'carolinagold' | 'chalkboard'
+  const [themeVersion, setThemeVersion] = useState(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY_THEME);
+      return saved || 'smokehouse';
+    } catch (e) {
+      return 'smokehouse';
+    }
+  });
+
   // Cart state for customer ordering/budgeting
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSpecialsModalOpen, setIsSpecialsModalOpen] = useState(false);
   const [isPitmasterMode, setIsPitmasterMode] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY_THEME, themeVersion);
+  }, [themeVersion]);
 
   // Sync to localStorage
   useEffect(() => {
@@ -195,6 +210,8 @@ export function PitmasterProvider({ children }) {
       clearCart,
       cartTotal,
       cartItemCount,
+      themeVersion,
+      setThemeVersion,
       resetToDefaults
     }}>
       {children}

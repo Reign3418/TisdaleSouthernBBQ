@@ -1,56 +1,48 @@
 import React from 'react';
 import { PitmasterProvider, usePitmaster } from './context/PitmasterContext';
-import TopMarqueeBar from './components/TopMarqueeBar';
-import Header from './components/Header';
-import HeroLocationCard from './components/HeroLocationCard';
-import DonaldPassionSection from './components/DonaldPassionSection';
-import SpecialsSpotlight from './components/SpecialsSpotlight';
-import MainMenuSection from './components/MainMenuSection';
-import CateringSection from './components/CateringSection';
-import Footer from './components/Footer';
+import DesignSwitcherBar from './components/DesignSwitcherBar';
+import SmokehouseLayout from './components/themes/SmokehouseLayout';
+import CarolinaGoldLayout from './components/themes/CarolinaGoldLayout';
+import ChalkboardLayout from './components/themes/ChalkboardLayout';
 import SpecialsDrawerModal from './components/SpecialsDrawerModal';
 import OrderDrawer from './components/OrderDrawer';
 import PitmasterAdminModal from './components/PitmasterAdminModal';
-import { Sparkles, Phone, Navigation, Utensils, Heart } from 'lucide-react';
+import { Sparkles, Phone, Navigation } from 'lucide-react';
 
 function AppContent() {
-  const { schedule, setIsSpecialsModalOpen } = usePitmaster();
+  const { themeVersion, schedule, setIsSpecialsModalOpen } = usePitmaster();
   const current = schedule.currentLocation;
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#120F0E] text-[#F3EFEA] font-sans selection:bg-[#E64A19] selection:text-white pb-20 md:pb-0">
+    <div className={`min-h-screen flex flex-col font-sans pb-20 md:pb-0 ${
+      themeVersion === 'carolinagold'
+        ? 'bg-[#FAF7F0] text-[#241C18] selection:bg-[#B45309] selection:text-white'
+        : themeVersion === 'chalkboard'
+        ? 'bg-[#141B22] text-[#F0F6FC] selection:bg-[#38BDF8] selection:text-black'
+        : 'bg-[#120F0E] text-[#F3EFEA] selection:bg-[#E64A19] selection:text-white'
+    }`}>
       
-      {/* 1. Real-time Welcome & Location Bar */}
-      <TopMarqueeBar />
+      {/* 0. Top Design Switcher Bar (Switch between 3 distinct layouts for Donald) */}
+      <DesignSwitcherBar />
 
-      {/* 2. Authentic Brand Header with Pig Mascot Logo */}
-      <Header />
+      {/* Dynamic Concept Layout */}
+      {themeVersion === 'carolinagold' && <CarolinaGoldLayout />}
+      {themeVersion === 'chalkboard' && <ChalkboardLayout />}
+      {themeVersion === 'smokehouse' && <SmokehouseLayout />}
 
-      {/* 3. Hero Showcase: Where Donald is Today + Google Maps + Square Accepted */}
-      <HeroLocationCard />
-
-      {/* 4. The Heart Behind the Smoke: Donald's Story, Andrews SC & Passion */}
-      <DonaldPassionSection />
-
-      {/* 5. Specials Spotlight: Window Whiteboard & Sidewalk Chalkboard Combos */}
-      <SpecialsSpotlight />
-
-      {/* 6. The Main Barbecue Board: Full TV Screen Dinners, Sandwiches, Bulk Meats & Sides */}
-      <MainMenuSection />
-
-      {/* 7. Catering: Bring Donald's Food Trailer to Your Event */}
-      <CateringSection />
-
-      {/* 8. Smokehouse Footer */}
-      <Footer />
-
-      {/* Drawers & Modals (Accessible when needed) */}
+      {/* Shared Drawers & Modals (Accessible across all themes) */}
       <SpecialsDrawerModal />
       <OrderDrawer />
       <PitmasterAdminModal />
 
       {/* Mobile Bottom Quick-Action Bar for Customers */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#1A1412] border-t border-[#3C2D25] p-2.5 px-3 flex items-center justify-between gap-2 shadow-lg">
+      <div className={`md:hidden fixed bottom-0 left-0 right-0 z-40 p-2.5 px-3 flex items-center justify-between gap-2 shadow-lg border-t ${
+        themeVersion === 'carolinagold'
+          ? 'bg-[#FFFFFF] border-[#D5C2A5]'
+          : themeVersion === 'chalkboard'
+          ? 'bg-[#0D1117] border-[#30363D]'
+          : 'bg-[#1A1412] border-[#3C2D25]'
+      }`}>
         <a
           href="tel:9107092900"
           className="flex-1 flex items-center justify-center gap-1.5 bg-[#D9381E] hover:bg-[#B72C15] text-white font-black py-2.5 px-2 rounded-lg text-xs uppercase tracking-wider shadow"
@@ -63,7 +55,13 @@ function AppContent() {
           href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(current.name + ' ' + current.address)}`}
           target="_blank"
           rel="noreferrer"
-          className="flex-1 flex items-center justify-center gap-1.5 bg-[#2B201B] border border-[#4A372E] text-amber-200 font-bold py-2.5 px-2 rounded-lg text-xs uppercase tracking-wider"
+          className={`flex-1 flex items-center justify-center gap-1.5 font-bold py-2.5 px-2 rounded-lg text-xs uppercase tracking-wider border ${
+            themeVersion === 'carolinagold'
+              ? 'bg-[#FAF4EA] border-[#D5C2A5] text-[#78350F]'
+              : themeVersion === 'chalkboard'
+              ? 'bg-[#161F28] border-[#30363D] text-[#38BDF8]'
+              : 'bg-[#2B201B] border-[#4A372E] text-amber-200'
+          }`}
         >
           <Navigation className="w-3.5 h-3.5 text-amber-400" />
           <span>Directions</span>
@@ -71,9 +69,15 @@ function AppContent() {
 
         <button
           onClick={() => setIsSpecialsModalOpen(true)}
-          className="flex-1 flex items-center justify-center gap-1.5 bg-[#2B201B] border border-[#543D32] hover:bg-[#382A23] text-amber-300 font-bold py-2.5 px-2 rounded-lg text-xs uppercase tracking-wider shadow cursor-pointer"
+          className={`flex-1 flex items-center justify-center gap-1.5 font-bold py-2.5 px-2 rounded-lg text-xs uppercase tracking-wider shadow cursor-pointer border ${
+            themeVersion === 'carolinagold'
+              ? 'bg-[#B45309] text-white border-[#B45309]'
+              : themeVersion === 'chalkboard'
+              ? 'bg-[#38BDF8] text-stone-950 border-[#38BDF8]'
+              : 'bg-[#2B201B] border-[#543D32] hover:bg-[#382A23] text-amber-300'
+          }`}
         >
-          <Sparkles className="w-3.5 h-3.5 fill-amber-300" />
+          <Sparkles className="w-3.5 h-3.5" />
           <span>Specials</span>
         </button>
       </div>
