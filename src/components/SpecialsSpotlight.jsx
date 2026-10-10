@@ -37,7 +37,7 @@ export default function SpecialsSpotlight() {
               Fresh Off The Pit & Fryer <span className="text-[#FF6B35]">Specials</span>
             </h2>
             <p className="text-xs sm:text-sm text-stone-400 max-w-2xl">
-              These are the daily deals and seafood catches Donald posts directly on the trailer window and sidewalk chalkboard!
+              Daily deals, rib drops, and fresh catches straight from our trailer window and sidewalk chalkboard!
             </p>
           </div>
 

@@ -129,7 +129,7 @@ export default function TvMenuModal() {
               </span>
             </div>
             <h3 className="text-lg font-black text-white font-['Bebas_Neue'] tracking-wider leading-none mt-0.5">
-              Donald's TV Menu & USB Image Generator
+              Your Trailer TV Menu & USB Image Generator
             </h3>
           </div>
         </div>
@@ -152,7 +152,7 @@ export default function TvMenuModal() {
               className={`px-2.5 py-1 rounded font-bold transition cursor-pointer flex items-center gap-1 ${
                 boardTheme === 'classicOrange' ? 'bg-amber-500 text-stone-950 shadow' : 'text-stone-300 hover:text-white'
               }`}
-              title="Matches Donald's exact truck colors from tv-menu.jpg"
+              title="Matches your trailer's original orange and cream colors"
             >
               <span>Classic Orange & Cream</span>
             </button>
@@ -164,7 +164,7 @@ export default function TvMenuModal() {
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#281D18] hover:bg-[#382821] text-amber-300 hover:text-white text-xs font-bold transition cursor-pointer border border-amber-600/30"
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span className="hidden md:inline">Sync TV Without USB?</span>
+            <span className="hidden md:inline">Sync Your TV Live?</span>
             {showBrainstorm ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
           </button>
 
@@ -215,7 +215,7 @@ export default function TvMenuModal() {
       {exportSuccess && (
         <div className="bg-emerald-600 text-white text-xs font-bold py-2 px-4 flex items-center justify-center gap-2 shrink-0 animate-bounce">
           <Check className="w-4 h-4" />
-          <span>Success! Downloaded <strong>Tisdales_TV_Menu_1080p.jpg</strong> (1920 × 1080). Copy it to your USB stick and plug into the TV.</span>
+          <span>Success! Downloaded <strong>Tisdales_TV_Menu_1080p.jpg</strong> (1920 × 1080). Copy it to your USB flash drive and plug it into your TV.</span>
         </div>
       )}
 
@@ -226,10 +226,10 @@ export default function TvMenuModal() {
             <div className="flex items-center justify-between">
               <div>
                 <span className="text-xs font-black uppercase tracking-widest text-amber-400 font-mono">
-                  Brainstorming Guide for Donald
+                  Ideas for Your Trailer Setup
                 </span>
                 <h4 className="text-lg font-black text-white font-['Bebas_Neue'] tracking-wider">
-                  How to Sync Donald's Live Website to the Truck TV (With Little to Zero Equipment)
+                  How You Can Display & Sync Your Menu on Your TV (Little to Zero Equipment)
                 </h4>
               </div>
               <button
@@ -244,40 +244,40 @@ export default function TvMenuModal() {
               <div className="bg-[#140E0C] p-4 rounded-xl border border-stone-700 space-y-2">
                 <div className="flex items-center gap-2 text-emerald-400 font-bold">
                   <Usb className="w-4 h-4" />
-                  <span>Option 1: The USB Drive (Offline)</span>
+                  <span>Option 1: Your USB Flash Drive (Offline)</span>
                 </div>
                 <p className="text-stone-400 leading-relaxed">
-                  Click the green <strong>"Download TV JPG"</strong> button. Save to flash drive, plug into TV, and loop photo slideshow. 100% offline.
+                  Click the green <strong>"Download TV JPG"</strong> button. Save to your flash drive, plug into your TV, and loop the image. 100% offline.
                 </p>
               </div>
 
               <div className="bg-[#140E0C] p-4 rounded-xl border border-amber-600/50 space-y-2">
                 <div className="flex items-center gap-2 text-amber-300 font-bold">
                   <Wifi className="w-4 h-4" />
-                  <span>Option 2: Smart TV Browser (Live Sync)</span>
+                  <span>Option 2: Your Smart TV Browser (Live Sync)</span>
                 </div>
                 <p className="text-stone-400 leading-relaxed">
-                  Connect TV to Donald's phone hotspot. Open TV browser to <code>reign3418.github.io/TisdaleSouthernBBQ/#tv-menu</code>. TV auto-updates when Donald 86's items on his phone!
+                  Connect your TV to your phone's personal hotspot. Open the TV browser to this page. Your TV updates live the second you mark an item sold out on your phone!
                 </p>
               </div>
 
               <div className="bg-[#140E0C] p-4 rounded-xl border border-stone-700 space-y-2">
                 <div className="flex items-center gap-2 text-blue-400 font-bold">
                   <Tv className="w-4 h-4" />
-                  <span>Option 3: $20 Amazon Fire Stick</span>
+                  <span>Option 3: A $20 Amazon Fire Stick</span>
                 </div>
                 <p className="text-stone-400 leading-relaxed">
-                  Plugs into any TV HDMI port. Runs the Silk Browser full-screen all day connected to phone hotspot.
+                  Plugs into any TV HDMI port. Runs the browser full-screen all day connected to your phone hotspot with zero monthly fees.
                 </p>
               </div>
 
               <div className="bg-[#140E0C] p-4 rounded-xl border border-stone-700 space-y-2">
                 <div className="flex items-center gap-2 text-purple-400 font-bold">
                   <Cable className="w-4 h-4" />
-                  <span>Option 4: $10 Direct HDMI Cable</span>
+                  <span>Option 4: A $10 Direct HDMI Cable</span>
                 </div>
                 <p className="text-stone-400 leading-relaxed">
-                  Plug iPad/phone directly into the TV HDMI port. Mirrors the live menu with zero lag and zero Wi-Fi.
+                  Plug your iPad or phone directly into the TV HDMI port. Mirrors your live menu with zero lag and zero Wi-Fi needed.
                 </p>
               </div>
             </div>

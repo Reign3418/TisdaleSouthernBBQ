@@ -337,7 +337,7 @@ export default function ChalkboardLayout() {
                 Straight from the Food Trailer
               </span>
               <h2 className="text-3xl font-bold text-white font-['Permanent_Marker']">
-                Donald’s Real Handwritten Signs & Trailer Wrap
+                Our Real Handwritten Signs & Trailer Wrap
               </h2>
             </div>
 

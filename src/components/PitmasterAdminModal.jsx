@@ -320,7 +320,7 @@ export default function PitmasterAdminModal() {
                   Pitmaster Pocket Admin
                 </span>
                 <span className="text-xs text-stone-400 hidden sm:inline">
-                  Donald’s Live Food Trailer Control Center
+                  Your Live Food Trailer Command Center
                 </span>
               </div>
               <h3 className="text-2xl font-black text-white uppercase font-['Bebas_Neue'] tracking-wider leading-none mt-0.5">
@@ -495,7 +495,7 @@ export default function PitmasterAdminModal() {
               {/* Item Count Notice */}
               <div className="flex items-center justify-between text-xs text-stone-400 px-1">
                 <span>Showing {editorItems.length} menu items</span>
-                <span className="italic">Click "Edit" to change prices or names. Toggle "Hide" to remove from site without deleting!</span>
+                <span className="italic">You're in total control: Tap "Edit" to adjust any price or name. Tap "Hide" to temporarily take an item off the board without deleting it!</span>
               </div>
 
               {/* Items List */}
@@ -691,7 +691,7 @@ export default function PitmasterAdminModal() {
                     Tap Any Item to Flip Between IN STOCK and SOLD OUT:
                   </h4>
                   <p className="text-xs text-stone-400">
-                    Big touch buttons for quick changes when you're busy at the window.
+                    Big buttons designed for quick taps while you're busy at the window or tending the pit.
                   </p>
                 </div>
 
@@ -879,7 +879,7 @@ export default function PitmasterAdminModal() {
                 </div>
                 
                 <p className="text-xs text-stone-300 mb-3">
-                  The live site tells customers that Donald's trailer takes <strong>Square</strong> (Tap to Pay, Apple Pay, Google Pay, Cash App, Visa/MC/Amex/Discover chip cards, and Cash).
+                  Your live site tells customers that your trailer takes <strong>Square</strong> (Tap to Pay, Apple Pay, Google Pay, Cash App, Visa/MC/Amex/Discover chip cards, and Cash).
                 </p>
 
                 <form onSubmit={handleSaveSquare} className="space-y-2">

@@ -15,7 +15,8 @@ import {
   DollarSign,
   BatteryCharging,
   Navigation,
-  ExternalLink
+  ExternalLink,
+  Heart
 } from 'lucide-react';
 
 export default function GpsTrackingWhitePage() {
@@ -36,7 +37,7 @@ export default function GpsTrackingWhitePage() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-stone-900/80 backdrop-blur-sm overflow-y-auto p-2 sm:p-6 flex justify-center items-start print:p-0 print:bg-white print:static">
+    <div className="fixed inset-0 z-50 bg-stone-900/80 backdrop-blur-sm overflow-y-auto p-2 sm:p-6 flex justify-center items-start print:p-0 print:bg-white print:static animate-fadeIn">
       
       {/* Document Container */}
       <div className="bg-white text-stone-900 rounded-2xl shadow-2xl max-w-4xl w-full my-4 border border-stone-200 overflow-hidden print:shadow-none print:border-none print:m-0 print:rounded-none">
@@ -45,10 +46,10 @@ export default function GpsTrackingWhitePage() {
         <div className="bg-stone-900 text-stone-200 px-6 py-3 flex items-center justify-between print:hidden border-b border-stone-800">
           <div className="flex items-center gap-2">
             <span className="bg-amber-500 text-black font-black text-xs px-2 py-0.5 rounded font-mono uppercase">
-              White Paper Brief
+              Craftsman Options Brief
             </span>
             <span className="text-xs text-stone-300 font-medium">
-              Prepared for Donald Tisdale • Tisdale’s Southern BBQ
+              Prepared for Mr. Donald Tisdale • Tisdale’s Southern BBQ
             </span>
           </div>
 
@@ -77,21 +78,21 @@ export default function GpsTrackingWhitePage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <span className="text-amber-800 text-xs font-black uppercase tracking-widest block font-mono">
-                Technology & Operations Brief
+                Craftsman Operations Brief
               </span>
               <h1 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight mt-1">
-                Mobile Trailer Location Tracking Options
+                Your Food Trailer Location Tracking Options
               </h1>
               <p className="text-sm text-stone-600 mt-1">
-                How to broadcast where Tisdale’s Southern BBQ is parked, boost customer walk-ups, and guarantee 100% home privacy when off-duty.
+                How you can let your customers know where Tisdale’s Southern BBQ is parked, boost walk-up sales, and keep your home 100% private when off-duty.
               </p>
             </div>
 
             <div className="text-left sm:text-right text-xs text-stone-500 shrink-0 font-mono bg-white p-3 rounded-lg border border-stone-200">
-              <div><strong>Client:</strong> Donald Tisdale</div>
+              <div><strong>Craftsman:</strong> Mr. Donald Tisdale</div>
               <div><strong>Business:</strong> Tisdale’s Southern BBQ</div>
               <div><strong>Date:</strong> October 2026</div>
-              <div><strong>Topic:</strong> On/Off Location Hardware & Software</div>
+              <div><strong>Focus:</strong> On/Off Location Hardware & Software Options</div>
             </div>
           </div>
         </div>
@@ -105,15 +106,15 @@ export default function GpsTrackingWhitePage() {
               <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 1
               </span>
-              Executive Summary & The Core Requirement
+              Your Freedom, Your Privacy & Reaching Your Customers
             </h2>
             <p className="text-stone-700">
-              As a mobile food trailer operating across Fayetteville, Sanford, Dunn, and surrounding North Carolina communities, customer foot-traffic depends directly on answering one question: <strong>“Where is Donald parked right now?”</strong>
+              As a mobile pitmaster serving Fayetteville, Sanford, Dunn, and surrounding North Carolina communities, getting hungry crowds to your window comes down to answering one question: <strong>“Where are you parked right now?”</strong>
             </p>
             <div className="bg-amber-50 border-l-4 border-amber-600 p-4 rounded-r-lg">
               <h4 className="font-bold text-amber-900 text-sm">The Golden Rule: Complete On/Off Control & Home Privacy</h4>
               <p className="text-xs text-amber-800 mt-1">
-                Donald must have a solution with a simple <strong>ON/OFF switch</strong>. When the trailer is open for service, customers see the exact location, address, and live Google Maps directions. When Donald packs up and drives home to his family, tracking must be completely OFF so his private residence is never broadcast.
+                You must always have total control with a clear <strong>ON/OFF switch</strong>. When you're open for service, your customers see your exact spot with 1-tap Google Maps directions. When you finish cooking, pack up, and head home to your family, tracking is completely OFF so your personal residence is never shared.
               </p>
             </div>
           </section>
@@ -125,20 +126,20 @@ export default function GpsTrackingWhitePage() {
                 <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                   2
                 </span>
-                Interactive Simulator: Try Donald's On/Off Switch
+                Interactive Simulator: Test Your On/Off Switch
               </h2>
               <span className="text-xs text-stone-500 font-mono italic">
-                (Click the buttons below to test how the website responds)
+                (Click the buttons below to see how your site protects your privacy or welcomes hungry customers)
               </span>
             </div>
 
             <p className="text-xs text-stone-600">
-              Test how both states look from a customer's phone when Donald switches tracking on or off:
+              Test how both states look from a customer's phone when you switch tracking on or off:
             </p>
 
             {/* Simulator Controls */}
             <div className="flex flex-wrap items-center gap-3 bg-stone-100 p-3 rounded-xl border border-stone-200">
-              <span className="text-xs font-bold text-stone-700 font-mono">Donald's Switch:</span>
+              <span className="text-xs font-bold text-stone-700 font-mono">Your Control Switch:</span>
               <button
                 onClick={() => setSimState('on')}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg font-bold text-xs transition cursor-pointer ${
@@ -160,7 +161,7 @@ export default function GpsTrackingWhitePage() {
                 }`}
               >
                 <Power className="w-3.5 h-3.5" />
-                <span>🛑 TURN OFF (Heading Home / Closed)</span>
+                <span>🛑 TURN OFF (Heading Home / Off-Duty)</span>
               </button>
             </div>
 
@@ -217,7 +218,7 @@ export default function GpsTrackingWhitePage() {
                       🔒 Trailer Location is Private & Off-Duty
                     </h3>
                     <p className="text-xs text-stone-600 max-w-md mx-auto mt-1">
-                      Donald is off the clock, prepping hickory wood, or traveling home. No live GPS coordinates are broadcast to protect his private residence.
+                      You are off the clock, prepping your hickory wood, or traveling home. No live GPS coordinates are broadcast to protect your private residence.
                     </p>
                   </div>
                   <div className="bg-white p-3 rounded-lg border border-stone-200 text-xs text-stone-600 max-w-sm mx-auto font-mono">
@@ -234,7 +235,7 @@ export default function GpsTrackingWhitePage() {
               <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 3
               </span>
-              The Three Technical Options for Donald
+              The Three Practical Ways You Can Share Your Location
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -242,29 +243,29 @@ export default function GpsTrackingWhitePage() {
               {/* Option A: Phone 1-Tap */}
               <div className="border-2 border-emerald-500 rounded-xl p-5 bg-emerald-50/30 flex flex-col justify-between relative">
                 <div className="absolute -top-3 left-4 bg-emerald-600 text-white text-[10px] font-black uppercase px-2 py-0.5 rounded shadow">
-                  ⭐ Recommended Best Option
+                  ⭐ Top Choice for Zero Extra Cost
                 </div>
 
                 <div className="space-y-3">
                   <div className="flex items-center gap-2 pt-2">
                     <Smartphone className="w-5 h-5 text-emerald-600 shrink-0" />
-                    <h3 className="font-bold text-base text-stone-900">Option A: 1-Tap Phone Button</h3>
+                    <h3 className="font-bold text-base text-stone-900">Option A: Your 1-Tap Phone Button</h3>
                   </div>
 
                   <p className="text-xs text-stone-600">
-                    Built directly into his secret Pitmaster Admin screen on the website. Donald opens his phone or Square iPad, taps <strong>"Update Location to Here"</strong>, and it grabs his location instantly.
+                    Built right into your private Pitmaster Admin screen on your site. You open your phone or Square iPad, tap <strong>"Update Location to Here"</strong>, and it grabs your spot instantly.
                   </p>
 
                   <div className="space-y-1.5 text-xs text-stone-700 pt-2 border-t border-emerald-200 font-mono">
-                    <div><strong>Device Cost:</strong> $0 (Uses his phone)</div>
+                    <div><strong>Device Cost:</strong> $0 (Uses your existing phone)</div>
                     <div><strong>Monthly Cost:</strong> $0 / month</div>
                     <div><strong>Battery Hassle:</strong> None</div>
-                    <div><strong>Privacy:</strong> 100% Controlled</div>
+                    <div><strong>Privacy:</strong> 100% In Your Control</div>
                   </div>
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-emerald-200 text-[11px] text-emerald-800 font-medium">
-                  ✓ Ready to use right now with zero monthly bills or extra gadgets.
+                  ✓ Ready right now on your phone with zero monthly bills or extra gadgets to carry.
                 </div>
               </div>
 
@@ -273,23 +274,23 @@ export default function GpsTrackingWhitePage() {
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     <Radio className="w-5 h-5 text-amber-600 shrink-0" />
-                    <h3 className="font-bold text-base text-stone-900">Option B: Tracki 4G GPS Puck</h3>
+                    <h3 className="font-bold text-base text-stone-900">Option B: Tracki 4G Magnetic Puck</h3>
                   </div>
 
                   <p className="text-xs text-stone-600">
-                    A physical matchbox-sized magnetic GPS device kept on the trailer counter with an actual physical power slider switch. Flip <strong>ON</strong> at the window; flip <strong>OFF</strong> when hitching the trailer.
+                    A physical matchbox-sized magnetic GPS device kept on your trailer counter with an actual physical power slider switch. Flip <strong>ON</strong> at the window; flip <strong>OFF</strong> when hitching the trailer.
                   </p>
 
                   <div className="space-y-1.5 text-xs text-stone-700 pt-2 border-t border-stone-200 font-mono">
                     <div><strong>Device Cost:</strong> ~$18.00 (Amazon)</div>
-                    <div><strong>Monthly Cost:</strong> ~$13.95 / month (SIM)</div>
+                    <div><strong>Monthly Cost:</strong> ~$13.95 / month (cellular SIM)</div>
                     <div><strong>Battery Hassle:</strong> Charge every 3-5 days</div>
                     <div><strong>Privacy:</strong> Good (Manual switch)</div>
                   </div>
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-stone-200 text-[11px] text-stone-600">
-                  ⚠️ Requires paying a monthly cellular fee and remembering to charge it.
+                  ⚠️ Requires paying an ongoing monthly cellular fee and remembering to charge it.
                 </div>
               </div>
 
@@ -298,11 +299,11 @@ export default function GpsTrackingWhitePage() {
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     <Clock className="w-5 h-5 text-blue-600 shrink-0" />
-                    <h3 className="font-bold text-base text-stone-900">Option C: Glympse Auto-Timer</h3>
+                    <h3 className="font-bold text-base text-stone-900">Option C: Glympse Auto-Timer App</h3>
                   </div>
 
                   <p className="text-xs text-stone-600">
-                    A free mobile app built for mobile businesses. Donald taps <strong>"Share for 4 Hours"</strong> when opening. When the timer runs out, it <em>automatically shuts off</em> so he can never forget.
+                    A free mobile app built for mobile businesses. You tap <strong>"Share for 4 Hours"</strong> when opening. When the timer runs out, it <em>automatically shuts off</em> so you can never forget on your drive home.
                   </p>
 
                   <div className="space-y-1.5 text-xs text-stone-700 pt-2 border-t border-stone-200 font-mono">
@@ -314,7 +315,7 @@ export default function GpsTrackingWhitePage() {
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-stone-200 text-[11px] text-stone-600">
-                  ✓ Great if Donald is worried he might forget to turn it off when driving home.
+                  ✓ Great peace of mind if you ever worry about forgetting to turn it off when driving home.
                 </div>
               </div>
 
@@ -336,7 +337,7 @@ export default function GpsTrackingWhitePage() {
                   <tr>
                     <th className="p-3">Evaluation Factor</th>
                     <th className="p-3 bg-emerald-50 text-emerald-900 border-x border-emerald-200">
-                      Option A: 1-Tap Website Admin
+                      Option A: Your 1-Tap Phone Button ⭐
                     </th>
                     <th className="p-3">Option B: Tracki GPS Puck</th>
                     <th className="p-3">Option C: Glympse Timer App</th>
@@ -388,39 +389,39 @@ export default function GpsTrackingWhitePage() {
           <section className="space-y-3 bg-stone-50 p-5 rounded-xl border border-stone-200">
             <h3 className="font-bold text-stone-900 text-sm flex items-center gap-2">
               <AlertTriangle className="w-4 h-4 text-amber-600" />
-              <span>Devices We Specifically Recommend Avoiding:</span>
+              <span>Devices We Advise Against:</span>
             </h3>
             <ul className="text-xs space-y-2 text-stone-600 list-disc list-inside">
               <li>
-                <strong>Apple AirTags:</strong> AirTags do <em>not</em> have public GPS broadcast capability. They only work on the owner's private Apple ID and cannot be connected to a public website.
+                <strong>Apple AirTags:</strong> AirTags do <em>not</em> have public GPS broadcast capability. They only work on personal Apple IDs for keys and wallets, and cannot be connected to a public website.
               </li>
               <li>
-                <strong>Engine Port Trackers (OBD-II / Bouncie):</strong> These plug into the truck’s diagnostic port and track 24/7. When Donald drives home at night or runs errands, the tracker keeps broadcasting his personal location unless manually unplugged each time.
+                <strong>Engine Port Trackers (OBD-II / Bouncie):</strong> These plug into your truck’s diagnostic port and track 24/7. When you drive home at night or run errands, the tracker keeps broadcasting your personal location unless you crawl under the dash to unplug it each time.
               </li>
             </ul>
           </section>
 
-          {/* Section 6: Action Plan for the Meeting */}
+          {/* Section 6: Action Plan / Partnership */}
           <section className="space-y-3 border-t border-stone-200 pt-6">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2">
               <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 5
               </span>
-              Suggested Recommendation for Donald
+              Where We Suggest Starting Together
             </h2>
 
             <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5 space-y-3">
               <h4 className="font-bold text-emerald-950 text-sm">
-                Start with Option A (The 1-Tap Website Admin Button)
+                Start with Option A (Your 1-Tap Website Admin Button)
               </h4>
               <p className="text-xs text-emerald-900 leading-relaxed">
-                Because Donald already has his smartphone (or his Square POS iPad) with him at the truck, the 1-Tap button costs <strong>$0</strong> and has zero risk of draining an extra battery or charging a monthly subscription.
+                Because you already have your smartphone (or your Square POS iPad) with you at the trailer, the 1-Tap button costs <strong>$0</strong> and has zero risk of draining an extra battery or charging a monthly subscription.
               </p>
               <ol className="text-xs space-y-1.5 text-emerald-800 list-decimal list-inside font-medium">
-                <li>When Donald pulls up to the Stop Button Arcade or Static Line Brewing, he taps his secret button.</li>
-                <li>His customers immediately see his exact spot and click directions.</li>
-                <li>When the smoker is shut down, he taps "Off-Duty", and his home is 100% private.</li>
-                <li>If he ever wants an actual physical plastic puck on the counter later, we can order the $18 Tracki unit anytime!</li>
+                <li>When you pull up to the Stop Button Arcade, Static Line Brewing, or a festival, you tap your private button.</li>
+                <li>Your customers immediately see your exact spot and click for 1-tap driving directions.</li>
+                <li>When the smoker is shut down, you tap "Off-Duty", and your home is 100% private.</li>
+                <li>If you ever decide down the road that you'd rather have an actual physical switch on the trailer counter, we can order the $18 Tracki unit anytime!</li>
               </ol>
             </div>
           </section>
@@ -429,7 +430,7 @@ export default function GpsTrackingWhitePage() {
 
         {/* Footer / Print Note */}
         <div className="p-6 bg-stone-100 border-t border-stone-200 text-center text-xs text-stone-500 font-mono flex flex-col sm:flex-row items-center justify-between gap-3">
-          <span>Tisdale’s Southern BBQ • Technology Planning Brief</span>
+          <span>Tisdale’s Southern BBQ • Location & GPS Planning Brief • Crafted with Passion</span>
           <div className="flex items-center gap-3 print:hidden">
             <button
               onClick={handlePrint}

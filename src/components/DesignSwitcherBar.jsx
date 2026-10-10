@@ -40,7 +40,7 @@ export default function DesignSwitcherBar() {
             Design Concept Switcher:
           </span>
           <span className="text-stone-400 text-[11px] hidden sm:inline">
-            (Choose a style to review with Donald)
+            (Explore 3 custom layouts for your trailer)
           </span>
         </div>
 
@@ -77,7 +77,7 @@ export default function DesignSwitcherBar() {
           <button
             onClick={() => setIsGpsWhitePageOpen(true)}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer bg-white text-stone-900 hover:bg-amber-100 border border-amber-400 shadow-sm"
-            title="Open GPS Location Tracking White Paper for Donald"
+            title="Review trailer GPS location tracking options"
           >
             <Radio className="w-3.5 h-3.5 text-rose-600 shrink-0" />
             <span className="whitespace-nowrap font-black">📍 GPS Options</span>
@@ -90,7 +90,7 @@ export default function DesignSwitcherBar() {
           <button
             onClick={() => setIsTvWhitePageOpen(true)}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer bg-white text-stone-900 hover:bg-amber-100 border border-amber-400 shadow-sm"
-            title="Open Food Trailer TV Menu & Display White Paper for Donald"
+            title="Review trailer TV menu and live sync options"
           >
             <Tv className="w-3.5 h-3.5 text-blue-600 shrink-0" />
             <span className="whitespace-nowrap font-black">📺 TV Sync Guide</span>
@@ -105,7 +105,7 @@ export default function DesignSwitcherBar() {
           <button
             onClick={() => setIsPitmasterMode(true)}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer bg-amber-500 hover:bg-amber-400 text-stone-950 shadow-md"
-            title="Open Menu Editor, Add/Remove Items, 86 Sold Out on the Fly"
+            title="Your Pitmaster command center: edit prices, add items, 86 sold out on the fly"
           >
             <ChefHat className="w-3.5 h-3.5" />
             <span className="whitespace-nowrap font-black">👨‍🍳 Edit Menu (On The Fly)</span>
@@ -115,7 +115,7 @@ export default function DesignSwitcherBar() {
           <button
             onClick={() => setIsTvMenuOpen(true)}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer bg-[#241A15] hover:bg-[#34241C] text-amber-300 hover:text-white border border-amber-600/40 shadow-sm"
-            title="Open 1080p TV Menu, Download Image for USB, or Sync to Truck TV"
+            title="Open your 1080p TV Menu, download a fresh USB image, or sync your trailer screen"
           >
             <Tv className="w-3.5 h-3.5 text-amber-400" />
             <span className="whitespace-nowrap font-black">📺 TV Menu (USB / Live)</span>

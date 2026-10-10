@@ -25,7 +25,7 @@ export default function SpecialsDrawerModal() {
                 Today's Fresh Smoker & Fryer Specials
               </h3>
               <p className="text-xs text-amber-200 mt-0.5">
-                Straight from Donald's window whiteboard & sidewalk chalkboard!
+                Straight from our trailer window whiteboard & sidewalk chalkboard!
               </p>
             </div>
           </div>

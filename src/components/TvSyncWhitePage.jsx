@@ -16,7 +16,8 @@ import {
   Sparkles,
   ExternalLink,
   ShieldCheck,
-  Smartphone
+  Smartphone,
+  Heart
 } from 'lucide-react';
 import SquareIcon from './icons/SquareIcon';
 
@@ -42,10 +43,10 @@ export default function TvSyncWhitePage() {
         <div className="bg-stone-900 text-stone-200 px-6 py-3 flex items-center justify-between print:hidden border-b border-stone-800">
           <div className="flex items-center gap-2">
             <span className="bg-amber-500 text-black font-black text-xs px-2 py-0.5 rounded font-mono uppercase">
-              White Paper Brief
+              Craftsman Options Brief
             </span>
             <span className="text-xs text-stone-300 font-medium">
-              Prepared for Donald Tisdale • Tisdale’s Southern BBQ
+              Prepared for Mr. Donald Tisdale • Tisdale’s Southern BBQ
             </span>
           </div>
 
@@ -74,21 +75,21 @@ export default function TvSyncWhitePage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <span className="text-amber-800 text-xs font-black uppercase tracking-widest block font-mono">
-                Technology & Operations Brief
+                Craftsman Technology Brief
               </span>
               <h1 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight mt-1">
-                Food Trailer TV Menu & Digital Board Options
+                Your Food Trailer TV Menu & Display Options
               </h1>
               <p className="text-sm text-stone-600 mt-1">
-                How to display, update, and sync Donald's barbecue menu on the truck TV monitor with little to zero equipment.
+                How you can display, update, and sync your barbecue menu on your trailer TV monitor with little to zero equipment.
               </p>
             </div>
 
             <div className="text-left sm:text-right text-xs text-stone-500 shrink-0 font-mono bg-white p-3 rounded-lg border border-stone-200">
-              <div><strong>Client:</strong> Donald Tisdale</div>
+              <div><strong>Craftsman:</strong> Mr. Donald Tisdale</div>
               <div><strong>Business:</strong> Tisdale’s Southern BBQ</div>
               <div><strong>Date:</strong> October 2026</div>
-              <div><strong>Topic:</strong> TV Menu Display, USB & Live Web Sync</div>
+              <div><strong>Focus:</strong> Your TV Menu, USB & Live Web Sync Options</div>
             </div>
           </div>
         </div>
@@ -102,15 +103,15 @@ export default function TvSyncWhitePage() {
               <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 1
               </span>
-              Executive Summary: The Opportunity & Challenge
+              Your Trailer, Your Craft: The Vision
             </h2>
             <p className="text-stone-700">
-              In Donald's food trailer, the TV screen is the primary visual centerpiece where walk-up customers see dinner plates, sandwich options, and sides. Currently, changing prices or updating sold-out meats requires either handwriting on whiteboard stickers or generating a graphic on a computer and loading it onto a USB thumb drive.
+              Mr. Tisdale, you’ve said that you love cooking like a carpenter loves building houses. We have that exact same passion for creating. When folks pull up to your food trailer window, your TV screen is the showcase for your hard work—from your hickory-smoked ribs and beef brisket to your fried pork chops and whole wings. You deserve a setup that puts you in total control, without headaches, complicated gear, or monthly bills.
             </p>
             <div className="bg-amber-50 border-l-4 border-amber-600 p-4 rounded-r-lg">
-              <h4 className="font-bold text-amber-900 text-sm">The Goal: Maximum Impact, Zero Hassle, Low/No Equipment</h4>
+              <h4 className="font-bold text-amber-900 text-sm">Our Shared Standard: Maximum Impact, Zero Monthly Fees, Your Choice of Workflow</h4>
               <p className="text-xs text-amber-800 mt-1">
-                Donald needs a solution that requires <strong>no expensive monthly digital signage subscriptions</strong> ($30–$80/mo) and lets him either <strong>(A) download a fresh 1080p image for his USB drive in 5 seconds</strong>, or <strong>(B) sync his phone directly to the TV over the air</strong> using equipment he already owns in the trailer.
+                You are the pitmaster and in complete command. We built this so you have the freedom to work however you feel most comfortable: whether you prefer <strong>(A) downloading a fresh 1080p image to your thumb drive in 5 seconds</strong>, or <strong>(B) having your TV update wirelessly over the air directly from your phone</strong> when you mark an item sold out during a heavy rush.
               </p>
             </div>
           </section>
@@ -122,16 +123,16 @@ export default function TvSyncWhitePage() {
                 <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                   2
                 </span>
-                Interactive Simulator: How Donald's TV Responds
+                Interactive Simulator: See How Your TV Screen Responds
               </h2>
               <span className="text-xs text-stone-500 font-mono italic">
-                (Click the test buttons to see how the TV screen automatically adapts)
+                (Tap the buttons below to see how your menu screen adapts to your shift)
               </span>
             </div>
 
             {/* Test buttons */}
             <div className="flex flex-wrap items-center gap-2 bg-stone-100 p-3 rounded-xl border border-stone-200">
-              <span className="text-xs font-bold text-stone-700 font-mono">Simulate Shift Event:</span>
+              <span className="text-xs font-bold text-stone-700 font-mono">Test Shift Event:</span>
               <button
                 onClick={() => setSimMode('normal')}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
@@ -140,7 +141,7 @@ export default function TvSyncWhitePage() {
                     : 'bg-white text-stone-700 border border-stone-300 hover:bg-stone-50'
                 }`}
               >
-                1. Normal Shift (All Meats In Stock)
+                1. Normal Shift (All Meats Smoking & Ready)
               </button>
 
               <button
@@ -308,7 +309,7 @@ export default function TvSyncWhitePage() {
               <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 3
               </span>
-              The Four Practical Equipment Options for Donald
+              The Four Practical Ways You Can Run Your Trailer Screen
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -318,45 +319,45 @@ export default function TvSyncWhitePage() {
                 <div>
                   <div className="flex items-center gap-2 text-stone-900">
                     <Usb className="w-5 h-5 text-amber-600 shrink-0" />
-                    <h3 className="font-bold text-base">Option A: The USB Flash Drive (Offline)</h3>
+                    <h3 className="font-bold text-base">Option A: Your USB Flash Drive (100% Offline)</h3>
                   </div>
                   <p className="text-xs text-stone-600 mt-2">
-                    Donald clicks the green <strong>"Download TV JPG"</strong> button on his phone or computer. He copies the image onto his thumb drive and plugs it into the TV's USB port.
+                    Whenever you want a fresh menu for your trailer, just tap the green <strong>"Download TV JPG"</strong> button on your phone or computer. Copy that image onto your thumb drive, plug it into your TV's USB port, and put it on slideshow. It's solid, simple, and never depends on cellular reception.
                   </p>
                   <ul className="text-xs space-y-1.5 text-stone-700 mt-3 font-mono">
-                    <li><strong>Equipment Cost:</strong> $0 (uses existing USB drive)</li>
+                    <li><strong>Equipment Cost:</strong> $0 (uses your existing USB flash drive)</li>
                     <li><strong>Monthly Cost:</strong> $0 / month</li>
-                    <li><strong>Internet Needed:</strong> No (100% offline)</li>
-                    <li><strong>Updating:</strong> Requires re-plugging USB</li>
+                    <li><strong>Internet Needed:</strong> None (100% offline)</li>
+                    <li><strong>Updating:</strong> Pop in your updated USB stick</li>
                   </ul>
                 </div>
                 <div className="text-[11px] text-emerald-800 bg-emerald-50 p-2.5 rounded-lg border border-emerald-200">
-                  ✓ Rock solid for rural locations or festivals with zero cellular service.
+                  ✓ Bulletproof for festivals, county fairs, or rural pop-ups where cell service is spotty.
                 </div>
               </div>
 
               {/* Option B: Smart TV Browser (Recommended) */}
               <div className="border-2 border-emerald-500 rounded-xl p-5 bg-emerald-50/40 space-y-3 flex flex-col justify-between relative">
                 <div className="absolute -top-3 left-4 bg-emerald-600 text-white text-[10px] font-black uppercase px-2 py-0.5 rounded shadow">
-                  ⭐ Recommended for Zero Equipment
+                  ⭐ Top Choice for Zero Extra Gear
                 </div>
                 <div>
                   <div className="flex items-center gap-2 text-stone-900 pt-1">
                     <Wifi className="w-5 h-5 text-emerald-600 shrink-0" />
-                    <h3 className="font-bold text-base">Option B: Smart TV Browser (Live Auto-Sync)</h3>
+                    <h3 className="font-bold text-base">Option B: Your Smart TV's Web Browser (Live Auto-Sync)</h3>
                   </div>
                   <p className="text-xs text-stone-600 mt-2">
-                    Most modern TVs (Roku TV, Samsung, LG, TCL, Fire TV) have a free built-in web browser app. The TV connects to Donald's phone personal hotspot (the same hotspot powering his Square card reader).
+                    If your trailer TV is a modern smart TV (Roku, Samsung, LG, TCL, or Fire TV), it already has a free built-in web browser app. You connect the TV to your phone's personal hotspot (the very same hotspot powering your Square card reader) and open your menu page.
                   </p>
                   <ul className="text-xs space-y-1.5 text-stone-700 mt-3 font-mono">
-                    <li><strong>Equipment Cost:</strong> $0 (uses existing TV)</li>
+                    <li><strong>Equipment Cost:</strong> $0 (uses the TV you already have)</li>
                     <li><strong>Monthly Cost:</strong> $0 / month</li>
-                    <li><strong>Internet Needed:</strong> Yes (Phone mobile hotspot)</li>
+                    <li><strong>Internet Needed:</strong> Yes (your phone mobile hotspot)</li>
                     <li><strong>Updating:</strong> Instant live over-the-air sync!</li>
                   </ul>
                 </div>
                 <div className="text-[11px] text-emerald-900 bg-white p-2.5 rounded-lg border border-emerald-200 font-medium">
-                  ✓ Whenever Donald marks an item "Sold Out" on his phone, the TV updates live automatically across the truck!
+                  ✓ Whenever you mark an item "Sold Out" on your phone, your TV updates live automatically right before your customers' eyes!
                 </div>
               </div>
 
@@ -365,20 +366,20 @@ export default function TvSyncWhitePage() {
                 <div>
                   <div className="flex items-center gap-2 text-stone-900">
                     <Tv className="w-5 h-5 text-blue-600 shrink-0" />
-                    <h3 className="font-bold text-base">Option C: $20 Amazon Fire TV Stick</h3>
+                    <h3 className="font-bold text-base">Option C: A $20 Amazon Fire TV Stick</h3>
                   </div>
                   <p className="text-xs text-stone-600 mt-2">
-                    If Donald's TV is a basic non-smart monitor, plugging a $20 Fire Stick or Roku into the HDMI port turns it into a full smart display. It connects to his phone hotspot and runs the Silk browser fullscreen.
+                    If the TV in your trailer is a basic monitor without built-in web apps, plugging an inexpensive $20 Fire Stick into the HDMI port turns it into a smart display. It connects to your phone hotspot and runs your menu full-screen all shift long.
                   </p>
                   <ul className="text-xs space-y-1.5 text-stone-700 mt-3 font-mono">
                     <li><strong>Equipment Cost:</strong> ~$20.00 one-time</li>
                     <li><strong>Monthly Cost:</strong> $0 / month</li>
-                    <li><strong>Internet Needed:</strong> Yes (Phone hotspot)</li>
+                    <li><strong>Internet Needed:</strong> Yes (phone hotspot)</li>
                     <li><strong>Updating:</strong> Instant live over-the-air sync</li>
                   </ul>
                 </div>
                 <div className="text-[11px] text-blue-900 bg-blue-50 p-2.5 rounded-lg border border-blue-200">
-                  ✓ Turns any old HDMI monitor into an auto-syncing digital signage board.
+                  ✓ Turns any standard HDMI monitor into an auto-syncing digital signage board.
                 </div>
               </div>
 
@@ -387,20 +388,20 @@ export default function TvSyncWhitePage() {
                 <div>
                   <div className="flex items-center gap-2 text-stone-900">
                     <Cable className="w-5 h-5 text-purple-600 shrink-0" />
-                    <h3 className="font-bold text-base">Option D: $10 Direct HDMI Mirror Cable</h3>
+                    <h3 className="font-bold text-base">Option D: A $10 Direct HDMI Mirror Cable</h3>
                   </div>
                   <p className="text-xs text-stone-600 mt-2">
-                    A simple $10 Lightning or USB-C to HDMI adapter cable connects Donald's register iPad or phone directly to the TV monitor. It mirrors the screen continuously with zero lag and zero Wi-Fi.
+                    If you prefer a wired connection with zero Wi-Fi or hotspot configuration, a simple $10 adapter cable plugs directly from your phone or iPad register straight into the TV monitor. Whatever is on your screen mirrors onto the TV.
                   </p>
                   <ul className="text-xs space-y-1.5 text-stone-700 mt-3 font-mono">
                     <li><strong>Equipment Cost:</strong> ~$10.00 (adapter cable)</li>
                     <li><strong>Monthly Cost:</strong> $0 / month</li>
                     <li><strong>Internet Needed:</strong> No Wi-Fi required</li>
-                    <li><strong>Updating:</strong> Live mirror of the device screen</li>
+                    <li><strong>Updating:</strong> Direct live mirror of your screen</li>
                   </ul>
                 </div>
                 <div className="text-[11px] text-purple-900 bg-purple-50 p-2.5 rounded-lg border border-purple-200">
-                  ✓ Simple plug-and-play with zero wireless troubleshooting.
+                  ✓ Simple plug-and-play with zero wireless setup or troubleshooting.
                 </div>
               </div>
 
@@ -413,20 +414,20 @@ export default function TvSyncWhitePage() {
               <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 4
               </span>
-              Commercial Systems vs. Donald's Custom Web Board
+              Why We Don't Want You Paying for Commercial Signage Systems
             </h2>
 
             <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 text-xs space-y-2">
               <p className="text-stone-700">
-                Many food truck owners get pitched commercial digital signage services like <strong>Toast Digital Signage</strong>, <strong>Raydiant</strong>, or <strong>Mood Media</strong>. Here is why Donald should avoid them:
+                Many food truck owners get pitched commercial digital signage services like <strong>Toast Digital Signage</strong>, <strong>Raydiant</strong>, or <strong>Mood Media</strong>. Here is why we want you to keep that hard-earned money in your pocket:
               </p>
               <ul className="list-disc list-inside space-y-1 text-stone-600">
-                <li>They charge <strong>$35 to $75 every month</strong> ($420 to $900 per year) just for the software license.</li>
-                <li>They require buying <strong>$200 to $400 proprietary media player boxes</strong> that break down in truck vibration and heat.</li>
-                <li>They lock the owner into contracts and require separate logins for the menu board vs the website.</li>
+                <li>They lock you into paying <strong>$35 to $75 every single month</strong> ($420 to $900 every year) just to show a menu on your own screen.</li>
+                <li>They require buying <strong>$200 to $400 proprietary media player boxes</strong> that can fail in food trailer heat and road vibrations.</li>
+                <li>They trap you into contracts and force you to use separate logins and confusing portals.</li>
               </ul>
               <div className="bg-emerald-100/60 p-3 rounded-lg border border-emerald-300 font-medium text-emerald-950">
-                💡 <strong>The Benefit of What We Built:</strong> Donald’s new website <em>is</em> his digital menu board. Whenever he updates his site on his phone, the TV menu updates at the exact same moment for <strong>$0 extra cost</strong>.
+                💡 <strong>What We Built Specifically For You:</strong> Your new website <em>is</em> your digital menu board. Whenever you make a change on your phone, your TV updates at that exact moment for <strong>$0 extra cost and zero recurring bills</strong>.
               </div>
             </div>
           </section>
@@ -437,7 +438,7 @@ export default function TvSyncWhitePage() {
               <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 5
               </span>
-              Side-by-Side Decision Matrix
+              Side-by-Side Comparison of Your Choices
             </h2>
 
             <div className="overflow-x-auto border border-stone-200 rounded-xl">
@@ -445,9 +446,9 @@ export default function TvSyncWhitePage() {
                 <thead className="bg-stone-100 text-stone-900 font-bold border-b border-stone-200">
                   <tr>
                     <th className="p-3">Evaluation Factor</th>
-                    <th className="p-3">Option A: USB Drive</th>
+                    <th className="p-3">Option A: Your USB Drive</th>
                     <th className="p-3 bg-emerald-50 text-emerald-900 border-x border-emerald-200">
-                      Option B: Smart TV Browser ⭐
+                      Option B: Your Smart TV Browser ⭐
                     </th>
                     <th className="p-3">Option C: $20 Fire Stick</th>
                     <th className="p-3">Option D: $10 HDMI Cable</th>
@@ -470,7 +471,7 @@ export default function TvSyncWhitePage() {
                   </tr>
                   <tr>
                     <td className="p-3 font-semibold text-stone-700">Live 86 / Sold Out Sync</td>
-                    <td className="p-3 text-stone-500">Requires new JPG</td>
+                    <td className="p-3 text-stone-500">Requires new JPG export</td>
                     <td className="p-3 bg-emerald-50/50 font-bold text-emerald-700 border-x border-emerald-200">Instant (Over the air)</td>
                     <td className="p-3 font-bold text-emerald-700">Instant (Over the air)</td>
                     <td className="p-3 font-bold text-emerald-700">Instant (Mirrored)</td>
@@ -494,28 +495,28 @@ export default function TvSyncWhitePage() {
             </div>
           </section>
 
-          {/* Section 6: Action Plan for the Meeting */}
+          {/* Section 6: Action Plan / Partnership */}
           <section className="space-y-3 border-t border-stone-200 pt-6">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2">
               <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 6
               </span>
-              Suggested Action Plan for Your Meeting With Donald
+              How We Can Bring This to Life Together
             </h2>
 
             <div className="bg-stone-50 border border-stone-200 rounded-xl p-5 space-y-3 text-xs">
               <h4 className="font-bold text-stone-900 text-sm">
-                How to Guide Donald Through His TV Setup in 3 Simple Steps:
+                Three Simple Steps We Can Take at Your Pace:
               </h4>
               <ol className="space-y-2 text-stone-700 list-decimal list-inside font-medium leading-relaxed">
                 <li>
-                  <strong>Step 1 (Immediate - USB Fallback):</strong> Show him the new green <strong>"Download TV JPG (for USB)"</strong> button. Explain that anytime he wants an updated picture for his thumb drive, it takes 1 click.
+                  <strong>Step 1 (Ready Right Now - Your USB Drive):</strong> Whenever you want to refresh the picture on your thumb drive, just tap the green <strong>"Download TV JPG (for USB)"</strong> button. It creates a crisp, perfectly sized 1080p image with your exact trailer colors and prices ready to plug in.
                 </li>
                 <li>
-                  <strong>Step 2 (Test Smart TV Browser):</strong> Ask Donald what brand TV is in the truck (Roku, Samsung, LG, TCL, Vizio). Turn on his phone hotspot, open the TV's browser app to the site URL, and test the live auto-sync.
+                  <strong>Step 2 (Let's Test Your TV's Browser):</strong> Next time we're together at your trailer, let's look at the TV in your window (Roku, Samsung, LG, TCL, Vizio). We'll connect it to your phone hotspot, load your live menu, and see if live wireless sync is your favorite way to roll.
                 </li>
                 <li>
-                  <strong>Step 3 (If it's an older TV):</strong> If the TV doesn't have a web browser, order a $20 Amazon Fire Stick on Amazon so he can permanently enjoy live wireless syncing!
+                  <strong>Step 3 (If You Want Live Sync on an Older TV):</strong> If your TV doesn't have a web browser built in, we can grab an inexpensive $20 Amazon Fire Stick and have you syncing live over the air in under 10 minutes.
                 </li>
               </ol>
             </div>
@@ -525,7 +526,7 @@ export default function TvSyncWhitePage() {
 
         {/* Footer / Print Note */}
         <div className="p-6 bg-stone-100 border-t border-stone-200 text-center text-xs text-stone-500 font-mono flex flex-col sm:flex-row items-center justify-between gap-3">
-          <span>Tisdale’s Southern BBQ • Technology & Signage Planning Brief</span>
+          <span>Tisdale’s Southern BBQ • Technology & Signage Planning Brief • Crafted with Passion</span>
           <div className="flex items-center gap-3 print:hidden">
             <button
               onClick={handlePrint}
