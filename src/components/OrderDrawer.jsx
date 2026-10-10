@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { usePitmaster } from '../context/PitmasterContext';
-import { X, Trash2, Plus, Minus, Phone, MessageSquare, Check, ShoppingBag, Sparkles } from 'lucide-react';
+import { X, Trash2, Plus, Minus, Phone, MessageSquare, Check, ShoppingBag, Sparkles, CreditCard } from 'lucide-react';
+import SquareIcon from './icons/SquareIcon';
 
 export default function OrderDrawer() {
   const {
@@ -12,7 +13,8 @@ export default function OrderDrawer() {
     clearCart,
     cartTotal,
     cartItemCount,
-    schedule
+    schedule,
+    announcements
   } = usePitmaster();
 
   const [copied, setCopied] = useState(false);
@@ -196,10 +198,39 @@ export default function OrderDrawer() {
                   )}
                 </button>
               </div>
+
+              {/* Square Payment Integration Card */}
+              <div className="bg-[#140F0E] border border-[#3A2D25] rounded-xl p-3 space-y-2 mt-2">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-white font-bold text-xs">
+                    <SquareIcon className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Square POS Accepted</span>
+                  </div>
+                  <span className="text-[10px] text-emerald-300 font-semibold bg-emerald-950/70 border border-emerald-500/40 px-2 py-0.5 rounded-full">
+                    All Payment Methods
+                  </span>
+                </div>
+                
+                <p className="text-[11px] text-stone-300 leading-snug">
+                  Pay at the trailer window with <strong>Square</strong>: Tap-to-Pay, Apple Pay, Google Pay, Cash App Pay, Chip & Swipe cards, or Cash!
+                </p>
+
+                {announcements.squareSiteUrl && (
+                  <a
+                    href={announcements.squareSiteUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full flex items-center justify-center gap-2 bg-[#006AFF] hover:bg-[#0055D4] text-white font-bold py-2.5 rounded-lg text-xs transition shadow cursor-pointer mt-1"
+                  >
+                    <SquareIcon className="w-3.5 h-3.5" />
+                    <span>Pay Ahead via Square Online</span>
+                  </a>
+                )}
+              </div>
             </div>
 
             <div className="flex items-center justify-between text-[11px] text-stone-500 pt-1">
-              <span>Pay at truck (Cards & Cash accepted)</span>
+              <span>Square • Visa • MC • Amex • Apple Pay • Cash</span>
               <button
                 onClick={clearCart}
                 className="text-stone-400 hover:text-rose-400 underline cursor-pointer"

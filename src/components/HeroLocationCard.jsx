@@ -1,6 +1,7 @@
 import React from 'react';
 import { usePitmaster } from '../context/PitmasterContext';
 import { MapPin, Navigation, Clock, Phone, AlertCircle, Calendar, Sparkles, CheckCircle2 } from 'lucide-react';
+import SquareIcon from './icons/SquareIcon';
 
 export default function HeroLocationCard() {
   const { schedule, announcements, setIsSpecialsModalOpen } = usePitmaster();
@@ -80,6 +81,14 @@ export default function HeroLocationCard() {
                   <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                   <span>See Chalkboard Specials</span>
                 </button>
+              </div>
+
+              {/* Square Payment Acceptance Pill */}
+              <div className="flex flex-wrap items-center gap-2 pt-1">
+                <span className="inline-flex items-center gap-1.5 bg-[#1A1412] border border-[#3C2D25] text-amber-200 px-3 py-1 rounded-full text-xs font-semibold shadow-inner">
+                  <SquareIcon className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>We Accept Square POS: Cards, Apple Pay, Tap to Pay & Cash</span>
+                </span>
               </div>
 
               {/* Kitchen Policy Alert (The Fryer Grease Rule) */}

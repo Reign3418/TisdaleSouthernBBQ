@@ -22,7 +22,10 @@ export const INITIAL_ANNOUNCEMENTS = {
   fryerOpen: true, // "We turn the grease off 30 minutes before closing"
   fryerCutoffText: "Grease Cutoff: Fryer turns off 30 mins before closing. Fried items are cooked to order!",
   topMarquee: "🔥 Fresh Smoked Brisket & Ribs on the trailer today! Try Donald's famous Honey Bun Cake slices ($3.75).",
-  specialAlert: "Today's Smoker & Fryer Special: Fried Pork Chop Dinners & 12pc XL Shrimp Catch!"
+  specialAlert: "Today's Smoker & Fryer Special: Fried Pork Chop Dinners & 12pc XL Shrimp Catch!",
+  squareAccepted: true,
+  squareSiteUrl: "", // Donald can paste his Square Online / Square checkout link if desired
+  paymentNotice: "Square POS at Trailer: Tap to Pay, Apple Pay, Google Pay, Cash App, Chip Cards & Cash Accepted"
 };
 
 // "Specials in a couple different spots"

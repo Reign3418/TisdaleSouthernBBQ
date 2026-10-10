@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { usePitmaster } from '../context/PitmasterContext';
 import { X, ChefHat, Flame, AlertTriangle, MapPin, Check, RefreshCw, Power } from 'lucide-react';
+import SquareIcon from './icons/SquareIcon';
 
 export default function PitmasterAdminModal() {
   const {
@@ -22,6 +23,7 @@ export default function PitmasterAdminModal() {
   const [locationAddress, setLocationAddress] = useState(schedule.currentLocation.address);
   const [locationHours, setLocationHours] = useState(schedule.currentLocation.hours);
   const [marqueeText, setMarqueeText] = useState(announcements.topMarquee);
+  const [squareUrl, setSquareUrl] = useState(announcements.squareSiteUrl || '');
   const [saveMessage, setSaveMessage] = useState('');
 
   if (!isPitmasterMode) return null;
@@ -61,6 +63,13 @@ export default function PitmasterAdminModal() {
   const handleSaveMarquee = () => {
     setAnnouncements(prev => ({ ...prev, topMarquee: marqueeText }));
     setSaveMessage('Marquee banner updated on live site!');
+    setTimeout(() => setSaveMessage(''), 2500);
+  };
+
+  const handleSaveSquare = (e) => {
+    e.preventDefault();
+    setAnnouncements(prev => ({ ...prev, squareSiteUrl: squareUrl }));
+    setSaveMessage('Square payment settings updated on live site!');
     setTimeout(() => setSaveMessage(''), 2500);
   };
 
@@ -312,6 +321,49 @@ export default function PitmasterAdminModal() {
                 Update Banner
               </button>
             </div>
+          </div>
+
+          {/* SECTION 5: SQUARE POS & ONLINE ORDERING */}
+          <div className="p-5 rounded-2xl bg-[#201714] border border-[#3A2A22]">
+            <div className="mb-2 flex items-center justify-between">
+              <div>
+                <span className="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <SquareIcon className="w-4 h-4 text-emerald-400" />
+                  Square POS & Payment Settings
+                </span>
+                <h4 className="text-base font-bold text-white mt-0.5">
+                  Square Accepted at Trailer
+                </h4>
+              </div>
+              <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-950 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/30">
+                Active on Site
+              </span>
+            </div>
+            
+            <p className="text-xs text-stone-300 mb-3">
+              The live site announces that Donald's trailer takes <strong>Square</strong> (Tap to Pay, Apple Pay, Google Pay, Cash App, Visa/MC/Amex/Discover chip cards, and Cash).
+            </p>
+
+            <form onSubmit={handleSaveSquare} className="space-y-2">
+              <label className="block text-[11px] font-bold text-stone-400 uppercase">
+                Optional: Square Online Store or Square Pay Link
+              </label>
+              <div className="flex gap-2">
+                <input
+                  type="url"
+                  value={squareUrl}
+                  onChange={e => setSquareUrl(e.target.value)}
+                  className="w-full bg-[#15100E] border border-[#44332A] rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
+                  placeholder="https://tisdalesouthernbbq.square.site (or leave blank to show pay-at-window)"
+                />
+                <button
+                  type="submit"
+                  className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-black px-4 py-2 rounded-lg text-xs transition cursor-pointer shrink-0"
+                >
+                  Save Square Link
+                </button>
+              </div>
+            </form>
           </div>
 
         </div>

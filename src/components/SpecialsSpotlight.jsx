@@ -97,7 +97,7 @@ export default function SpecialsSpotlight() {
                   Window Specials
                 </span>
                 <span className="text-xs sm:text-sm font-semibold tracking-wide">
-                  "Main Menu on TV • Fries are $5.00 • We Accept All Forms of Payment"
+                  "Main Menu on TV • Fries are $5.00 • We Accept Square POS & All Forms of Payment"
                 </span>
               </div>
               <div className="text-xs text-amber-300 font-medium">
