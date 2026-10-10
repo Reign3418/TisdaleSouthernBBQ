@@ -83,14 +83,9 @@ export default function Footer() {
                 <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                 <span>Fayetteville, Sanford, Dunn, and surrounding NC areas</span>
               </div>
-              <div className="pt-2">
-                <button
-                  onClick={() => setIsPitmasterMode(true)}
-                  className="flex items-center gap-1.5 text-amber-400 hover:text-amber-300 bg-[#1A1412] border border-amber-600/30 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer"
-                >
-                  <ChefHat className="w-3.5 h-3.5" />
-                  <span>Donald's Quick-Admin</span>
-                </button>
+              <div className="pt-2 text-[11px] text-stone-400 space-y-1">
+                <strong className="text-amber-300 block">Payment Methods:</strong>
+                <span>Square POS • Tap to Pay • Apple Pay • Google Pay • Cards & Cash</span>
               </div>
             </div>
           </div>
