@@ -264,7 +264,7 @@ export default function SpecialsSpotlight() {
             <div className="bg-[#1C1613] rounded-xl overflow-hidden border border-[#3E3029] group">
               <div className="h-52 overflow-hidden bg-black">
                 <img
-                  src="/images/tv-menu.jpg"
+                  src="./images/tv-menu.jpg"
                   alt="Donald's TV Menu Screen"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
                 />
@@ -278,7 +278,7 @@ export default function SpecialsSpotlight() {
             <div className="bg-[#1C1613] rounded-xl overflow-hidden border border-[#3E3029] group">
               <div className="h-52 overflow-hidden bg-black">
                 <img
-                  src="/images/chalkboard-specials.jpg"
+                  src="./images/chalkboard-specials.jpg"
                   alt="Sidewalk Chalkboard & Catfish Sign"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
                 />
@@ -292,7 +292,7 @@ export default function SpecialsSpotlight() {
             <div className="bg-[#1C1613] rounded-xl overflow-hidden border border-[#3E3029] group">
               <div className="h-52 overflow-hidden bg-black">
                 <img
-                  src="/images/window-specials.jpg"
+                  src="./images/window-specials.jpg"
                   alt="Trailer Window Whiteboard"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
                 />
@@ -306,7 +306,7 @@ export default function SpecialsSpotlight() {
             <div className="bg-[#1C1613] rounded-xl overflow-hidden border border-[#3E3029] group">
               <div className="h-52 overflow-hidden bg-black">
                 <img
-                  src="/images/truck-logo-wrap.jpg"
+                  src="./images/truck-logo-wrap.jpg"
                   alt="Tisdale's Trailer Flame Wrap"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
                 />

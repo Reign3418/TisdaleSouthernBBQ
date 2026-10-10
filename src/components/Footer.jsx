@@ -16,7 +16,7 @@ export default function Footer() {
           <div className="md:col-span-2 space-y-3">
             <div className="flex items-center gap-3">
               <img
-                src="/images/truck-logo-wrap.jpg"
+                src="./images/truck-logo-wrap.jpg"
                 alt="Tisdale's BBQ Logo"
                 className="w-12 h-12 rounded-full border border-amber-500/60 object-cover"
               />

@@ -17,7 +17,7 @@ export default function Header() {
           <div className="flex items-center gap-3.5 sm:gap-4 text-center md:text-left">
             <div className="relative group shrink-0">
               <img
-                src="/images/truck-logo-wrap.jpg"
+                src="./images/truck-logo-wrap.jpg"
                 alt="Tisdale's Southern BBQ Logo"
                 className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover border-2 border-amber-500/80 shadow-lg shadow-orange-950/40 ring-2 ring-black/60 group-hover:scale-105 transition"
               />

@@ -104,7 +104,7 @@ export default function HeroLocationCard() {
               {/* Photo Card with authentic flame wrap */}
               <div className="relative rounded-xl overflow-hidden border-2 border-amber-500/30 group shadow-lg">
                 <img
-                  src="/images/truck-logo-wrap.jpg"
+                  src="./images/truck-logo-wrap.jpg"
                   alt="Tisdale's BBQ Food Trailer"
                   className="w-full h-48 sm:h-52 object-cover group-hover:scale-105 transition duration-500"
                 />
