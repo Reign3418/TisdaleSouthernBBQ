@@ -63,16 +63,16 @@ export default function DesignSwitcherBar() {
               <button
                 key={t.id}
                 onClick={() => setThemeVersion(t.id)}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer border ${
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer border ${
                   isActive
                     ? 'bg-[#221814] text-white border-amber-500 shadow-md ring-1 ring-amber-500/50'
                     : 'bg-[#140F0D] text-stone-400 hover:text-stone-200 border-[#2E201B] hover:border-stone-700'
                 }`}
               >
-                <span className={`w-2.5 h-2.5 rounded-full ${t.colorDot} shrink-0`}></span>
+                <span className={`w-2.5 h-2.5 rounded-none ${t.colorDot} shrink-0`}></span>
                 <span className="whitespace-nowrap">{t.name}</span>
                 {isActive && (
-                  <span className="text-[10px] bg-amber-500/20 text-amber-300 px-1.5 py-0.2 rounded font-mono uppercase">
+                  <span className="text-[10px] bg-amber-500/20 text-amber-300 px-1.5 py-0.2 rounded-none font-mono uppercase">
                     Active
                   </span>
                 )}
@@ -85,7 +85,7 @@ export default function DesignSwitcherBar() {
           {/* Smoldering Pit Fire & Embers Toggle */}
           <button
             onClick={() => setIsPitFxActive(!isPitFxActive)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer border ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer border ${
               isPitFxActive
                 ? 'bg-[#251712] text-amber-300 border-amber-600/70 shadow-sm'
                 : 'bg-[#140F0D] text-stone-400 border-stone-800'
@@ -101,7 +101,7 @@ export default function DesignSwitcherBar() {
           {/* GPS Tracking White Paper Option */}
           <button
             onClick={() => setIsGpsWhitePageOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer bg-white text-stone-900 hover:bg-amber-100 border border-amber-400 shadow-sm"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer bg-white text-stone-900 hover:bg-amber-100 border border-amber-400 shadow-sm"
             title="Review trailer GPS location tracking options"
           >
             <Radio className="w-3.5 h-3.5 text-rose-600 shrink-0" />
@@ -111,7 +111,7 @@ export default function DesignSwitcherBar() {
           {/* TV Display White Paper Option */}
           <button
             onClick={() => setIsTvWhitePageOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer bg-white text-stone-900 hover:bg-amber-100 border border-amber-400 shadow-sm"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer bg-white text-stone-900 hover:bg-amber-100 border border-amber-400 shadow-sm"
             title="Review trailer TV menu and live sync options"
           >
             <Tv className="w-3.5 h-3.5 text-blue-600 shrink-0" />
@@ -121,7 +121,7 @@ export default function DesignSwitcherBar() {
           {/* Pitmaster Menu Editor Button */}
           <button
             onClick={() => setIsPitmasterMode(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer bg-amber-500 hover:bg-amber-400 text-stone-950 shadow-md font-black"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer bg-amber-500 hover:bg-amber-400 text-stone-950 shadow-md font-black"
             title="Your Pitmaster command center: edit prices, add items, 86 sold out on the fly"
           >
             <ChefHat className="w-3.5 h-3.5" />
@@ -131,7 +131,7 @@ export default function DesignSwitcherBar() {
           {/* TV Menu 1080p Image & Live Sync Button */}
           <button
             onClick={() => setIsTvMenuOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer bg-[#241A15] hover:bg-[#34241C] text-amber-300 hover:text-white border border-amber-600/40 shadow-sm"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer bg-[#241A15] hover:bg-[#34241C] text-amber-300 hover:text-white border border-amber-600/40 shadow-sm"
             title="Open your 1080p TV Menu, download a fresh USB image, or sync your trailer screen"
           >
             <Tv className="w-3.5 h-3.5 text-amber-400" />

@@ -42,10 +42,10 @@ export default function SpecialsSpotlight() {
           </div>
 
           {/* Interactive Mode Tabs */}
-          <div className="flex items-center gap-1.5 bg-[#1C1613] p-1.5 rounded-xl border border-[#3E3029] self-start md:self-auto">
+          <div className="flex items-center gap-1.5 bg-[#1C1613] p-1.5 rounded-none border border-[#3E3029] self-start md:self-auto">
             <button
               onClick={() => setActiveTab('window')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-none text-xs font-bold transition cursor-pointer ${
                 activeTab === 'window'
                   ? 'bg-[#D9381E] text-white shadow'
                   : 'text-stone-300 hover:text-white'
@@ -55,7 +55,7 @@ export default function SpecialsSpotlight() {
             </button>
             <button
               onClick={() => setActiveTab('chalkboard')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-none text-xs font-bold transition cursor-pointer ${
                 activeTab === 'chalkboard'
                   ? 'bg-[#D9381E] text-white shadow'
                   : 'text-stone-300 hover:text-white'
@@ -65,7 +65,7 @@ export default function SpecialsSpotlight() {
             </button>
             <button
               onClick={() => setActiveTab('photos')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer ${
                 activeTab === 'photos'
                   ? 'bg-rose-600 text-white shadow'
                   : 'text-stone-400 hover:text-stone-200'
@@ -79,7 +79,7 @@ export default function SpecialsSpotlight() {
 
         {/* Fryer Off Alert if active */}
         {!announcements.fryerOpen && (
-          <div className="mb-6 p-3 rounded-xl bg-rose-950/60 border border-rose-600/60 text-xs sm:text-sm text-rose-200 flex items-center gap-3">
+          <div className="mb-6 p-3 rounded-none bg-rose-950/60 border border-rose-600/60 text-xs sm:text-sm text-rose-200 flex items-center gap-3">
             <AlertTriangle className="w-5 h-5 text-rose-400 shrink-0" />
             <div>
               <strong>Fryer Alert:</strong> The grease has been turned off for the evening. Fried items (catfish, shrimp, pork chops, fries) are currently unavailable, but all smoked BBQ meats are ready!
@@ -92,9 +92,9 @@ export default function SpecialsSpotlight() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             
             {/* Whiteboard Header Card */}
-            <div className="md:col-span-2 lg:col-span-4 bg-[#18212C] border-2 border-[#2C3B4E] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-cyan-100 shadow-sm">
+            <div className="md:col-span-2 lg:col-span-4 bg-[#18212C] border-2 border-[#2C3B4E] rounded-none p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-cyan-100 shadow-sm">
               <div className="flex items-center gap-3">
-                <span className="bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 font-['Permanent_Marker'] px-3 py-1 rounded text-sm uppercase">
+                <span className="bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 font-['Permanent_Marker'] px-3 py-1 rounded-none text-sm uppercase">
                   Window Specials
                 </span>
                 <span className="text-xs sm:text-sm font-semibold tracking-wide">
@@ -113,11 +113,11 @@ export default function SpecialsSpotlight() {
               return (
                 <div
                   key={item.id}
-                  className="bg-[#1C1613] rounded-xl border border-[#3E3029] p-4 flex flex-col justify-between hover:border-amber-500/50 transition group relative overflow-hidden"
+                  className="bg-[#1C1613] rounded-none border border-[#3E3029] p-4 flex flex-col justify-between hover:border-amber-500/50 transition group relative overflow-hidden"
                 >
                   <div className="space-y-2">
                     <div className="flex items-start justify-between gap-2">
-                      <span className="text-[10px] uppercase font-bold tracking-wider bg-amber-950/80 text-amber-300 px-2 py-0.5 rounded border border-amber-600/30">
+                      <span className="text-[10px] uppercase font-bold tracking-wider bg-amber-950/80 text-amber-300 px-2 py-0.5 rounded-none border border-amber-600/30">
                         {item.badge || "Window Special"}
                       </span>
                       <span className="text-base font-black text-amber-400 font-['Bebas_Neue'] tracking-wider">
@@ -142,7 +142,7 @@ export default function SpecialsSpotlight() {
                     <button
                       onClick={() => handleAdd(item)}
                       disabled={!item.inStock || isFryerDisabled}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
+                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer ${
                         !item.inStock || isFryerDisabled
                           ? 'bg-stone-800 text-stone-500 cursor-not-allowed'
                           : isAdded
@@ -178,7 +178,7 @@ export default function SpecialsSpotlight() {
           <div className="space-y-4">
             
             {/* Authentic Chalkboard Container */}
-            <div className="chalkboard-bg rounded-2xl border-4 border-[#3D2C24] p-5 sm:p-7 shadow-2xl relative">
+            <div className="chalkboard-bg rounded-none border-4 border-[#3D2C24] p-5 sm:p-7 shadow-2xl relative">
               <div className="absolute top-2 right-3 text-[10px] text-stone-400 font-mono tracking-widest uppercase">
                 ★ A FULL MENU ON TV SCREEN ★ NO REFUNDS ★
               </div>
@@ -198,7 +198,7 @@ export default function SpecialsSpotlight() {
                   return (
                     <div
                       key={item.id}
-                      className="bg-black/50 border border-white/10 rounded-xl p-4 flex flex-col justify-between hover:border-amber-400/40 transition"
+                      className="bg-black/50 border border-white/10 rounded-none p-4 flex flex-col justify-between hover:border-amber-400/40 transition"
                     >
                       <div>
                         <div className="flex items-start justify-between gap-2">
@@ -239,7 +239,7 @@ export default function SpecialsSpotlight() {
                         <button
                           onClick={() => handleAdd(item)}
                           disabled={!item.inStock || isFryerDisabled}
-                          className={`flex items-center gap-1 px-3 py-1 rounded text-xs font-bold font-sans transition cursor-pointer ${
+                          className={`flex items-center gap-1 px-3 py-1 rounded-none text-xs font-bold font-sans transition cursor-pointer ${
                             !item.inStock || isFryerDisabled
                               ? 'bg-stone-800 text-stone-500 cursor-not-allowed'
                               : 'bg-[#D9381E] hover:bg-[#B72C15] text-white font-bold'
@@ -262,7 +262,7 @@ export default function SpecialsSpotlight() {
         {activeTab === 'photos' && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             
-            <div className="bg-[#1C1613] rounded-xl overflow-hidden border border-[#3E3029] group">
+            <div className="bg-[#1C1613] rounded-none overflow-hidden border border-[#3E3029] group">
               <div className="h-52 overflow-hidden bg-black">
                 <img
                   src="./images/tv-menu.jpg"
@@ -276,7 +276,7 @@ export default function SpecialsSpotlight() {
               </div>
             </div>
 
-            <div className="bg-[#1C1613] rounded-xl overflow-hidden border border-[#3E3029] group">
+            <div className="bg-[#1C1613] rounded-none overflow-hidden border border-[#3E3029] group">
               <div className="h-52 overflow-hidden bg-black">
                 <img
                   src="./images/chalkboard-specials.jpg"
@@ -290,7 +290,7 @@ export default function SpecialsSpotlight() {
               </div>
             </div>
 
-            <div className="bg-[#1C1613] rounded-xl overflow-hidden border border-[#3E3029] group">
+            <div className="bg-[#1C1613] rounded-none overflow-hidden border border-[#3E3029] group">
               <div className="h-52 overflow-hidden bg-black">
                 <img
                   src="./images/window-specials.jpg"
@@ -304,7 +304,7 @@ export default function SpecialsSpotlight() {
               </div>
             </div>
 
-            <div className="bg-[#1C1613] rounded-xl overflow-hidden border border-[#3E3029] group">
+            <div className="bg-[#1C1613] rounded-none overflow-hidden border border-[#3E3029] group">
               <div className="h-52 overflow-hidden bg-black">
                 <img
                   src="./images/truck-logo-wrap.jpg"

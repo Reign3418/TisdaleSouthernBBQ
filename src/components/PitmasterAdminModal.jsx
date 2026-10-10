@@ -304,19 +304,19 @@ export default function PitmasterAdminModal() {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/85 backdrop-blur-md">
       <div 
-        className="bg-[#181311] border-2 border-amber-500 rounded-2xl max-w-5xl w-full max-h-[94vh] flex flex-col shadow-2xl overflow-hidden"
+        className="bg-[#181311] border-2 border-amber-500 rounded-none max-w-5xl w-full max-h-[94vh] flex flex-col shadow-2xl overflow-hidden"
         onClick={e => e.stopPropagation()}
       >
         
         {/* Top Header */}
         <div className="bg-[#241A15] border-b border-[#3D2C24] p-3 sm:p-5 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-amber-500 text-stone-950 font-black">
+            <div className="p-2.5 rounded-none bg-amber-500 text-stone-950 font-black">
               <ChefHat className="w-6 h-6" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-[10px] font-black uppercase tracking-widest bg-amber-950 text-amber-300 px-2 py-0.5 rounded border border-amber-600/40">
+                <span className="text-[10px] font-black uppercase tracking-widest bg-amber-950 text-amber-300 px-2 py-0.5 rounded-none border border-amber-600/40">
                   Pitmaster Pocket Admin
                 </span>
                 <span className="text-xs text-stone-400 hidden sm:inline">
@@ -331,7 +331,7 @@ export default function PitmasterAdminModal() {
 
           <button
             onClick={() => setIsPitmasterMode(false)}
-            className="p-2 rounded-xl bg-[#2E201B] hover:bg-[#3D2B24] text-stone-300 hover:text-white transition cursor-pointer"
+            className="p-2 rounded-none bg-[#2E201B] hover:bg-[#3D2B24] text-stone-300 hover:text-white transition cursor-pointer"
           >
             <X className="w-6 h-6" />
           </button>
@@ -341,7 +341,7 @@ export default function PitmasterAdminModal() {
         <div className="bg-[#1C1512] border-b border-[#35261F] px-4 py-2 flex items-center gap-2 overflow-x-auto shrink-0">
           <button
             onClick={() => setActiveTab('menuEditor')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+            className={`px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'menuEditor'
                 ? 'bg-amber-500 text-stone-950 shadow'
                 : 'text-stone-300 hover:text-white bg-[#281D18]'
@@ -353,7 +353,7 @@ export default function PitmasterAdminModal() {
 
           <button
             onClick={() => setActiveTab('rush86')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+            className={`px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'rush86'
                 ? 'bg-amber-500 text-stone-950 shadow'
                 : 'text-stone-300 hover:text-white bg-[#281D18]'
@@ -365,7 +365,7 @@ export default function PitmasterAdminModal() {
 
           <button
             onClick={() => setActiveTab('location')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+            className={`px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'location'
                 ? 'bg-amber-500 text-stone-950 shadow'
                 : 'text-stone-300 hover:text-white bg-[#281D18]'
@@ -377,7 +377,7 @@ export default function PitmasterAdminModal() {
 
           <button
             onClick={() => setActiveTab('marquee')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+            className={`px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
               activeTab === 'marquee'
                 ? 'bg-amber-500 text-stone-950 shadow'
                 : 'text-stone-300 hover:text-white bg-[#281D18]'
@@ -395,7 +395,7 @@ export default function PitmasterAdminModal() {
               setIsPitmasterMode(false);
               setIsTvMenuOpen(true);
             }}
-            className="px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap bg-emerald-700 hover:bg-emerald-600 text-white shadow-md"
+            className="px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap bg-emerald-700 hover:bg-emerald-600 text-white shadow-md"
             title="Launch 1080p TV Menu to download USB image or sync TV"
           >
             <Tv className="w-3.5 h-3.5" />
@@ -419,7 +419,7 @@ export default function PitmasterAdminModal() {
             <div className="space-y-4">
               
               {/* Top Action Bar */}
-              <div className="bg-[#201714] border border-[#3A2A22] rounded-2xl p-4 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+              <div className="bg-[#201714] border border-[#3A2A22] rounded-none p-4 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
                 
                 {/* Search Bar */}
                 <div className="relative flex-1">
@@ -429,7 +429,7 @@ export default function PitmasterAdminModal() {
                     value={searchQuery}
                     onChange={e => setSearchQuery(e.target.value)}
                     placeholder="Search menu items or specials..."
-                    className="w-full bg-[#140F0D] border border-[#3E2D25] rounded-xl pl-9 pr-3 py-2 text-xs text-white placeholder-stone-500 focus:outline-none focus:border-amber-500"
+                    className="w-full bg-[#140F0D] border border-[#3E2D25] rounded-none pl-9 pr-3 py-2 text-xs text-white placeholder-stone-500 focus:outline-none focus:border-amber-500"
                   />
                 </div>
 
@@ -445,7 +445,7 @@ export default function PitmasterAdminModal() {
                     <button
                       key={sf.key}
                       onClick={() => setEditorStatusFilter(sf.key)}
-                      className={`px-2.5 py-1.5 rounded-lg font-bold transition cursor-pointer whitespace-nowrap ${
+                      className={`px-2.5 py-1.5 rounded-none font-bold transition cursor-pointer whitespace-nowrap ${
                         editorStatusFilter === sf.key
                           ? 'bg-amber-600 text-white'
                           : 'bg-[#150F0D] text-stone-400 hover:text-white border border-[#362720]'
@@ -459,7 +459,7 @@ export default function PitmasterAdminModal() {
                 {/* Big Add Item Button */}
                 <button
                   onClick={handleOpenAddForm}
-                  className="bg-emerald-600 hover:bg-emerald-500 text-white font-black px-4 py-2 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition cursor-pointer shadow-md shrink-0"
+                  className="bg-emerald-600 hover:bg-emerald-500 text-white font-black px-4 py-2 rounded-none text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition cursor-pointer shadow-md shrink-0"
                 >
                   <Plus className="w-4 h-4" />
                   <span>+ Add New Item / Special</span>
@@ -481,7 +481,7 @@ export default function PitmasterAdminModal() {
                   <button
                     key={cat.key}
                     onClick={() => setEditorCategory(cat.key)}
-                    className={`px-3 py-1.5 rounded-lg font-bold transition cursor-pointer whitespace-nowrap border ${
+                    className={`px-3 py-1.5 rounded-none font-bold transition cursor-pointer whitespace-nowrap border ${
                       editorCategory === cat.key
                         ? 'bg-amber-500 text-stone-950 border-amber-500'
                         : 'bg-[#201714] text-stone-300 hover:text-white border-[#3A2A22]'
@@ -507,7 +507,7 @@ export default function PitmasterAdminModal() {
                   return (
                     <div
                       key={item.id}
-                      className={`p-3.5 sm:p-4 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition ${
+                      className={`p-3.5 sm:p-4 rounded-none border flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition ${
                         item.hidden
                           ? 'bg-[#18141C] border-purple-900/60 opacity-80'
                           : !item.inStock
@@ -518,26 +518,26 @@ export default function PitmasterAdminModal() {
                       {/* Left Info */}
                       <div className="space-y-1 flex-1">
                         <div className="flex flex-wrap items-center gap-2">
-                          <span className="text-[10px] font-bold uppercase tracking-wider bg-stone-800 text-stone-300 px-2 py-0.5 rounded">
+                          <span className="text-[10px] font-bold uppercase tracking-wider bg-stone-800 text-stone-300 px-2 py-0.5 rounded-none">
                             {item.categoryLabel}
                           </span>
                           {item.badge && (
-                            <span className="text-[10px] font-bold uppercase bg-amber-950 text-amber-300 px-2 py-0.5 rounded border border-amber-600/30">
+                            <span className="text-[10px] font-bold uppercase bg-amber-950 text-amber-300 px-2 py-0.5 rounded-none border border-amber-600/30">
                               {item.badge}
                             </span>
                           )}
                           {item.hidden && (
-                            <span className="text-[10px] font-black uppercase bg-purple-950 text-purple-300 px-2 py-0.5 rounded border border-purple-600/50 flex items-center gap-1">
+                            <span className="text-[10px] font-black uppercase bg-purple-950 text-purple-300 px-2 py-0.5 rounded-none border border-purple-600/50 flex items-center gap-1">
                               <EyeOff className="w-3 h-3" /> HIDDEN FROM CUSTOMERS
                             </span>
                           )}
                           {!item.hidden && !item.inStock && (
-                            <span className="text-[10px] font-black uppercase bg-rose-950 text-rose-300 px-2 py-0.5 rounded border border-rose-600/50">
+                            <span className="text-[10px] font-black uppercase bg-rose-950 text-rose-300 px-2 py-0.5 rounded-none border border-rose-600/50">
                               🔴 SOLD OUT
                             </span>
                           )}
                           {!item.hidden && item.inStock && (
-                            <span className="text-[10px] font-black uppercase bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded border border-emerald-600/50">
+                            <span className="text-[10px] font-black uppercase bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded-none border border-emerald-600/50">
                               🟢 IN STOCK
                             </span>
                           )}
@@ -577,7 +577,7 @@ export default function PitmasterAdminModal() {
                             }
                             showNotification(`Toggled stock for "${item.name}"`);
                           }}
-                          className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer flex items-center gap-1.5 border ${
+                          className={`px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer flex items-center gap-1.5 border ${
                             item.inStock
                               ? 'bg-[#152317] hover:bg-emerald-900/60 text-emerald-300 border-emerald-700/60'
                               : 'bg-[#291313] hover:bg-rose-900/60 text-rose-300 border-rose-700/60'
@@ -598,7 +598,7 @@ export default function PitmasterAdminModal() {
                             }
                             showNotification(item.hidden ? `Made "${item.name}" visible` : `Hid "${item.name}" from menu`);
                           }}
-                          className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer flex items-center gap-1.5 border ${
+                          className={`px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer flex items-center gap-1.5 border ${
                             item.hidden
                               ? 'bg-purple-950 hover:bg-purple-900 text-purple-200 border-purple-600'
                               : 'bg-[#1D1714] hover:bg-stone-800 text-stone-300 border-stone-700'
@@ -612,7 +612,7 @@ export default function PitmasterAdminModal() {
                         {/* 3. Edit Item Button */}
                         <button
                           onClick={() => handleOpenEditForm(catKey, item.rawItem, isSpecial)}
-                          className="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs transition cursor-pointer flex items-center gap-1 shadow-sm"
+                          className="px-3 py-1.5 rounded-none bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs transition cursor-pointer flex items-center gap-1 shadow-sm"
                           title="Edit name, price, description"
                         >
                           <Pencil className="w-3 h-3" />
@@ -622,7 +622,7 @@ export default function PitmasterAdminModal() {
                         {/* 4. Delete Item Button */}
                         <button
                           onClick={() => handleRemove(catKey, item.id, item.name, isSpecial)}
-                          className="p-1.5 rounded-lg bg-[#2B1B18] hover:bg-rose-700 text-rose-300 hover:text-white transition cursor-pointer border border-rose-900/50"
+                          className="p-1.5 rounded-none bg-[#2B1B18] hover:bg-rose-700 text-rose-300 hover:text-white transition cursor-pointer border border-rose-900/50"
                           title="Delete this item completely"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
@@ -635,7 +635,7 @@ export default function PitmasterAdminModal() {
                 })}
 
                 {editorItems.length === 0 && (
-                  <div className="bg-[#1C1613] p-8 rounded-2xl border border-stone-800 text-center space-y-2">
+                  <div className="bg-[#1C1613] p-8 rounded-none border border-stone-800 text-center space-y-2">
                     <p className="text-sm font-bold text-stone-300">No items match your search or filter.</p>
                     <p className="text-xs text-stone-500">Try selecting "All Categories" or click "+ Add New Item / Special" to create one.</p>
                   </div>
@@ -650,7 +650,7 @@ export default function PitmasterAdminModal() {
             <div className="space-y-6">
               
               {/* Cutoff switch */}
-              <div className="p-5 rounded-2xl bg-[#221815] border-2 border-amber-600/50 shadow-lg">
+              <div className="p-5 rounded-none bg-[#221815] border-2 border-amber-600/50 shadow-lg">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div>
                     <span className="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
@@ -672,7 +672,7 @@ export default function PitmasterAdminModal() {
 
                   <button
                     onClick={toggleFryerStatus}
-                    className={`px-5 py-3 rounded-xl font-black text-sm tracking-wider uppercase transition shadow-xl cursor-pointer flex items-center gap-2 shrink-0 ${
+                    className={`px-5 py-3 rounded-none font-black text-sm tracking-wider uppercase transition shadow-xl cursor-pointer flex items-center gap-2 shrink-0 ${
                       announcements.fryerOpen
                         ? 'bg-rose-600 hover:bg-rose-500 text-white'
                         : 'bg-emerald-500 hover:bg-emerald-400 text-stone-950'
@@ -685,7 +685,7 @@ export default function PitmasterAdminModal() {
               </div>
 
               {/* 1-Tap 86 Grid */}
-              <div className="p-5 rounded-2xl bg-[#201714] border border-[#3A2A22] space-y-4">
+              <div className="p-5 rounded-none bg-[#201714] border border-[#3A2A22] space-y-4">
                 <div>
                   <h4 className="text-lg font-bold text-white">
                     Tap Any Item to Flip Between IN STOCK and SOLD OUT:
@@ -705,7 +705,7 @@ export default function PitmasterAdminModal() {
                       <button
                         key={s.id}
                         onClick={() => toggleSpecialStock(s.id)}
-                        className={`p-3 rounded-xl border text-left flex items-center justify-between gap-2 transition cursor-pointer ${
+                        className={`p-3 rounded-none border text-left flex items-center justify-between gap-2 transition cursor-pointer ${
                           s.inStock
                             ? 'bg-[#291F1A] border-emerald-500/50 hover:border-emerald-400'
                             : 'bg-rose-950/40 border-rose-600 text-stone-400'
@@ -715,7 +715,7 @@ export default function PitmasterAdminModal() {
                           <div className="text-xs font-bold text-white truncate">{s.title}</div>
                           <div className="text-[10px] text-stone-400">{s.price}</div>
                         </div>
-                        <span className={`px-2 py-0.5 rounded text-[10px] font-black uppercase shrink-0 ${
+                        <span className={`px-2 py-0.5 rounded-none text-[10px] font-black uppercase shrink-0 ${
                           s.inStock ? 'bg-emerald-500 text-stone-950' : 'bg-rose-600 text-white'
                         }`}>
                           {s.inStock ? 'IN STOCK' : 'SOLD OUT'}
@@ -736,7 +736,7 @@ export default function PitmasterAdminModal() {
                         <button
                           key={item.id}
                           onClick={() => toggleItemStock(catKey, item.id)}
-                          className={`p-3 rounded-xl border text-left flex items-center justify-between gap-2 transition cursor-pointer ${
+                          className={`p-3 rounded-none border text-left flex items-center justify-between gap-2 transition cursor-pointer ${
                             item.inStock
                               ? 'bg-[#291F1A] border-emerald-500/50 hover:border-emerald-400'
                               : 'bg-rose-950/40 border-rose-600 text-stone-400'
@@ -746,7 +746,7 @@ export default function PitmasterAdminModal() {
                             <div className="text-xs font-bold text-white truncate">{item.name}</div>
                             <div className="text-[10px] text-stone-400">{item.price}</div>
                           </div>
-                          <span className={`px-2 py-0.5 rounded text-[10px] font-black uppercase shrink-0 ${
+                          <span className={`px-2 py-0.5 rounded-none text-[10px] font-black uppercase shrink-0 ${
                             item.inStock ? 'bg-emerald-500 text-stone-950' : 'bg-rose-600 text-white'
                           }`}>
                             {item.inStock ? 'IN STOCK' : 'SOLD OUT'}
@@ -763,7 +763,7 @@ export default function PitmasterAdminModal() {
 
           {/* TAB 3: LOCATION & SCHEDULE */}
           {activeTab === 'location' && (
-            <div className="p-5 rounded-2xl bg-[#201714] border border-[#3A2A22] space-y-4">
+            <div className="p-5 rounded-none bg-[#201714] border border-[#3A2A22] space-y-4">
               <div>
                 <span className="text-xs font-bold text-amber-400 uppercase tracking-wider">
                   Where are we parked today?
@@ -781,7 +781,7 @@ export default function PitmasterAdminModal() {
                   <button
                     key={idx}
                     onClick={() => applyPreset(p)}
-                    className="bg-[#2D211B] hover:bg-amber-500 hover:text-stone-950 text-amber-200 border border-amber-600/30 px-3 py-2 rounded-xl text-xs font-bold transition cursor-pointer"
+                    className="bg-[#2D211B] hover:bg-amber-500 hover:text-stone-950 text-amber-200 border border-amber-600/30 px-3 py-2 rounded-none text-xs font-bold transition cursor-pointer"
                   >
                     📍 {p.name}
                   </button>
@@ -796,7 +796,7 @@ export default function PitmasterAdminModal() {
                     type="text"
                     value={locationName}
                     onChange={e => setLocationName(e.target.value)}
-                    className="w-full bg-[#15100E] border border-[#44332A] rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
+                    className="w-full bg-[#15100E] border border-[#44332A] rounded-none px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
                 <div>
@@ -805,7 +805,7 @@ export default function PitmasterAdminModal() {
                     type="text"
                     value={locationAddress}
                     onChange={e => setLocationAddress(e.target.value)}
-                    className="w-full bg-[#15100E] border border-[#44332A] rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
+                    className="w-full bg-[#15100E] border border-[#44332A] rounded-none px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
                 <div>
@@ -815,11 +815,11 @@ export default function PitmasterAdminModal() {
                       type="text"
                       value={locationHours}
                       onChange={e => setLocationHours(e.target.value)}
-                      className="w-full bg-[#15100E] border border-[#44332A] rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
+                      className="w-full bg-[#15100E] border border-[#44332A] rounded-none px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
                     />
                     <button
                       type="submit"
-                      className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-black px-4 py-2 rounded-lg text-xs transition cursor-pointer shrink-0"
+                      className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-black px-4 py-2 rounded-none text-xs transition cursor-pointer shrink-0"
                     >
                       Save
                     </button>
@@ -834,7 +834,7 @@ export default function PitmasterAdminModal() {
             <div className="space-y-6">
               
               {/* Marquee Banner */}
-              <div className="p-5 rounded-2xl bg-[#201714] border border-[#3A2A22]">
+              <div className="p-5 rounded-none bg-[#201714] border border-[#3A2A22]">
                 <div className="mb-2">
                   <span className="text-xs font-bold text-amber-400 uppercase tracking-wider">
                     Top Screen Banner Message
@@ -849,12 +849,12 @@ export default function PitmasterAdminModal() {
                     type="text"
                     value={marqueeText}
                     onChange={e => setMarqueeText(e.target.value)}
-                    className="w-full bg-[#15100E] border border-[#44332A] rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
+                    className="w-full bg-[#15100E] border border-[#44332A] rounded-none px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
                     placeholder="e.g., Fresh smoked turkey legs coming off the smoker at 2:00 PM!"
                   />
                   <button
                     onClick={handleSaveMarquee}
-                    className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-black px-4 py-2 rounded-lg text-xs transition cursor-pointer shrink-0"
+                    className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-black px-4 py-2 rounded-none text-xs transition cursor-pointer shrink-0"
                   >
                     Update Banner
                   </button>
@@ -862,7 +862,7 @@ export default function PitmasterAdminModal() {
               </div>
 
               {/* Square POS Link */}
-              <div className="p-5 rounded-2xl bg-[#201714] border border-[#3A2A22]">
+              <div className="p-5 rounded-none bg-[#201714] border border-[#3A2A22]">
                 <div className="mb-2 flex items-center justify-between">
                   <div>
                     <span className="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
@@ -873,7 +873,7 @@ export default function PitmasterAdminModal() {
                       Square Accepted at Trailer
                     </h4>
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-950 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/30">
+                  <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-950 text-emerald-400 px-2 py-0.5 rounded-none border border-emerald-500/30">
                     Active on Site
                   </span>
                 </div>
@@ -891,12 +891,12 @@ export default function PitmasterAdminModal() {
                       type="url"
                       value={squareUrl}
                       onChange={e => setSquareUrl(e.target.value)}
-                      className="w-full bg-[#15100E] border border-[#44332A] rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
+                      className="w-full bg-[#15100E] border border-[#44332A] rounded-none px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
                       placeholder="https://tisdalesouthernbbq.square.site (or leave blank to show pay-at-window)"
                     />
                     <button
                       type="submit"
-                      className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-black px-4 py-2 rounded-lg text-xs transition cursor-pointer shrink-0"
+                      className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-black px-4 py-2 rounded-none text-xs transition cursor-pointer shrink-0"
                     >
                       Save Square Link
                     </button>
@@ -921,7 +921,7 @@ export default function PitmasterAdminModal() {
 
           <button
             onClick={() => setIsPitmasterMode(false)}
-            className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-black px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition cursor-pointer shadow-lg"
+            className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-black px-5 py-2.5 rounded-none text-xs uppercase tracking-wider transition cursor-pointer shadow-lg"
           >
             Done (Back to Live Site)
           </button>
@@ -933,7 +933,7 @@ export default function PitmasterAdminModal() {
       {isItemFormOpen && (
         <div className="fixed inset-0 z-60 flex items-center justify-center p-3 sm:p-4 bg-black/90">
           <div 
-            className="bg-[#201714] border-2 border-amber-500 rounded-2xl max-w-lg w-full p-5 sm:p-6 shadow-2xl space-y-4"
+            className="bg-[#201714] border-2 border-amber-500 rounded-none max-w-lg w-full p-5 sm:p-6 shadow-2xl space-y-4"
             onClick={e => e.stopPropagation()}
           >
             <div className="flex items-center justify-between border-b border-[#3E2E25] pb-3">
@@ -960,7 +960,7 @@ export default function PitmasterAdminModal() {
                   value={formCategory}
                   onChange={e => setFormCategory(e.target.value)}
                   disabled={Boolean(editingItemTarget && editingItemTarget.isSpecial)}
-                  className="w-full bg-[#15100E] border border-[#44332A] rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
+                  className="w-full bg-[#15100E] border border-[#44332A] rounded-none px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
                 >
                   <option value="dinners">Dinners & Plates (w/ 2 Sides)</option>
                   <option value="sandwiches">Sandwiches & Handhelds</option>
@@ -982,7 +982,7 @@ export default function PitmasterAdminModal() {
                   value={formName}
                   onChange={e => setFormName(e.target.value)}
                   placeholder="e.g., Peach Cobbler Warm Slice or Smoked Beef Ribs"
-                  className="w-full bg-[#15100E] border border-[#44332A] rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
+                  className="w-full bg-[#15100E] border border-[#44332A] rounded-none px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
                 />
               </div>
 
@@ -998,7 +998,7 @@ export default function PitmasterAdminModal() {
                     value={formPrice}
                     onChange={e => setFormPrice(e.target.value)}
                     placeholder="e.g. $16.00 or $3.75"
-                    className="w-full bg-[#15100E] border border-[#44332A] rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500 font-mono"
+                    className="w-full bg-[#15100E] border border-[#44332A] rounded-none px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500 font-mono"
                   />
                 </div>
 
@@ -1011,7 +1011,7 @@ export default function PitmasterAdminModal() {
                     value={formBadge}
                     onChange={e => setFormBadge(e.target.value)}
                     placeholder="e.g. Fresh Daily, Pitmaster Special"
-                    className="w-full bg-[#15100E] border border-[#44332A] rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
+                    className="w-full bg-[#15100E] border border-[#44332A] rounded-none px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
               </div>
@@ -1026,7 +1026,7 @@ export default function PitmasterAdminModal() {
                   value={formDescription}
                   onChange={e => setFormDescription(e.target.value)}
                   placeholder="Tell customers what makes this item special..."
-                  className="w-full bg-[#15100E] border border-[#44332A] rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
+                  className="w-full bg-[#15100E] border border-[#44332A] rounded-none px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
                 />
               </div>
 
@@ -1040,7 +1040,7 @@ export default function PitmasterAdminModal() {
                   value={formExtraOption}
                   onChange={e => setFormExtraOption(e.target.value)}
                   placeholder="e.g. 1pc $16.00 / 2pc $23.00 or Regular $5 / Large $8"
-                  className="w-full bg-[#15100E] border border-[#44332A] rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
+                  className="w-full bg-[#15100E] border border-[#44332A] rounded-none px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
                 />
               </div>
 
@@ -1051,7 +1051,7 @@ export default function PitmasterAdminModal() {
                   id="fryerCheckbox"
                   checked={formIsFryer}
                   onChange={e => setFormIsFryer(e.target.checked)}
-                  className="w-4 h-4 rounded text-amber-500 focus:ring-0 bg-[#15100E] border-[#44332A]"
+                  className="w-4 h-4 rounded-none text-amber-500 focus:ring-0 bg-[#15100E] border-[#44332A]"
                 />
                 <label htmlFor="fryerCheckbox" className="text-xs text-stone-300 cursor-pointer">
                   Is this a deep fryer item? (Will disable automatically if grease is turned off)
@@ -1063,13 +1063,13 @@ export default function PitmasterAdminModal() {
                 <button
                   type="button"
                   onClick={() => setIsItemFormOpen(false)}
-                  className="px-4 py-2 rounded-xl text-xs font-bold text-stone-400 hover:text-white"
+                  className="px-4 py-2 rounded-none text-xs font-bold text-stone-400 hover:text-white"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-black px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider transition cursor-pointer shadow-lg"
+                  className="bg-amber-500 hover:bg-amber-400 text-stone-950 font-black px-5 py-2.5 rounded-none text-xs uppercase tracking-wider transition cursor-pointer shadow-lg"
                 >
                   {editingItemTarget ? 'Save Changes' : 'Publish to Live Menu'}
                 </button>

@@ -11,8 +11,8 @@ export default function TopMarqueeBar() {
         
         {/* Left: Real-time Location & Hours */}
         <div className="flex items-center gap-2 overflow-hidden">
-          <span className="inline-flex items-center gap-1.5 bg-black/40 px-2.5 py-0.5 rounded text-amber-300 font-bold text-[11px] tracking-wide uppercase shrink-0 border border-amber-400/20">
-            <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span className="inline-flex items-center gap-1.5 bg-black/40 px-2.5 py-0.5 rounded-none text-amber-300 font-bold text-[11px] tracking-wide uppercase shrink-0 border border-amber-400/20">
+            <span className="w-2 h-2 rounded-none bg-emerald-500"></span>
             Today's Trailer Stop
           </span>
           <span className="flex items-center gap-1.5 truncate text-amber-100">
@@ -25,7 +25,7 @@ export default function TopMarqueeBar() {
         {/* Right: Quick friendly call & specials buttons */}
         <div className="flex items-center gap-2 shrink-0">
           {!announcements.fryerOpen ? (
-            <span className="inline-flex items-center gap-1 bg-rose-950/80 border border-rose-500 text-rose-200 px-2.5 py-0.5 rounded-full text-[11px] font-bold">
+            <span className="inline-flex items-center gap-1 bg-rose-950/80 border border-rose-500 text-rose-200 px-2.5 py-0.5 rounded-none text-[11px] font-bold">
               <AlertTriangle className="w-3 h-3 text-rose-400" />
               <span>Grease Off (Fryer Closed) • Smoked Meats Ready</span>
             </span>
@@ -46,7 +46,7 @@ export default function TopMarqueeBar() {
 
           <button
             onClick={() => setIsSpecialsModalOpen(true)}
-            className="flex items-center gap-1 bg-amber-400 hover:bg-amber-300 text-stone-950 font-black px-2.5 py-1 rounded-md transition shadow text-[11px] uppercase tracking-wider cursor-pointer"
+            className="flex items-center gap-1 bg-amber-400 hover:bg-amber-300 text-stone-950 font-black px-2.5 py-1 rounded-none transition shadow text-[11px] uppercase tracking-wider cursor-pointer"
           >
             <Sparkles className="w-3 h-3 fill-stone-950" />
             <span>Today's Specials</span>

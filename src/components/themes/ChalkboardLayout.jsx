@@ -15,7 +15,7 @@ export default function ChalkboardLayout() {
       <div className="bg-[#0D1117] border-b border-[#30363D] py-2 px-3 text-xs text-stone-300">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <span className="font-mono text-[#FEF08A] uppercase font-bold text-[11px] bg-black/50 px-2 py-0.5 rounded border border-[#FEF08A]/30">
+            <span className="font-mono text-[#FEF08A] uppercase font-bold text-[11px] bg-black/50 px-2 py-0.5 rounded-none border border-[#FEF08A]/30">
               ★ Sidewalk Chalkboard Edition ★
             </span>
             <span className="text-stone-300">
@@ -44,7 +44,7 @@ export default function ChalkboardLayout() {
             <img
               src="./images/truck-logo-wrap.jpg"
               alt="Logo"
-              className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover border-2 border-amber-400 shadow-md"
+              className="w-16 h-16 sm:w-20 sm:h-20 rounded-none object-cover border-2 border-amber-400 shadow-md"
             />
             <div>
               <span className="text-[#FEF08A] font-['Permanent_Marker'] text-xs tracking-wider uppercase block">
@@ -60,10 +60,10 @@ export default function ChalkboardLayout() {
           </div>
 
           {/* Quick Board Switcher */}
-          <div className="flex items-center gap-1.5 bg-[#0D1117] p-1.5 rounded-xl border border-[#30363D]">
+          <div className="flex items-center gap-1.5 bg-[#0D1117] p-1.5 rounded-none border border-[#30363D]">
             <button
               onClick={() => setActiveBoard('chalkboard')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer font-['Permanent_Marker'] ${
+              className={`px-3.5 py-1.5 rounded-none text-xs font-bold transition cursor-pointer font-['Permanent_Marker'] ${
                 activeBoard === 'chalkboard'
                   ? 'bg-[#38BDF8] text-stone-950 shadow'
                   : 'text-stone-300 hover:text-white'
@@ -73,7 +73,7 @@ export default function ChalkboardLayout() {
             </button>
             <button
               onClick={() => setActiveBoard('tv')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer font-['Permanent_Marker'] ${
+              className={`px-3.5 py-1.5 rounded-none text-xs font-bold transition cursor-pointer font-['Permanent_Marker'] ${
                 activeBoard === 'tv'
                   ? 'bg-[#FEF08A] text-stone-950 shadow'
                   : 'text-stone-300 hover:text-white'
@@ -83,7 +83,7 @@ export default function ChalkboardLayout() {
             </button>
             <button
               onClick={() => setActiveBoard('photos')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer flex items-center gap-1 ${
+              className={`px-3.5 py-1.5 rounded-none text-xs font-bold transition cursor-pointer flex items-center gap-1 ${
                 activeBoard === 'photos'
                   ? 'bg-[#FDA4AF] text-stone-950 shadow'
                   : 'text-stone-400 hover:text-stone-200'
@@ -105,7 +105,7 @@ export default function ChalkboardLayout() {
           <div className="space-y-6">
             
             {/* The Authentic Sidewalk Chalkboard */}
-            <div className="chalkboard-bg rounded-2xl border-4 border-[#3E2E25] p-5 sm:p-8 shadow-2xl relative">
+            <div className="chalkboard-bg rounded-none border-4 border-[#3E2E25] p-5 sm:p-8 shadow-2xl relative">
               <div className="text-center mb-6">
                 <span className="text-[#FDA4AF] font-['Permanent_Marker'] text-sm uppercase tracking-widest block">
                   ★ Authentic Sidewalk Chalkboard ★ No Refunds ★
@@ -122,7 +122,7 @@ export default function ChalkboardLayout() {
                 {specials.filter(s => !s.hidden).map(s => (
                   <div
                     key={s.id}
-                    className={`bg-black/60 border rounded-xl p-4 flex flex-col justify-between transition ${
+                    className={`bg-black/60 border rounded-none p-4 flex flex-col justify-between transition ${
                       !s.inStock ? 'border-rose-700/60 opacity-60' : 'border-stone-700/60 hover:border-amber-400'
                     }`}
                   >
@@ -132,7 +132,7 @@ export default function ChalkboardLayout() {
                           {s.badge}
                         </span>
                         {!s.inStock ? (
-                          <span className="text-xs font-black uppercase bg-rose-600 text-white px-2 py-0.5 rounded font-mono">
+                          <span className="text-xs font-black uppercase bg-rose-600 text-white px-2 py-0.5 rounded-none font-mono">
                             SOLD OUT
                           </span>
                         ) : (
@@ -174,10 +174,10 @@ export default function ChalkboardLayout() {
             </div>
 
             {/* Window Whiteboard Strip */}
-            <div className="bg-[#182330] border-2 border-[#2C3B4E] rounded-xl p-5 shadow-md">
+            <div className="bg-[#182330] border-2 border-[#2C3B4E] rounded-none p-5 shadow-md">
               <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-cyan-200">
                 <div className="flex items-center gap-3">
-                  <span className="bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 font-['Permanent_Marker'] px-3 py-1 rounded text-sm uppercase">
+                  <span className="bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 font-['Permanent_Marker'] px-3 py-1 rounded-none text-sm uppercase">
                     Trailer Window Whiteboard
                   </span>
                   <span className="text-xs sm:text-sm font-semibold">
@@ -210,7 +210,7 @@ export default function ChalkboardLayout() {
               {/* Col 1: Sides & Desserts */}
               <div className="space-y-6">
                 {/* 8oz Sides */}
-                <div className="bg-[#1C2530] border-2 border-amber-500/30 rounded-2xl p-5 shadow-md">
+                <div className="bg-[#1C2530] border-2 border-amber-500/30 rounded-none p-5 shadow-md">
                   <div className="border-b-2 border-amber-500/40 pb-2 mb-4 flex justify-between items-baseline">
                     <h3 className="text-xl font-bold font-['Permanent_Marker'] text-[#FEF08A]">
                       Sides (8 oz)
@@ -231,7 +231,7 @@ export default function ChalkboardLayout() {
                 </div>
 
                 {/* Desserts & Drinks */}
-                <div className="bg-[#1C2530] border-2 border-amber-500/30 rounded-2xl p-5 shadow-md">
+                <div className="bg-[#1C2530] border-2 border-amber-500/30 rounded-none p-5 shadow-md">
                   <div className="border-b-2 border-amber-500/40 pb-2 mb-4">
                     <h3 className="text-xl font-bold font-['Permanent_Marker'] text-[#FDA4AF]">
                       Desserts & Drinks
@@ -253,7 +253,7 @@ export default function ChalkboardLayout() {
               </div>
 
               {/* Col 2: Dinners & Plates */}
-              <div className="bg-[#1C2530] border-2 border-amber-500/40 rounded-2xl p-5 shadow-md flex flex-col justify-between">
+              <div className="bg-[#1C2530] border-2 border-amber-500/40 rounded-none p-5 shadow-md flex flex-col justify-between">
                 <div>
                   <div className="border-b-2 border-amber-500/40 pb-2 mb-4">
                     <h3 className="text-2xl font-bold font-['Permanent_Marker'] text-white">
@@ -284,7 +284,7 @@ export default function ChalkboardLayout() {
               {/* Col 3: Sandwiches & Meats Only */}
               <div className="space-y-6">
                 {/* Sandwiches */}
-                <div className="bg-[#1C2530] border-2 border-amber-500/30 rounded-2xl p-5 shadow-md">
+                <div className="bg-[#1C2530] border-2 border-amber-500/30 rounded-none p-5 shadow-md">
                   <div className="border-b-2 border-amber-500/40 pb-2 mb-4">
                     <h3 className="text-xl font-bold font-['Permanent_Marker'] text-[#38BDF8]">
                       Sandwiches & Handhelds
@@ -305,7 +305,7 @@ export default function ChalkboardLayout() {
                 </div>
 
                 {/* Meats Only by the Pound */}
-                <div className="bg-[#1C2530] border-2 border-amber-500/30 rounded-2xl p-5 shadow-md">
+                <div className="bg-[#1C2530] border-2 border-amber-500/30 rounded-none p-5 shadow-md">
                   <div className="border-b-2 border-amber-500/40 pb-2 mb-4">
                     <h3 className="text-xl font-bold font-['Permanent_Marker'] text-[#FEF08A]">
                       Meats Only (Slab & LB)
@@ -342,26 +342,26 @@ export default function ChalkboardLayout() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="bg-[#161F28] rounded-xl p-3 border border-stone-700">
-                <img src="./images/chalkboard-specials.jpg" alt="Chalkboard" className="w-full h-56 object-cover rounded-lg" />
+              <div className="bg-[#161F28] rounded-none p-3 border border-stone-700">
+                <img src="./images/chalkboard-specials.jpg" alt="Chalkboard" className="w-full h-56 object-cover rounded-none" />
                 <h4 className="font-bold text-sm text-white mt-2 font-['Permanent_Marker']">Sidewalk Chalkboard</h4>
                 <p className="text-xs text-stone-400">Multi-meat combos & seafood catches.</p>
               </div>
 
-              <div className="bg-[#161F28] rounded-xl p-3 border border-stone-700">
-                <img src="./images/window-specials.jpg" alt="Window" className="w-full h-56 object-cover rounded-lg" />
+              <div className="bg-[#161F28] rounded-none p-3 border border-stone-700">
+                <img src="./images/window-specials.jpg" alt="Window" className="w-full h-56 object-cover rounded-none" />
                 <h4 className="font-bold text-sm text-white mt-2 font-['Permanent_Marker']">Window Whiteboard</h4>
                 <p className="text-xs text-stone-400">Honey Bun cake & value lunch combos.</p>
               </div>
 
-              <div className="bg-[#161F28] rounded-xl p-3 border border-stone-700">
-                <img src="./images/tv-menu.jpg" alt="TV Screen" className="w-full h-56 object-cover rounded-lg" />
+              <div className="bg-[#161F28] rounded-none p-3 border border-stone-700">
+                <img src="./images/tv-menu.jpg" alt="TV Screen" className="w-full h-56 object-cover rounded-none" />
                 <h4 className="font-bold text-sm text-white mt-2 font-['Permanent_Marker']">TV Screen Menu</h4>
                 <p className="text-xs text-stone-400">Full dinner plates and sides.</p>
               </div>
 
-              <div className="bg-[#161F28] rounded-xl p-3 border border-stone-700">
-                <img src="./images/truck-logo-wrap.jpg" alt="Logo Wrap" className="w-full h-56 object-cover rounded-lg" />
+              <div className="bg-[#161F28] rounded-none p-3 border border-stone-700">
+                <img src="./images/truck-logo-wrap.jpg" alt="Logo Wrap" className="w-full h-56 object-cover rounded-none" />
                 <h4 className="font-bold text-sm text-white mt-2 font-['Permanent_Marker']">Trailer Art & Wrap</h4>
                 <p className="text-xs text-stone-400">Tongue-twisting pig mascot and fire wrap.</p>
               </div>
@@ -370,7 +370,7 @@ export default function ChalkboardLayout() {
         )}
 
         {/* 4. Find the Trailer Card */}
-        <div className="bg-[#161F28] border-2 border-[#30363D] rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="bg-[#161F28] border-2 border-[#30363D] rounded-none p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <span className="text-[#FEF08A] font-['Permanent_Marker'] text-xs uppercase block">
               Where to Pull Up Today
@@ -388,13 +388,13 @@ export default function ChalkboardLayout() {
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(current.name + ' ' + current.address)}`}
               target="_blank"
               rel="noreferrer"
-              className="bg-[#38BDF8] hover:bg-[#0284C7] text-stone-950 font-black px-5 py-2.5 rounded-lg text-xs uppercase tracking-wider transition"
+              className="bg-[#38BDF8] hover:bg-[#0284C7] text-stone-950 font-black px-5 py-2.5 rounded-none text-xs uppercase tracking-wider transition"
             >
               Directions
             </a>
             <a
               href="tel:9107092900"
-              className="bg-[#D9381E] hover:bg-[#B72C15] text-white font-bold px-5 py-2.5 rounded-lg text-xs uppercase tracking-wider transition"
+              className="bg-[#D9381E] hover:bg-[#B72C15] text-white font-bold px-5 py-2.5 rounded-none text-xs uppercase tracking-wider transition"
             >
               Call Trailer: (910) 709-2900
             </a>

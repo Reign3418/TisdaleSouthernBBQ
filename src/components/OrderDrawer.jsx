@@ -56,7 +56,7 @@ export default function OrderDrawer() {
         {/* Header */}
         <div className="bg-[#241A16] border-b border-[#3B2B23] p-4 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-lg bg-amber-500 text-stone-950 font-black">
+            <div className="p-2 rounded-none bg-amber-500 text-stone-950 font-black">
               <ShoppingBag className="w-5 h-5" />
             </div>
             <div>
@@ -71,7 +71,7 @@ export default function OrderDrawer() {
 
           <button
             onClick={() => setIsCartOpen(false)}
-            className="p-1.5 rounded-lg bg-[#2E201B] hover:bg-[#3D2B24] text-stone-300 hover:text-white transition cursor-pointer"
+            className="p-1.5 rounded-none bg-[#2E201B] hover:bg-[#3D2B24] text-stone-300 hover:text-white transition cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -81,7 +81,7 @@ export default function OrderDrawer() {
         <div className="flex-1 overflow-y-auto p-4 space-y-3">
           {cart.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-center p-6 text-stone-400">
-              <div className="w-16 h-16 rounded-full bg-[#241B17] flex items-center justify-center mb-3 text-amber-500">
+              <div className="w-16 h-16 rounded-none bg-[#241B17] flex items-center justify-center mb-3 text-amber-500">
                 <Utensils className="w-8 h-8" />
               </div>
               <h4 className="text-base font-bold text-white">Your tray is empty</h4>
@@ -90,7 +90,7 @@ export default function OrderDrawer() {
               </p>
               <button
                 onClick={() => setIsCartOpen(false)}
-                className="mt-4 px-4 py-2 bg-amber-500 text-stone-950 font-bold rounded-lg text-xs hover:bg-amber-400 transition"
+                className="mt-4 px-4 py-2 bg-amber-500 text-stone-950 font-bold rounded-none text-xs hover:bg-amber-400 transition"
               >
                 Explore the Menu
               </button>
@@ -99,7 +99,7 @@ export default function OrderDrawer() {
             cart.map((item, index) => (
               <div
                 key={index}
-                className="bg-[#211916] border border-[#3C2E27] rounded-xl p-3 flex items-center justify-between gap-3 shadow-sm"
+                className="bg-[#211916] border border-[#3C2E27] rounded-none p-3 flex items-center justify-between gap-3 shadow-sm"
               >
                 <div className="min-w-0 flex-1">
                   <h4 className="text-sm font-bold text-white truncate">{item.name}</h4>
@@ -115,10 +115,10 @@ export default function OrderDrawer() {
                 </div>
 
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <div className="flex items-center bg-[#15100E] border border-[#3E3029] rounded-lg p-0.5">
+                  <div className="flex items-center bg-[#15100E] border border-[#3E3029] rounded-none p-0.5">
                     <button
                       onClick={() => updateCartQty(index, -1)}
-                      className="p-1 text-stone-400 hover:text-white hover:bg-white/10 rounded transition cursor-pointer"
+                      className="p-1 text-stone-400 hover:text-white hover:bg-white/10 rounded-none transition cursor-pointer"
                     >
                       <Minus className="w-3.5 h-3.5" />
                     </button>
@@ -127,7 +127,7 @@ export default function OrderDrawer() {
                     </span>
                     <button
                       onClick={() => updateCartQty(index, 1)}
-                      className="p-1 text-stone-400 hover:text-white hover:bg-white/10 rounded transition cursor-pointer"
+                      className="p-1 text-stone-400 hover:text-white hover:bg-white/10 rounded-none transition cursor-pointer"
                     >
                       <Plus className="w-3.5 h-3.5" />
                     </button>
@@ -135,7 +135,7 @@ export default function OrderDrawer() {
 
                   <button
                     onClick={() => removeFromCart(index)}
-                    className="p-1.5 text-stone-500 hover:text-rose-400 hover:bg-rose-950/30 rounded transition cursor-pointer"
+                    className="p-1.5 text-stone-500 hover:text-rose-400 hover:bg-rose-950/30 rounded-none transition cursor-pointer"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -169,7 +169,7 @@ export default function OrderDrawer() {
             <div className="space-y-2 pt-1">
               <a
                 href="tel:9107092900"
-                className="w-full flex items-center justify-center gap-2 bg-[#D9381E] hover:bg-[#E64A19] text-white font-black py-3 rounded-xl text-sm transition shadow-lg shadow-orange-950/50 cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 bg-[#D9381E] hover:bg-[#E64A19] text-white font-black py-3 rounded-none text-sm transition shadow-lg shadow-orange-950/50 cursor-pointer"
               >
                 <Phone className="w-4 h-4 text-amber-300" />
                 <span>Call Trailer to Place Order (910-709-2900)</span>
@@ -178,7 +178,7 @@ export default function OrderDrawer() {
               <div className="grid grid-cols-2 gap-2">
                 <button
                   onClick={handleSmsOrder}
-                  className="flex items-center justify-center gap-1.5 bg-[#2B211D] hover:bg-[#392B26] border border-[#483730] text-amber-200 font-bold py-2 rounded-lg text-xs transition cursor-pointer"
+                  className="flex items-center justify-center gap-1.5 bg-[#2B211D] hover:bg-[#392B26] border border-[#483730] text-amber-200 font-bold py-2 rounded-none text-xs transition cursor-pointer"
                 >
                   <MessageSquare className="w-3.5 h-3.5" />
                   <span>Text Order</span>
@@ -186,7 +186,7 @@ export default function OrderDrawer() {
 
                 <button
                   onClick={handleCopyOrder}
-                  className="flex items-center justify-center gap-1.5 bg-[#2B211D] hover:bg-[#392B26] border border-[#483730] text-stone-200 font-bold py-2 rounded-lg text-xs transition cursor-pointer"
+                  className="flex items-center justify-center gap-1.5 bg-[#2B211D] hover:bg-[#392B26] border border-[#483730] text-stone-200 font-bold py-2 rounded-none text-xs transition cursor-pointer"
                 >
                   {copied ? (
                     <>
@@ -200,13 +200,13 @@ export default function OrderDrawer() {
               </div>
 
               {/* Square Payment Integration Card */}
-              <div className="bg-[#140F0E] border border-[#3A2D25] rounded-xl p-3 space-y-2 mt-2">
+              <div className="bg-[#140F0E] border border-[#3A2D25] rounded-none p-3 space-y-2 mt-2">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2 text-white font-bold text-xs">
                     <SquareIcon className="w-4 h-4 text-emerald-400 shrink-0" />
                     <span>Square POS Accepted</span>
                   </div>
-                  <span className="text-[10px] text-emerald-300 font-semibold bg-emerald-950/70 border border-emerald-500/40 px-2 py-0.5 rounded-full">
+                  <span className="text-[10px] text-emerald-300 font-semibold bg-emerald-950/70 border border-emerald-500/40 px-2 py-0.5 rounded-none">
                     All Payment Methods
                   </span>
                 </div>
@@ -220,7 +220,7 @@ export default function OrderDrawer() {
                     href={announcements.squareSiteUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="w-full flex items-center justify-center gap-2 bg-[#006AFF] hover:bg-[#0055D4] text-white font-bold py-2.5 rounded-lg text-xs transition shadow cursor-pointer mt-1"
+                    className="w-full flex items-center justify-center gap-2 bg-[#006AFF] hover:bg-[#0055D4] text-white font-bold py-2.5 rounded-none text-xs transition shadow cursor-pointer mt-1"
                   >
                     <SquareIcon className="w-3.5 h-3.5" />
                     <span>Pay Ahead via Square Online</span>

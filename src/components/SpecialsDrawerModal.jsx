@@ -10,14 +10,14 @@ export default function SpecialsDrawerModal() {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85">
       <div 
-        className="bg-[#191412] border-2 border-[#3E2E25] rounded-2xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden relative"
+        className="bg-[#191412] border-2 border-[#3E2E25] rounded-none max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden relative"
         onClick={e => e.stopPropagation()}
       >
         
         {/* Top Header */}
         <div className="bg-[#8C1B0B] border-b border-[#A6220E] text-white p-4 sm:p-5 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2.5">
-            <span className="p-2 rounded-lg bg-black/30 border border-white/20">
+            <span className="p-2 rounded-none bg-black/30 border border-white/20">
               <Sparkles className="w-5 h-5 text-amber-300" />
             </span>
             <div>
@@ -32,7 +32,7 @@ export default function SpecialsDrawerModal() {
 
           <button
             onClick={() => setIsSpecialsModalOpen(false)}
-            className="p-1.5 rounded-lg bg-black/30 hover:bg-black/50 text-white/80 hover:text-white transition cursor-pointer"
+            className="p-1.5 rounded-none bg-black/30 hover:bg-black/50 text-white/80 hover:text-white transition cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -54,11 +54,11 @@ export default function SpecialsDrawerModal() {
             return (
               <div
                 key={item.id}
-                className="bg-[#221B18] border border-[#3C2E26] hover:border-amber-500/40 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition"
+                className="bg-[#221B18] border border-[#3C2E26] hover:border-amber-500/40 rounded-none p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition"
               >
                 <div className="space-y-1 max-w-lg">
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] uppercase font-bold tracking-wider bg-[#8B0000] text-amber-200 px-2 py-0.5 rounded">
+                    <span className="text-[10px] uppercase font-bold tracking-wider bg-[#8B0000] text-amber-200 px-2 py-0.5 rounded-none">
                       {item.badge}
                     </span>
                     <span className="text-xs text-stone-400 italic">
@@ -78,7 +78,7 @@ export default function SpecialsDrawerModal() {
                     <div className="pt-1.5 space-y-0.5">
                       {item.variants.map((v, i) => (
                         <div key={i} className="text-[11px] text-stone-400 flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                          <span className="w-1.5 h-1.5 rounded-none bg-amber-400"></span>
                           <span>{v.name}: <strong className="text-amber-300">{v.price}</strong></span>
                         </div>
                       ))}
@@ -97,7 +97,7 @@ export default function SpecialsDrawerModal() {
                       setIsSpecialsModalOpen(false);
                     }}
                     disabled={!item.inStock || isFryerDisabled}
-                    className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
+                    className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-none text-xs font-bold transition cursor-pointer ${
                       !item.inStock || isFryerDisabled
                         ? 'bg-stone-800 text-stone-500 cursor-not-allowed'
                         : 'bg-[#D9381E] hover:bg-[#B72C15] text-white font-bold'
@@ -116,7 +116,7 @@ export default function SpecialsDrawerModal() {
           <span>Square, Visa, MC, Cash accepted at trailer</span>
           <button
             onClick={() => setIsSpecialsModalOpen(false)}
-            className="px-4 py-2 bg-[#2B221E] hover:bg-[#382C27] text-stone-200 rounded-lg font-bold transition cursor-pointer"
+            className="px-4 py-2 bg-[#2B221E] hover:bg-[#382C27] text-stone-200 rounded-none font-bold transition cursor-pointer"
           >
             Back to Full Menu
           </button>

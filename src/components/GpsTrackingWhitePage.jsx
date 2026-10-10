@@ -40,12 +40,12 @@ export default function GpsTrackingWhitePage() {
     <div className="fixed inset-0 z-50 bg-stone-900/80 backdrop-blur-sm overflow-y-auto p-2 sm:p-6 flex justify-center items-start print:p-0 print:bg-white print:static animate-fadeIn">
       
       {/* Document Container */}
-      <div className="bg-white text-stone-900 rounded-2xl shadow-2xl max-w-4xl w-full my-4 border border-stone-200 overflow-hidden print:shadow-none print:border-none print:m-0 print:rounded-none">
+      <div className="bg-white text-stone-900 rounded-none shadow-2xl max-w-4xl w-full my-4 border border-stone-200 overflow-hidden print:shadow-none print:border-none print:m-0 print:rounded-none">
         
         {/* Top Control Bar (Hidden on print) */}
         <div className="bg-stone-900 text-stone-200 px-6 py-3 flex items-center justify-between print:hidden border-b border-stone-800">
           <div className="flex items-center gap-2">
-            <span className="bg-amber-500 text-black font-black text-xs px-2 py-0.5 rounded font-mono uppercase">
+            <span className="bg-amber-500 text-black font-black text-xs px-2 py-0.5 rounded-none font-mono uppercase">
               Craftsman Options Brief
             </span>
             <span className="text-xs text-stone-300 font-medium">
@@ -56,7 +56,7 @@ export default function GpsTrackingWhitePage() {
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrint}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-bold transition cursor-pointer border border-stone-700"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-bold transition cursor-pointer border border-stone-700"
               title="Print or Save as PDF"
             >
               <Printer className="w-3.5 h-3.5 text-amber-400" />
@@ -65,7 +65,7 @@ export default function GpsTrackingWhitePage() {
 
             <button
               onClick={() => setIsGpsWhitePageOpen(false)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-bold transition cursor-pointer border border-stone-700"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-bold transition cursor-pointer border border-stone-700"
             >
               <X className="w-3.5 h-3.5" />
               <span>Close Brief</span>
@@ -88,7 +88,7 @@ export default function GpsTrackingWhitePage() {
               </p>
             </div>
 
-            <div className="text-left sm:text-right text-xs text-stone-500 shrink-0 font-mono bg-white p-3 rounded-lg border border-stone-200">
+            <div className="text-left sm:text-right text-xs text-stone-500 shrink-0 font-mono bg-white p-3 rounded-none border border-stone-200">
               <div><strong>Craftsman:</strong> Mr. Donald Tisdale</div>
               <div><strong>Business:</strong> Tisdale’s Southern BBQ</div>
               <div><strong>Date:</strong> October 2026</div>
@@ -103,7 +103,7 @@ export default function GpsTrackingWhitePage() {
           {/* Section 1: Executive Summary */}
           <section className="space-y-3">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
-              <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
+              <span className="w-6 h-6 rounded-none-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 1
               </span>
               Your Freedom, Your Privacy & Reaching Your Customers
@@ -111,7 +111,7 @@ export default function GpsTrackingWhitePage() {
             <p className="text-stone-700">
               As a mobile pitmaster serving Fayetteville, Sanford, Dunn, and surrounding North Carolina communities, getting hungry crowds to your window comes down to answering one question: <strong>“Where are you parked right now?”</strong>
             </p>
-            <div className="bg-amber-50 border-l-4 border-amber-600 p-4 rounded-r-lg">
+            <div className="bg-amber-50 border-l-4 border-amber-600 p-4 rounded-none">
               <h4 className="font-bold text-amber-900 text-sm">The Golden Rule: Complete On/Off Control & Home Privacy</h4>
               <p className="text-xs text-amber-800 mt-1">
                 You must always have total control with a clear <strong>ON/OFF switch</strong>. When you're open for service, your customers see your exact spot with 1-tap Google Maps directions. When you finish cooking, pack up, and head home to your family, tracking is completely OFF so your personal residence is never shared.
@@ -123,7 +123,7 @@ export default function GpsTrackingWhitePage() {
           <section className="space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-stone-200 pb-2">
               <h2 className="text-lg font-black text-stone-900 flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
+                <span className="w-6 h-6 rounded-none-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                   2
                 </span>
                 Interactive Simulator: Test Your On/Off Switch
@@ -138,11 +138,11 @@ export default function GpsTrackingWhitePage() {
             </p>
 
             {/* Simulator Controls */}
-            <div className="flex flex-wrap items-center gap-3 bg-stone-100 p-3 rounded-xl border border-stone-200">
+            <div className="flex flex-wrap items-center gap-3 bg-stone-100 p-3 rounded-none border border-stone-200">
               <span className="text-xs font-bold text-stone-700 font-mono">Your Control Switch:</span>
               <button
                 onClick={() => setSimState('on')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-bold text-xs transition cursor-pointer ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-none font-bold text-xs transition cursor-pointer ${
                   simState === 'on'
                     ? 'bg-emerald-600 text-white shadow ring-2 ring-emerald-500/50'
                     : 'bg-white text-stone-700 border border-stone-300 hover:bg-stone-50'
@@ -154,7 +154,7 @@ export default function GpsTrackingWhitePage() {
 
               <button
                 onClick={() => setSimState('off')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-bold text-xs transition cursor-pointer ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-none font-bold text-xs transition cursor-pointer ${
                   simState === 'off'
                     ? 'bg-rose-700 text-white shadow ring-2 ring-rose-500/50'
                     : 'bg-white text-stone-700 border border-stone-300 hover:bg-stone-50'
@@ -166,10 +166,10 @@ export default function GpsTrackingWhitePage() {
             </div>
 
             {/* Simulated Customer Website View */}
-            <div className="border-2 border-stone-300 rounded-xl overflow-hidden shadow-sm">
+            <div className="border-2 border-stone-300 rounded-none overflow-hidden shadow-sm">
               <div className="bg-stone-800 text-stone-300 px-4 py-2 text-xs font-mono flex items-center justify-between border-b border-stone-700">
                 <span>SIMULATED CUSTOMER SMARTPHONE SCREEN</span>
-                <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
+                <span className={`px-2 py-0.5 rounded-none text-[10px] font-bold uppercase ${
                   simState === 'on' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-rose-500/20 text-rose-300'
                 }`}>
                   {simState === 'on' ? 'Status: Broadcast Active' : 'Status: Location Protected'}
@@ -179,8 +179,8 @@ export default function GpsTrackingWhitePage() {
               {simState === 'on' ? (
                 <div className="p-5 bg-stone-900 text-white space-y-3">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded text-xs font-bold font-mono uppercase">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span className="inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-none text-xs font-bold font-mono uppercase">
+                      <span className="w-2 h-2 rounded-none-full bg-emerald-400 animate-pulse"></span>
                       🔴 LIVE NOW AT FOOD TRAILER
                     </span>
                     <span className="text-xs text-amber-400 font-bold font-mono">
@@ -199,18 +199,18 @@ export default function GpsTrackingWhitePage() {
                   </div>
 
                   <div className="flex gap-2 pt-1">
-                    <div className="flex-1 bg-amber-600 text-white font-bold py-2 px-3 rounded-lg text-xs text-center uppercase tracking-wider flex items-center justify-center gap-1.5">
+                    <div className="flex-1 bg-amber-600 text-white font-bold py-2 px-3 rounded-none text-xs text-center uppercase tracking-wider flex items-center justify-center gap-1.5">
                       <Navigation className="w-3.5 h-3.5" />
                       <span>Get 1-Tap Google Directions</span>
                     </div>
-                    <div className="bg-stone-800 border border-stone-700 text-stone-200 font-bold py-2 px-3 rounded-lg text-xs flex items-center gap-1">
+                    <div className="bg-stone-800 border border-stone-700 text-stone-200 font-bold py-2 px-3 rounded-none text-xs flex items-center gap-1">
                       <span>Square POS Ready</span>
                     </div>
                   </div>
                 </div>
               ) : (
                 <div className="p-6 bg-stone-100 text-stone-800 space-y-3 text-center">
-                  <div className="w-12 h-12 rounded-full bg-stone-200 text-stone-600 flex items-center justify-center mx-auto">
+                  <div className="w-12 h-12 rounded-none-full bg-stone-200 text-stone-600 flex items-center justify-center mx-auto">
                     <ShieldCheck className="w-6 h-6 text-emerald-600" />
                   </div>
                   <div>
@@ -221,7 +221,7 @@ export default function GpsTrackingWhitePage() {
                       You are off the clock, prepping your hickory wood, or traveling home. No live GPS coordinates are broadcast to protect your private residence.
                     </p>
                   </div>
-                  <div className="bg-white p-3 rounded-lg border border-stone-200 text-xs text-stone-600 max-w-sm mx-auto font-mono">
+                  <div className="bg-white p-3 rounded-none border border-stone-200 text-xs text-stone-600 max-w-sm mx-auto font-mono">
                     <strong>Next Public Stop:</strong> Static Line Brewing Co. • Saturday 4:30 PM
                   </div>
                 </div>
@@ -232,7 +232,7 @@ export default function GpsTrackingWhitePage() {
           {/* Section 3: The 3 Viable Options Compared */}
           <section className="space-y-6">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
-              <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
+              <span className="w-6 h-6 rounded-none-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 3
               </span>
               The Three Practical Ways You Can Share Your Location
@@ -241,8 +241,8 @@ export default function GpsTrackingWhitePage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               
               {/* Option A: Phone 1-Tap */}
-              <div className="border-2 border-emerald-500 rounded-xl p-5 bg-emerald-50/30 flex flex-col justify-between relative">
-                <div className="absolute -top-3 left-4 bg-emerald-600 text-white text-[10px] font-black uppercase px-2 py-0.5 rounded shadow">
+              <div className="border-2 border-emerald-500 rounded-none p-5 bg-emerald-50/30 flex flex-col justify-between relative">
+                <div className="absolute -top-3 left-4 bg-emerald-600 text-white text-[10px] font-black uppercase px-2 py-0.5 rounded-none shadow">
                   ⭐ Top Choice for Zero Extra Cost
                 </div>
 
@@ -270,7 +270,7 @@ export default function GpsTrackingWhitePage() {
               </div>
 
               {/* Option B: Physical GPS Puck */}
-              <div className="border border-stone-300 rounded-xl p-5 bg-white flex flex-col justify-between">
+              <div className="border border-stone-300 rounded-none p-5 bg-white flex flex-col justify-between">
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     <Radio className="w-5 h-5 text-amber-600 shrink-0" />
@@ -295,7 +295,7 @@ export default function GpsTrackingWhitePage() {
               </div>
 
               {/* Option C: Free Glympse Timer App */}
-              <div className="border border-stone-300 rounded-xl p-5 bg-white flex flex-col justify-between">
+              <div className="border border-stone-300 rounded-none p-5 bg-white flex flex-col justify-between">
                 <div className="space-y-3">
                   <div className="flex items-center gap-2">
                     <Clock className="w-5 h-5 text-blue-600 shrink-0" />
@@ -325,13 +325,13 @@ export default function GpsTrackingWhitePage() {
           {/* Section 4: Full Comparison Matrix */}
           <section className="space-y-4">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
-              <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
+              <span className="w-6 h-6 rounded-none-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 4
               </span>
               Side-by-Side Comparison Matrix
             </h2>
 
-            <div className="overflow-x-auto border border-stone-200 rounded-xl">
+            <div className="overflow-x-auto border border-stone-200 rounded-none">
               <table className="w-full text-left text-xs">
                 <thead className="bg-stone-100 text-stone-900 font-bold border-b border-stone-200">
                   <tr>
@@ -386,7 +386,7 @@ export default function GpsTrackingWhitePage() {
           </section>
 
           {/* Section 5: Why Not AirTags or OBD-II */}
-          <section className="space-y-3 bg-stone-50 p-5 rounded-xl border border-stone-200">
+          <section className="space-y-3 bg-stone-50 p-5 rounded-none border border-stone-200">
             <h3 className="font-bold text-stone-900 text-sm flex items-center gap-2">
               <AlertTriangle className="w-4 h-4 text-amber-600" />
               <span>Devices We Advise Against:</span>
@@ -404,13 +404,13 @@ export default function GpsTrackingWhitePage() {
           {/* Section 6: Action Plan / Partnership */}
           <section className="space-y-3 border-t border-stone-200 pt-6">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2">
-              <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
+              <span className="w-6 h-6 rounded-none-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 5
               </span>
               Where We Suggest Starting Together
             </h2>
 
-            <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5 space-y-3">
+            <div className="bg-emerald-50 border border-emerald-200 rounded-none p-5 space-y-3">
               <h4 className="font-bold text-emerald-950 text-sm">
                 Start with Option A (Your 1-Tap Website Admin Button)
               </h4>

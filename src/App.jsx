@@ -51,7 +51,7 @@ function AppContent() {
       }`}>
         <a
           href="tel:9107092900"
-          className="flex-1 flex items-center justify-center gap-1.5 bg-[#D9381E] hover:bg-[#B72C15] text-white font-black py-2.5 px-2 rounded-lg text-xs uppercase tracking-wider shadow"
+          className="flex-1 flex items-center justify-center gap-1.5 bg-[#D9381E] hover:bg-[#B72C15] text-white font-black py-2.5 px-2 rounded-none text-xs uppercase tracking-wider shadow"
         >
           <Phone className="w-3.5 h-3.5" />
           <span>Call Trailer</span>
@@ -61,7 +61,7 @@ function AppContent() {
           href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(current.name + ' ' + current.address)}`}
           target="_blank"
           rel="noreferrer"
-          className={`flex-1 flex items-center justify-center gap-1.5 font-bold py-2.5 px-2 rounded-lg text-xs uppercase tracking-wider border ${
+          className={`flex-1 flex items-center justify-center gap-1.5 font-bold py-2.5 px-2 rounded-none text-xs uppercase tracking-wider border ${
             themeVersion === 'carolinagold'
               ? 'bg-[#FAF4EA] border-[#D5C2A5] text-[#78350F]'
               : themeVersion === 'chalkboard'
@@ -75,7 +75,7 @@ function AppContent() {
 
         <button
           onClick={() => setIsSpecialsModalOpen(true)}
-          className={`flex-1 flex items-center justify-center gap-1.5 font-bold py-2.5 px-2 rounded-lg text-xs uppercase tracking-wider shadow cursor-pointer border ${
+          className={`flex-1 flex items-center justify-center gap-1.5 font-bold py-2.5 px-2 rounded-none text-xs uppercase tracking-wider shadow cursor-pointer border ${
             themeVersion === 'carolinagold'
               ? 'bg-[#B45309] text-white border-[#B45309]'
               : themeVersion === 'chalkboard'

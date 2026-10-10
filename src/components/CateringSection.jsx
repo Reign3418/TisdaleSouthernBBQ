@@ -38,9 +38,9 @@ export default function CateringSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* Left 5 Cols: Catering Info & Donald's Hospitality */}
-          <div className="lg:col-span-5 bg-[#1A1412] border border-[#3C2E27] rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-xl">
+          <div className="lg:col-span-5 bg-[#1A1412] border border-[#3C2E27] rounded-none p-6 sm:p-8 flex flex-col justify-between shadow-xl">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-1.5 text-amber-500 text-xs font-bold uppercase tracking-widest bg-amber-950/60 px-3 py-1 rounded-full border border-amber-500/30">
+              <div className="inline-flex items-center gap-1.5 text-amber-500 text-xs font-bold uppercase tracking-widest bg-amber-950/60 px-3 py-1 rounded-none border border-amber-500/30">
                 <Utensils className="w-3.5 h-3.5" />
                 <span>Southern Hospitality</span>
               </div>
@@ -54,19 +54,19 @@ export default function CateringSection() {
                 Whether you're hosting a family reunion, church gathering, corporate luncheon, wedding, or block party—let Donald do the smoking so you can enjoy your guests!
               </p>
 
-              <div className="p-4 rounded-2xl bg-[#231A16] border border-[#443229] space-y-2">
+              <div className="p-4 rounded-none bg-[#231A16] border border-[#443229] space-y-2">
                 <h4 className="text-sm font-bold text-amber-300">Popular Catering Packages:</h4>
                 <ul className="text-xs text-stone-300 space-y-1.5">
                   <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
+                    <span className="w-1.5 h-1.5 rounded-none bg-amber-400 shrink-0"></span>
                     <span><strong>Big Family Dinners ($80):</strong> 1lb Brisket, 1lb Pork, 1/2 slab ribs, 4 sides, drinks & rolls</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
+                    <span className="w-1.5 h-1.5 rounded-none bg-amber-400 shrink-0"></span>
                     <span><strong>Bulk Meats by the Pound:</strong> Tender brisket ($25/lb), pulled pork ($18/lb), whole slabs of ribs ($31)</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
+                    <span className="w-1.5 h-1.5 rounded-none bg-amber-400 shrink-0"></span>
                     <span><strong>Full Trailer Pop-Up:</strong> Donald brings the food trailer directly to your venue</span>
                   </li>
                 </ul>
@@ -75,7 +75,7 @@ export default function CateringSection() {
               <div className="pt-1">
                 <a
                   href="tel:9107092900"
-                  className="inline-flex items-center gap-2 text-white font-bold text-xs sm:text-sm bg-[#2B201B] hover:bg-[#382B24] border border-amber-600/40 px-4 py-2.5 rounded-xl transition"
+                  className="inline-flex items-center gap-2 text-white font-bold text-xs sm:text-sm bg-[#2B201B] hover:bg-[#382B24] border border-amber-600/40 px-4 py-2.5 rounded-none transition"
                 >
                   <Phone className="w-4 h-4 text-emerald-400" />
                   <span>Prefer to talk? Call Donald at (910) 709-2900</span>
@@ -89,8 +89,8 @@ export default function CateringSection() {
             </div>
           </div>
 
-          {/* Right 7 Cols: Working Intake Form */}
-          <div className="lg:col-span-7 bg-[#1D1613] border-2 border-[#3E2E25] rounded-3xl p-6 sm:p-8 shadow-xl">
+          {/* Right 7 Cols: Working Intake Form with Straight Lines */}
+          <div className="lg:col-span-7 bg-[#1D1613] border-2 border-[#3E2E25] rounded-none p-6 sm:p-8 shadow-xl">
             <div>
               <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-widest mb-1">
                 <Calendar className="w-4 h-4" />
@@ -105,7 +105,7 @@ export default function CateringSection() {
             </div>
 
             {submitted ? (
-              <div className="mt-8 p-6 rounded-2xl bg-emerald-950/60 border border-emerald-500 text-center space-y-3">
+              <div className="mt-8 p-6 rounded-none bg-emerald-950/60 border border-emerald-500 text-center space-y-3">
                 <CheckCircle2 className="w-10 h-10 text-emerald-400 mx-auto" />
                 <h4 className="text-xl font-bold text-white">Inquiry Sent to Donald!</h4>
                 <p className="text-xs text-emerald-200">
@@ -113,7 +113,7 @@ export default function CateringSection() {
                 </p>
                 <a
                   href="tel:9107092900"
-                  className="inline-flex items-center gap-2 bg-amber-500 text-stone-950 font-bold px-5 py-2.5 rounded-xl text-xs mt-2"
+                  className="inline-flex items-center gap-2 bg-amber-500 text-stone-950 font-bold px-5 py-2.5 rounded-none text-xs mt-2"
                 >
                   <Phone className="w-3.5 h-3.5" /> Call Donald Directly: (910) 709-2900
                 </a>
@@ -129,7 +129,7 @@ export default function CateringSection() {
                       value={formData.name}
                       onChange={e => setFormData({ ...formData, name: e.target.value })}
                       placeholder="Your Full Name"
-                      className="w-full bg-[#140F0E] border border-[#3E2E26] rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500"
+                      className="w-full bg-[#140F0E] border border-[#3E2E26] rounded-none px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500"
                     />
                   </div>
                   <div>
@@ -140,7 +140,7 @@ export default function CateringSection() {
                       value={formData.phone}
                       onChange={e => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="(910) 555-0199"
-                      className="w-full bg-[#140F0E] border border-[#3E2E26] rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500"
+                      className="w-full bg-[#140F0E] border border-[#3E2E26] rounded-none px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500"
                     />
                   </div>
                 </div>
@@ -152,7 +152,7 @@ export default function CateringSection() {
                       type="date"
                       value={formData.date}
                       onChange={e => setFormData({ ...formData, date: e.target.value })}
-                      className="w-full bg-[#140F0E] border border-[#3E2E26] rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500"
+                      className="w-full bg-[#140F0E] border border-[#3E2E26] rounded-none px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500"
                     />
                   </div>
                   <div>
@@ -160,7 +160,7 @@ export default function CateringSection() {
                     <select
                       value={formData.guests}
                       onChange={e => setFormData({ ...formData, guests: e.target.value })}
-                      className="w-full bg-[#140F0E] border border-[#3E2E26] rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500"
+                      className="w-full bg-[#140F0E] border border-[#3E2E26] rounded-none px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-amber-500"
                     >
                       <option value="20-40">20 - 40 guests</option>
                       <option value="40-75">40 - 75 guests</option>
@@ -180,7 +180,7 @@ export default function CateringSection() {
                           key={meat}
                           type="button"
                           onClick={() => toggleMeat(meat)}
-                          className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
+                          className={`px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer ${
                             selected
                               ? 'bg-amber-500 text-stone-950 shadow'
                               : 'bg-[#181210] text-stone-300 border border-white/10 hover:border-amber-500/40'
@@ -200,13 +200,13 @@ export default function CateringSection() {
                     value={formData.notes}
                     onChange={e => setFormData({ ...formData, notes: e.target.value })}
                     placeholder="Tell Donald about the venue, time, or favorite sides..."
-                    className="w-full bg-[#140F0E] border border-[#3E2E26] rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
+                    className="w-full bg-[#140F0E] border border-[#3E2E26] rounded-none px-3.5 py-2 text-xs text-white focus:outline-none focus:border-amber-500"
                   ></textarea>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-[#D9381E] hover:bg-[#B72C15] text-white font-black py-3.5 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition shadow cursor-pointer"
+                  className="w-full bg-[#D9381E] hover:bg-[#B72C15] text-white font-black py-3.5 rounded-none text-xs sm:text-sm uppercase tracking-wider transition shadow cursor-pointer"
                 >
                   Send Catering Request Direct to Donald
                 </button>

@@ -31,7 +31,7 @@ export default function CarolinaGoldLayout() {
       <div className="bg-[#261B14] text-[#F5ECE1] py-2 px-3 text-xs border-b border-[#3E2E25]">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <span className="bg-[#B45309] text-white text-[10px] font-black uppercase px-2 py-0.5 rounded">
+            <span className="bg-[#B45309] text-white text-[10px] font-black uppercase px-2 py-0.5 rounded-none">
               Andrews, SC Heritage
             </span>
             <span className="font-medium text-amber-200">
@@ -58,7 +58,7 @@ export default function CarolinaGoldLayout() {
             <img
               src="./images/truck-logo-wrap.jpg"
               alt="Tisdale's Southern BBQ Logo"
-              className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover border-4 border-[#B45309] shadow-md"
+              className="w-16 h-16 sm:w-20 sm:h-20 rounded-none object-cover border-4 border-[#B45309] shadow-md"
             />
             <div>
               <span className="text-[#B45309] text-xs font-black uppercase tracking-widest block">
@@ -76,19 +76,19 @@ export default function CarolinaGoldLayout() {
           <div className="flex items-center flex-wrap gap-2.5">
             <a
               href="#gold-menu"
-              className="px-4 py-2 rounded-lg bg-[#FAF4EA] hover:bg-[#F3E7D3] border border-[#D5C2A5] text-[#78350F] font-bold text-xs uppercase tracking-wider transition"
+              className="px-4 py-2 rounded-none bg-[#FAF4EA] hover:bg-[#F3E7D3] border border-[#D5C2A5] text-[#78350F] font-bold text-xs uppercase tracking-wider transition"
             >
               View Menu
             </a>
             <a
               href="#gold-location"
-              className="px-4 py-2 rounded-lg bg-[#FAF4EA] hover:bg-[#F3E7D3] border border-[#D5C2A5] text-[#78350F] font-bold text-xs uppercase tracking-wider transition"
+              className="px-4 py-2 rounded-none bg-[#FAF4EA] hover:bg-[#F3E7D3] border border-[#D5C2A5] text-[#78350F] font-bold text-xs uppercase tracking-wider transition"
             >
               Today's Stop
             </a>
             <a
               href="tel:9107092900"
-              className="flex items-center gap-2 bg-[#991B1B] hover:bg-[#7F1D1D] text-white font-bold px-4 py-2.5 rounded-lg text-xs uppercase tracking-wider transition shadow"
+              className="flex items-center gap-2 bg-[#991B1B] hover:bg-[#7F1D1D] text-white font-bold px-4 py-2.5 rounded-none text-xs uppercase tracking-wider transition shadow"
             >
               <Phone className="w-3.5 h-3.5" />
               <span>Call Trailer</span>
@@ -100,11 +100,11 @@ export default function CarolinaGoldLayout() {
 
       {/* 3. Hero: Donald's Story & The Heart Behind the Food */}
       <section className="py-12 px-4 max-w-7xl mx-auto">
-        <div className="bg-[#FFFFFF] border border-[#E7DFD5] rounded-3xl p-6 sm:p-10 shadow-md">
+        <div className="bg-[#FFFFFF] border border-[#E7DFD5] rounded-none p-6 sm:p-10 shadow-md">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             <div className="lg:col-span-7 space-y-4">
-              <div className="inline-flex items-center gap-1.5 text-[#B45309] text-xs font-black uppercase tracking-widest bg-[#FEF3C7] px-3 py-1 rounded-md border border-[#FDE68A]">
+              <div className="inline-flex items-center gap-1.5 text-[#B45309] text-xs font-black uppercase tracking-widest bg-[#FEF3C7] px-3 py-1 rounded-none border border-[#FDE68A]">
                 <Heart className="w-3.5 h-3.5 text-rose-600 fill-rose-600" />
                 <span>The Story of Donald Tisdale</span>
               </div>
@@ -129,11 +129,11 @@ export default function CarolinaGoldLayout() {
             </div>
 
             <div className="lg:col-span-5">
-              <div className="bg-[#FAF7F0] border-2 border-[#D5C2A5] rounded-2xl p-4 shadow-sm text-center space-y-3">
+              <div className="bg-[#FAF7F0] border-2 border-[#D5C2A5] rounded-none p-4 shadow-sm text-center space-y-3">
                 <img
                   src="./images/truck-logo-wrap.jpg"
                   alt="Donald's Trailer"
-                  className="w-full h-56 object-cover rounded-xl border border-[#D5C2A5]"
+                  className="w-full h-56 object-cover rounded-none border border-[#D5C2A5]"
                 />
                 <div className="text-xs text-stone-600 italic font-serif">
                   "We love smiling faces; we aim to please our customers and value their opinions."
@@ -147,10 +147,10 @@ export default function CarolinaGoldLayout() {
 
       {/* 4. Today's Location Signboard */}
       <section id="gold-location" className="py-6 px-4 max-w-7xl mx-auto">
-        <div className="bg-[#261B14] text-white rounded-2xl p-6 sm:p-8 shadow-lg border-2 border-[#3E2E25]">
+        <div className="bg-[#261B14] text-white rounded-none p-6 sm:p-8 shadow-lg border-2 border-[#3E2E25]">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="space-y-2 text-center md:text-left">
-              <span className="bg-[#B45309] text-white text-[11px] font-black uppercase px-2.5 py-1 rounded inline-block">
+              <span className="bg-[#B45309] text-white text-[11px] font-black uppercase px-2.5 py-1 rounded-none inline-block">
                 Where We Are Parked Today
               </span>
               <h3 className="text-3xl font-black text-white font-['Playfair_Display']">
@@ -170,7 +170,7 @@ export default function CarolinaGoldLayout() {
                 href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(current.name + ' ' + current.address)}`}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center justify-center gap-2 bg-[#B45309] hover:bg-[#92400E] text-white font-bold px-5 py-3 rounded-xl text-xs uppercase tracking-wider transition shadow"
+                className="flex items-center justify-center gap-2 bg-[#B45309] hover:bg-[#92400E] text-white font-bold px-5 py-3 rounded-none text-xs uppercase tracking-wider transition shadow"
               >
                 <Navigation className="w-4 h-4" />
                 <span>Get Directions</span>
@@ -178,7 +178,7 @@ export default function CarolinaGoldLayout() {
 
               <a
                 href="tel:9107092900"
-                className="flex items-center justify-center gap-2 bg-[#3A2A20] hover:bg-[#4E392B] border border-[#5E4434] text-white font-bold px-5 py-3 rounded-xl text-xs uppercase tracking-wider transition"
+                className="flex items-center justify-center gap-2 bg-[#3A2A20] hover:bg-[#4E392B] border border-[#5E4434] text-white font-bold px-5 py-3 rounded-none text-xs uppercase tracking-wider transition"
               >
                 <Phone className="w-4 h-4 text-emerald-400" />
                 <span>Call (910) 709-2900</span>
@@ -208,7 +208,7 @@ export default function CarolinaGoldLayout() {
             <button
               key={cat.key}
               onClick={() => setActiveCategory(cat.key)}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer border ${
+              className={`px-4 py-2 rounded-none text-xs font-bold transition cursor-pointer border ${
                 activeCategory === cat.key
                   ? 'bg-[#B45309] text-white border-[#B45309] shadow'
                   : 'bg-white text-stone-700 hover:bg-[#FAF4EA] border-[#E7DFD5]'
@@ -227,7 +227,7 @@ export default function CarolinaGoldLayout() {
             return (
               <div
                 key={item.id}
-                className={`bg-[#FFFFFF] border rounded-2xl p-5 shadow-sm transition flex flex-col justify-between ${
+                className={`bg-[#FFFFFF] border rounded-none p-5 shadow-sm transition flex flex-col justify-between ${
                   isSoldOut
                     ? 'border-stone-300 opacity-60 bg-stone-50'
                     : 'border-[#E7DFD5] hover:border-[#B45309]'
@@ -240,7 +240,7 @@ export default function CarolinaGoldLayout() {
                     </h4>
                     <div className="text-right shrink-0">
                       {isSoldOut ? (
-                        <span className="text-[10px] font-black uppercase bg-rose-600 text-white px-2 py-0.5 rounded">
+                        <span className="text-[10px] font-black uppercase bg-rose-600 text-white px-2 py-0.5 rounded-none">
                           SOLD OUT
                         </span>
                       ) : (
@@ -289,7 +289,7 @@ export default function CarolinaGoldLayout() {
             </div>
             <a
               href="tel:9107092900"
-              className="bg-[#991B1B] hover:bg-[#7F1D1D] text-white font-bold px-4 py-2 rounded-xl text-xs uppercase tracking-wider shadow"
+              className="bg-[#991B1B] hover:bg-[#7F1D1D] text-white font-bold px-4 py-2 rounded-none text-xs uppercase tracking-wider shadow"
             >
               Call to Check Daily Availability: (910) 709-2900
             </a>
@@ -297,15 +297,15 @@ export default function CarolinaGoldLayout() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {specials.filter(s => !s.hidden).slice(0, 4).map(s => (
-              <div key={s.id} className="bg-white rounded-2xl p-4 border border-[#DCD3C5] shadow-sm">
+              <div key={s.id} className="bg-white rounded-none p-4 border border-[#DCD3C5] shadow-sm">
                 <div className="flex items-center justify-between gap-2 mb-1">
-                  <span className="text-[10px] font-bold uppercase bg-[#FEF3C7] text-[#92400E] px-2 py-0.5 rounded">
+                  <span className="text-[10px] font-bold uppercase bg-[#FEF3C7] text-[#92400E] px-2 py-0.5 rounded-none">
                     {s.badge}
                   </span>
                   {s.inStock ? (
                     <span className="font-bold text-[#B45309] font-serif">{s.price}</span>
                   ) : (
-                    <span className="text-[10px] font-black uppercase bg-rose-600 text-white px-2 py-0.5 rounded">
+                    <span className="text-[10px] font-black uppercase bg-rose-600 text-white px-2 py-0.5 rounded-none">
                       SOLD OUT
                     </span>
                   )}
@@ -322,7 +322,7 @@ export default function CarolinaGoldLayout() {
       <footer className="bg-[#1F1611] text-[#D5CDC5] py-10 px-4 text-xs">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 border-b border-stone-800 pb-6 mb-6">
           <div className="flex items-center gap-3">
-            <img src="./images/truck-logo-wrap.jpg" alt="Logo" className="w-12 h-12 rounded-full border border-[#B45309]" />
+            <img src="./images/truck-logo-wrap.jpg" alt="Logo" className="w-12 h-12 rounded-none border border-[#B45309]" />
             <div>
               <h4 className="text-lg font-bold text-white font-['Playfair_Display']">Tisdale’s Southern BBQ</h4>
               <p className="text-xs text-amber-300">Andrews, SC Roots • Fayetteville, NC</p>

@@ -3,7 +3,6 @@ import { usePitmaster } from '../context/PitmasterContext';
 import { MapPin, Navigation, Clock, Phone, AlertCircle, Calendar, Sparkles, Flame, ShieldCheck } from 'lucide-react';
 import SquareIcon from './icons/SquareIcon';
 import PitFireSmokeCanvas from './effects/PitFireSmokeCanvas';
-import PrecisionCorners from './common/PrecisionCorners';
 
 export default function HeroLocationCard() {
   const { schedule, announcements } = usePitmaster();
@@ -25,9 +24,8 @@ export default function HeroLocationCard() {
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         
-        {/* Heartfelt Welcome Signboard with Precision Hairline Borders */}
-        <div className="relative mb-6 p-4 rounded-xl bg-[#1A1411]/90 backdrop-blur-sm border border-[#3E2E25] text-center shadow-lg">
-          <PrecisionCorners color="text-amber-500/30" />
+        {/* Heartfelt Welcome Signboard with Clean Straight Precision Hairline Borders */}
+        <div className="relative mb-6 p-4 rounded-none bg-[#1A1411]/90 backdrop-blur-sm border border-[#3E2E25] text-center shadow-lg">
           <p className="text-[#F59E0B] text-xs sm:text-sm font-bold uppercase tracking-widest font-['Bebas_Neue'] text-lg sm:text-xl">
             "Thank You for Choosing Us to Have Your Lunch or Dinner — We Appreciate Your Support!"
           </p>
@@ -36,14 +34,13 @@ export default function HeroLocationCard() {
           </p>
         </div>
 
-        {/* Main Location & Trailer Showcase Card */}
-        <div className="relative rounded-2xl bg-[#171210]/95 backdrop-blur-md border border-[#3E2E25] p-5 sm:p-8 shadow-2xl transition-all duration-200">
-          <PrecisionCorners color="text-amber-500/50" />
+        {/* Main Location & Trailer Showcase Card - Crisp 90-Degree Straight Lines */}
+        <div className="relative rounded-none bg-[#171210]/95 backdrop-blur-md border border-[#3E2E25] p-5 sm:p-8 shadow-2xl transition-all duration-200">
           
           {/* Top Precision Metadata Strip */}
           <div className="flex items-center justify-between border-b border-[#35251F] pb-3 mb-5 font-mono text-[10px] text-stone-400 uppercase tracking-widest">
             <div className="flex items-center gap-2 text-amber-400 font-bold">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span className="w-2 h-2 rounded-none bg-emerald-500 animate-pulse"></span>
               <span>[ SPEC: 100% SPLIT HICKORY WOOD • LOW & SLOW ]</span>
             </div>
             <span className="hidden sm:inline text-stone-500">
@@ -56,8 +53,8 @@ export default function HeroLocationCard() {
             {/* Left 7 Cols: Location & Pitmaster Welcome */}
             <div className="lg:col-span-7 space-y-4">
               
-              <div className="inline-flex items-center gap-2 bg-[#261B16] border border-[#523A2E] px-3 py-1 rounded text-amber-300 text-xs font-mono font-bold uppercase tracking-wider">
-                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <div className="inline-flex items-center gap-2 bg-[#261B16] border border-[#523A2E] px-3 py-1 rounded-none text-amber-300 text-xs font-mono font-bold uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-none bg-emerald-400"></span>
                 <span>{current.date || "Today's Food Trailer Stop"}</span>
               </div>
 
@@ -87,13 +84,13 @@ export default function HeroLocationCard() {
                 )}
               </div>
 
-              {/* Action Buttons with Snappy Instant Response */}
+              {/* Action Buttons with Snappy Instant Response & Straight Lines */}
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <a
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(current.name + ' ' + current.address)}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2 bg-[#D9381E] hover:bg-[#B72C15] active:translate-y-0.5 text-white font-black px-5 py-3 rounded-lg text-sm transition-all duration-150 shadow-md cursor-pointer uppercase tracking-wider border border-[#FF6B35]/40"
+                  className="flex items-center gap-2 bg-[#D9381E] hover:bg-[#B72C15] active:translate-y-0.5 text-white font-black px-5 py-3 rounded-none text-sm transition-all duration-150 shadow-md cursor-pointer uppercase tracking-wider border border-[#FF6B35]/40"
                 >
                   <Navigation className="w-4 h-4" />
                   <span>Get Directions</span>
@@ -101,7 +98,7 @@ export default function HeroLocationCard() {
 
                 <a
                   href="tel:9107092900"
-                  className="flex items-center gap-2 bg-[#251A15] hover:bg-[#34241D] active:translate-y-0.5 border border-[#4E3529] hover:border-amber-500/60 text-stone-100 font-bold px-4 py-3 rounded-lg text-sm transition-all duration-150 shadow-sm"
+                  className="flex items-center gap-2 bg-[#251A15] hover:bg-[#34241D] active:translate-y-0.5 border border-[#4E3529] hover:border-amber-500/60 text-stone-100 font-bold px-4 py-3 rounded-none text-sm transition-all duration-150 shadow-sm"
                 >
                   <Phone className="w-4 h-4 text-emerald-400" />
                   <span>Call to Order: (910) 709-2900</span>
@@ -118,15 +115,14 @@ export default function HeroLocationCard() {
 
               {/* Square Payment Acceptance Bar */}
               <div className="flex flex-wrap items-center gap-2 pt-1">
-                <span className="inline-flex items-center gap-2 bg-[#1C1512] border border-[#3E2E25] text-stone-200 px-3 py-1.5 rounded-lg text-xs font-semibold">
+                <span className="inline-flex items-center gap-2 bg-[#1C1512] border border-[#3E2E25] text-stone-200 px-3 py-1.5 rounded-none text-xs font-semibold">
                   <SquareIcon className="w-4 h-4 text-emerald-400 shrink-0" />
                   <span>We Accept Square at the Window: Cards, Apple Pay, Tap & Cash</span>
                 </span>
               </div>
 
               {/* Pitmaster Kitchen Policy Notice */}
-              <div className="mt-4 p-4 rounded-xl bg-[#201713] border border-[#3E2D24] text-xs sm:text-sm flex items-start gap-3 text-stone-300 relative">
-                <PrecisionCorners color="text-amber-500/20" />
+              <div className="mt-4 p-4 rounded-none bg-[#201713] border border-[#3E2D24] text-xs sm:text-sm flex items-start gap-3 text-stone-300 relative">
                 <Flame className="w-5 h-5 text-orange-500 shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-amber-300">A Quick Note From Donald:</strong>{" "}
@@ -144,9 +140,8 @@ export default function HeroLocationCard() {
             {/* Right 5 Cols: Trailer Photo & Weekly Schedule */}
             <div className="lg:col-span-5 space-y-4">
               
-              {/* Photo Card with authentic flame wrap */}
-              <div className="relative rounded-xl overflow-hidden border border-[#443026] group shadow-xl">
-                <PrecisionCorners color="text-amber-500/40" />
+              {/* Photo Card with authentic flame wrap & straight borders */}
+              <div className="relative rounded-none overflow-hidden border border-[#443026] group shadow-xl">
                 <img
                   src="./images/truck-logo-wrap.jpg"
                   alt="Tisdale's BBQ Food Trailer"
@@ -154,19 +149,17 @@ export default function HeroLocationCard() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
                 <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white font-medium">
-                  <span className="bg-black/90 px-2.5 py-1 rounded border border-stone-700 font-bold text-amber-300 font-mono text-[11px]">
+                  <span className="bg-black/90 px-2.5 py-1 rounded-none border border-stone-700 font-bold text-amber-300 font-mono text-[11px]">
                     Family Owned & Operated
                   </span>
-                  <span className="bg-[#D9381E] px-2.5 py-1 rounded text-white font-bold tracking-wider uppercase font-mono text-[11px]">
+                  <span className="bg-[#D9381E] px-2.5 py-1 rounded-none text-white font-bold tracking-wider uppercase font-mono text-[11px]">
                     Low & Slow Smoke
                   </span>
                 </div>
               </div>
 
-              {/* Upcoming Weekly Stops Card with Precision Lines */}
-              <div className="relative bg-[#1A1411]/90 backdrop-blur-sm border border-[#3E2E25] rounded-xl p-4 text-xs shadow-lg">
-                <PrecisionCorners color="text-amber-500/30" />
-                
+              {/* Upcoming Weekly Stops Card with Precision Straight Lines */}
+              <div className="relative bg-[#1A1411]/90 backdrop-blur-sm border border-[#3E2E25] rounded-none p-4 text-xs shadow-lg">
                 <div className="flex items-center justify-between text-stone-300 font-bold uppercase tracking-wider mb-2.5 pb-2 border-b border-[#35261F]">
                   <span className="flex items-center gap-1.5 text-amber-400 font-['Bebas_Neue'] text-base tracking-wide">
                     <Calendar className="w-4 h-4 text-amber-400" />
@@ -179,7 +172,7 @@ export default function HeroLocationCard() {
                   {schedule.upcomingLocations.map((loc, i) => (
                     <div 
                       key={i} 
-                      className="flex items-center justify-between py-1.5 px-2 rounded border border-transparent hover:border-amber-500/20 hover:bg-white/5 transition-all duration-150"
+                      className="flex items-center justify-between py-1.5 px-2 rounded-none border border-transparent hover:border-amber-500/20 hover:bg-white/5 transition-all duration-150"
                     >
                       <div className="truncate">
                         <strong className="text-amber-300 mr-2 font-mono text-[11px]">{loc.day}:</strong>

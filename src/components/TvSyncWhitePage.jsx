@@ -37,12 +37,12 @@ export default function TvSyncWhitePage() {
     <div className="fixed inset-0 z-50 bg-stone-900/80 backdrop-blur-sm overflow-y-auto p-2 sm:p-6 flex justify-center items-start print:p-0 print:bg-white print:static animate-fadeIn">
       
       {/* Document Container */}
-      <div className="bg-white text-stone-900 rounded-2xl shadow-2xl max-w-4xl w-full my-4 border border-stone-200 overflow-hidden print:shadow-none print:border-none print:m-0 print:rounded-none">
+      <div className="bg-white text-stone-900 rounded-none shadow-2xl max-w-4xl w-full my-4 border border-stone-200 overflow-hidden print:shadow-none print:border-none print:m-0 print:rounded-none">
         
         {/* Top Control Bar (Hidden on print) */}
         <div className="bg-stone-900 text-stone-200 px-6 py-3 flex items-center justify-between print:hidden border-b border-stone-800">
           <div className="flex items-center gap-2">
-            <span className="bg-amber-500 text-black font-black text-xs px-2 py-0.5 rounded font-mono uppercase">
+            <span className="bg-amber-500 text-black font-black text-xs px-2 py-0.5 rounded-none font-mono uppercase">
               Craftsman Options Brief
             </span>
             <span className="text-xs text-stone-300 font-medium">
@@ -53,7 +53,7 @@ export default function TvSyncWhitePage() {
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrint}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-bold transition cursor-pointer border border-stone-700"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-bold transition cursor-pointer border border-stone-700"
               title="Print or Save as PDF"
             >
               <Printer className="w-3.5 h-3.5 text-amber-400" />
@@ -62,7 +62,7 @@ export default function TvSyncWhitePage() {
 
             <button
               onClick={() => setIsTvWhitePageOpen(false)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-bold transition cursor-pointer border border-stone-700"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-bold transition cursor-pointer border border-stone-700"
             >
               <X className="w-3.5 h-3.5" />
               <span>Close Brief</span>
@@ -85,7 +85,7 @@ export default function TvSyncWhitePage() {
               </p>
             </div>
 
-            <div className="text-left sm:text-right text-xs text-stone-500 shrink-0 font-mono bg-white p-3 rounded-lg border border-stone-200">
+            <div className="text-left sm:text-right text-xs text-stone-500 shrink-0 font-mono bg-white p-3 rounded-none border border-stone-200">
               <div><strong>Craftsman:</strong> Mr. Donald Tisdale</div>
               <div><strong>Business:</strong> Tisdale’s Southern BBQ</div>
               <div><strong>Date:</strong> October 2026</div>
@@ -100,7 +100,7 @@ export default function TvSyncWhitePage() {
           {/* Section 1: Executive Summary */}
           <section className="space-y-3">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
-              <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
+              <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 1
               </span>
               Your Trailer, Your Craft: The Vision
@@ -108,7 +108,7 @@ export default function TvSyncWhitePage() {
             <p className="text-stone-700">
               Mr. Tisdale, you’ve said that you love cooking like a carpenter loves building houses. We have that exact same passion for creating. When folks pull up to your food trailer window, your TV screen is the showcase for your hard work—from your hickory-smoked ribs and beef brisket to your fried pork chops and whole wings. You deserve a setup that puts you in total control, without headaches, complicated gear, or monthly bills.
             </p>
-            <div className="bg-amber-50 border-l-4 border-amber-600 p-4 rounded-r-lg">
+            <div className="bg-amber-50 border-l-4 border-amber-600 p-4 rounded-none">
               <h4 className="font-bold text-amber-900 text-sm">Our Shared Standard: Maximum Impact, Zero Monthly Fees, Your Choice of Workflow</h4>
               <p className="text-xs text-amber-800 mt-1">
                 You are the pitmaster and in complete command. We built this so you have the freedom to work however you feel most comfortable: whether you prefer <strong>(A) downloading a fresh 1080p image to your thumb drive in 5 seconds</strong>, or <strong>(B) having your TV update wirelessly over the air directly from your phone</strong> when you mark an item sold out during a heavy rush.
@@ -120,7 +120,7 @@ export default function TvSyncWhitePage() {
           <section className="space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-stone-200 pb-2">
               <h2 className="text-lg font-black text-stone-900 flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
+                <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                   2
                 </span>
                 Interactive Simulator: See How Your TV Screen Responds
@@ -131,11 +131,11 @@ export default function TvSyncWhitePage() {
             </div>
 
             {/* Test buttons */}
-            <div className="flex flex-wrap items-center gap-2 bg-stone-100 p-3 rounded-xl border border-stone-200">
+            <div className="flex flex-wrap items-center gap-2 bg-stone-100 p-3 rounded-none border border-stone-200">
               <span className="text-xs font-bold text-stone-700 font-mono">Test Shift Event:</span>
               <button
                 onClick={() => setSimMode('normal')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
+                className={`px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer ${
                   simMode === 'normal'
                     ? 'bg-stone-900 text-white shadow'
                     : 'bg-white text-stone-700 border border-stone-300 hover:bg-stone-50'
@@ -146,7 +146,7 @@ export default function TvSyncWhitePage() {
 
               <button
                 onClick={() => setSimMode('rush86')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
+                className={`px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer ${
                   simMode === 'rush86'
                     ? 'bg-rose-700 text-white shadow'
                     : 'bg-white text-stone-700 border border-stone-300 hover:bg-stone-50'
@@ -157,7 +157,7 @@ export default function TvSyncWhitePage() {
 
               <button
                 onClick={() => setSimMode('fryerOff')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
+                className={`px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer ${
                   simMode === 'fryerOff'
                     ? 'bg-amber-600 text-white shadow'
                     : 'bg-white text-stone-700 border border-stone-300 hover:bg-stone-50'
@@ -168,10 +168,10 @@ export default function TvSyncWhitePage() {
             </div>
 
             {/* Mock TV Frame */}
-            <div className="bg-[#120F0E] rounded-xl border-4 border-stone-800 p-4 sm:p-6 text-white space-y-4 shadow-xl">
+            <div className="bg-[#120F0E] rounded-none border-4 border-stone-800 p-4 sm:p-6 text-white space-y-4 shadow-xl">
               <div className="flex items-center justify-between border-b border-amber-600/40 pb-3">
                 <div className="flex items-center gap-3">
-                  <span className="w-8 h-8 rounded-full bg-amber-500 text-stone-950 flex items-center justify-center font-black font-['Bebas_Neue'] text-lg">
+                  <span className="w-8 h-8 rounded-none bg-amber-500 text-stone-950 flex items-center justify-center font-black font-['Bebas_Neue'] text-lg">
                     T
                   </span>
                   <div>
@@ -184,7 +184,7 @@ export default function TvSyncWhitePage() {
                   </div>
                 </div>
 
-                <span className="text-xs font-mono bg-stone-800 px-2.5 py-1 rounded text-stone-300">
+                <span className="text-xs font-mono bg-stone-800 px-2.5 py-1 rounded-none text-stone-300">
                   Call: (910) 709-2900
                 </span>
               </div>
@@ -193,7 +193,7 @@ export default function TvSyncWhitePage() {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
                 
                 {/* Col 1 */}
-                <div className="bg-stone-900/80 p-3 rounded-lg border border-stone-800">
+                <div className="bg-stone-900/80 p-3 rounded-none border border-stone-800">
                   <h5 className="font-bold text-amber-400 border-b border-stone-800 pb-1 mb-2 font-mono uppercase text-[11px]">
                     Dinners & Plates (w/ 2 Sides)
                   </h5>
@@ -209,7 +209,7 @@ export default function TvSyncWhitePage() {
                     <div className="flex justify-between items-baseline">
                       <span className="text-stone-200">1/2 LB Beef Brisket</span>
                       {simMode === 'rush86' ? (
-                        <span className="bg-rose-600 text-white font-mono text-[9px] font-black px-1.5 py-0.2 rounded uppercase">
+                        <span className="bg-rose-600 text-white font-mono text-[9px] font-black px-1.5 py-0.2 rounded-none uppercase">
                           SOLD OUT
                         </span>
                       ) : (
@@ -219,7 +219,7 @@ export default function TvSyncWhitePage() {
                     <div className="flex justify-between items-baseline">
                       <span className="text-stone-200">Smoked Ribs (Slab/Plate)</span>
                       {simMode === 'rush86' ? (
-                        <span className="bg-rose-600 text-white font-mono text-[9px] font-black px-1.5 py-0.2 rounded uppercase">
+                        <span className="bg-rose-600 text-white font-mono text-[9px] font-black px-1.5 py-0.2 rounded-none uppercase">
                           SOLD OUT
                         </span>
                       ) : (
@@ -230,7 +230,7 @@ export default function TvSyncWhitePage() {
                 </div>
 
                 {/* Col 2 */}
-                <div className="bg-stone-900/80 p-3 rounded-lg border border-stone-800">
+                <div className="bg-stone-900/80 p-3 rounded-none border border-stone-800">
                   <h5 className="font-bold text-amber-400 border-b border-stone-800 pb-1 mb-2 font-mono uppercase text-[11px]">
                     Sandwiches & Bulk Meats
                   </h5>
@@ -255,7 +255,7 @@ export default function TvSyncWhitePage() {
                 </div>
 
                 {/* Col 3 */}
-                <div className="bg-stone-900/80 p-3 rounded-lg border border-stone-800">
+                <div className="bg-stone-900/80 p-3 rounded-none border border-stone-800">
                   <h5 className="font-bold text-amber-400 border-b border-stone-800 pb-1 mb-2 font-mono uppercase text-[11px]">
                     Sides, Fryer & Desserts
                   </h5>
@@ -267,7 +267,7 @@ export default function TvSyncWhitePage() {
                     <div className="flex justify-between items-baseline">
                       <span className="text-stone-200">Fried Pork Chop Dinner</span>
                       {simMode === 'fryerOff' ? (
-                        <span className="bg-amber-600 text-stone-950 font-mono text-[9px] font-black px-1.5 py-0.2 rounded uppercase">
+                        <span className="bg-amber-600 text-stone-950 font-mono text-[9px] font-black px-1.5 py-0.2 rounded-none uppercase">
                           GREASE OFF
                         </span>
                       ) : (
@@ -277,7 +277,7 @@ export default function TvSyncWhitePage() {
                     <div className="flex justify-between items-baseline">
                       <span className="text-stone-200">12pc XL Fried Shrimp</span>
                       {simMode === 'fryerOff' ? (
-                        <span className="bg-amber-600 text-stone-950 font-mono text-[9px] font-black px-1.5 py-0.2 rounded uppercase">
+                        <span className="bg-amber-600 text-stone-950 font-mono text-[9px] font-black px-1.5 py-0.2 rounded-none uppercase">
                           GREASE OFF
                         </span>
                       ) : (
@@ -306,7 +306,7 @@ export default function TvSyncWhitePage() {
           {/* Section 3: The 4 Equipment Options Explained */}
           <section className="space-y-6">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
-              <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
+              <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 3
               </span>
               The Four Practical Ways You Can Run Your Trailer Screen
@@ -315,7 +315,7 @@ export default function TvSyncWhitePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               
               {/* Option A: USB Drive */}
-              <div className="border border-stone-300 rounded-xl p-5 bg-white space-y-3 flex flex-col justify-between">
+              <div className="border border-stone-300 rounded-none p-5 bg-white space-y-3 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-2 text-stone-900">
                     <Usb className="w-5 h-5 text-amber-600 shrink-0" />
@@ -331,14 +331,14 @@ export default function TvSyncWhitePage() {
                     <li><strong>Updating:</strong> Pop in your updated USB stick</li>
                   </ul>
                 </div>
-                <div className="text-[11px] text-emerald-800 bg-emerald-50 p-2.5 rounded-lg border border-emerald-200">
+                <div className="text-[11px] text-emerald-800 bg-emerald-50 p-2.5 rounded-none border border-emerald-200">
                   ✓ Bulletproof for festivals, county fairs, or rural pop-ups where cell service is spotty.
                 </div>
               </div>
 
               {/* Option B: Smart TV Browser (Recommended) */}
-              <div className="border-2 border-emerald-500 rounded-xl p-5 bg-emerald-50/40 space-y-3 flex flex-col justify-between relative">
-                <div className="absolute -top-3 left-4 bg-emerald-600 text-white text-[10px] font-black uppercase px-2 py-0.5 rounded shadow">
+              <div className="border-2 border-emerald-500 rounded-none p-5 bg-emerald-50/40 space-y-3 flex flex-col justify-between relative">
+                <div className="absolute -top-3 left-4 bg-emerald-600 text-white text-[10px] font-black uppercase px-2 py-0.5 rounded-none shadow">
                   ⭐ Top Choice for Zero Extra Gear
                 </div>
                 <div>
@@ -356,13 +356,13 @@ export default function TvSyncWhitePage() {
                     <li><strong>Updating:</strong> Instant live over-the-air sync!</li>
                   </ul>
                 </div>
-                <div className="text-[11px] text-emerald-900 bg-white p-2.5 rounded-lg border border-emerald-200 font-medium">
+                <div className="text-[11px] text-emerald-900 bg-white p-2.5 rounded-none border border-emerald-200 font-medium">
                   ✓ Whenever you mark an item "Sold Out" on your phone, your TV updates live automatically right before your customers' eyes!
                 </div>
               </div>
 
               {/* Option C: $20 Amazon Fire Stick */}
-              <div className="border border-stone-300 rounded-xl p-5 bg-white space-y-3 flex flex-col justify-between">
+              <div className="border border-stone-300 rounded-none p-5 bg-white space-y-3 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-2 text-stone-900">
                     <Tv className="w-5 h-5 text-blue-600 shrink-0" />
@@ -378,13 +378,13 @@ export default function TvSyncWhitePage() {
                     <li><strong>Updating:</strong> Instant live over-the-air sync</li>
                   </ul>
                 </div>
-                <div className="text-[11px] text-blue-900 bg-blue-50 p-2.5 rounded-lg border border-blue-200">
+                <div className="text-[11px] text-blue-900 bg-blue-50 p-2.5 rounded-none border border-blue-200">
                   ✓ Turns any standard HDMI monitor into an auto-syncing digital signage board.
                 </div>
               </div>
 
               {/* Option D: $10 HDMI Direct Mirror Cable */}
-              <div className="border border-stone-300 rounded-xl p-5 bg-white space-y-3 flex flex-col justify-between">
+              <div className="border border-stone-300 rounded-none p-5 bg-white space-y-3 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-2 text-stone-900">
                     <Cable className="w-5 h-5 text-purple-600 shrink-0" />
@@ -400,7 +400,7 @@ export default function TvSyncWhitePage() {
                     <li><strong>Updating:</strong> Direct live mirror of your screen</li>
                   </ul>
                 </div>
-                <div className="text-[11px] text-purple-900 bg-purple-50 p-2.5 rounded-lg border border-purple-200">
+                <div className="text-[11px] text-purple-900 bg-purple-50 p-2.5 rounded-none border border-purple-200">
                   ✓ Simple plug-and-play with zero wireless setup or troubleshooting.
                 </div>
               </div>
@@ -411,13 +411,13 @@ export default function TvSyncWhitePage() {
           {/* Section 4: Commercial Digital Signage Comparison */}
           <section className="space-y-4">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
-              <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
+              <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 4
               </span>
               Why We Don't Want You Paying for Commercial Signage Systems
             </h2>
 
-            <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 text-xs space-y-2">
+            <div className="bg-stone-50 border border-stone-200 rounded-none p-4 text-xs space-y-2">
               <p className="text-stone-700">
                 Many food truck owners get pitched commercial digital signage services like <strong>Toast Digital Signage</strong>, <strong>Raydiant</strong>, or <strong>Mood Media</strong>. Here is why we want you to keep that hard-earned money in your pocket:
               </p>
@@ -426,7 +426,7 @@ export default function TvSyncWhitePage() {
                 <li>They require buying <strong>$200 to $400 proprietary media player boxes</strong> that can fail in food trailer heat and road vibrations.</li>
                 <li>They trap you into contracts and force you to use separate logins and confusing portals.</li>
               </ul>
-              <div className="bg-emerald-100/60 p-3 rounded-lg border border-emerald-300 font-medium text-emerald-950">
+              <div className="bg-emerald-100/60 p-3 rounded-none border border-emerald-300 font-medium text-emerald-950">
                 💡 <strong>What We Built Specifically For You:</strong> Your new website <em>is</em> your digital menu board. Whenever you make a change on your phone, your TV updates at that exact moment for <strong>$0 extra cost and zero recurring bills</strong>.
               </div>
             </div>
@@ -435,13 +435,13 @@ export default function TvSyncWhitePage() {
           {/* Section 5: Side-by-Side Matrix */}
           <section className="space-y-4">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
-              <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
+              <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 5
               </span>
               Side-by-Side Comparison of Your Choices
             </h2>
 
-            <div className="overflow-x-auto border border-stone-200 rounded-xl">
+            <div className="overflow-x-auto border border-stone-200 rounded-none">
               <table className="w-full text-left text-xs">
                 <thead className="bg-stone-100 text-stone-900 font-bold border-b border-stone-200">
                   <tr>
@@ -498,13 +498,13 @@ export default function TvSyncWhitePage() {
           {/* Section 6: Action Plan / Partnership */}
           <section className="space-y-3 border-t border-stone-200 pt-6">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2">
-              <span className="w-6 h-6 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
+              <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 6
               </span>
               How We Can Bring This to Life Together
             </h2>
 
-            <div className="bg-stone-50 border border-stone-200 rounded-xl p-5 space-y-3 text-xs">
+            <div className="bg-stone-50 border border-stone-200 rounded-none p-5 space-y-3 text-xs">
               <h4 className="font-bold text-stone-900 text-sm">
                 Three Simple Steps We Can Take at Your Pace:
               </h4>

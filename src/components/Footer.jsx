@@ -18,7 +18,7 @@ export default function Footer() {
               <img
                 src="./images/truck-logo-wrap.jpg"
                 alt="Tisdale's BBQ Logo"
-                className="w-12 h-12 rounded-full border border-amber-500/60 object-cover"
+                className="w-12 h-12 rounded-none border border-amber-500/60 object-cover"
               />
               <div>
                 <h4 className="text-xl font-black text-white font-['Bebas_Neue'] tracking-wider leading-none">
@@ -39,7 +39,7 @@ export default function Footer() {
                 href="https://www.facebook.com"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-1.5 bg-[#1C1613] hover:bg-[#28201B] border border-[#3E3029] text-amber-200 px-3 py-1.5 rounded-lg text-xs font-semibold transition"
+                className="flex items-center gap-1.5 bg-[#1C1613] hover:bg-[#28201B] border border-[#3E3029] text-amber-200 px-3 py-1.5 rounded-none text-xs font-semibold transition"
               >
                 <FacebookIcon className="w-4 h-4 text-blue-400" />
                 <span>TisdalesSouthern BBQ</span>

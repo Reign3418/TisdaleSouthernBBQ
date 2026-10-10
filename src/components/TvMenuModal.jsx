@@ -116,12 +116,12 @@ export default function TvMenuModal() {
         
         {/* Left Info */}
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-amber-500 text-stone-950 font-black">
+          <div className="p-2 rounded-none bg-amber-500 text-stone-950 font-black">
             <Tv className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-black uppercase tracking-widest bg-amber-950 text-amber-300 px-2 py-0.5 rounded border border-amber-600/40">
+              <span className="text-[10px] font-black uppercase tracking-widest bg-amber-950 text-amber-300 px-2 py-0.5 rounded-none border border-amber-600/40">
                 1080p TV Display Hub
               </span>
               <span className="text-xs text-stone-400 hidden sm:inline">
@@ -138,10 +138,10 @@ export default function TvMenuModal() {
         <div className="flex items-center gap-2">
           
           {/* Theme Switcher for TV */}
-          <div className="hidden sm:flex items-center bg-[#251A15] p-1 rounded-lg border border-[#443026] text-xs">
+          <div className="hidden sm:flex items-center bg-[#251A15] p-1 rounded-none border border-[#443026] text-xs">
             <button
               onClick={() => setBoardTheme('dark')}
-              className={`px-2.5 py-1 rounded font-bold transition cursor-pointer flex items-center gap-1 ${
+              className={`px-2.5 py-1 rounded-none font-bold transition cursor-pointer flex items-center gap-1 ${
                 boardTheme === 'dark' ? 'bg-amber-500 text-stone-950 shadow' : 'text-stone-300 hover:text-white'
               }`}
             >
@@ -149,7 +149,7 @@ export default function TvMenuModal() {
             </button>
             <button
               onClick={() => setBoardTheme('classicOrange')}
-              className={`px-2.5 py-1 rounded font-bold transition cursor-pointer flex items-center gap-1 ${
+              className={`px-2.5 py-1 rounded-none font-bold transition cursor-pointer flex items-center gap-1 ${
                 boardTheme === 'classicOrange' ? 'bg-amber-500 text-stone-950 shadow' : 'text-stone-300 hover:text-white'
               }`}
               title="Matches your trailer's original orange and cream colors"
@@ -161,7 +161,7 @@ export default function TvMenuModal() {
           {/* Brainstorming Guide Button */}
           <button
             onClick={() => setShowBrainstorm(!showBrainstorm)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#281D18] hover:bg-[#382821] text-amber-300 hover:text-white text-xs font-bold transition cursor-pointer border border-amber-600/30"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-[#281D18] hover:bg-[#382821] text-amber-300 hover:text-white text-xs font-bold transition cursor-pointer border border-amber-600/30"
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
             <span className="hidden md:inline">Sync Your TV Live?</span>
@@ -171,7 +171,7 @@ export default function TvMenuModal() {
           {/* White Paper Button */}
           <button
             onClick={() => setIsTvWhitePageOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white text-stone-900 hover:bg-amber-100 text-xs font-bold transition cursor-pointer border border-stone-300 shadow-sm"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-white text-stone-900 hover:bg-amber-100 text-xs font-bold transition cursor-pointer border border-stone-300 shadow-sm"
           >
             <span>📄 TV White Paper</span>
           </button>
@@ -180,7 +180,7 @@ export default function TvMenuModal() {
           <button
             onClick={handleDownloadImage}
             disabled={isExporting}
-            className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black transition cursor-pointer shadow-lg disabled:opacity-50"
+            className="flex items-center gap-1.5 px-4 py-1.5 rounded-none bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black transition cursor-pointer shadow-lg disabled:opacity-50"
             title="Export high-resolution 1080p JPG to put on USB stick"
           >
             {isExporting ? (
@@ -194,7 +194,7 @@ export default function TvMenuModal() {
           {/* Fullscreen TV Mode */}
           <button
             onClick={handleToggleFullscreen}
-            className="p-2 rounded-lg bg-[#281D18] hover:bg-stone-800 text-stone-300 hover:text-white transition cursor-pointer border border-stone-700"
+            className="p-2 rounded-none bg-[#281D18] hover:bg-stone-800 text-stone-300 hover:text-white transition cursor-pointer border border-stone-700"
             title="Toggle Fullscreen on TV"
           >
             <Maximize2 className="w-4 h-4" />
@@ -203,7 +203,7 @@ export default function TvMenuModal() {
           {/* Close */}
           <button
             onClick={() => setIsTvMenuOpen(false)}
-            className="p-2 rounded-lg bg-[#281D18] hover:bg-rose-900 text-stone-300 hover:text-white transition cursor-pointer border border-stone-700"
+            className="p-2 rounded-none bg-[#281D18] hover:bg-rose-900 text-stone-300 hover:text-white transition cursor-pointer border border-stone-700"
           >
             <X className="w-4 h-4" />
           </button>
@@ -241,7 +241,7 @@ export default function TvMenuModal() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
-              <div className="bg-[#140E0C] p-4 rounded-xl border border-stone-700 space-y-2">
+              <div className="bg-[#140E0C] p-4 rounded-none border border-stone-700 space-y-2">
                 <div className="flex items-center gap-2 text-emerald-400 font-bold">
                   <Usb className="w-4 h-4" />
                   <span>Option 1: Your USB Flash Drive (Offline)</span>
@@ -251,7 +251,7 @@ export default function TvMenuModal() {
                 </p>
               </div>
 
-              <div className="bg-[#140E0C] p-4 rounded-xl border border-amber-600/50 space-y-2">
+              <div className="bg-[#140E0C] p-4 rounded-none border border-amber-600/50 space-y-2">
                 <div className="flex items-center gap-2 text-amber-300 font-bold">
                   <Wifi className="w-4 h-4" />
                   <span>Option 2: Your Smart TV Browser (Live Sync)</span>
@@ -261,7 +261,7 @@ export default function TvMenuModal() {
                 </p>
               </div>
 
-              <div className="bg-[#140E0C] p-4 rounded-xl border border-stone-700 space-y-2">
+              <div className="bg-[#140E0C] p-4 rounded-none border border-stone-700 space-y-2">
                 <div className="flex items-center gap-2 text-blue-400 font-bold">
                   <Tv className="w-4 h-4" />
                   <span>Option 3: A $20 Amazon Fire Stick</span>
@@ -271,7 +271,7 @@ export default function TvMenuModal() {
                 </p>
               </div>
 
-              <div className="bg-[#140E0C] p-4 rounded-xl border border-stone-700 space-y-2">
+              <div className="bg-[#140E0C] p-4 rounded-none border border-stone-700 space-y-2">
                 <div className="flex items-center gap-2 text-purple-400 font-bold">
                   <Cable className="w-4 h-4" />
                   <span>Option 4: A $10 Direct HDMI Cable</span>
@@ -327,11 +327,11 @@ export default function TvMenuModal() {
                 <img
                   src="./images/truck-logo-wrap.jpg"
                   alt="Tisdale Logo"
-                  className="w-20 h-20 rounded-full border-4 border-amber-500 shadow-xl object-cover"
+                  className="w-20 h-20 rounded-none border-4 border-amber-500 shadow-xl object-cover"
                 />
                 <div>
                   <div className="flex items-center gap-3">
-                    <span className={`text-base font-black uppercase tracking-wider font-['Bebas_Neue'] px-2.5 py-0.5 rounded ${
+                    <span className={`text-base font-black uppercase tracking-wider font-['Bebas_Neue'] px-2.5 py-0.5 rounded-none ${
                       boardTheme === 'classicOrange' ? 'bg-[#FAF0E6] text-[#B95000]' : 'bg-amber-950 text-amber-300 border border-amber-600/40'
                     }`}>
                       Donald Tisdale • Andrews, SC Heritage
@@ -380,7 +380,7 @@ export default function TvMenuModal() {
               {/* ================================================================= */}
               {/* COLUMN 1: DINNERS & PLATES (w/ 2 SIDES & ROLL)                    */}
               {/* ================================================================= */}
-              <div className={`rounded-2xl p-5 flex flex-col justify-between shadow-xl border-2 ${
+              <div className={`rounded-none p-5 flex flex-col justify-between shadow-xl border-2 ${
                 boardTheme === 'classicOrange'
                   ? 'bg-[#FFFFFF] border-[#C86010] text-[#1A120E]'
                   : 'bg-[#15100E] border-amber-600/40 text-white'
@@ -433,7 +433,7 @@ export default function TvMenuModal() {
 
                           <div className="shrink-0 text-right">
                             {isSoldOut ? (
-                              <span className="bg-rose-600 text-white font-black text-xs uppercase px-2 py-0.5 rounded font-mono shadow">
+                              <span className="bg-rose-600 text-white font-black text-xs uppercase px-2 py-0.5 rounded-none font-mono shadow">
                                 SOLD OUT
                               </span>
                             ) : (
@@ -462,7 +462,7 @@ export default function TvMenuModal() {
               {/* ================================================================= */}
               {/* COLUMN 2: SANDWICHES & MEATS BY THE POUND (SLAB & LB)            */}
               {/* ================================================================= */}
-              <div className={`rounded-2xl p-5 flex flex-col justify-between shadow-xl border-2 ${
+              <div className={`rounded-none p-5 flex flex-col justify-between shadow-xl border-2 ${
                 boardTheme === 'classicOrange'
                   ? 'bg-[#FFFFFF] border-[#C86010] text-[#1A120E]'
                   : 'bg-[#15100E] border-amber-600/40 text-white'
@@ -510,7 +510,7 @@ export default function TvMenuModal() {
 
                           <div className="shrink-0 text-right">
                             {isSoldOut ? (
-                              <span className="bg-rose-600 text-white font-black text-xs uppercase px-2 py-0.5 rounded font-mono">
+                              <span className="bg-rose-600 text-white font-black text-xs uppercase px-2 py-0.5 rounded-none font-mono">
                                 SOLD OUT
                               </span>
                             ) : (
@@ -561,7 +561,7 @@ export default function TvMenuModal() {
 
                           <div className="shrink-0 text-right">
                             {isSoldOut ? (
-                              <span className="bg-rose-600 text-white font-black text-xs uppercase px-2 py-0.5 rounded font-mono">
+                              <span className="bg-rose-600 text-white font-black text-xs uppercase px-2 py-0.5 rounded-none font-mono">
                                 SOLD OUT
                               </span>
                             ) : (
@@ -589,7 +589,7 @@ export default function TvMenuModal() {
               {/* ================================================================= */}
               {/* COLUMN 3: SIDES, SPECIALS & DESSERTS                              */}
               {/* ================================================================= */}
-              <div className={`rounded-2xl p-5 flex flex-col justify-between shadow-xl border-2 ${
+              <div className={`rounded-none p-5 flex flex-col justify-between shadow-xl border-2 ${
                 boardTheme === 'classicOrange'
                   ? 'bg-[#FFFFFF] border-[#C86010] text-[#1A120E]'
                   : 'bg-[#15100E] border-amber-600/40 text-white'
@@ -668,7 +668,7 @@ export default function TvMenuModal() {
 
                           <div className="shrink-0 text-right">
                             {isSoldOut ? (
-                              <span className="bg-rose-600 text-white font-black text-xs uppercase px-2 py-0.5 rounded font-mono">
+                              <span className="bg-rose-600 text-white font-black text-xs uppercase px-2 py-0.5 rounded-none font-mono">
                                 SOLD OUT
                               </span>
                             ) : (
@@ -737,7 +737,7 @@ export default function TvMenuModal() {
               
               {/* Location Badge */}
               <div className="flex items-center gap-4">
-                <span className={`font-black text-sm uppercase px-3 py-1.5 rounded-lg font-mono tracking-wider ${
+                <span className={`font-black text-sm uppercase px-3 py-1.5 rounded-none font-mono tracking-wider ${
                   boardTheme === 'classicOrange' ? 'bg-[#B95000] text-white' : 'bg-[#E65100] text-white'
                 }`}>
                   TODAY'S LOCATION
