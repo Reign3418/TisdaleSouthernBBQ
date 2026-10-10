@@ -9,6 +9,7 @@ import OrderDrawer from './components/OrderDrawer';
 import PitmasterAdminModal from './components/PitmasterAdminModal';
 import GpsTrackingWhitePage from './components/GpsTrackingWhitePage';
 import TvMenuModal from './components/TvMenuModal';
+import TvSyncWhitePage from './components/TvSyncWhitePage';
 import { Sparkles, Phone, Navigation } from 'lucide-react';
 
 function AppContent() {
@@ -38,6 +39,7 @@ function AppContent() {
       <PitmasterAdminModal />
       <GpsTrackingWhitePage />
       <TvMenuModal />
+      <TvSyncWhitePage />
 
       {/* Mobile Bottom Quick-Action Bar for Customers */}
       <div className={`md:hidden fixed bottom-0 left-0 right-0 z-40 p-2.5 px-3 flex items-center justify-between gap-2 shadow-lg border-t ${

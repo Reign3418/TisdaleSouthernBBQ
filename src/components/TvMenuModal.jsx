@@ -25,6 +25,7 @@ export default function TvMenuModal() {
   const {
     isTvMenuOpen,
     setIsTvMenuOpen,
+    setIsTvWhitePageOpen,
     menu,
     specials,
     schedule,
@@ -154,6 +155,15 @@ export default function TvMenuModal() {
             <span className="hidden md:inline">Sync TV Without USB? (Brainstorm)</span>
             <span className="md:hidden">Sync TV?</span>
             {showBrainstorm ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+          </button>
+
+          {/* White Paper Button */}
+          <button
+            onClick={() => setIsTvWhitePageOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white text-stone-900 hover:bg-amber-100 text-xs font-bold transition cursor-pointer border border-stone-300 shadow-sm"
+            title="Read and Print the Official Food Trailer TV Display White Paper for Donald"
+          >
+            <span>📄 TV White Paper</span>
           </button>
 
           {/* Download 1080p Image Button */}

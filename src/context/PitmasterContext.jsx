@@ -79,6 +79,12 @@ export function PitmasterProvider({ children }) {
     }
     return false;
   });
+  const [isTvWhitePageOpen, setIsTvWhitePageOpen] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.location.hash === '#tv-whitepaper' || window.location.hash === '#tv-options' || window.location.search.includes('tv_brief=1');
+    }
+    return false;
+  });
 
   useEffect(() => {
     const handleHash = () => {
@@ -90,6 +96,9 @@ export function PitmasterProvider({ children }) {
       }
       if (window.location.hash === '#tv-menu' || window.location.hash === '#tv-display') {
         setIsTvMenuOpen(true);
+      }
+      if (window.location.hash === '#tv-whitepaper' || window.location.hash === '#tv-options') {
+        setIsTvWhitePageOpen(true);
       }
     };
     window.addEventListener('hashchange', handleHash);
@@ -349,6 +358,8 @@ export function PitmasterProvider({ children }) {
       setIsGpsWhitePageOpen,
       isTvMenuOpen,
       setIsTvMenuOpen,
+      isTvWhitePageOpen,
+      setIsTvWhitePageOpen,
       resetToDefaults
     }}>
       {children}

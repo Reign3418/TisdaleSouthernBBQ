@@ -4,7 +4,7 @@ import { Phone, MapPin, Flame, Heart, ChefHat, Sparkles, Radio, Tv } from 'lucid
 import FacebookIcon from './icons/FacebookIcon';
 
 export default function Footer() {
-  const { setIsPitmasterMode, setIsSpecialsModalOpen, setIsGpsWhitePageOpen, setIsTvMenuOpen } = usePitmaster();
+  const { setIsPitmasterMode, setIsSpecialsModalOpen, setIsGpsWhitePageOpen, setIsTvMenuOpen, setIsTvWhitePageOpen } = usePitmaster();
 
   return (
     <footer className="bg-[#0E0C0B] border-t border-[#2A201B] text-stone-400 text-xs py-12">
@@ -80,6 +80,14 @@ export default function Footer() {
                   className="text-stone-400 hover:text-amber-300 flex items-center gap-1 cursor-pointer"
                 >
                   <Tv className="w-3 h-3 text-amber-500" /> 1080p TV Menu (USB / Live)
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => setIsTvWhitePageOpen(true)}
+                  className="text-stone-400 hover:text-amber-300 flex items-center gap-1 cursor-pointer"
+                >
+                  <Tv className="w-3 h-3 text-blue-400" /> TV Menu Sync (White Paper)
                 </button>
               </li>
             </ul>

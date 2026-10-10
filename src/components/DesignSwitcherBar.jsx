@@ -3,7 +3,7 @@ import { usePitmaster } from '../context/PitmasterContext';
 import { Palette, Flame, UtensilsCrossed, ClipboardList, Radio, ChefHat, Tv } from 'lucide-react';
 
 export default function DesignSwitcherBar() {
-  const { themeVersion, setThemeVersion, setIsGpsWhitePageOpen, setIsPitmasterMode, setIsTvMenuOpen } = usePitmaster();
+  const { themeVersion, setThemeVersion, setIsGpsWhitePageOpen, setIsPitmasterMode, setIsTvMenuOpen, setIsTvWhitePageOpen } = usePitmaster();
 
   const themes = [
     {
@@ -82,6 +82,19 @@ export default function DesignSwitcherBar() {
             <Radio className="w-3.5 h-3.5 text-rose-600 shrink-0" />
             <span className="whitespace-nowrap font-black">📍 GPS Options</span>
             <span className="text-[10px] bg-amber-200 text-stone-900 px-1.5 py-0.2 rounded font-mono uppercase">
+              White Page
+            </span>
+          </button>
+
+          {/* TV Display White Paper Option */}
+          <button
+            onClick={() => setIsTvWhitePageOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer bg-white text-stone-900 hover:bg-amber-100 border border-amber-400 shadow-sm"
+            title="Open Food Trailer TV Menu & Display White Paper for Donald"
+          >
+            <Tv className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+            <span className="whitespace-nowrap font-black">📺 TV Sync Guide</span>
+            <span className="text-[10px] bg-blue-100 text-stone-900 px-1.5 py-0.2 rounded font-mono uppercase">
               White Page
             </span>
           </button>
