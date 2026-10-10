@@ -54,7 +54,7 @@ export default function ChalkboardLayout() {
                 Tisdale's Southern BBQ
               </h1>
               <p className="text-xs text-stone-400 font-mono mt-0.5">
-                Real Wood Smoked • Andrews, SC Roots • Fayetteville, NC
+                Real Hickory Pellet Smoked • Andrews, SC Roots • Fayetteville, NC
               </p>
             </div>
           </div>

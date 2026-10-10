@@ -45,7 +45,7 @@ export default function MainMenuSection() {
             The Main <span className="text-[#FF6B35]">Barbecue Board</span>
           </h2>
           <p className="text-xs sm:text-sm text-stone-300 mt-2">
-            All dinner plates include your choice of two 8oz homestyle sides and a warm dinner roll. Meats smoked low & slow over real hickory hardwood.
+            All dinner plates include your choice of two 8oz homestyle sides and a warm dinner roll. Meats smoked low & slow with pure hickory pellets.
           </p>
         </div>
 

@@ -174,7 +174,7 @@ export const MAIN_MENU = {
   dinners: {
     categoryName: "Dinners & Plates",
     tagline: "All Dinner plates served with 2 sides & a warm dinner roll",
-    note: "Meats are wood-smoked daily. Chicken & ribs fall-off-the-bone tender!",
+    note: "Meats are hickory-smoked daily. Chicken & ribs fall-off-the-bone tender!",
     items: [
       {
         id: "din-ribs",
@@ -199,7 +199,7 @@ export const MAIN_MENU = {
         name: "Smoked Turkey Leg Plate (Small)",
         price: "$14.00",
         numericPrice: 14.00,
-        description: "Wood-smoked turkey leg packed with deep hickory flavor. Includes 2 sides & roll.",
+        description: "Slow-smoked turkey leg packed with deep hickory flavor. Includes 2 sides & roll.",
         badge: "Smoked Daily",
         inStock: true
       },
@@ -350,7 +350,7 @@ export const MAIN_MENU = {
   meatsOnly: {
     categoryName: "Meats by the Pound & Slab",
     tagline: "Take home pure pit-smoked meats for your table or family",
-    note: "Smoked low and slow over hickory wood",
+    note: "Smoked low and slow with pure hickory pellets",
     items: [
       {
         id: "meat-ribs-slab",

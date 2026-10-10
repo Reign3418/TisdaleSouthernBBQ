@@ -30,7 +30,7 @@ export default function HeroLocationCard() {
             "Thank You for Choosing Us to Have Your Lunch or Dinner — We Appreciate Your Support!"
           </p>
           <p className="text-stone-300 text-xs mt-0.5">
-            Real wood-smoked meats, good food at affordable prices, and smiling faces.
+            Slow-smoked hickory pellet meats, good food at affordable prices, and smiling faces.
           </p>
         </div>
 
@@ -41,7 +41,7 @@ export default function HeroLocationCard() {
           <div className="flex items-center justify-between border-b border-[#35251F] pb-3 mb-5 font-mono text-[10px] text-stone-400 uppercase tracking-widest">
             <div className="flex items-center gap-2 text-amber-400 font-bold">
               <span className="w-2 h-2 rounded-none bg-emerald-500 animate-pulse"></span>
-              <span>[ SPEC: 100% SPLIT HICKORY WOOD • LOW & SLOW ]</span>
+              <span>[ SPEC: 100% PURE HICKORY PELLETS • LOW & SLOW ]</span>
             </div>
             <span className="hidden sm:inline text-stone-500">
               ANDREWS, SC TRADITION • FAYETTEVILLE & SANFORD, NC
@@ -127,7 +127,7 @@ export default function HeroLocationCard() {
                 <div>
                   <strong className="text-amber-300">A Quick Note From Donald:</strong>{" "}
                   <span>
-                    All of our barbecue meats are slow-smoked with real wood smoke. Our whole wings and fried pork chops are fried hot and cooked to order.{" "}
+                    All of our barbecue meats are slow-smoked with pure hickory pellets. Our whole wings and fried pork chops are fried hot and cooked to order.{" "}
                     <span className="text-rose-300 font-bold">
                       We turn the grease off 30 minutes before closing—nothing will be fried after cutoff!
                     </span>

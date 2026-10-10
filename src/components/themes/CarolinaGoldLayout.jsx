@@ -35,7 +35,7 @@ export default function CarolinaGoldLayout() {
               Andrews, SC Heritage
             </span>
             <span className="font-medium text-amber-200">
-              Tisdale's Southern BBQ • Wood-Smoked Daily in Fayetteville & Surrounding NC
+              Tisdale's Southern BBQ • Hickory-Smoked Daily in Fayetteville & Surrounding NC
             </span>
           </div>
 
@@ -118,11 +118,11 @@ export default function CarolinaGoldLayout() {
               </p>
 
               <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-                We sell barbecue Southern style, and <strong className="text-stone-900">"Summa" everything</strong>. All our meats are honest, wood-smoked low and slow, and priced so everyday working families can enjoy hearty, delicious meals. Donald's whole wings and pork chops are cooked fresh to order!
+                We sell barbecue Southern style, and <strong className="text-stone-900">"Summa" everything</strong>. All our meats are honest, slow-smoked low and slow with pure hickory pellets, and priced so everyday working families can enjoy hearty, delicious meals. Donald's whole wings and pork chops are cooked fresh to order!
               </p>
 
               <div className="pt-2 flex flex-wrap gap-4 text-xs font-bold text-[#78350F]">
-                <span className="flex items-center gap-1.5"><Flame className="w-4 h-4 text-orange-600" /> Hickory Wood Smoked</span>
+                <span className="flex items-center gap-1.5"><Flame className="w-4 h-4 text-orange-600" /> Hickory Pellet Smoked</span>
                 <span className="flex items-center gap-1.5"><Award className="w-4 h-4 text-[#B45309]" /> Andrews, SC Roots</span>
                 <span className="flex items-center gap-1.5"><Heart className="w-4 h-4 text-rose-600" /> Family Owned</span>
               </div>

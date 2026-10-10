@@ -36,7 +36,7 @@ export default function DonaldPassionSection() {
             {/* Narrative Paragraphs */}
             <div className="space-y-3 text-stone-300 text-xs sm:text-sm leading-relaxed">
               <p>
-                At Tisdale's Southern BBQ, we sell barbecue Southern style, and <strong className="text-white">"Summa" everything</strong>. All our meats are honest, hickory wood-smoked, and prepared so everyday families and neighbors can enjoy exceptional Southern barbecue at fair, affordable prices.
+                At Tisdale's Southern BBQ, we sell barbecue Southern style, and <strong className="text-white">"Summa" everything</strong>. All our meats are honest, slow-smoked with 100% all-natural hickory pellets, and prepared so everyday families and neighbors can enjoy exceptional Southern barbecue at fair, affordable prices.
               </p>
               <p>
                 From fall-off-the-bone smoked pork ribs and seasoned beef brisket to our cooked-to-order fried pork chops, whole wings, and fresh-baked Honey Bun cake, Donald prepares every plate with genuine care.
@@ -50,8 +50,8 @@ export default function DonaldPassionSection() {
             <div className="pt-2 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
               <div className="relative bg-[#1A1411] p-3 rounded-none border border-[#3E2E25] hover:border-amber-500/40 text-center transition-all duration-150">
                 <Flame className="w-5 h-5 text-orange-500 mx-auto mb-1" />
-                <strong className="text-white block">Real Wood Smoke</strong>
-                <span className="text-[11px] text-stone-400 font-mono">Low & slow hickory</span>
+                <strong className="text-white block">Hickory Pellet Smoke</strong>
+                <span className="text-[11px] text-stone-400 font-mono">Pure hickory pellets</span>
               </div>
               <div className="relative bg-[#1A1411] p-3 rounded-none border border-[#3E2E25] hover:border-amber-500/40 text-center transition-all duration-150">
                 <Heart className="w-5 h-5 text-rose-400 mx-auto mb-1" />

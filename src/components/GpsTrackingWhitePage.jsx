@@ -218,7 +218,7 @@ export default function GpsTrackingWhitePage() {
                       🔒 Trailer Location is Private & Off-Duty
                     </h3>
                     <p className="text-xs text-stone-600 max-w-md mx-auto mt-1">
-                      You are off the clock, prepping your hickory wood, or traveling home. No live GPS coordinates are broadcast to protect your private residence.
+                      You are off the clock, prepping your hickory pellets, or traveling home. No live GPS coordinates are broadcast to protect your private residence.
                     </p>
                   </div>
                   <div className="bg-white p-3 rounded-none border border-stone-200 text-xs text-stone-600 max-w-sm mx-auto font-mono">

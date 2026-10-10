@@ -26,7 +26,7 @@ export default function PitFireSmokeCanvas() {
     window.addEventListener('resize', handleResize);
 
     // =========================================================================
-    // 1. EMBERS & BURNING WOOD SPARKS
+    // 1. EMBERS & BURNING HICKORY PELLET SPARKS
     // =========================================================================
     const emberCount = Math.min(Math.floor(width / 25), 60);
     const embers = Array.from({ length: emberCount }, () => ({

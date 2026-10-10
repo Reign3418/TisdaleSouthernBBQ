@@ -7,7 +7,7 @@ export default function Header() {
 
   return (
     <header className="bg-[#181311] border-b border-[#362A25] relative">
-      {/* Solid wood-fired top border line */}
+      {/* Solid hickory-fired top border line */}
       <div className="h-1 w-full bg-[#D9381E]"></div>
 
       <div className="max-w-7xl mx-auto px-4 py-4 sm:py-5">
@@ -36,7 +36,7 @@ export default function Header() {
                 Tisdale's <span className="text-[#FF6B35]">Southern BBQ</span>
               </h1>
               <p className="text-xs sm:text-sm text-stone-300 font-medium tracking-tight mt-0.5">
-                Mouth-Watering, Tongue-Twisting BBQ • <span className="text-amber-400 font-semibold">Real Wood-Smoked Meats</span>
+                Mouth-Watering, Tongue-Twisting BBQ • <span className="text-amber-400 font-semibold">Real Hickory-Smoked Meats</span>
               </p>
             </div>
           </div>

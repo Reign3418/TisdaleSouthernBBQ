@@ -86,7 +86,7 @@ export default function OrderDrawer() {
               </div>
               <h4 className="text-base font-bold text-white">Your tray is empty</h4>
               <p className="text-xs text-stone-400 mt-1 max-w-xs">
-                Browse our wood-smoked brisket, ribs, sides, or daily specials and add them to your plate!
+                Browse our hickory-smoked brisket, ribs, sides, or daily specials and add them to your plate!
               </p>
               <button
                 onClick={() => setIsCartOpen(false)}

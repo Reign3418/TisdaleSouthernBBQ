@@ -337,7 +337,7 @@ export default function TvMenuModal() {
                       Donald Tisdale • Andrews, SC Heritage
                     </span>
                     <span className="text-xs font-bold tracking-wider uppercase text-stone-500">
-                      Real Hickory Wood Smoked Daily
+                      Real Hickory Smoked Daily
                     </span>
                   </div>
                   <h1 className="text-5xl font-black uppercase font-['Bebas_Neue'] tracking-wider leading-none mt-1">
@@ -402,7 +402,7 @@ export default function TvMenuModal() {
                       </p>
                     </div>
                     <span className="text-xs font-mono text-stone-400 font-bold uppercase">
-                      Wood Smoked
+                      Hickory Smoked
                     </span>
                   </div>
 
@@ -455,7 +455,7 @@ export default function TvMenuModal() {
                 <div className={`pt-2 border-t-2 text-center text-xs font-mono uppercase font-bold ${
                   boardTheme === 'classicOrange' ? 'border-stone-200 text-[#B95000]' : 'border-stone-800 text-amber-300'
                 }`}>
-                  ★ All Meats Smoked Low & Slow with Real Hickory Wood ★
+                  ★ All Meats Smoked Low & Slow with Pure Hickory Pellets ★
                 </div>
               </div>
 

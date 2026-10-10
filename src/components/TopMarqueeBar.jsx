@@ -32,7 +32,7 @@ export default function TopMarqueeBar() {
           ) : (
             <span className="hidden md:inline-flex items-center gap-1 text-[11px] text-amber-200">
               <Flame className="w-3 h-3 text-amber-400 fill-amber-400" />
-              <span>Wood Smoker Fired Up Daily</span>
+              <span>Hickory Smoker Fired Up Daily</span>
             </span>
           )}
 

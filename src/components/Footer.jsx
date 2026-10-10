@@ -31,7 +31,7 @@ export default function Footer() {
             </div>
 
             <p className="text-stone-400 text-xs leading-relaxed max-w-sm">
-              Real wood-smoked meats, fried-to-order whole wings and pork chops, grandma's homestyle potato salad, and fresh honey bun cake. Proudly serving Fayetteville, Sanford, Dunn, and surrounding North Carolina communities.
+              Slow-smoked hickory meats, fried-to-order whole wings and pork chops, grandma's homestyle potato salad, and fresh honey bun cake. Proudly serving Fayetteville, Sanford, Dunn, and surrounding North Carolina communities.
             </p>
 
             <div className="flex items-center gap-3 text-white">
