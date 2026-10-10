@@ -5,7 +5,7 @@ import SquareIcon from '../icons/SquareIcon';
 import FacebookIcon from '../icons/FacebookIcon';
 
 export default function CarolinaGoldLayout() {
-  const { menu, specials, schedule, announcements, addToCart, setIsSpecialsModalOpen } = usePitmaster();
+  const { menu, specials, schedule, announcements, addToCart, setIsSpecialsModalOpen, setIsGpsWhitePageOpen } = usePitmaster();
   const current = schedule.currentLocation;
   const [activeCategory, setActiveCategory] = useState('dinners');
   const [addedIds, setAddedIds] = useState({});
@@ -312,8 +312,16 @@ export default function CarolinaGoldLayout() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto text-center text-stone-500 text-[11px]">
-          © {new Date().getFullYear()} Tisdale's Southern BBQ. Owned & Operated by Donald Tisdale.
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-stone-500 text-[11px]">
+          <div>
+            © {new Date().getFullYear()} Tisdale's Southern BBQ. Owned & Operated by Donald Tisdale.
+          </div>
+          <button
+            onClick={() => setIsGpsWhitePageOpen(true)}
+            className="text-amber-400 hover:text-amber-300 hover:underline cursor-pointer font-medium"
+          >
+            📍 Location Tracking Options (White Page Brief)
+          </button>
         </div>
       </footer>
 

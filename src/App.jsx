@@ -7,6 +7,7 @@ import ChalkboardLayout from './components/themes/ChalkboardLayout';
 import SpecialsDrawerModal from './components/SpecialsDrawerModal';
 import OrderDrawer from './components/OrderDrawer';
 import PitmasterAdminModal from './components/PitmasterAdminModal';
+import GpsTrackingWhitePage from './components/GpsTrackingWhitePage';
 import { Sparkles, Phone, Navigation } from 'lucide-react';
 
 function AppContent() {
@@ -34,6 +35,7 @@ function AppContent() {
       <SpecialsDrawerModal />
       <OrderDrawer />
       <PitmasterAdminModal />
+      <GpsTrackingWhitePage />
 
       {/* Mobile Bottom Quick-Action Bar for Customers */}
       <div className={`md:hidden fixed bottom-0 left-0 right-0 z-40 p-2.5 px-3 flex items-center justify-between gap-2 shadow-lg border-t ${

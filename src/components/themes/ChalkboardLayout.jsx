@@ -4,7 +4,7 @@ import { Phone, MapPin, Clock, Navigation, AlertTriangle, Sparkles, Flame, Image
 import SquareIcon from '../icons/SquareIcon';
 
 export default function ChalkboardLayout() {
-  const { menu, specials, schedule, announcements } = usePitmaster();
+  const { menu, specials, schedule, announcements, setIsGpsWhitePageOpen } = usePitmaster();
   const current = schedule.currentLocation;
   const [activeBoard, setActiveBoard] = useState('chalkboard'); // 'chalkboard' | 'tv' | 'photos'
 
@@ -403,6 +403,14 @@ export default function ChalkboardLayout() {
         <p className="text-[11px] text-stone-500 mt-1">
           "I love cooking like a carpenter loves building houses." • Andrews, SC Roots
         </p>
+        <div className="mt-3">
+          <button
+            onClick={() => setIsGpsWhitePageOpen(true)}
+            className="text-[#38BDF8] hover:underline cursor-pointer text-xs font-['Permanent_Marker']"
+          >
+            📍 GPS Location Tracking Options (White Paper)
+          </button>
+        </div>
       </footer>
 
     </div>

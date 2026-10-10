@@ -1,10 +1,10 @@
 import React from 'react';
 import { usePitmaster } from '../context/PitmasterContext';
-import { Phone, MapPin, Flame, Heart, ChefHat, Sparkles } from 'lucide-react';
+import { Phone, MapPin, Flame, Heart, ChefHat, Sparkles, Radio } from 'lucide-react';
 import FacebookIcon from './icons/FacebookIcon';
 
 export default function Footer() {
-  const { setIsPitmasterMode, setIsSpecialsModalOpen } = usePitmaster();
+  const { setIsPitmasterMode, setIsSpecialsModalOpen, setIsGpsWhitePageOpen } = usePitmaster();
 
   return (
     <footer className="bg-[#0E0C0B] border-t border-[#2A201B] text-stone-400 text-xs py-12">
@@ -64,6 +64,14 @@ export default function Footer() {
                   className="text-amber-300 hover:text-amber-200 flex items-center gap-1 cursor-pointer font-bold"
                 >
                   <Sparkles className="w-3 h-3" /> Today's Specials
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => setIsGpsWhitePageOpen(true)}
+                  className="text-stone-400 hover:text-amber-300 flex items-center gap-1 cursor-pointer"
+                >
+                  <Radio className="w-3 h-3 text-rose-500" /> GPS Tracking Options
                 </button>
               </li>
             </ul>

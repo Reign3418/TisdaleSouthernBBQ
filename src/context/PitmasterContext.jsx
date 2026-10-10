@@ -62,6 +62,22 @@ export function PitmasterProvider({ children }) {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSpecialsModalOpen, setIsSpecialsModalOpen] = useState(false);
   const [isPitmasterMode, setIsPitmasterMode] = useState(false);
+  const [isGpsWhitePageOpen, setIsGpsWhitePageOpen] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.location.hash === '#gps-options' || window.location.search.includes('gps=1');
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const handleHash = () => {
+      if (window.location.hash === '#gps-options') {
+        setIsGpsWhitePageOpen(true);
+      }
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY_THEME, themeVersion);
@@ -212,6 +228,8 @@ export function PitmasterProvider({ children }) {
       cartItemCount,
       themeVersion,
       setThemeVersion,
+      isGpsWhitePageOpen,
+      setIsGpsWhitePageOpen,
       resetToDefaults
     }}>
       {children}
