@@ -94,7 +94,6 @@ export function PitmasterProvider({ children }) {
       return true;
     }
   });
-  const [isWixPitchOpen, setIsWixPitchOpen] = useState(false);
 
   useEffect(() => {
     const handleHash = () => {
@@ -109,9 +108,6 @@ export function PitmasterProvider({ children }) {
       }
       if (window.location.hash === '#tv-whitepaper' || window.location.hash === '#tv-options') {
         setIsTvWhitePageOpen(true);
-      }
-      if (window.location.hash === '#wix-comparison' || window.location.hash === '#pitch') {
-        setIsWixPitchOpen(true);
       }
     };
     window.addEventListener('hashchange', handleHash);
@@ -379,8 +375,6 @@ export function PitmasterProvider({ children }) {
       setIsTvWhitePageOpen,
       isPitFxActive,
       setIsPitFxActive,
-      isWixPitchOpen,
-      setIsWixPitchOpen,
       resetToDefaults
     }}>
       {children}

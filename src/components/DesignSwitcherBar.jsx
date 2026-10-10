@@ -1,6 +1,6 @@
 import React from 'react';
 import { usePitmaster } from '../context/PitmasterContext';
-import { Palette, Flame, UtensilsCrossed, ClipboardList, Radio, ChefHat, Tv, Zap } from 'lucide-react';
+import { Palette, Flame, UtensilsCrossed, ClipboardList, Radio, ChefHat, Tv } from 'lucide-react';
 
 export default function DesignSwitcherBar() {
   const {
@@ -11,8 +11,7 @@ export default function DesignSwitcherBar() {
     setIsTvMenuOpen,
     setIsTvWhitePageOpen,
     isPitFxActive,
-    setIsPitFxActive,
-    setIsWixPitchOpen
+    setIsPitFxActive
   } = usePitmaster();
 
   const themes = [
@@ -137,18 +136,6 @@ export default function DesignSwitcherBar() {
           >
             <Tv className="w-3.5 h-3.5 text-amber-400" />
             <span className="whitespace-nowrap font-black">📺 TV Board</span>
-          </button>
-
-          <div className="h-4 w-px bg-stone-700 mx-1 hidden sm:block"></div>
-
-          {/* Wix vs React Modernization Brief for pitching clients */}
-          <button
-            onClick={() => setIsWixPitchOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-black transition cursor-pointer bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-stone-950 shadow-md border border-amber-400"
-            title="Open pitch guide to upgrade local businesses from Wix to high-speed React"
-          >
-            <Zap className="w-3.5 h-3.5 fill-stone-950" />
-            <span className="whitespace-nowrap">⚡ Pitch Wix Upgrade</span>
           </button>
         </div>
 
