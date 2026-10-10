@@ -1,9 +1,9 @@
 import React from 'react';
 import { usePitmaster } from '../context/PitmasterContext';
-import { Palette, Flame, UtensilsCrossed, ClipboardList, Radio } from 'lucide-react';
+import { Palette, Flame, UtensilsCrossed, ClipboardList, Radio, ChefHat } from 'lucide-react';
 
 export default function DesignSwitcherBar() {
-  const { themeVersion, setThemeVersion, setIsGpsWhitePageOpen } = usePitmaster();
+  const { themeVersion, setThemeVersion, setIsGpsWhitePageOpen, setIsPitmasterMode } = usePitmaster();
 
   const themes = [
     {
@@ -80,10 +80,22 @@ export default function DesignSwitcherBar() {
             title="Open GPS Location Tracking White Paper for Donald"
           >
             <Radio className="w-3.5 h-3.5 text-rose-600 shrink-0" />
-            <span className="whitespace-nowrap font-black">📍 GPS Tracking Options</span>
+            <span className="whitespace-nowrap font-black">📍 GPS Options</span>
             <span className="text-[10px] bg-amber-200 text-stone-900 px-1.5 py-0.2 rounded font-mono uppercase">
               White Page
             </span>
+          </button>
+
+          <div className="h-4 w-px bg-stone-700 mx-1 hidden sm:block"></div>
+
+          {/* Donald's Pitmaster Menu Editor Button */}
+          <button
+            onClick={() => setIsPitmasterMode(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer bg-amber-500 hover:bg-amber-400 text-stone-950 shadow-md"
+            title="Open Menu Editor, Add/Remove Items, 86 Sold Out on the Fly"
+          >
+            <ChefHat className="w-3.5 h-3.5" />
+            <span className="whitespace-nowrap font-black">👨‍🍳 Edit Menu (On The Fly)</span>
           </button>
         </div>
 

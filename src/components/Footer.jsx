@@ -102,8 +102,16 @@ export default function Footer() {
 
         {/* Bottom copyright line */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-stone-500 text-[11px]">
-          <div>
-            © {new Date().getFullYear()} Tisdale's Southern BBQ. Owned & Operated by Donald Tisdale.
+          <div className="flex flex-wrap items-center gap-2">
+            <span>© {new Date().getFullYear()} Tisdale's Southern BBQ. Owned & Operated by Donald Tisdale.</span>
+            <span>•</span>
+            <button
+              onClick={() => setIsPitmasterMode(true)}
+              className="text-stone-400 hover:text-amber-400 font-bold transition cursor-pointer flex items-center gap-1"
+            >
+              <ChefHat className="w-3 h-3 text-amber-500" />
+              <span>Pitmaster Admin</span>
+            </button>
           </div>
           <div className="flex items-center gap-1 text-stone-400">
             <span>Crafted with</span>

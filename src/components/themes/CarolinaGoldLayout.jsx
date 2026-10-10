@@ -221,39 +221,59 @@ export default function CarolinaGoldLayout() {
 
         {/* Menu Items Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {menu[activeCategory]?.items.map(item => (
-            <div
-              key={item.id}
-              className="bg-[#FFFFFF] border border-[#E7DFD5] rounded-2xl p-5 shadow-sm hover:border-[#B45309] transition flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-start justify-between gap-2 border-b border-[#F0EAE1] pb-2 mb-2">
-                  <h4 className="font-bold text-[#261B14] text-base font-['Playfair_Display']">
-                    {item.name}
-                  </h4>
-                  <span className="text-lg font-black text-[#B45309] shrink-0 font-serif">
-                    {item.price}
-                  </span>
-                </div>
-                {item.extraOption && (
-                  <p className="text-xs text-[#92400E] font-medium mb-1.5">{item.extraOption}</p>
-                )}
-                <p className="text-xs text-stone-600 leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
+          {menu[activeCategory]?.items.filter(item => !item.hidden).map(item => {
+            const isSoldOut = !item.inStock;
 
-              <div className="mt-4 pt-3 border-t border-[#F0EAE1] flex items-center justify-between text-xs text-stone-500">
-                <span className="italic">{item.badge || "Smoked Fresh Daily"}</span>
-                <a
-                  href="tel:9107092900"
-                  className="text-[#991B1B] font-bold hover:underline"
-                >
-                  Call to Order
-                </a>
+            return (
+              <div
+                key={item.id}
+                className={`bg-[#FFFFFF] border rounded-2xl p-5 shadow-sm transition flex flex-col justify-between ${
+                  isSoldOut
+                    ? 'border-stone-300 opacity-60 bg-stone-50'
+                    : 'border-[#E7DFD5] hover:border-[#B45309]'
+                }`}
+              >
+                <div>
+                  <div className="flex items-start justify-between gap-2 border-b border-[#F0EAE1] pb-2 mb-2">
+                    <h4 className="font-bold text-[#261B14] text-base font-['Playfair_Display']">
+                      {item.name}
+                    </h4>
+                    <div className="text-right shrink-0">
+                      {isSoldOut ? (
+                        <span className="text-[10px] font-black uppercase bg-rose-600 text-white px-2 py-0.5 rounded">
+                          SOLD OUT
+                        </span>
+                      ) : (
+                        <span className="text-lg font-black text-[#B45309] font-serif">
+                          {item.price}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  {item.extraOption && (
+                    <p className="text-xs text-[#92400E] font-medium mb-1.5">{item.extraOption}</p>
+                  )}
+                  <p className="text-xs text-stone-600 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-[#F0EAE1] flex items-center justify-between text-xs text-stone-500">
+                  <span className="italic">{item.badge || "Smoked Fresh Daily"}</span>
+                  {isSoldOut ? (
+                    <span className="text-rose-700 font-bold">Sold Out Today</span>
+                  ) : (
+                    <a
+                      href="tel:9107092900"
+                      className="text-[#991B1B] font-bold hover:underline"
+                    >
+                      Call to Order
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -276,13 +296,19 @@ export default function CarolinaGoldLayout() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {specials.slice(0, 4).map(s => (
+            {specials.filter(s => !s.hidden).slice(0, 4).map(s => (
               <div key={s.id} className="bg-white rounded-2xl p-4 border border-[#DCD3C5] shadow-sm">
                 <div className="flex items-center justify-between gap-2 mb-1">
                   <span className="text-[10px] font-bold uppercase bg-[#FEF3C7] text-[#92400E] px-2 py-0.5 rounded">
                     {s.badge}
                   </span>
-                  <span className="font-bold text-[#B45309] font-serif">{s.price}</span>
+                  {s.inStock ? (
+                    <span className="font-bold text-[#B45309] font-serif">{s.price}</span>
+                  ) : (
+                    <span className="text-[10px] font-black uppercase bg-rose-600 text-white px-2 py-0.5 rounded">
+                      SOLD OUT
+                    </span>
+                  )}
                 </div>
                 <h4 className="font-bold text-sm text-[#261B14] mt-1">{s.title}</h4>
                 <p className="text-xs text-stone-600 mt-1">{s.description}</p>

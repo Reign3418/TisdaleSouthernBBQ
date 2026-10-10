@@ -95,7 +95,7 @@ export default function MainMenuSection() {
 
                 {/* Items Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-                  {categoryData.items.map(item => {
+                  {categoryData.items.filter(item => !item.hidden).map(item => {
                     const isSoldOut = !item.inStock;
                     const isFryerDisabled = !announcements.fryerOpen && item.isFryerItem;
                     const isAdded = addedItemIds[item.id];

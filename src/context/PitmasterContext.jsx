@@ -61,7 +61,12 @@ export function PitmasterProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSpecialsModalOpen, setIsSpecialsModalOpen] = useState(false);
-  const [isPitmasterMode, setIsPitmasterMode] = useState(false);
+  const [isPitmasterMode, setIsPitmasterMode] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.location.hash === '#admin' || window.location.search.includes('admin=1');
+    }
+    return false;
+  });
   const [isGpsWhitePageOpen, setIsGpsWhitePageOpen] = useState(() => {
     if (typeof window !== 'undefined') {
       return window.location.hash === '#gps-options' || window.location.search.includes('gps=1');
@@ -73,6 +78,9 @@ export function PitmasterProvider({ children }) {
     const handleHash = () => {
       if (window.location.hash === '#gps-options') {
         setIsGpsWhitePageOpen(true);
+      }
+      if (window.location.hash === '#admin') {
+        setIsPitmasterMode(true);
       }
     };
     window.addEventListener('hashchange', handleHash);
@@ -100,7 +108,7 @@ export function PitmasterProvider({ children }) {
     localStorage.setItem(STORAGE_KEY_ANNOUNCE, JSON.stringify(announcements));
   }, [announcements]);
 
-  // 1-Tap Toggle item stock status
+  // 1-Tap Toggle item stock status (Available vs Sold Out)
   const toggleItemStock = (categoryKey, itemId) => {
     setMenu(prev => {
       const updatedCatItems = prev[categoryKey].items.map(item => {
@@ -119,7 +127,73 @@ export function PitmasterProvider({ children }) {
     });
   };
 
-  // Toggle special stock status
+  // Toggle item visibility (Visible vs Hidden completely from customers)
+  const toggleItemHidden = (categoryKey, itemId) => {
+    setMenu(prev => {
+      const updatedCatItems = prev[categoryKey].items.map(item => {
+        if (item.id === itemId) {
+          return { ...item, hidden: !item.hidden };
+        }
+        return item;
+      });
+      return {
+        ...prev,
+        [categoryKey]: {
+          ...prev[categoryKey],
+          items: updatedCatItems
+        }
+      };
+    });
+  };
+
+  // Add new menu item
+  const addMenuItem = (categoryKey, newItem) => {
+    const itemWithId = {
+      ...newItem,
+      id: newItem.id || `item_${Date.now()}`,
+      inStock: true,
+      hidden: false
+    };
+    setMenu(prev => ({
+      ...prev,
+      [categoryKey]: {
+        ...prev[categoryKey],
+        items: [itemWithId, ...prev[categoryKey].items]
+      }
+    }));
+  };
+
+  // Edit existing menu item
+  const editMenuItem = (categoryKey, itemId, updatedFields) => {
+    setMenu(prev => {
+      const updatedCatItems = prev[categoryKey].items.map(item => {
+        if (item.id === itemId) {
+          return { ...item, ...updatedFields };
+        }
+        return item;
+      });
+      return {
+        ...prev,
+        [categoryKey]: {
+          ...prev[categoryKey],
+          items: updatedCatItems
+        }
+      };
+    });
+  };
+
+  // Remove menu item completely
+  const removeMenuItem = (categoryKey, itemId) => {
+    setMenu(prev => ({
+      ...prev,
+      [categoryKey]: {
+        ...prev[categoryKey],
+        items: prev[categoryKey].items.filter(item => item.id !== itemId)
+      }
+    }));
+  };
+
+  // Toggle special stock status (Available vs Sold Out)
   const toggleSpecialStock = (specialId) => {
     setSpecials(prev => prev.map(s => {
       if (s.id === specialId) {
@@ -127,6 +201,43 @@ export function PitmasterProvider({ children }) {
       }
       return s;
     }));
+  };
+
+  // Toggle special visibility (Visible vs Hidden completely from customers)
+  const toggleSpecialHidden = (specialId) => {
+    setSpecials(prev => prev.map(s => {
+      if (s.id === specialId) {
+        return { ...s, hidden: !s.hidden };
+      }
+      return s;
+    }));
+  };
+
+  // Add Special
+  const addSpecial = (newSpecial) => {
+    const specialWithId = {
+      ...newSpecial,
+      id: newSpecial.id || `spec_${Date.now()}`,
+      inStock: true,
+      hidden: false,
+      category: 'Specials'
+    };
+    setSpecials(prev => [specialWithId, ...prev]);
+  };
+
+  // Edit Special
+  const editSpecial = (specialId, updatedFields) => {
+    setSpecials(prev => prev.map(s => {
+      if (s.id === specialId) {
+        return { ...s, ...updatedFields };
+      }
+      return s;
+    }));
+  };
+
+  // Remove Special
+  const removeSpecial = (id) => {
+    setSpecials(prev => prev.filter(s => s.id !== id));
   };
 
   // 1-Tap Toggle Fryer Grease Status
@@ -143,15 +254,6 @@ export function PitmasterProvider({ children }) {
       ...prev,
       currentLocation: { ...prev.currentLocation, ...newLoc }
     }));
-  };
-
-  // Add / Edit Special
-  const addSpecial = (newSpecial) => {
-    setSpecials(prev => [newSpecial, ...prev]);
-  };
-
-  const removeSpecial = (id) => {
-    setSpecials(prev => prev.filter(s => s.id !== id));
   };
 
   // Cart operations
@@ -214,12 +316,18 @@ export function PitmasterProvider({ children }) {
       isPitmasterMode,
       setIsPitmasterMode,
       toggleItemStock,
+      toggleItemHidden,
+      addMenuItem,
+      editMenuItem,
+      removeMenuItem,
       toggleSpecialStock,
+      toggleSpecialHidden,
+      addSpecial,
+      editSpecial,
+      removeSpecial,
       toggleFryerStatus,
       updateCurrentLocation,
       setAnnouncements,
-      addSpecial,
-      removeSpecial,
       addToCart,
       removeFromCart,
       updateCartQty,

@@ -119,19 +119,27 @@ export default function ChalkboardLayout() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {specials.map(s => (
+                {specials.filter(s => !s.hidden).map(s => (
                   <div
                     key={s.id}
-                    className="bg-black/60 border border-stone-700/60 rounded-xl p-4 flex flex-col justify-between hover:border-amber-400 transition"
+                    className={`bg-black/60 border rounded-xl p-4 flex flex-col justify-between transition ${
+                      !s.inStock ? 'border-rose-700/60 opacity-60' : 'border-stone-700/60 hover:border-amber-400'
+                    }`}
                   >
                     <div>
                       <div className="flex items-start justify-between gap-2">
                         <span className="text-xs font-['Permanent_Marker'] text-[#FDA4AF]">
                           {s.badge}
                         </span>
-                        <span className="text-lg font-bold font-['Permanent_Marker'] text-[#FEF08A]">
-                          {s.price}
-                        </span>
+                        {!s.inStock ? (
+                          <span className="text-xs font-black uppercase bg-rose-600 text-white px-2 py-0.5 rounded font-mono">
+                            SOLD OUT
+                          </span>
+                        ) : (
+                          <span className="text-lg font-bold font-['Permanent_Marker'] text-[#FEF08A]">
+                            {s.price}
+                          </span>
+                        )}
                       </div>
 
                       <h3 className="text-lg font-bold text-white font-['Permanent_Marker'] mt-1">
@@ -210,7 +218,7 @@ export default function ChalkboardLayout() {
                     <span className="text-xs font-mono text-stone-400">$5.00 each</span>
                   </div>
                   <div className="space-y-3">
-                    {menu.sides?.items.map(item => (
+                    {menu.sides?.items.filter(item => !item.hidden).map(item => (
                       <div key={item.id} className="flex justify-between items-start text-xs border-b border-white/5 pb-2">
                         <div>
                           <strong className="text-white block text-sm">{item.name}</strong>
@@ -230,7 +238,7 @@ export default function ChalkboardLayout() {
                     </h3>
                   </div>
                   <div className="space-y-3">
-                    {menu.dessertsAndDrinks?.items.map(item => (
+                    {menu.dessertsAndDrinks?.items.filter(item => !item.hidden).map(item => (
                       <div key={item.id} className="flex justify-between items-start text-xs border-b border-white/5 pb-2">
                         <div>
                           <strong className="text-white block text-sm">{item.name}</strong>
@@ -256,7 +264,7 @@ export default function ChalkboardLayout() {
                     </p>
                   </div>
                   <div className="space-y-4">
-                    {menu.dinners?.items.map(item => (
+                    {menu.dinners?.items.filter(item => !item.hidden).map(item => (
                       <div key={item.id} className="border-b border-white/10 pb-3">
                         <div className="flex justify-between items-baseline">
                           <h4 className="font-bold text-white text-sm font-['Permanent_Marker']">{item.name}</h4>
@@ -283,7 +291,7 @@ export default function ChalkboardLayout() {
                     </h3>
                   </div>
                   <div className="space-y-3">
-                    {menu.sandwiches?.items.map(item => (
+                    {menu.sandwiches?.items.filter(item => !item.hidden).map(item => (
                       <div key={item.id} className="flex justify-between items-start text-xs border-b border-white/5 pb-2">
                         <div>
                           <strong className="text-white block text-sm">{item.name}</strong>
@@ -304,7 +312,7 @@ export default function ChalkboardLayout() {
                     </h3>
                   </div>
                   <div className="space-y-3">
-                    {menu.meatsOnly?.items.map(item => (
+                    {menu.meatsOnly?.items.filter(item => !item.hidden).map(item => (
                       <div key={item.id} className="flex justify-between items-start text-xs border-b border-white/5 pb-2">
                         <div>
                           <strong className="text-white block text-sm">{item.name}</strong>

@@ -48,7 +48,7 @@ export default function SpecialsDrawerModal() {
 
         {/* Scrollable Content */}
         <div className="p-4 sm:p-6 overflow-y-auto space-y-4">
-          {specials.map((item) => {
+          {specials.filter(item => !item.hidden).map((item) => {
             const isFryerDisabled = !announcements.fryerOpen && item.isFryerItem;
 
             return (

@@ -15,9 +15,10 @@ export default function SpecialsSpotlight() {
     }, 1500);
   };
 
-  // Filter window whiteboard items vs chalkboard/seafood items
-  const windowItems = specials.filter(s => s.spot && s.spot.includes('window'));
-  const chalkboardItems = specials.filter(s => s.spot && (s.spot.includes('chalkboard') || s.spot.includes('trailer-paper')));
+  // Filter window whiteboard items vs chalkboard/seafood items (excluding hidden)
+  const visibleSpecials = specials.filter(s => !s.hidden);
+  const windowItems = visibleSpecials.filter(s => s.spot && s.spot.includes('window'));
+  const chalkboardItems = visibleSpecials.filter(s => !s.spot || s.spot.includes('chalkboard') || s.spot.includes('trailer-paper') || !s.spot.includes('window'));
 
   return (
     <section id="specials-section" className="py-10 bg-[#120F0E] border-t border-b border-[#30241E] relative">
