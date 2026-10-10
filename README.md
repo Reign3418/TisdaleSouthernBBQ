@@ -62,6 +62,6 @@ npm run build
 ---
 
 ## 🤝 Mission & Attribution
-Built pro bono with heart and respect for small business owners and Carolina pitmasters.
+Crafted with passion in support of local Carolina small business owners and pitmasters.
 Owner: Donald Tisdale (Andrews, SC / Fayetteville, NC)
 NC Food Trailer Plate: DA-54744

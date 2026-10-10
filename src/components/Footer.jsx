@@ -103,9 +103,9 @@ export default function Footer() {
             © {new Date().getFullYear()} Tisdale's Southern BBQ. Owned & Operated by Donald Tisdale.
           </div>
           <div className="flex items-center gap-1 text-stone-400">
-            <span>Built pro bono with</span>
-            <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500 inline" />
-            <span>for authentic Carolina pitmasters.</span>
+            <span>Crafted with</span>
+            <Flame className="w-3.5 h-3.5 text-orange-500 fill-orange-500 inline" />
+            <span>in support of authentic Carolina pitmasters.</span>
           </div>
         </div>
 
