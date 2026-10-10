@@ -1,15 +1,25 @@
 import React from 'react';
 import { usePitmaster } from '../context/PitmasterContext';
-import { Palette, Flame, UtensilsCrossed, ClipboardList, Radio, ChefHat, Tv } from 'lucide-react';
+import { Palette, Flame, UtensilsCrossed, ClipboardList, Radio, ChefHat, Tv, Zap } from 'lucide-react';
 
 export default function DesignSwitcherBar() {
-  const { themeVersion, setThemeVersion, setIsGpsWhitePageOpen, setIsPitmasterMode, setIsTvMenuOpen, setIsTvWhitePageOpen } = usePitmaster();
+  const {
+    themeVersion,
+    setThemeVersion,
+    setIsGpsWhitePageOpen,
+    setIsPitmasterMode,
+    setIsTvMenuOpen,
+    setIsTvWhitePageOpen,
+    isPitFxActive,
+    setIsPitFxActive,
+    setIsWixPitchOpen
+  } = usePitmaster();
 
   const themes = [
     {
       id: 'smokehouse',
-      name: 'Option 1: Smokehouse Trailer',
-      subtitle: 'Dark Hickory & Wood-Fired Red',
+      name: 'Option 1: Smokehouse Precision',
+      subtitle: 'Dark Hickory, Pit Embers & Clean Lines',
       icon: Flame,
       colorDot: 'bg-[#D9381E]'
     },
@@ -40,7 +50,7 @@ export default function DesignSwitcherBar() {
             Design Concept Switcher:
           </span>
           <span className="text-stone-400 text-[11px] hidden sm:inline">
-            (Explore 3 custom layouts for your trailer)
+            (Explore custom layouts crafted for your trailer)
           </span>
         </div>
 
@@ -73,6 +83,22 @@ export default function DesignSwitcherBar() {
 
           <div className="h-4 w-px bg-stone-700 mx-1 hidden sm:block"></div>
 
+          {/* Smoldering Pit Fire & Embers Toggle */}
+          <button
+            onClick={() => setIsPitFxActive(!isPitFxActive)}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer border ${
+              isPitFxActive
+                ? 'bg-[#251712] text-amber-300 border-amber-600/70 shadow-sm'
+                : 'bg-[#140F0D] text-stone-400 border-stone-800'
+            }`}
+            title="Toggle live smoldering fire embers & smoke canvas effect"
+          >
+            <Flame className={`w-3.5 h-3.5 ${isPitFxActive ? 'text-orange-500 fill-orange-500/40 animate-pulse' : 'text-stone-500'}`} />
+            <span className="whitespace-nowrap">{isPitFxActive ? '🔥 Embers: ON' : '💨 Embers: OFF'}</span>
+          </button>
+
+          <div className="h-4 w-px bg-stone-700 mx-1 hidden sm:block"></div>
+
           {/* GPS Tracking White Paper Option */}
           <button
             onClick={() => setIsGpsWhitePageOpen(true)}
@@ -81,9 +107,6 @@ export default function DesignSwitcherBar() {
           >
             <Radio className="w-3.5 h-3.5 text-rose-600 shrink-0" />
             <span className="whitespace-nowrap font-black">📍 GPS Options</span>
-            <span className="text-[10px] bg-amber-200 text-stone-900 px-1.5 py-0.2 rounded font-mono uppercase">
-              White Page
-            </span>
           </button>
 
           {/* TV Display White Paper Option */}
@@ -93,22 +116,17 @@ export default function DesignSwitcherBar() {
             title="Review trailer TV menu and live sync options"
           >
             <Tv className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-            <span className="whitespace-nowrap font-black">📺 TV Sync Guide</span>
-            <span className="text-[10px] bg-blue-100 text-stone-900 px-1.5 py-0.2 rounded font-mono uppercase">
-              White Page
-            </span>
+            <span className="whitespace-nowrap font-black">📺 TV Sync</span>
           </button>
 
-          <div className="h-4 w-px bg-stone-700 mx-1 hidden sm:block"></div>
-
-          {/* Donald's Pitmaster Menu Editor Button */}
+          {/* Pitmaster Menu Editor Button */}
           <button
             onClick={() => setIsPitmasterMode(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer bg-amber-500 hover:bg-amber-400 text-stone-950 shadow-md"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer bg-amber-500 hover:bg-amber-400 text-stone-950 shadow-md font-black"
             title="Your Pitmaster command center: edit prices, add items, 86 sold out on the fly"
           >
             <ChefHat className="w-3.5 h-3.5" />
-            <span className="whitespace-nowrap font-black">👨‍🍳 Edit Menu (On The Fly)</span>
+            <span className="whitespace-nowrap">👨‍🍳 Edit Menu</span>
           </button>
 
           {/* TV Menu 1080p Image & Live Sync Button */}
@@ -118,7 +136,19 @@ export default function DesignSwitcherBar() {
             title="Open your 1080p TV Menu, download a fresh USB image, or sync your trailer screen"
           >
             <Tv className="w-3.5 h-3.5 text-amber-400" />
-            <span className="whitespace-nowrap font-black">📺 TV Menu (USB / Live)</span>
+            <span className="whitespace-nowrap font-black">📺 TV Board</span>
+          </button>
+
+          <div className="h-4 w-px bg-stone-700 mx-1 hidden sm:block"></div>
+
+          {/* Wix vs React Modernization Brief for pitching clients */}
+          <button
+            onClick={() => setIsWixPitchOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-black transition cursor-pointer bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-stone-950 shadow-md border border-amber-400"
+            title="Open pitch guide to upgrade local businesses from Wix to high-speed React"
+          >
+            <Zap className="w-3.5 h-3.5 fill-stone-950" />
+            <span className="whitespace-nowrap">⚡ Pitch Wix Upgrade</span>
           </button>
         </div>
 

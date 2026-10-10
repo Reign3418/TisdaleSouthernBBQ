@@ -8,6 +8,7 @@ const STORAGE_KEY_SPECIALS = 'tisdales_bbq_specials_v1';
 const STORAGE_KEY_SCHEDULE = 'tisdales_bbq_schedule_v1';
 const STORAGE_KEY_ANNOUNCE = 'tisdales_bbq_announcements_v1';
 const STORAGE_KEY_THEME = 'tisdales_bbq_theme_v1';
+const STORAGE_KEY_PITFX = 'tisdales_bbq_pitfx_v1';
 
 export function PitmasterProvider({ children }) {
   // Load from localStorage or defaults
@@ -85,6 +86,15 @@ export function PitmasterProvider({ children }) {
     }
     return false;
   });
+  const [isPitFxActive, setIsPitFxActive] = useState(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY_PITFX);
+      return saved !== null ? JSON.parse(saved) : true;
+    } catch (e) {
+      return true;
+    }
+  });
+  const [isWixPitchOpen, setIsWixPitchOpen] = useState(false);
 
   useEffect(() => {
     const handleHash = () => {
@@ -100,10 +110,17 @@ export function PitmasterProvider({ children }) {
       if (window.location.hash === '#tv-whitepaper' || window.location.hash === '#tv-options') {
         setIsTvWhitePageOpen(true);
       }
+      if (window.location.hash === '#wix-comparison' || window.location.hash === '#pitch') {
+        setIsWixPitchOpen(true);
+      }
     };
     window.addEventListener('hashchange', handleHash);
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY_PITFX, JSON.stringify(isPitFxActive));
+  }, [isPitFxActive]);
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY_THEME, themeVersion);
@@ -360,6 +377,10 @@ export function PitmasterProvider({ children }) {
       setIsTvMenuOpen,
       isTvWhitePageOpen,
       setIsTvWhitePageOpen,
+      isPitFxActive,
+      setIsPitFxActive,
+      isWixPitchOpen,
+      setIsWixPitchOpen,
       resetToDefaults
     }}>
       {children}

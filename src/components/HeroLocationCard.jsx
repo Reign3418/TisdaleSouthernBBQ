@@ -1,18 +1,33 @@
 import React from 'react';
 import { usePitmaster } from '../context/PitmasterContext';
-import { MapPin, Navigation, Clock, Phone, AlertCircle, Calendar, Sparkles, Flame } from 'lucide-react';
+import { MapPin, Navigation, Clock, Phone, AlertCircle, Calendar, Sparkles, Flame, ShieldCheck } from 'lucide-react';
 import SquareIcon from './icons/SquareIcon';
+import PitFireSmokeCanvas from './effects/PitFireSmokeCanvas';
+import PrecisionCorners from './common/PrecisionCorners';
 
 export default function HeroLocationCard() {
   const { schedule, announcements } = usePitmaster();
   const current = schedule.currentLocation;
 
   return (
-    <section id="location" className="relative pt-6 pb-8 bg-[#120F0E]">
-      <div className="max-w-7xl mx-auto px-4">
+    <section id="location" className="relative pt-6 pb-12 bg-[#120F0E] overflow-hidden">
+      
+      {/* 1. SMOLDERING PIT FIRE & HICKORY SMOKE ENGINE (Canvas Background) */}
+      <PitFireSmokeCanvas />
+
+      {/* Subtle architectural vertical gridlines for precision feel */}
+      <div className="absolute inset-0 pointer-events-none opacity-5 flex justify-between max-w-7xl mx-auto px-4 z-0">
+        <div className="w-px h-full bg-amber-500"></div>
+        <div className="w-px h-full bg-amber-500"></div>
+        <div className="w-px h-full bg-amber-500"></div>
+        <div className="w-px h-full bg-amber-500"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
         
-        {/* Heartfelt Welcome Signboard */}
-        <div className="mb-6 p-4 rounded-xl bg-[#1C1613] border border-[#3E2E25] text-center">
+        {/* Heartfelt Welcome Signboard with Precision Hairline Borders */}
+        <div className="relative mb-6 p-4 rounded-xl bg-[#1A1411]/90 backdrop-blur-sm border border-[#3E2E25] text-center shadow-lg">
+          <PrecisionCorners color="text-amber-500/30" />
           <p className="text-[#F59E0B] text-xs sm:text-sm font-bold uppercase tracking-widest font-['Bebas_Neue'] text-lg sm:text-xl">
             "Thank You for Choosing Us to Have Your Lunch or Dinner — We Appreciate Your Support!"
           </p>
@@ -22,15 +37,27 @@ export default function HeroLocationCard() {
         </div>
 
         {/* Main Location & Trailer Showcase Card */}
-        <div className="relative rounded-2xl bg-[#1A1412] border-2 border-[#3E2E25] p-5 sm:p-8 shadow-xl">
+        <div className="relative rounded-2xl bg-[#171210]/95 backdrop-blur-md border border-[#3E2E25] p-5 sm:p-8 shadow-2xl transition-all duration-200">
+          <PrecisionCorners color="text-amber-500/50" />
           
+          {/* Top Precision Metadata Strip */}
+          <div className="flex items-center justify-between border-b border-[#35251F] pb-3 mb-5 font-mono text-[10px] text-stone-400 uppercase tracking-widest">
+            <div className="flex items-center gap-2 text-amber-400 font-bold">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>[ SPEC: 100% SPLIT HICKORY WOOD • LOW & SLOW ]</span>
+            </div>
+            <span className="hidden sm:inline text-stone-500">
+              ANDREWS, SC TRADITION • FAYETTEVILLE & SANFORD, NC
+            </span>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             {/* Left 7 Cols: Location & Pitmaster Welcome */}
             <div className="lg:col-span-7 space-y-4">
               
-              <div className="inline-flex items-center gap-2 bg-[#261B16] border border-[#523A2E] px-3 py-1 rounded-md text-amber-300 text-xs font-bold uppercase tracking-wider">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              <div className="inline-flex items-center gap-2 bg-[#261B16] border border-[#523A2E] px-3 py-1 rounded text-amber-300 text-xs font-mono font-bold uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
                 <span>{current.date || "Today's Food Trailer Stop"}</span>
               </div>
 
@@ -60,13 +87,13 @@ export default function HeroLocationCard() {
                 )}
               </div>
 
-              {/* Action Buttons */}
+              {/* Action Buttons with Snappy Instant Response */}
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <a
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(current.name + ' ' + current.address)}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2 bg-[#D9381E] hover:bg-[#B72C15] text-white font-black px-5 py-3 rounded-lg text-sm transition shadow cursor-pointer uppercase tracking-wider"
+                  className="flex items-center gap-2 bg-[#D9381E] hover:bg-[#B72C15] active:translate-y-0.5 text-white font-black px-5 py-3 rounded-lg text-sm transition-all duration-150 shadow-md cursor-pointer uppercase tracking-wider border border-[#FF6B35]/40"
                 >
                   <Navigation className="w-4 h-4" />
                   <span>Get Directions</span>
@@ -74,7 +101,7 @@ export default function HeroLocationCard() {
 
                 <a
                   href="tel:9107092900"
-                  className="flex items-center gap-2 bg-[#2D211C] hover:bg-[#3D2E27] border border-[#523C30] text-stone-100 font-bold px-4 py-3 rounded-lg text-sm transition"
+                  className="flex items-center gap-2 bg-[#251A15] hover:bg-[#34241D] active:translate-y-0.5 border border-[#4E3529] hover:border-amber-500/60 text-stone-100 font-bold px-4 py-3 rounded-lg text-sm transition-all duration-150 shadow-sm"
                 >
                   <Phone className="w-4 h-4 text-emerald-400" />
                   <span>Call to Order: (910) 709-2900</span>
@@ -82,23 +109,24 @@ export default function HeroLocationCard() {
 
                 <a
                   href="#specials-section"
-                  className="flex items-center gap-1.5 text-amber-300 hover:text-amber-200 text-sm font-semibold underline underline-offset-4 px-2 py-1"
+                  className="flex items-center gap-1.5 text-amber-300 hover:text-white text-sm font-semibold underline underline-offset-4 px-2 py-1 transition"
                 >
                   <Sparkles className="w-4 h-4 text-amber-400" />
                   <span>View Trailer Specials</span>
                 </a>
               </div>
 
-              {/* Square Payment Acceptance */}
+              {/* Square Payment Acceptance Bar */}
               <div className="flex flex-wrap items-center gap-2 pt-1">
-                <span className="inline-flex items-center gap-2 bg-[#241B17] border border-[#3E2E25] text-stone-200 px-3 py-1.5 rounded-lg text-xs font-semibold">
+                <span className="inline-flex items-center gap-2 bg-[#1C1512] border border-[#3E2E25] text-stone-200 px-3 py-1.5 rounded-lg text-xs font-semibold">
                   <SquareIcon className="w-4 h-4 text-emerald-400 shrink-0" />
                   <span>We Accept Square at the Window: Cards, Apple Pay, Tap & Cash</span>
                 </span>
               </div>
 
               {/* Pitmaster Kitchen Policy Notice */}
-              <div className="mt-4 p-4 rounded-xl bg-[#221915] border border-[#443126] text-xs sm:text-sm flex items-start gap-3 text-stone-300">
+              <div className="mt-4 p-4 rounded-xl bg-[#201713] border border-[#3E2D24] text-xs sm:text-sm flex items-start gap-3 text-stone-300 relative">
+                <PrecisionCorners color="text-amber-500/20" />
                 <Flame className="w-5 h-5 text-orange-500 shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-amber-300">A Quick Note From Donald:</strong>{" "}
@@ -117,41 +145,47 @@ export default function HeroLocationCard() {
             <div className="lg:col-span-5 space-y-4">
               
               {/* Photo Card with authentic flame wrap */}
-              <div className="relative rounded-xl overflow-hidden border-2 border-[#4A372E] group shadow-lg">
+              <div className="relative rounded-xl overflow-hidden border border-[#443026] group shadow-xl">
+                <PrecisionCorners color="text-amber-500/40" />
                 <img
                   src="./images/truck-logo-wrap.jpg"
                   alt="Tisdale's BBQ Food Trailer"
-                  className="w-full h-52 sm:h-60 object-cover group-hover:scale-105 transition duration-300"
+                  className="w-full h-52 sm:h-60 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
                 <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white font-medium">
-                  <span className="bg-black/90 px-2.5 py-1 rounded border border-stone-700 font-bold text-amber-300">
+                  <span className="bg-black/90 px-2.5 py-1 rounded border border-stone-700 font-bold text-amber-300 font-mono text-[11px]">
                     Family Owned & Operated
                   </span>
-                  <span className="bg-[#D9381E] px-2.5 py-1 rounded text-white font-bold tracking-wider uppercase">
+                  <span className="bg-[#D9381E] px-2.5 py-1 rounded text-white font-bold tracking-wider uppercase font-mono text-[11px]">
                     Low & Slow Smoke
                   </span>
                 </div>
               </div>
 
-              {/* Upcoming Weekly Stops Card */}
-              <div className="bg-[#1C1613] border border-[#3E2E25] rounded-xl p-4 text-xs">
-                <div className="flex items-center justify-between text-stone-300 font-bold uppercase tracking-wider mb-2.5 pb-2 border-b border-stone-800">
+              {/* Upcoming Weekly Stops Card with Precision Lines */}
+              <div className="relative bg-[#1A1411]/90 backdrop-blur-sm border border-[#3E2E25] rounded-xl p-4 text-xs shadow-lg">
+                <PrecisionCorners color="text-amber-500/30" />
+                
+                <div className="flex items-center justify-between text-stone-300 font-bold uppercase tracking-wider mb-2.5 pb-2 border-b border-[#35261F]">
                   <span className="flex items-center gap-1.5 text-amber-400 font-['Bebas_Neue'] text-base tracking-wide">
                     <Calendar className="w-4 h-4 text-amber-400" />
                     Where to Find Us This Week
                   </span>
-                  <span className="text-[10px] text-stone-400 lowercase">check Facebook for pop-ups</span>
+                  <span className="text-[10px] text-stone-400 font-mono lowercase">check Facebook for pop-ups</span>
                 </div>
 
-                <div className="space-y-1.5">
+                <div className="space-y-1.5 font-sans">
                   {schedule.upcomingLocations.map((loc, i) => (
-                    <div key={i} className="flex items-center justify-between py-1.5 px-2 rounded hover:bg-white/5 transition">
+                    <div 
+                      key={i} 
+                      className="flex items-center justify-between py-1.5 px-2 rounded border border-transparent hover:border-amber-500/20 hover:bg-white/5 transition-all duration-150"
+                    >
                       <div className="truncate">
-                        <strong className="text-amber-300 mr-2">{loc.day}:</strong>
+                        <strong className="text-amber-300 mr-2 font-mono text-[11px]">{loc.day}:</strong>
                         <span className="text-stone-200">{loc.location}</span>
                       </div>
-                      <span className="text-[11px] text-stone-400 shrink-0 ml-2">{loc.hours}</span>
+                      <span className="text-[11px] text-stone-400 font-mono shrink-0 ml-2">{loc.hours}</span>
                     </div>
                   ))}
                 </div>
