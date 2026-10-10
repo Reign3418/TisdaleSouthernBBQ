@@ -8,14 +8,14 @@ export default function SpecialsDrawerModal() {
   if (!isSpecialsModalOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85">
       <div 
-        className="bg-[#191412] border-2 border-amber-500/50 rounded-2xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden relative"
+        className="bg-[#191412] border-2 border-[#3E2E25] rounded-2xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden relative"
         onClick={e => e.stopPropagation()}
       >
         
         {/* Top Header */}
-        <div className="bg-gradient-to-r from-[#8B0000] via-[#D9381E] to-[#B32400] text-white p-4 sm:p-5 flex items-center justify-between shrink-0">
+        <div className="bg-[#8C1B0B] border-b border-[#A6220E] text-white p-4 sm:p-5 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2.5">
             <span className="p-2 rounded-lg bg-black/30 border border-white/20">
               <Sparkles className="w-5 h-5 text-amber-300" />
@@ -100,7 +100,7 @@ export default function SpecialsDrawerModal() {
                     className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
                       !item.inStock || isFryerDisabled
                         ? 'bg-stone-800 text-stone-500 cursor-not-allowed'
-                        : 'bg-amber-500 hover:bg-amber-400 text-stone-950 font-black'
+                        : 'bg-[#D9381E] hover:bg-[#B72C15] text-white font-bold'
                     }`}
                   >
                     {!item.inStock ? 'Sold Out' : isFryerDisabled ? 'Grease Off' : '+ Add to Tray'}

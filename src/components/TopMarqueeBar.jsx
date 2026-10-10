@@ -6,13 +6,13 @@ export default function TopMarqueeBar() {
   const { announcements, schedule, setIsSpecialsModalOpen } = usePitmaster();
 
   return (
-    <div className="bg-gradient-to-r from-[#7A1508] via-[#B52A12] to-[#8C1B0B] text-white py-2 px-3 text-xs md:text-sm font-medium border-b border-[#D9381E]/40 shadow-md sticky top-0 z-40">
+    <div className="bg-[#8C1B0B] text-white py-2 px-3 text-xs md:text-sm font-medium border-b border-[#B22510] shadow-sm sticky top-0 z-40">
       <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
         
         {/* Left: Real-time Location & Hours */}
         <div className="flex items-center gap-2 overflow-hidden">
-          <span className="inline-flex items-center gap-1.5 bg-black/40 px-2.5 py-0.5 rounded-full text-amber-300 font-bold text-[11px] tracking-wide uppercase shrink-0 border border-amber-400/20">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span className="inline-flex items-center gap-1.5 bg-black/40 px-2.5 py-0.5 rounded text-amber-300 font-bold text-[11px] tracking-wide uppercase shrink-0 border border-amber-400/20">
+            <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
             Today's Trailer Stop
           </span>
           <span className="flex items-center gap-1.5 truncate text-amber-100">

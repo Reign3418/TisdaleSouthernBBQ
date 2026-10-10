@@ -85,12 +85,12 @@ export default function CateringSection() {
 
             <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-stone-400">
               <span>Licensed NC Food Trailer</span>
-              <span className="text-amber-400 font-mono">Plate: DA-54744</span>
+              <span className="text-amber-300 font-medium">Serving Fayetteville, Sanford, Dunn & Beyond</span>
             </div>
           </div>
 
           {/* Right 7 Cols: Working Intake Form */}
-          <div className="lg:col-span-7 bg-gradient-to-br from-[#231A16] to-[#1C1411] border-2 border-amber-600/40 rounded-3xl p-6 sm:p-8 shadow-xl">
+          <div className="lg:col-span-7 bg-[#1D1613] border-2 border-[#3E2E25] rounded-3xl p-6 sm:p-8 shadow-xl">
             <div>
               <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-widest mb-1">
                 <Calendar className="w-4 h-4" />
@@ -206,7 +206,7 @@ export default function CateringSection() {
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 hover:from-amber-400 hover:to-orange-400 text-stone-950 font-black py-3.5 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition shadow-xl shadow-orange-950/50 cursor-pointer"
+                  className="w-full bg-[#D9381E] hover:bg-[#B72C15] text-white font-black py-3.5 rounded-xl text-xs sm:text-sm uppercase tracking-wider transition shadow cursor-pointer"
                 >
                   Send Catering Request Direct to Donald
                 </button>

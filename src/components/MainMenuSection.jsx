@@ -57,7 +57,7 @@ export default function MainMenuSection() {
               onClick={() => setActiveCategory(cat.key)}
               className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition cursor-pointer ${
                 activeCategory === cat.key
-                  ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-stone-950 shadow-lg shadow-orange-950/50'
+                  ? 'bg-[#D9381E] text-white shadow'
                   : 'bg-[#221B17] text-stone-300 hover:text-white hover:bg-[#2F2520] border border-[#3D3029]'
               }`}
             >
@@ -177,7 +177,7 @@ export default function MainMenuSection() {
                                 ? 'bg-stone-800 text-stone-500 cursor-not-allowed'
                                 : isAdded
                                 ? 'bg-emerald-600 text-white shadow-md'
-                                : 'bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-stone-950 shadow-md font-extrabold'
+                                : 'bg-[#D9381E] hover:bg-[#B72C15] text-white shadow font-bold'
                             }`}
                           >
                             {isAdded ? (

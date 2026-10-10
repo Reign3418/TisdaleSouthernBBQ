@@ -44,7 +44,7 @@ export default function Footer() {
                 <FacebookIcon className="w-4 h-4 text-blue-400" />
                 <span>TisdalesSouthern BBQ</span>
               </a>
-              <span className="text-stone-500 font-mono text-[11px]">Trailer Plate: NC DA-54744</span>
+              <span className="text-stone-400 text-xs">Real Smoke • Low & Slow</span>
             </div>
           </div>
 

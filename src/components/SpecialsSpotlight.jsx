@@ -46,7 +46,7 @@ export default function SpecialsSpotlight() {
               onClick={() => setActiveTab('window')}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
                 activeTab === 'window'
-                  ? 'bg-amber-500 text-stone-950 shadow'
+                  ? 'bg-[#D9381E] text-white shadow'
                   : 'text-stone-300 hover:text-white'
               }`}
             >
@@ -56,7 +56,7 @@ export default function SpecialsSpotlight() {
               onClick={() => setActiveTab('chalkboard')}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
                 activeTab === 'chalkboard'
-                  ? 'bg-amber-500 text-stone-950 shadow'
+                  ? 'bg-[#D9381E] text-white shadow'
                   : 'text-stone-300 hover:text-white'
               }`}
             >
@@ -91,7 +91,7 @@ export default function SpecialsSpotlight() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             
             {/* Whiteboard Header Card */}
-            <div className="md:col-span-2 lg:col-span-4 bg-gradient-to-r from-[#1E252E] via-[#1A222B] to-[#1E252E] border-2 border-cyan-800/40 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-cyan-100 shadow-inner">
+            <div className="md:col-span-2 lg:col-span-4 bg-[#18212C] border-2 border-[#2C3B4E] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-cyan-100 shadow-sm">
               <div className="flex items-center gap-3">
                 <span className="bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 font-['Permanent_Marker'] px-3 py-1 rounded text-sm uppercase">
                   Window Specials
@@ -146,7 +146,7 @@ export default function SpecialsSpotlight() {
                           ? 'bg-stone-800 text-stone-500 cursor-not-allowed'
                           : isAdded
                           ? 'bg-emerald-600 text-white'
-                          : 'bg-amber-500 hover:bg-amber-400 text-stone-950 shadow'
+                          : 'bg-[#D9381E] hover:bg-[#B72C15] text-white shadow font-bold'
                       }`}
                     >
                       {isAdded ? (
@@ -241,7 +241,7 @@ export default function SpecialsSpotlight() {
                           className={`flex items-center gap-1 px-3 py-1 rounded text-xs font-bold font-sans transition cursor-pointer ${
                             !item.inStock || isFryerDisabled
                               ? 'bg-stone-800 text-stone-500 cursor-not-allowed'
-                              : 'bg-amber-400 hover:bg-amber-300 text-stone-950'
+                              : 'bg-[#D9381E] hover:bg-[#B72C15] text-white font-bold'
                           }`}
                         >
                           <Plus className="w-3.5 h-3.5" />

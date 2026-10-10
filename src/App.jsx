@@ -50,10 +50,10 @@ function AppContent() {
       <PitmasterAdminModal />
 
       {/* Mobile Bottom Quick-Action Bar for Customers */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#1A1412]/95 backdrop-blur-md border-t border-[#3C2D25] p-2.5 px-3 flex items-center justify-between gap-2 shadow-2xl">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#1A1412] border-t border-[#3C2D25] p-2.5 px-3 flex items-center justify-between gap-2 shadow-lg">
         <a
           href="tel:9107092900"
-          className="flex-1 flex items-center justify-center gap-1.5 bg-[#D9381E] text-white font-black py-2.5 px-2 rounded-xl text-xs uppercase tracking-wider shadow"
+          className="flex-1 flex items-center justify-center gap-1.5 bg-[#D9381E] hover:bg-[#B72C15] text-white font-black py-2.5 px-2 rounded-lg text-xs uppercase tracking-wider shadow"
         >
           <Phone className="w-3.5 h-3.5" />
           <span>Call Trailer</span>
@@ -63,7 +63,7 @@ function AppContent() {
           href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(current.name + ' ' + current.address)}`}
           target="_blank"
           rel="noreferrer"
-          className="flex-1 flex items-center justify-center gap-1.5 bg-[#2B201B] border border-[#4A372E] text-amber-200 font-bold py-2.5 px-2 rounded-xl text-xs uppercase tracking-wider"
+          className="flex-1 flex items-center justify-center gap-1.5 bg-[#2B201B] border border-[#4A372E] text-amber-200 font-bold py-2.5 px-2 rounded-lg text-xs uppercase tracking-wider"
         >
           <Navigation className="w-3.5 h-3.5 text-amber-400" />
           <span>Directions</span>
@@ -71,9 +71,9 @@ function AppContent() {
 
         <button
           onClick={() => setIsSpecialsModalOpen(true)}
-          className="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-amber-500 to-orange-500 text-stone-950 font-black py-2.5 px-2 rounded-xl text-xs uppercase tracking-wider shadow cursor-pointer"
+          className="flex-1 flex items-center justify-center gap-1.5 bg-[#2B201B] border border-[#543D32] hover:bg-[#382A23] text-amber-300 font-bold py-2.5 px-2 rounded-lg text-xs uppercase tracking-wider shadow cursor-pointer"
         >
-          <Sparkles className="w-3.5 h-3.5 fill-stone-950" />
+          <Sparkles className="w-3.5 h-3.5 fill-amber-300" />
           <span>Specials</span>
         </button>
       </div>

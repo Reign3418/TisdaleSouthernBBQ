@@ -7,8 +7,8 @@ export default function Header() {
 
   return (
     <header className="bg-[#181311] border-b border-[#362A25] relative">
-      {/* Decorative top ember line */}
-      <div className="h-1 w-full bg-gradient-to-r from-amber-500 via-rose-600 to-amber-600"></div>
+      {/* Solid wood-fired top border line */}
+      <div className="h-1 w-full bg-[#D9381E]"></div>
 
       <div className="max-w-7xl mx-auto px-4 py-4 sm:py-5">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -67,7 +67,7 @@ export default function Header() {
             {/* Specials Spotlight Trigger Button */}
             <button
               onClick={() => setIsSpecialsModalOpen(true)}
-              className="flex items-center gap-1.5 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-stone-950 font-black px-4 py-2 rounded-xl text-xs sm:text-sm transition shadow-md shadow-orange-950/40 cursor-pointer uppercase tracking-wider"
+              className="flex items-center gap-1.5 bg-[#D9381E] hover:bg-[#B72C15] text-white font-black px-4 py-2 rounded-lg text-xs sm:text-sm transition shadow cursor-pointer uppercase tracking-wider"
             >
               <Sparkles className="w-3.5 h-3.5 fill-stone-950" />
               <span>Today's Specials</span>
