@@ -1,9 +1,9 @@
 import React from 'react';
 import { usePitmaster } from '../context/PitmasterContext';
-import { Palette, Flame, UtensilsCrossed, ClipboardList, Radio, ChefHat } from 'lucide-react';
+import { Palette, Flame, UtensilsCrossed, ClipboardList, Radio, ChefHat, Tv } from 'lucide-react';
 
 export default function DesignSwitcherBar() {
-  const { themeVersion, setThemeVersion, setIsGpsWhitePageOpen, setIsPitmasterMode } = usePitmaster();
+  const { themeVersion, setThemeVersion, setIsGpsWhitePageOpen, setIsPitmasterMode, setIsTvMenuOpen } = usePitmaster();
 
   const themes = [
     {
@@ -96,6 +96,16 @@ export default function DesignSwitcherBar() {
           >
             <ChefHat className="w-3.5 h-3.5" />
             <span className="whitespace-nowrap font-black">👨‍🍳 Edit Menu (On The Fly)</span>
+          </button>
+
+          {/* TV Menu 1080p Image & Live Sync Button */}
+          <button
+            onClick={() => setIsTvMenuOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer bg-[#241A15] hover:bg-[#34241C] text-amber-300 hover:text-white border border-amber-600/40 shadow-sm"
+            title="Open 1080p TV Menu, Download Image for USB, or Sync to Truck TV"
+          >
+            <Tv className="w-3.5 h-3.5 text-amber-400" />
+            <span className="whitespace-nowrap font-black">📺 TV Menu (USB / Live)</span>
           </button>
         </div>
 

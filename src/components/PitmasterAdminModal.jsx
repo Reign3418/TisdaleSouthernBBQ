@@ -18,7 +18,8 @@ import {
   Filter,
   DollarSign,
   Layers,
-  Sparkles
+  Sparkles,
+  Tv
 } from 'lucide-react';
 import SquareIcon from './icons/SquareIcon';
 
@@ -26,6 +27,7 @@ export default function PitmasterAdminModal() {
   const {
     isPitmasterMode,
     setIsPitmasterMode,
+    setIsTvMenuOpen,
     menu,
     specials,
     schedule,
@@ -383,6 +385,21 @@ export default function PitmasterAdminModal() {
           >
             <SquareIcon className="w-3.5 h-3.5" />
             <span>📢 Top Banner & Square</span>
+          </button>
+
+          <div className="h-4 w-px bg-stone-700 mx-1 hidden sm:block"></div>
+
+          {/* Direct Launch TV Menu & USB Exporter */}
+          <button
+            onClick={() => {
+              setIsPitmasterMode(false);
+              setIsTvMenuOpen(true);
+            }}
+            className="px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap bg-emerald-700 hover:bg-emerald-600 text-white shadow-md"
+            title="Launch 1080p TV Menu to download USB image or sync TV"
+          >
+            <Tv className="w-3.5 h-3.5" />
+            <span>📺 Export TV Menu / USB Image</span>
           </button>
         </div>
 

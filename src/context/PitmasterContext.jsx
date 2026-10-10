@@ -73,6 +73,12 @@ export function PitmasterProvider({ children }) {
     }
     return false;
   });
+  const [isTvMenuOpen, setIsTvMenuOpen] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.location.hash === '#tv-menu' || window.location.hash === '#tv-display' || window.location.search.includes('tv=1');
+    }
+    return false;
+  });
 
   useEffect(() => {
     const handleHash = () => {
@@ -81,6 +87,9 @@ export function PitmasterProvider({ children }) {
       }
       if (window.location.hash === '#admin') {
         setIsPitmasterMode(true);
+      }
+      if (window.location.hash === '#tv-menu' || window.location.hash === '#tv-display') {
+        setIsTvMenuOpen(true);
       }
     };
     window.addEventListener('hashchange', handleHash);
@@ -338,6 +347,8 @@ export function PitmasterProvider({ children }) {
       setThemeVersion,
       isGpsWhitePageOpen,
       setIsGpsWhitePageOpen,
+      isTvMenuOpen,
+      setIsTvMenuOpen,
       resetToDefaults
     }}>
       {children}
