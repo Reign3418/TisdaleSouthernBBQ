@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { usePitmaster } from '../context/PitmasterContext';
-import html2canvas from 'html2canvas';
 import {
   X,
   Download,
@@ -70,6 +69,7 @@ export default function TvMenuModal() {
     setIsExporting(true);
 
     try {
+      const html2canvas = (await import('html2canvas')).default;
       const canvas = await html2canvas(boardRef.current, {
         scale: 1, // Board is natively 1920x1080
         width: 1920,
@@ -409,7 +409,8 @@ export default function TvMenuModal() {
                   {/* Dinners List (Big Crisp Text, Zero Overflow) */}
                   <div className="space-y-1.5">
                     {menu.dinners?.items.filter(i => !i.hidden).map(item => {
-                      const isSoldOut = !item.inStock;
+                      const isFryerDisabled = !announcements.fryerOpen && item.isFryerItem;
+                      const isSoldOut = !item.inStock || isFryerDisabled;
 
                       return (
                         <div
@@ -434,7 +435,7 @@ export default function TvMenuModal() {
                           <div className="shrink-0 text-right">
                             {isSoldOut ? (
                               <span className="bg-rose-600 text-white font-black text-xs uppercase px-2 py-0.5 rounded-none font-mono shadow">
-                                SOLD OUT
+                                {isFryerDisabled ? 'GREASE OFF' : 'SOLD OUT'}
                               </span>
                             ) : (
                               <span className={`text-[23px] font-black font-mono tracking-tight ${
@@ -488,7 +489,8 @@ export default function TvMenuModal() {
                   {/* Sandwiches Items */}
                   <div className="space-y-1.5 mb-4">
                     {menu.sandwiches?.items.filter(i => !i.hidden).map(item => {
-                      const isSoldOut = !item.inStock;
+                      const isFryerDisabled = !announcements.fryerOpen && item.isFryerItem;
+                      const isSoldOut = !item.inStock || isFryerDisabled;
 
                       return (
                         <div
@@ -511,7 +513,7 @@ export default function TvMenuModal() {
                           <div className="shrink-0 text-right">
                             {isSoldOut ? (
                               <span className="bg-rose-600 text-white font-black text-xs uppercase px-2 py-0.5 rounded-none font-mono">
-                                SOLD OUT
+                                {isFryerDisabled ? 'GREASE OFF' : 'SOLD OUT'}
                               </span>
                             ) : (
                               <span className={`text-[21px] font-black font-mono ${
@@ -614,23 +616,33 @@ export default function TvMenuModal() {
 
                   {/* Sides 2-Column Grid */}
                   <div className="grid grid-cols-2 gap-x-4 gap-y-1 mb-3.5">
-                    {menu.sides?.items.filter(i => !i.hidden).map(item => (
-                      <div
-                        key={item.id}
-                        className={`flex justify-between items-baseline py-1 border-b ${
-                          boardTheme === 'classicOrange' ? 'border-stone-200' : 'border-stone-800'
-                        }`}
-                      >
-                        <span className="text-[16px] font-bold uppercase truncate pr-1">
-                          {item.name}
-                        </span>
-                        <span className={`text-[17px] font-black font-mono shrink-0 ${
-                          boardTheme === 'classicOrange' ? 'text-[#B95000]' : 'text-amber-400'
-                        }`}>
-                          {item.price}
-                        </span>
-                      </div>
-                    ))}
+                    {menu.sides?.items.filter(i => !i.hidden).map(item => {
+                      const isFryerDisabled = !announcements.fryerOpen && item.isFryerItem;
+                      const isSoldOut = !item.inStock || isFryerDisabled;
+                      return (
+                        <div
+                          key={item.id}
+                          className={`flex justify-between items-baseline py-1 border-b ${
+                            boardTheme === 'classicOrange' ? 'border-stone-200' : 'border-stone-800'
+                          } ${isSoldOut ? 'opacity-40' : ''}`}
+                        >
+                          <span className="text-[16px] font-bold uppercase truncate pr-1">
+                            {item.name}
+                          </span>
+                          {isSoldOut ? (
+                            <span className="bg-rose-600 text-white font-black text-[10px] uppercase px-1.5 py-0.5 rounded-none font-mono shrink-0">
+                              {isFryerDisabled ? 'GREASE OFF' : 'OUT'}
+                            </span>
+                          ) : (
+                            <span className={`text-[17px] font-black font-mono shrink-0 ${
+                              boardTheme === 'classicOrange' ? 'text-[#B95000]' : 'text-amber-400'
+                            }`}>
+                              {item.price}
+                            </span>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
 
                   {/* Fryer Specials / Seafood Catches */}
@@ -646,7 +658,8 @@ export default function TvMenuModal() {
 
                   <div className="space-y-1.5 mb-3.5">
                     {specials.filter(s => !s.hidden).slice(0, 3).map(s => {
-                      const isSoldOut = !s.inStock;
+                      const isFryerDisabled = !announcements.fryerOpen && s.isFryerItem;
+                      const isSoldOut = !s.inStock || isFryerDisabled;
 
                       return (
                         <div
@@ -669,7 +682,7 @@ export default function TvMenuModal() {
                           <div className="shrink-0 text-right">
                             {isSoldOut ? (
                               <span className="bg-rose-600 text-white font-black text-xs uppercase px-2 py-0.5 rounded-none font-mono">
-                                SOLD OUT
+                                {isFryerDisabled ? 'GREASE OFF' : 'SOLD OUT'}
                               </span>
                             ) : (
                               <span className={`text-[20px] font-black font-mono ${

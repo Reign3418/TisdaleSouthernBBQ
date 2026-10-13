@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { PitmasterProvider, usePitmaster } from './context/PitmasterContext';
 import DesignSwitcherBar from './components/DesignSwitcherBar';
 import SmokehouseLayout from './components/themes/SmokehouseLayout';
-import CarolinaGoldLayout from './components/themes/CarolinaGoldLayout';
-import ChalkboardLayout from './components/themes/ChalkboardLayout';
 import SpecialsDrawerModal from './components/SpecialsDrawerModal';
 import OrderDrawer from './components/OrderDrawer';
-import PitmasterAdminModal from './components/PitmasterAdminModal';
-import GpsTrackingWhitePage from './components/GpsTrackingWhitePage';
-import TvMenuModal from './components/TvMenuModal';
-import TvSyncWhitePage from './components/TvSyncWhitePage';
 import { Sparkles, Phone, Navigation, Utensils } from 'lucide-react';
+
+const CarolinaGoldLayout = lazy(() => import('./components/themes/CarolinaGoldLayout'));
+const ChalkboardLayout = lazy(() => import('./components/themes/ChalkboardLayout'));
+const PitmasterAdminModal = lazy(() => import('./components/PitmasterAdminModal'));
+const GpsTrackingWhitePage = lazy(() => import('./components/GpsTrackingWhitePage'));
+const TvMenuModal = lazy(() => import('./components/TvMenuModal'));
+const TvSyncWhitePage = lazy(() => import('./components/TvSyncWhitePage'));
 
 function AppContent() {
   const { themeVersion, schedule, setIsSpecialsModalOpen, cartItemCount, setIsCartOpen } = usePitmaster();
@@ -29,17 +30,21 @@ function AppContent() {
       <DesignSwitcherBar />
 
       {/* Dynamic Concept Layout */}
-      {themeVersion === 'carolinagold' && <CarolinaGoldLayout />}
-      {themeVersion === 'chalkboard' && <ChalkboardLayout />}
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center font-mono text-xs uppercase tracking-widest text-amber-400">Loading Concept Layout...</div>}>
+        {themeVersion === 'carolinagold' && <CarolinaGoldLayout />}
+        {themeVersion === 'chalkboard' && <ChalkboardLayout />}
+      </Suspense>
       {themeVersion === 'smokehouse' && <SmokehouseLayout />}
 
       {/* Shared Drawers & Modals (Accessible across all themes) */}
       <SpecialsDrawerModal />
       <OrderDrawer />
-      <PitmasterAdminModal />
-      <GpsTrackingWhitePage />
-      <TvMenuModal />
-      <TvSyncWhitePage />
+      <Suspense fallback={null}>
+        <PitmasterAdminModal />
+        <GpsTrackingWhitePage />
+        <TvMenuModal />
+        <TvSyncWhitePage />
+      </Suspense>
 
       {/* Mobile Bottom Quick-Action Bar for Customers */}
       <div className={`md:hidden fixed bottom-0 left-0 right-0 z-40 p-2.5 px-3 flex items-center justify-between gap-2 shadow-lg border-t ${

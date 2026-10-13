@@ -31,9 +31,9 @@ export default function TopMarqueeBar() {
               <span className="sm:hidden">Grease Off</span>
             </span>
           ) : (
-            <span className="hidden md:inline-flex items-center gap-1 text-[11px] text-amber-200">
-              <Flame className="w-3 h-3 text-amber-400 fill-amber-400" />
-              <span>Hickory Smoker Fired Up Daily</span>
+            <span className="hidden md:inline-flex items-center gap-1 text-[11px] text-amber-200 max-w-xs lg:max-w-md truncate">
+              <Flame className="w-3 h-3 text-amber-400 fill-amber-400 shrink-0" />
+              <span className="truncate">{announcements.topMarquee || 'Hickory Smoker Fired Up Daily'}</span>
             </span>
           )}
 
@@ -58,6 +58,11 @@ export default function TopMarqueeBar() {
         </div>
 
       </div>
+      {announcements.topMarquee && (
+        <div className="md:hidden mt-1 pt-1 border-t border-white/15 text-[11px] text-amber-100 truncate text-center font-medium">
+          {announcements.topMarquee}
+        </div>
+      )}
     </div>
   );
 }

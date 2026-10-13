@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import { usePitmaster } from '../../context/PitmasterContext';
-import { Phone, MapPin, Clock, Navigation, AlertTriangle, Sparkles, Flame, Image as ImageIcon } from 'lucide-react';
+import { Phone, MapPin, Clock, Navigation, AlertTriangle, Sparkles, Flame, Image as ImageIcon, Plus, Check } from 'lucide-react';
 import SquareIcon from '../icons/SquareIcon';
 
 export default function ChalkboardLayout() {
-  const { menu, specials, schedule, announcements, setIsGpsWhitePageOpen } = usePitmaster();
+  const { menu, specials, schedule, announcements, addToCart, setIsGpsWhitePageOpen } = usePitmaster();
   const current = schedule.currentLocation;
   const [activeBoard, setActiveBoard] = useState('chalkboard'); // 'chalkboard' | 'tv' | 'photos'
+  const [addedIds, setAddedIds] = useState({});
+
+  const handleAdd = (item, extra = '', overridePrice = null) => {
+    addToCart(item, extra, overridePrice);
+    const key = item.id + extra;
+    setAddedIds(prev => ({ ...prev, [key]: true }));
+    setTimeout(() => setAddedIds(prev => ({ ...prev, [key]: false })), 1500);
+  };
 
   return (
     <div className="bg-[#141B22] text-[#F0F6FC] font-sans selection:bg-[#38BDF8] selection:text-black min-h-screen w-full max-w-full overflow-x-hidden">
@@ -60,10 +68,10 @@ export default function ChalkboardLayout() {
           </div>
 
           {/* Quick Board Switcher */}
-          <div className="flex items-center gap-1.5 bg-[#0D1117] p-1.5 rounded-none border border-[#30363D]">
+          <div className="flex items-center gap-1.5 bg-[#0D1117] p-1.5 rounded-none border border-[#30363D] overflow-x-auto max-w-full scrollbar-none">
             <button
               onClick={() => setActiveBoard('chalkboard')}
-              className={`px-3.5 py-1.5 rounded-none text-xs font-bold transition cursor-pointer font-['Permanent_Marker'] ${
+              className={`px-3.5 py-1.5 rounded-none text-xs font-bold transition cursor-pointer font-['Permanent_Marker'] whitespace-nowrap shrink-0 ${
                 activeBoard === 'chalkboard'
                   ? 'bg-[#38BDF8] text-stone-950 shadow'
                   : 'text-stone-300 hover:text-white'
@@ -73,7 +81,7 @@ export default function ChalkboardLayout() {
             </button>
             <button
               onClick={() => setActiveBoard('tv')}
-              className={`px-3.5 py-1.5 rounded-none text-xs font-bold transition cursor-pointer font-['Permanent_Marker'] ${
+              className={`px-3.5 py-1.5 rounded-none text-xs font-bold transition cursor-pointer font-['Permanent_Marker'] whitespace-nowrap shrink-0 ${
                 activeBoard === 'tv'
                   ? 'bg-[#FEF08A] text-stone-950 shadow'
                   : 'text-stone-300 hover:text-white'
@@ -83,7 +91,7 @@ export default function ChalkboardLayout() {
             </button>
             <button
               onClick={() => setActiveBoard('photos')}
-              className={`px-3.5 py-1.5 rounded-none text-xs font-bold transition cursor-pointer flex items-center gap-1 ${
+              className={`px-3.5 py-1.5 rounded-none text-xs font-bold transition cursor-pointer flex items-center gap-1 whitespace-nowrap shrink-0 ${
                 activeBoard === 'photos'
                   ? 'bg-[#FDA4AF] text-stone-950 shadow'
                   : 'text-stone-400 hover:text-stone-200'
@@ -119,57 +127,90 @@ export default function ChalkboardLayout() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {specials.filter(s => !s.hidden).map(s => (
-                  <div
-                    key={s.id}
-                    className={`bg-black/60 border rounded-none p-4 flex flex-col justify-between transition ${
-                      !s.inStock ? 'border-rose-700/60 opacity-60' : 'border-stone-700/60 hover:border-amber-400'
-                    }`}
-                  >
-                    <div>
-                      <div className="flex items-start justify-between gap-2">
-                        <span className="text-xs font-['Permanent_Marker'] text-[#FDA4AF]">
-                          {s.badge}
-                        </span>
-                        {!s.inStock ? (
-                          <span className="text-xs font-black uppercase bg-rose-600 text-white px-2 py-0.5 rounded-none font-mono">
-                            SOLD OUT
+                {specials.filter(s => !s.hidden).map(s => {
+                  const isFryerDisabled = !announcements.fryerOpen && s.isFryerItem;
+                  const isAdded = addedIds[s.id];
+
+                  return (
+                    <div
+                      key={s.id}
+                      className={`bg-black/60 border rounded-none p-4 flex flex-col justify-between transition ${
+                        !s.inStock || isFryerDisabled ? 'border-rose-700/60 opacity-60' : 'border-stone-700/60 hover:border-amber-400'
+                      }`}
+                    >
+                      <div>
+                        <div className="flex items-start justify-between gap-2">
+                          <span className="text-xs font-['Permanent_Marker'] text-[#FDA4AF]">
+                            {s.badge}
                           </span>
-                        ) : (
-                          <span className="text-lg font-bold font-['Permanent_Marker'] text-[#FEF08A]">
-                            {s.price}
-                          </span>
+                          {!s.inStock ? (
+                            <span className="text-xs font-black uppercase bg-rose-600 text-white px-2 py-0.5 rounded-none font-mono">
+                              SOLD OUT
+                            </span>
+                          ) : isFryerDisabled ? (
+                            <span className="text-xs font-black uppercase bg-amber-600 text-stone-950 px-2 py-0.5 rounded-none font-mono">
+                              GREASE OFF
+                            </span>
+                          ) : (
+                            <span className="text-lg font-bold font-['Permanent_Marker'] text-[#FEF08A]">
+                              {s.price}
+                            </span>
+                          )}
+                        </div>
+
+                        <h3 className="text-lg font-bold text-white font-['Permanent_Marker'] mt-1">
+                          {s.title}
+                        </h3>
+
+                        <p className="text-xs text-stone-300 mt-1 font-sans leading-relaxed">
+                          {s.description}
+                        </p>
+
+                        {s.variants && (
+                          <div className="mt-2.5 pt-2 border-t border-white/10 space-y-1">
+                            {s.variants.map((v, i) => (
+                              <div key={i} className="flex justify-between text-[11px] font-mono text-stone-300">
+                                <span>• {v.name}</span>
+                                <strong className="text-[#FEF08A]">{v.price}</strong>
+                              </div>
+                            ))}
+                          </div>
                         )}
                       </div>
 
-                      <h3 className="text-lg font-bold text-white font-['Permanent_Marker'] mt-1">
-                        {s.title}
-                      </h3>
-
-                      <p className="text-xs text-stone-300 mt-1 font-sans leading-relaxed">
-                        {s.description}
-                      </p>
-
-                      {s.variants && (
-                        <div className="mt-2.5 pt-2 border-t border-white/10 space-y-1">
-                          {s.variants.map((v, i) => (
-                            <div key={i} className="flex justify-between text-[11px] font-mono text-stone-300">
-                              <span>• {v.name}</span>
-                              <strong className="text-[#FEF08A]">{v.price}</strong>
-                            </div>
-                          ))}
-                        </div>
-                      )}
+                      <div className="mt-4 pt-2 border-t border-white/10 flex items-center justify-between text-xs font-mono text-stone-400">
+                        <span>{s.source}</span>
+                        <button
+                          onClick={() => handleAdd(s)}
+                          disabled={!s.inStock || isFryerDisabled}
+                          className={`px-3 py-1 rounded-none text-xs font-bold font-sans transition cursor-pointer flex items-center gap-1 ${
+                            !s.inStock || isFryerDisabled
+                              ? 'bg-stone-800 text-stone-500 cursor-not-allowed'
+                              : isAdded
+                              ? 'bg-emerald-600 text-white'
+                              : 'bg-[#38BDF8] hover:bg-[#0284C7] text-stone-950'
+                          }`}
+                        >
+                          {isAdded ? (
+                            <>
+                              <Check className="w-3.5 h-3.5" />
+                              <span>Added</span>
+                            </>
+                          ) : !s.inStock ? (
+                            <span>Sold Out</span>
+                          ) : isFryerDisabled ? (
+                            <span>Grease Off</span>
+                          ) : (
+                            <>
+                              <Plus className="w-3.5 h-3.5" />
+                              <span>Add to Plate</span>
+                            </>
+                          )}
+                        </button>
+                      </div>
                     </div>
-
-                    <div className="mt-4 pt-2 border-t border-white/10 flex items-center justify-between text-xs font-mono text-stone-400">
-                      <span>{s.source}</span>
-                      <a href="tel:9107092900" className="text-[#38BDF8] font-bold hover:underline font-sans">
-                        Order: 910-709-2900
-                      </a>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 

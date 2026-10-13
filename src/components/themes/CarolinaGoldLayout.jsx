@@ -203,12 +203,12 @@ export default function CarolinaGoldLayout() {
         </div>
 
         {/* Category Tabs */}
-        <div className="flex items-center justify-center gap-2 overflow-x-auto pb-4 mb-6">
+        <div className="flex items-center justify-start md:justify-center gap-2 overflow-x-auto pb-4 mb-6 scrollbar-none overscroll-x-contain touch-pan-x">
           {categories.map(cat => (
             <button
               key={cat.key}
               onClick={() => setActiveCategory(cat.key)}
-              className={`px-4 py-2 rounded-none text-xs font-bold transition cursor-pointer border ${
+              className={`px-4 py-2 rounded-none text-xs font-bold transition cursor-pointer border whitespace-nowrap shrink-0 ${
                 activeCategory === cat.key
                   ? 'bg-[#B45309] text-white border-[#B45309] shadow'
                   : 'bg-white text-stone-700 hover:bg-[#FAF4EA] border-[#E7DFD5]'
@@ -223,12 +223,14 @@ export default function CarolinaGoldLayout() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {menu[activeCategory]?.items.filter(item => !item.hidden).map(item => {
             const isSoldOut = !item.inStock;
+            const isFryerDisabled = !announcements.fryerOpen && item.isFryerItem;
+            const isAdded = addedIds[item.id];
 
             return (
               <div
                 key={item.id}
                 className={`bg-[#FFFFFF] border rounded-none p-5 shadow-sm transition flex flex-col justify-between ${
-                  isSoldOut
+                  isSoldOut || isFryerDisabled
                     ? 'border-stone-300 opacity-60 bg-stone-50'
                     : 'border-[#E7DFD5] hover:border-[#B45309]'
                 }`}
@@ -242,6 +244,10 @@ export default function CarolinaGoldLayout() {
                       {isSoldOut ? (
                         <span className="text-[10px] font-black uppercase bg-rose-600 text-white px-2 py-0.5 rounded-none">
                           SOLD OUT
+                        </span>
+                      ) : isFryerDisabled ? (
+                        <span className="text-[10px] font-black uppercase bg-amber-600 text-white px-2 py-0.5 rounded-none">
+                          GREASE OFF
                         </span>
                       ) : (
                         <span className="text-lg font-black text-[#B45309] font-serif">
@@ -260,16 +266,33 @@ export default function CarolinaGoldLayout() {
 
                 <div className="mt-4 pt-3 border-t border-[#F0EAE1] flex items-center justify-between text-xs text-stone-500">
                   <span className="italic">{item.badge || "Smoked Fresh Daily"}</span>
-                  {isSoldOut ? (
-                    <span className="text-rose-700 font-bold">Sold Out Today</span>
-                  ) : (
-                    <a
-                      href="tel:9107092900"
-                      className="text-[#991B1B] font-bold hover:underline"
-                    >
-                      Call to Order
-                    </a>
-                  )}
+                  <button
+                    onClick={() => handleAdd(item)}
+                    disabled={isSoldOut || isFryerDisabled}
+                    className={`flex items-center gap-1 px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer ${
+                      isSoldOut || isFryerDisabled
+                        ? 'bg-stone-200 text-stone-500 cursor-not-allowed'
+                        : isAdded
+                        ? 'bg-emerald-600 text-white'
+                        : 'bg-[#991B1B] hover:bg-[#7F1D1D] text-white'
+                    }`}
+                  >
+                    {isAdded ? (
+                      <>
+                        <Check className="w-3.5 h-3.5" />
+                        <span>Added</span>
+                      </>
+                    ) : isSoldOut ? (
+                      <span>Sold Out</span>
+                    ) : isFryerDisabled ? (
+                      <span>Grease Off</span>
+                    ) : (
+                      <>
+                        <Plus className="w-3.5 h-3.5" />
+                        <span>Add to Plate</span>
+                      </>
+                    )}
+                  </button>
                 </div>
               </div>
             );
@@ -296,24 +319,49 @@ export default function CarolinaGoldLayout() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {specials.filter(s => !s.hidden).slice(0, 4).map(s => (
-              <div key={s.id} className="bg-white rounded-none p-4 border border-[#DCD3C5] shadow-sm">
-                <div className="flex items-center justify-between gap-2 mb-1">
-                  <span className="text-[10px] font-bold uppercase bg-[#FEF3C7] text-[#92400E] px-2 py-0.5 rounded-none">
-                    {s.badge}
-                  </span>
-                  {s.inStock ? (
-                    <span className="font-bold text-[#B45309] font-serif">{s.price}</span>
-                  ) : (
-                    <span className="text-[10px] font-black uppercase bg-rose-600 text-white px-2 py-0.5 rounded-none">
-                      SOLD OUT
-                    </span>
-                  )}
+            {specials.filter(s => !s.hidden).slice(0, 4).map(s => {
+              const isFryerDisabled = !announcements.fryerOpen && s.isFryerItem;
+              const isAdded = addedIds[s.id];
+              return (
+                <div key={s.id} className="bg-white rounded-none p-4 border border-[#DCD3C5] shadow-sm flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between gap-2 mb-1">
+                      <span className="text-[10px] font-bold uppercase bg-[#FEF3C7] text-[#92400E] px-2 py-0.5 rounded-none">
+                        {s.badge}
+                      </span>
+                      {!s.inStock ? (
+                        <span className="text-[10px] font-black uppercase bg-rose-600 text-white px-2 py-0.5 rounded-none">
+                          SOLD OUT
+                        </span>
+                      ) : isFryerDisabled ? (
+                        <span className="text-[10px] font-black uppercase bg-amber-600 text-white px-2 py-0.5 rounded-none">
+                          GREASE OFF
+                        </span>
+                      ) : (
+                        <span className="font-bold text-[#B45309] font-serif">{s.price}</span>
+                      )}
+                    </div>
+                    <h4 className="font-bold text-sm text-[#261B14] mt-1">{s.title}</h4>
+                    <p className="text-xs text-stone-600 mt-1">{s.description}</p>
+                  </div>
+                  <div className="mt-3 pt-2 border-t border-stone-100 flex justify-end">
+                    <button
+                      onClick={() => handleAdd(s)}
+                      disabled={!s.inStock || isFryerDisabled}
+                      className={`px-2.5 py-1 text-[11px] font-bold rounded-none transition cursor-pointer flex items-center gap-1 ${
+                        !s.inStock || isFryerDisabled
+                          ? 'bg-stone-200 text-stone-500 cursor-not-allowed'
+                          : isAdded
+                          ? 'bg-emerald-600 text-white'
+                          : 'bg-[#B45309] hover:bg-[#92400E] text-white'
+                      }`}
+                    >
+                      {isAdded ? '✓ Added' : !s.inStock ? 'Sold Out' : isFryerDisabled ? 'Grease Off' : '+ Add to Plate'}
+                    </button>
+                  </div>
                 </div>
-                <h4 className="font-bold text-sm text-[#261B14] mt-1">{s.title}</h4>
-                <p className="text-xs text-stone-600 mt-1">{s.description}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

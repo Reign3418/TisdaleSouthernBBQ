@@ -11,14 +11,14 @@
 
 ## Executive Summary
 
-Great barbecue has always possessed an organic discovery engine: the thin blue smoke rising from 100% pure hickory pellets and an aroma that pulls hungry people off Highway 70 from two miles out. 
+Great barbecue has always possessed an organic discovery engine: the thin blue smoke rising from 100% pure hickory pellets and an aroma that pulls hungry people off Highway 87, I-95, or Legion Road from two miles out. 
 
-However, in 2026, **the digital road is where 84% of food truck dining decisions begin**. When a worker in Clayton, a family in Smithfield, or an event organizer in Selma taps their phone and speaks:
+However, in 2026, **the digital road is where 84% of food truck dining decisions begin**. When a soldier near Fort Liberty in Fayetteville, a brewery patron in Sanford, or an event organizer in Dunn taps their phone and speaks:
 > *"Find the best smoked brisket food truck near me right now,"*
 
 Google, Apple, and AI search engines make a split-second decision about who to crown at the **tip of the spear**. 
 
-This white paper establishes the comprehensive technical architecture and execution strategy to guarantee that **Tisdale Southern BBQ dominates that decision**. By unifying Schema.org microdata, dynamic multi-territory geo-landing networks, real-time GPS telemetry, and sub-second edge delivery, we transform Tisdale Southern BBQ from a hidden local treasure into the undeniable algorithmic authority for barbecue across Johnston County and Eastern North Carolina.
+This white paper establishes the comprehensive technical architecture and execution strategy to guarantee that **Tisdale Southern BBQ dominates that decision**. By unifying Schema.org microdata, dynamic multi-territory geo-landing networks, real-time GPS telemetry, and sub-second edge delivery, we transform Tisdale Southern BBQ from a local treasure into the undeniable algorithmic authority for barbecue across Fayetteville, Sanford, Dunn, Johnston County, and Central/Eastern North Carolina.
 
 ```
                           ┌───────────────────────────┐
@@ -49,7 +49,7 @@ This white paper establishes the comprehensive technical architecture and execut
 
 Traditional SEO is built for static brick-and-mortar storefronts with one fixed street address. When applied to a mobile pitmaster, traditional methods fail for three specific reasons:
 
-1. **The "Moving Kitchen" Dilemma:** Google expects businesses to stay in one place. When a food truck moves between Selma, Smithfield, Clayton, and private catering events, search engines get confused and penalize local ranking unless dynamic geographic coordinates and service-area boundaries are explicitly declared.
+1. **The "Moving Kitchen" Dilemma:** Google expects businesses to stay in one place. When a food trailer moves between Fayetteville (Stop Button Bar & Arcade, North View Lanes), Sanford (Static Line Brewing Co.), Dunn, and private catering events, search engines get confused and penalize local ranking unless dynamic geographic coordinates and service-area boundaries are explicitly declared.
 2. **The "Empty Canvas" Trap:** As demonstrated with Flutter and generic site-builders (Wix default templates, Squarespace wrappers), rendering menus inside heavy client-side JavaScript or unindexed iframes leaves Googlebot blind. Search engines cannot index prices, cuts of meat, or smokehouse methods they cannot read in clean HTML/JSON.
 3. **The Voice & AI Revolution:** Today, over 55% of local food queries originate via voice assistants (Siri, Google Assistant, Apple CarPlay, Android Auto) or generative AI summaries (Google AI Overviews). These systems demand **unambiguous structured semantic graphs**, not keyword-stuffed paragraphs.
 
@@ -68,10 +68,10 @@ graph TD
     end
 
     subgraph E2 ["Engine 2: Territorial Satellites"]
-        L1["/selma-nc Hub"]
-        L2["/smithfield-nc Hub"]
-        L3["/clayton-nc Hub"]
-        L4["/johnston-county Hub"]
+        L1["/fayetteville-nc Hub"]
+        L2["/sanford-nc Hub"]
+        L3["/dunn-nc Hub"]
+        L4["/fort-liberty-catering Hub"]
     end
 
     subgraph E3 ["Engine 3: Real-Time Signals"]
@@ -112,7 +112,7 @@ Google does not parse our menu as mere text; it ingests it as an interconnected 
 
 * **The Pitmaster Provenance Tag:** Declaring culinary craft with structured attributes:
   ```json
-  "servesCuisine": ["Barbecue", "North Carolina Pit BBQ", "Hickory Smoked Meats"],
+  "servesCuisine": ["Barbecue", "Southern BBQ", "North Carolina Pit BBQ", "Hickory Smoked Meats", "Fried Seafood"],
   "smokingMethod": "100% Pure Hickory Pellets, Slow Low Temp",
   "founder": {
     "@type": "Person",
@@ -131,14 +131,14 @@ A food truck's market is not a single point; it is a territory. To capture every
 
 | Route URI | Target Search Keywords | Primary Conversion Goal |
 | :--- | :--- | :--- |
-| `/locations/selma-nc` | *"BBQ Selma NC"*, *"Food trucks Selma"*, *"Best ribs near I-95 Exit 97"* | Drive foot traffic to hometown stop |
-| `/locations/smithfield-nc` | *"Smithfield NC barbecue"*, *"Lunch food trucks Johnston Community College"* | Capturing courthouse & business lunch crowd |
-| `/locations/clayton-nc` | *"Clayton NC food trucks"*, *"Brewery food truck Clayton"*, *"Smoked brisket Clayton"* | Weekend evening craft brewery patrons |
-| `/catering/johnston-county` | *"BBQ catering Johnston County"*, *"Wedding barbecue caterer Raleigh"* | High-dollar corporate and wedding catering leads |
+| `/locations/fayetteville-nc` | *"BBQ Fayetteville NC"*, *"Food trucks Hope Mills / Legion Rd"*, *"Best ribs near Fort Liberty"* | Drive traffic to Stop Button Arcade & North View Lanes |
+| `/locations/sanford-nc` | *"Sanford NC barbecue"*, *"Brewery food truck Sanford"*, *"Static Line Brewing BBQ"* | Capturing craft brewery & weekend dinner crowd |
+| `/locations/dunn-nc` | *"Dunn NC food trucks"*, *"Smoked brisket near I-95 Exit 73"*, *"Downtown Dunn lunch"* | Capturing I-95 corridor & Downtown Dunn patrons |
+| `/catering/central-nc` | *"BBQ catering Fayetteville & Sanford"*, *"Military hail & farewell caterer"* | High-dollar military, corporate, and wedding catering leads |
 
 Each territorial hub contains:
 1. **Canonical Geolocation Coordinates:** Exact latitude/longitude bounds for that municipality.
-2. **Local Landmark Context:** Text referencing recognizable geographic anchors (e.g., *"Serving Selma, just minutes from the historic Union Station and US-70"*), establishing ironclad geographic relevance in Google's local search index.
+2. **Local Landmark Context:** Text referencing recognizable geographic anchors (e.g., *"Serving Fayetteville along Legion Road, Ramsey Street, and Fort Liberty"*), establishing ironclad geographic relevance in Google's local search index.
 3. **Structured Breadcrumb Hierarchy:** Allowing search spiders to crawl between municipal hubs effortlessly.
 
 ---

@@ -103,7 +103,7 @@ export default function GpsTrackingWhitePage() {
           {/* Section 1: Executive Summary */}
           <section className="space-y-3">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
-              <span className="w-6 h-6 rounded-none-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
+              <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 1
               </span>
               Your Freedom, Your Privacy & Reaching Your Customers
@@ -123,7 +123,7 @@ export default function GpsTrackingWhitePage() {
           <section className="space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-stone-200 pb-2">
               <h2 className="text-lg font-black text-stone-900 flex items-center gap-2">
-                <span className="w-6 h-6 rounded-none-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
+                <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                   2
                 </span>
                 Interactive Simulator: Test Your On/Off Switch
@@ -180,7 +180,7 @@ export default function GpsTrackingWhitePage() {
                 <div className="p-5 bg-stone-900 text-white space-y-3">
                   <div className="flex items-center justify-between gap-2">
                     <span className="inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-none text-xs font-bold font-mono uppercase">
-                      <span className="w-2 h-2 rounded-none-full bg-emerald-400 animate-pulse"></span>
+                      <span className="w-2 h-2 rounded-none bg-emerald-400 animate-pulse"></span>
                       🔴 LIVE NOW AT FOOD TRAILER
                     </span>
                     <span className="text-xs text-amber-400 font-bold font-mono">
@@ -210,7 +210,7 @@ export default function GpsTrackingWhitePage() {
                 </div>
               ) : (
                 <div className="p-6 bg-stone-100 text-stone-800 space-y-3 text-center">
-                  <div className="w-12 h-12 rounded-none-full bg-stone-200 text-stone-600 flex items-center justify-center mx-auto">
+                  <div className="w-12 h-12 rounded-none bg-stone-200 text-stone-600 flex items-center justify-center mx-auto">
                     <ShieldCheck className="w-6 h-6 text-emerald-600" />
                   </div>
                   <div>
@@ -232,7 +232,7 @@ export default function GpsTrackingWhitePage() {
           {/* Section 3: The 3 Viable Options Compared */}
           <section className="space-y-6">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
-              <span className="w-6 h-6 rounded-none-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
+              <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 3
               </span>
               The Three Practical Ways You Can Share Your Location
@@ -325,7 +325,7 @@ export default function GpsTrackingWhitePage() {
           {/* Section 4: Full Comparison Matrix */}
           <section className="space-y-4">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
-              <span className="w-6 h-6 rounded-none-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
+              <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 4
               </span>
               Side-by-Side Comparison Matrix
@@ -404,7 +404,7 @@ export default function GpsTrackingWhitePage() {
           {/* Section 6: Action Plan / Partnership */}
           <section className="space-y-3 border-t border-stone-200 pt-6">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2">
-              <span className="w-6 h-6 rounded-none-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
+              <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 5
               </span>
               Where We Suggest Starting Together

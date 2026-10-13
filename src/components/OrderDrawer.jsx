@@ -43,7 +43,7 @@ export default function OrderDrawer() {
 
   const handleSmsOrder = () => {
     const summary = encodeURIComponent(generateOrderSummary());
-    window.open(`sms:9107092900?body=${summary}`, '_blank');
+    window.open(`sms:9107092900?&body=${summary}`, '_blank');
   };
 
   return (

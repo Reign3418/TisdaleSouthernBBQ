@@ -7,11 +7,17 @@ export default function SpecialsSpotlight() {
   const [activeTab, setActiveTab] = useState('window'); // 'window' | 'chalkboard' | 'photos'
   const [addedItemIds, setAddedItemIds] = useState({});
 
-  const handleAdd = (special, extraLabel = '') => {
-    addToCart(special, extraLabel);
-    setAddedItemIds(prev => ({ ...prev, [special.id + extraLabel]: true }));
+  const parsePriceFromText = (text) => {
+    const match = String(text || '').match(/\$(\d+(?:\.\d+)?)/);
+    return match ? parseFloat(match[1]) : null;
+  };
+
+  const handleAdd = (special, extraLabel = '', overridePrice = null) => {
+    addToCart(special, extraLabel, overridePrice);
+    const key = special.id + extraLabel;
+    setAddedItemIds(prev => ({ ...prev, [key]: true }));
     setTimeout(() => {
-      setAddedItemIds(prev => ({ ...prev, [special.id + extraLabel]: false }));
+      setAddedItemIds(prev => ({ ...prev, [key]: false }));
     }, 1500);
   };
 
@@ -134,6 +140,23 @@ export default function SpecialsSpotlight() {
                     <p className="text-xs text-stone-400 leading-relaxed">
                       {item.description}
                     </p>
+
+                    {item.doublePrice && !isFryerDisabled && item.inStock && (
+                      <div className="pt-1 flex items-center justify-between bg-[#251C18] border border-amber-500/30 px-2.5 py-1 rounded-none">
+                        <span className="text-[11px] text-amber-300 font-bold">2-Piece Dinner: ${item.doublePrice.toFixed(2)}</span>
+                        <button
+                          type="button"
+                          onClick={() => handleAdd(item, '2-Piece Dinner', item.doublePrice)}
+                          className={`px-2 py-0.5 text-[10px] font-bold uppercase rounded-none transition cursor-pointer flex items-center gap-1 ${
+                            addedItemIds[item.id + '2-Piece Dinner']
+                              ? 'bg-emerald-600 text-white'
+                              : 'bg-amber-500/20 hover:bg-amber-500 text-amber-200 hover:text-stone-950 border border-amber-500/40'
+                          }`}
+                        >
+                          {addedItemIds[item.id + '2-Piece Dinner'] ? '✓ Added' : '+ Add 2pc'}
+                        </button>
+                      </div>
+                    )}
                   </div>
 
                   <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
@@ -197,6 +220,7 @@ export default function SpecialsSpotlight() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {chalkboardItems.map((item) => {
                   const isFryerDisabled = !announcements.fryerOpen && item.isFryerItem;
+                  const isAdded = addedItemIds[item.id];
                   return (
                     <div
                       key={item.id}
@@ -220,15 +244,34 @@ export default function SpecialsSpotlight() {
                           {item.description}
                         </p>
 
-                        {/* Variants list if present */}
+                        {/* Interactive Variants list if present */}
                         {item.variants && (
-                          <div className="mt-2.5 pt-2 border-t border-white/10 space-y-1">
-                            {item.variants.map((v, idx) => (
-                              <div key={idx} className="flex items-center justify-between text-[11px] text-stone-300">
-                                <span className="font-mono text-stone-400">• {v.name}</span>
-                                <span className="font-bold text-amber-200">{v.price}</span>
-                              </div>
-                            ))}
+                          <div className="mt-2.5 pt-2 border-t border-white/10 space-y-1.5">
+                            {item.variants.map((v, idx) => {
+                              const varKey = item.id + v.name;
+                              const varAdded = addedItemIds[varKey];
+                              return (
+                                <div key={idx} className="flex items-center justify-between gap-2 text-[11px] text-stone-300 bg-white/5 px-2 py-1 rounded-none border border-white/5">
+                                  <span className="font-mono text-stone-300 truncate">{v.name}</span>
+                                  <div className="flex items-center gap-2 shrink-0">
+                                    <span className="font-bold text-amber-200 font-mono">{v.price}</span>
+                                    {!isFryerDisabled && item.inStock && (
+                                      <button
+                                        type="button"
+                                        onClick={() => handleAdd(item, v.name, parsePriceFromText(v.price))}
+                                        className={`px-1.5 py-0.5 text-[10px] font-bold uppercase rounded-none transition cursor-pointer ${
+                                          varAdded
+                                            ? 'bg-emerald-600 text-white'
+                                            : 'bg-[#D9381E] hover:bg-[#B72C15] text-white'
+                                        }`}
+                                      >
+                                        {varAdded ? '✓' : '+ Add'}
+                                      </button>
+                                    )}
+                                  </div>
+                                </div>
+                              );
+                            })}
                           </div>
                         )}
                       </div>
@@ -244,11 +287,26 @@ export default function SpecialsSpotlight() {
                           className={`flex items-center gap-1 px-3 py-1 rounded-none text-xs font-bold font-sans transition cursor-pointer ${
                             !item.inStock || isFryerDisabled
                               ? 'bg-stone-800 text-stone-500 cursor-not-allowed'
+                              : isAdded
+                              ? 'bg-emerald-600 text-white'
                               : 'bg-[#D9381E] hover:bg-[#B72C15] text-white font-bold'
                           }`}
                         >
-                          <Plus className="w-3.5 h-3.5" />
-                          <span>Add to Tray</span>
+                          {isAdded ? (
+                            <>
+                              <Check className="w-3.5 h-3.5" />
+                              <span>Added!</span>
+                            </>
+                          ) : !item.inStock ? (
+                            <span>Sold Out</span>
+                          ) : isFryerDisabled ? (
+                            <span>Grease Off</span>
+                          ) : (
+                            <>
+                              <Plus className="w-3.5 h-3.5" />
+                              <span>Add to Tray</span>
+                            </>
+                          )}
                         </button>
                       </div>
                     </div>

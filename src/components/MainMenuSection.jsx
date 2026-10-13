@@ -16,11 +16,17 @@ export default function MainMenuSection() {
     { key: 'dessertsAndDrinks', label: 'Desserts & Cold Drinks' }
   ];
 
-  const handleAdd = (item, extraOption = '') => {
-    addToCart(item, extraOption);
-    setAddedItemIds(prev => ({ ...prev, [item.id + extraOption]: true }));
+  const parsePriceFromText = (text) => {
+    const match = String(text || '').match(/\$(\d+(?:\.\d+)?)/);
+    return match ? parseFloat(match[1]) : null;
+  };
+
+  const handleAdd = (item, extraOption = '', overridePrice = null) => {
+    addToCart(item, extraOption, overridePrice);
+    const key = item.id + extraOption;
+    setAddedItemIds(prev => ({ ...prev, [key]: true }));
     setTimeout(() => {
-      setAddedItemIds(prev => ({ ...prev, [item.id + extraOption]: false }));
+      setAddedItemIds(prev => ({ ...prev, [key]: false }));
     }, 1500);
   };
 
@@ -150,10 +156,35 @@ export default function MainMenuSection() {
                             </span>
                           </div>
 
-                          {/* Extra Options Pricing */}
+                          {/* Extra Options Pricing (1-Tap Addable) */}
                           {item.extraOption && (
-                            <div className="text-xs text-amber-300/90 font-medium mt-1">
-                              {item.extraOption}
+                            <div className="mt-1.5 flex items-center justify-between gap-2 bg-[#251C18] border border-amber-500/30 px-2.5 py-1 rounded-none">
+                              <span className="text-xs text-amber-300 font-semibold">
+                                {item.extraOption}
+                              </span>
+                              {!isSoldOut && !isFryerDisabled && (
+                                <button
+                                  type="button"
+                                  onClick={() => handleAdd(item, item.extraOption, parsePriceFromText(item.extraOption))}
+                                  className={`px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded-none transition cursor-pointer flex items-center gap-1 shrink-0 ${
+                                    addedItemIds[item.id + item.extraOption]
+                                      ? 'bg-emerald-600 text-white'
+                                      : 'bg-amber-500/20 hover:bg-amber-500 text-amber-200 hover:text-stone-950 border border-amber-500/40'
+                                  }`}
+                                >
+                                  {addedItemIds[item.id + item.extraOption] ? (
+                                    <>
+                                      <Check className="w-3 h-3" />
+                                      <span>Added</span>
+                                    </>
+                                  ) : (
+                                    <>
+                                      <Plus className="w-3 h-3" />
+                                      <span>Add Option</span>
+                                    </>
+                                  )}
+                                </button>
+                              )}
                             </div>
                           )}
 

@@ -27,7 +27,7 @@ export default function CateringSection() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const summary = `Catering Request for Donald Tisdale:\nName: ${formData.name}\nPhone: ${formData.phone}\nDate: ${formData.date}\nGuests: ${formData.guests}\nMeats: ${formData.meats.join(', ')}\nNotes: ${formData.notes}`;
-    window.open(`sms:9107092900?body=${encodeURIComponent(summary)}`, '_blank');
+    window.open(`sms:9107092900?&body=${encodeURIComponent(summary)}`, '_blank');
     setSubmitted(true);
   };
 

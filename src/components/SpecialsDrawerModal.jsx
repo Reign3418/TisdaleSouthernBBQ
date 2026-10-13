@@ -75,13 +75,34 @@ export default function SpecialsDrawerModal() {
                   </p>
 
                   {item.variants && (
-                    <div className="pt-1.5 space-y-0.5">
-                      {item.variants.map((v, i) => (
-                        <div key={i} className="text-[11px] text-stone-400 flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-none bg-amber-400"></span>
-                          <span>{v.name}: <strong className="text-amber-300">{v.price}</strong></span>
-                        </div>
-                      ))}
+                    <div className="pt-1.5 space-y-1">
+                      {item.variants.map((v, i) => {
+                        const match = String(v.price || '').match(/\$(\d+(?:\.\d+)?)/);
+                        const vPrice = match ? parseFloat(match[1]) : null;
+                        return (
+                          <div key={i} className="text-[11px] text-stone-300 flex items-center justify-between gap-2 bg-[#1A1412] px-2 py-1 border border-[#352822]">
+                            <span className="flex items-center gap-1.5 truncate">
+                              <span className="w-1.5 h-1.5 rounded-none bg-amber-400 shrink-0"></span>
+                              <span className="truncate">{v.name}</span>
+                            </span>
+                            <div className="flex items-center gap-2 shrink-0">
+                              <strong className="text-amber-300 font-mono">{v.price}</strong>
+                              {item.inStock && !isFryerDisabled && (
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    addToCart(item, v.name, vPrice);
+                                    setIsSpecialsModalOpen(false);
+                                  }}
+                                  className="px-1.5 py-0.5 bg-[#D9381E] hover:bg-[#B72C15] text-white text-[10px] font-bold uppercase rounded-none cursor-pointer"
+                                >
+                                  + Add
+                                </button>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
                   )}
                 </div>

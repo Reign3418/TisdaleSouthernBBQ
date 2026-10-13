@@ -304,7 +304,10 @@ export function PitmasterProvider({ children }) {
   };
 
   // Cart operations
-  const addToCart = (item, extraDetails = '') => {
+  const addToCart = (item, extraDetails = '', overridePrice = null) => {
+    const resolvedPrice = overridePrice !== null
+      ? overridePrice
+      : (item.numericPrice || item.singlePrice || parseFloat(String(item.price || '').replace(/[^0-9.]/g, '')) || 10.00);
     setCart(prev => {
       const existing = prev.find(i => i.id === item.id && i.extraDetails === extraDetails);
       if (existing) {
@@ -313,7 +316,7 @@ export function PitmasterProvider({ children }) {
       return [...prev, {
         id: item.id,
         name: item.name || item.title,
-        price: item.numericPrice || item.singlePrice || 10.00,
+        price: resolvedPrice,
         extraDetails,
         quantity: 1
       }];
