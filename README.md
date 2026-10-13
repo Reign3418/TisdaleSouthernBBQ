@@ -61,6 +61,16 @@ npm run build
 
 ---
 
+## 📜 Legal, Security & Regulatory Compliance
+
+For comprehensive auditing and operational policies, see [`COMPLIANCE.md`](./COMPLIANCE.md), covering:
+- **Global & Regional Privacy:** GDPR, CCPA/CPRA, ePrivacy, PIPEDA, LGPD, POPIA, COPPA, FERPA
+- **Digital Accessibility:** WCAG 2.1 & 2.2 (Level AA), a11y, ADA Title III, EAA
+- **Security & Cloud Infrastructure:** NIST CSF 2.0 / SP 800-53, SOC 2 Type I/II, PCI DSS v4.0 (SAQ A)
+- **Mobile Food Unit (MFU) Regulations:** NC Food Code (15A NCAC 18A .2600), Daily Commissary Agreements, FALCPA & FASTER Allergen Disclosures, NFPA 96 & 1 Fire/Propane Safety, NCDOR Sales Tax
+
+---
+
 ## 🤝 Mission & Attribution
 Crafted with passion in support of local Carolina small business owners and pitmasters.
 Owner: Donald Tisdale (Andrews, SC / Fayetteville, NC)
