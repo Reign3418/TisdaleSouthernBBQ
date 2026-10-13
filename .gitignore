@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Private Local Dossiers (Never pushed to GitHub)
+PRIVATE_*.md
+*_PRIVATE.md
