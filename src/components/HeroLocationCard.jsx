@@ -137,8 +137,8 @@ export default function HeroLocationCard() {
 
             </div>
 
-            {/* Right 5 Cols: Trailer Photo & Weekly Schedule */}
-            <div className="lg:col-span-5 space-y-4">
+            {/* Right 5 Cols: Trailer Photo & Weekly Schedule (Desktop Only) */}
+            <div className="hidden lg:block lg:col-span-5 space-y-4">
               
               {/* Photo Card with authentic flame wrap & straight borders */}
               <div className="relative rounded-none overflow-hidden border border-[#443026] group shadow-xl">

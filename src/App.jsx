@@ -10,10 +10,10 @@ import PitmasterAdminModal from './components/PitmasterAdminModal';
 import GpsTrackingWhitePage from './components/GpsTrackingWhitePage';
 import TvMenuModal from './components/TvMenuModal';
 import TvSyncWhitePage from './components/TvSyncWhitePage';
-import { Sparkles, Phone, Navigation } from 'lucide-react';
+import { Sparkles, Phone, Navigation, Utensils } from 'lucide-react';
 
 function AppContent() {
-  const { themeVersion, schedule, setIsSpecialsModalOpen } = usePitmaster();
+  const { themeVersion, schedule, setIsSpecialsModalOpen, cartItemCount, setIsCartOpen } = usePitmaster();
   const current = schedule.currentLocation;
 
   return (
@@ -86,6 +86,17 @@ function AppContent() {
           <Sparkles className="w-3.5 h-3.5" />
           <span>Specials</span>
         </button>
+
+        {/* Dynamic Order Plate Tray (Shows when customer has added items) */}
+        {cartItemCount > 0 && (
+          <button
+            onClick={() => setIsCartOpen(true)}
+            className="flex-1 flex items-center justify-center gap-1 bg-emerald-600 hover:bg-emerald-500 text-white font-black py-2.5 px-2 rounded-none text-xs uppercase tracking-wider shadow animate-pulse cursor-pointer border border-emerald-400"
+          >
+            <Utensils className="w-3.5 h-3.5" />
+            <span>Plate ({cartItemCount})</span>
+          </button>
+        )}
       </div>
 
     </div>

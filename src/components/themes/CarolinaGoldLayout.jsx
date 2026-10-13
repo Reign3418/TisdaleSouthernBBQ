@@ -98,8 +98,8 @@ export default function CarolinaGoldLayout() {
         </div>
       </header>
 
-      {/* 3. Hero: Donald's Story & The Heart Behind the Food */}
-      <section className="py-12 px-4 max-w-7xl mx-auto">
+      {/* 3. Hero: Donald's Story & The Heart Behind the Food (Desktop Only) */}
+      <section className="hidden md:block py-12 px-4 max-w-7xl mx-auto">
         <div className="bg-[#FFFFFF] border border-[#E7DFD5] rounded-none p-6 sm:p-10 shadow-md">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
