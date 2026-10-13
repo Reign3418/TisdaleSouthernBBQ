@@ -43,13 +43,13 @@ export default function GpsTrackingWhitePage() {
       <div className="bg-white text-stone-900 rounded-none shadow-2xl max-w-4xl w-full my-4 border border-stone-200 overflow-hidden print:shadow-none print:border-none print:m-0 print:rounded-none">
         
         {/* Top Control Bar (Hidden on print) */}
-        <div className="bg-stone-900 text-stone-200 px-6 py-3 flex items-center justify-between print:hidden border-b border-stone-800">
-          <div className="flex items-center gap-2">
-            <span className="bg-amber-500 text-black font-black text-xs px-2 py-0.5 rounded-none font-mono uppercase">
-              Craftsman Options Brief
+        <div className="bg-stone-900 text-stone-200 px-3 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-2 print:hidden border-b border-stone-800">
+          <div className="flex items-center gap-1.5 min-w-0">
+            <span className="bg-amber-500 text-black font-black text-[11px] px-2 py-0.5 rounded-none font-mono uppercase shrink-0">
+              Brief
             </span>
-            <span className="text-xs text-stone-300 font-medium">
-              Prepared for Mr. Donald Tisdale • Tisdale’s Southern BBQ
+            <span className="text-xs text-stone-300 font-medium truncate">
+              Prepared for Donald Tisdale
             </span>
           </div>
 

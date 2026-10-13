@@ -17,7 +17,7 @@ function AppContent() {
   const current = schedule.currentLocation;
 
   return (
-    <div className={`min-h-screen flex flex-col font-sans pb-20 md:pb-0 ${
+    <div className={`min-h-screen flex flex-col font-sans pb-20 md:pb-0 w-full max-w-full overflow-x-hidden relative ${
       themeVersion === 'carolinagold'
         ? 'bg-[#FAF7F0] text-[#241C18] selection:bg-[#B45309] selection:text-white'
         : themeVersion === 'chalkboard'

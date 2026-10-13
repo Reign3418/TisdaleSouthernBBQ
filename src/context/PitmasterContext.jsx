@@ -58,6 +58,22 @@ export function PitmasterProvider({ children }) {
     }
   });
 
+  // Mobile Device & Viewport Detection
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 768;
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Cart state for customer ordering/budgeting
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -367,6 +383,7 @@ export function PitmasterProvider({ children }) {
       cartItemCount,
       themeVersion,
       setThemeVersion,
+      isMobile,
       isGpsWhitePageOpen,
       setIsGpsWhitePageOpen,
       isTvMenuOpen,

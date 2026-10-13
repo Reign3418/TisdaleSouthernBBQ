@@ -21,19 +21,19 @@ export default function SpecialsSpotlight() {
   const chalkboardItems = visibleSpecials.filter(s => !s.spot || s.spot.includes('chalkboard') || s.spot.includes('trailer-paper') || !s.spot.includes('window'));
 
   return (
-    <section id="specials-section" className="py-10 bg-[#120F0E] border-t border-b border-[#30241E] relative">
+    <section id="specials-section" className="py-8 sm:py-10 bg-[#120F0E] border-t border-b border-[#30241E] relative w-full max-w-full overflow-hidden">
       
       {/* Background ambient warmth */}
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4">
         
         {/* Section Title Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4 mb-5 sm:mb-6">
           <div>
-            <div className="flex items-center gap-2 text-amber-500 font-bold uppercase tracking-wider text-xs">
-              <Sparkles className="w-4 h-4 fill-amber-500" />
+            <div className="flex items-center gap-1.5 text-amber-500 font-bold uppercase tracking-wider text-xs">
+              <Sparkles className="w-3.5 h-3.5 fill-amber-500" />
               <span>Trailer Window & Sidewalk Specials</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase font-['Bebas_Neue'] tracking-wide mt-1">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white uppercase font-['Bebas_Neue'] tracking-wide mt-1">
               Fresh Off The Pit & Fryer <span className="text-[#FF6B35]">Specials</span>
             </h2>
             <p className="text-xs sm:text-sm text-stone-400 max-w-2xl">
@@ -41,38 +41,40 @@ export default function SpecialsSpotlight() {
             </p>
           </div>
 
-          {/* Interactive Mode Tabs */}
-          <div className="flex items-center gap-1.5 bg-[#1C1613] p-1.5 rounded-none border border-[#3E3029] self-start md:self-auto">
+          {/* Interactive Mode Tabs - Touch Scrollable & Slim on Mobile */}
+          <div className="flex items-center gap-1 bg-[#1C1613] p-1 rounded-none border border-[#3E3029] w-full md:w-auto overflow-x-auto scrollbar-none overscroll-x-contain touch-pan-x shrink-0">
             <button
               onClick={() => setActiveTab('window')}
-              className={`px-3.5 py-1.5 rounded-none text-xs font-bold transition cursor-pointer ${
+              className={`px-2.5 py-1.5 sm:px-3.5 sm:py-1.5 rounded-none text-xs font-bold transition cursor-pointer shrink-0 ${
                 activeTab === 'window'
                   ? 'bg-[#D9381E] text-white shadow'
                   : 'text-stone-300 hover:text-white'
               }`}
             >
-              Window Whiteboard Deals
+              <span className="sm:hidden">Window Deals</span>
+              <span className="hidden sm:inline">Window Whiteboard Deals</span>
             </button>
             <button
               onClick={() => setActiveTab('chalkboard')}
-              className={`px-3.5 py-1.5 rounded-none text-xs font-bold transition cursor-pointer ${
+              className={`px-2.5 py-1.5 sm:px-3.5 sm:py-1.5 rounded-none text-xs font-bold transition cursor-pointer shrink-0 ${
                 activeTab === 'chalkboard'
                   ? 'bg-[#D9381E] text-white shadow'
                   : 'text-stone-300 hover:text-white'
               }`}
             >
-              Chalkboard & Seafood Catch
+              <span className="sm:hidden">Chalkboard & Fish</span>
+              <span className="hidden sm:inline">Chalkboard & Seafood Catch</span>
             </button>
             <button
               onClick={() => setActiveTab('photos')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer ${
+              className={`flex items-center gap-1 px-2.5 py-1.5 sm:px-3.5 sm:py-1.5 rounded-none text-xs font-bold transition cursor-pointer shrink-0 ${
                 activeTab === 'photos'
                   ? 'bg-rose-600 text-white shadow'
                   : 'text-stone-400 hover:text-stone-200'
               }`}
             >
               <ImageIcon className="w-3.5 h-3.5" />
-              <span>Truck Photos</span>
+              <span>Photos</span>
             </button>
           </div>
         </div>

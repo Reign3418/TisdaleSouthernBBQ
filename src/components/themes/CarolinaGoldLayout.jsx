@@ -25,7 +25,7 @@ export default function CarolinaGoldLayout() {
   ];
 
   return (
-    <div className="bg-[#FAF7F0] text-[#241C18] font-sans selection:bg-[#B45309] selection:text-white">
+    <div className="bg-[#FAF7F0] text-[#241C18] font-sans selection:bg-[#B45309] selection:text-white w-full max-w-full overflow-x-hidden">
       
       {/* 1. Top Hometown Welcome Banner */}
       <div className="bg-[#261B14] text-[#F5ECE1] py-2 px-3 text-xs border-b border-[#3E2E25]">

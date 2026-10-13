@@ -35,44 +35,44 @@ export default function HeroLocationCard() {
         </div>
 
         {/* Main Location & Trailer Showcase Card - Crisp 90-Degree Straight Lines */}
-        <div className="relative rounded-none bg-[#171210]/95 backdrop-blur-md border border-[#3E2E25] p-5 sm:p-8 shadow-2xl transition-all duration-200">
+        <div className="relative rounded-none bg-[#171210]/95 backdrop-blur-md border border-[#3E2E25] p-3.5 sm:p-8 shadow-2xl transition-all duration-200 w-full max-w-full overflow-hidden">
           
           {/* Top Precision Metadata Strip */}
-          <div className="flex items-center justify-between border-b border-[#35251F] pb-3 mb-5 font-mono text-[10px] text-stone-400 uppercase tracking-widest">
-            <div className="flex items-center gap-2 text-amber-400 font-bold">
-              <span className="w-2 h-2 rounded-none bg-emerald-500 animate-pulse"></span>
-              <span>[ SPEC: 100% PURE HICKORY PELLETS • LOW & SLOW ]</span>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-[#35251F] pb-2 sm:pb-3 mb-4 sm:mb-5 font-mono text-[9px] sm:text-[10px] text-stone-400 uppercase tracking-wider gap-1.5 overflow-hidden">
+            <div className="flex items-center gap-1.5 text-amber-400 font-bold truncate">
+              <span className="w-1.5 h-1.5 rounded-none bg-emerald-500 animate-pulse shrink-0"></span>
+              <span className="truncate">[ SPEC: 100% PURE HICKORY PELLETS • LOW & SLOW ]</span>
             </div>
-            <span className="hidden sm:inline text-stone-500">
-              ANDREWS, SC TRADITION • FAYETTEVILLE & SANFORD, NC
+            <span className="text-stone-500 text-[9px] sm:text-[10px] truncate">
+              ANDREWS, SC TRADITION • FAYETTEVILLE, NC
             </span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
             
             {/* Left 7 Cols: Location & Pitmaster Welcome */}
-            <div className="lg:col-span-7 space-y-4">
+            <div className="lg:col-span-7 space-y-3.5 sm:space-y-4">
               
-              <div className="inline-flex items-center gap-2 bg-[#261B16] border border-[#523A2E] px-3 py-1 rounded-none text-amber-300 text-xs font-mono font-bold uppercase tracking-wider">
-                <span className="w-2 h-2 rounded-none bg-emerald-400"></span>
+              <div className="inline-flex items-center gap-1.5 bg-[#261B16] border border-[#523A2E] px-2.5 py-1 rounded-none text-amber-300 text-[11px] sm:text-xs font-mono font-bold uppercase tracking-wider">
+                <span className="w-1.5 h-1.5 rounded-none bg-emerald-400"></span>
                 <span>{current.date || "Today's Food Trailer Stop"}</span>
               </div>
 
               <div>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase font-['Bebas_Neue'] tracking-wide leading-tight">
+                <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white uppercase font-['Bebas_Neue'] tracking-wide leading-tight">
                   Come See Us Today at <br className="hidden sm:inline" />
                   <span className="text-[#FF7043]">
                     {current.name}
                   </span>
                 </h2>
                 
-                <div className="mt-3 flex flex-wrap items-center gap-y-2 gap-x-5 text-stone-200 text-sm sm:text-base">
+                <div className="mt-2.5 sm:mt-3 flex flex-wrap items-center gap-y-1.5 gap-x-4 sm:gap-x-5 text-stone-200 text-xs sm:text-base">
                   <div className="flex items-center gap-1.5 text-amber-200 font-semibold">
-                    <MapPin className="w-4 h-4 text-amber-400 shrink-0" />
+                    <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 shrink-0" />
                     <span>{current.address}</span>
                   </div>
                   <div className="flex items-center gap-1.5 text-stone-300 font-medium">
-                    <Clock className="w-4 h-4 text-amber-400 shrink-0" />
+                    <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 shrink-0" />
                     <span>{current.hours}</span>
                   </div>
                 </div>
@@ -85,30 +85,30 @@ export default function HeroLocationCard() {
               </div>
 
               {/* Action Buttons with Snappy Instant Response & Straight Lines */}
-              <div className="flex flex-wrap items-center gap-3 pt-2">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 pt-1 sm:pt-2">
                 <a
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(current.name + ' ' + current.address)}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2 bg-[#D9381E] hover:bg-[#B72C15] active:translate-y-0.5 text-white font-black px-5 py-3 rounded-none text-sm transition-all duration-150 shadow-md cursor-pointer uppercase tracking-wider border border-[#FF6B35]/40"
+                  className="flex items-center justify-center gap-2 bg-[#D9381E] hover:bg-[#B72C15] active:translate-y-0.5 text-white font-black px-4 py-2.5 sm:px-5 sm:py-3 rounded-none text-xs sm:text-sm transition-all duration-150 shadow-md cursor-pointer uppercase tracking-wider border border-[#FF6B35]/40"
                 >
-                  <Navigation className="w-4 h-4" />
+                  <Navigation className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   <span>Get Directions</span>
                 </a>
 
                 <a
                   href="tel:9107092900"
-                  className="flex items-center gap-2 bg-[#251A15] hover:bg-[#34241D] active:translate-y-0.5 border border-[#4E3529] hover:border-amber-500/60 text-stone-100 font-bold px-4 py-3 rounded-none text-sm transition-all duration-150 shadow-sm"
+                  className="flex items-center justify-center gap-2 bg-[#251A15] hover:bg-[#34241D] active:translate-y-0.5 border border-[#4E3529] hover:border-amber-500/60 text-stone-100 font-bold px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-none text-xs sm:text-sm transition-all duration-150 shadow-sm"
                 >
-                  <Phone className="w-4 h-4 text-emerald-400" />
+                  <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />
                   <span>Call to Order: (910) 709-2900</span>
                 </a>
 
                 <a
                   href="#specials-section"
-                  className="flex items-center gap-1.5 text-amber-300 hover:text-white text-sm font-semibold underline underline-offset-4 px-2 py-1 transition"
+                  className="flex items-center justify-center gap-1.5 text-amber-300 hover:text-white text-xs sm:text-sm font-semibold underline underline-offset-4 px-2 py-1 transition"
                 >
-                  <Sparkles className="w-4 h-4 text-amber-400" />
+                  <Sparkles className="w-3.5 h-3.5 text-amber-400" />
                   <span>View Trailer Specials</span>
                 </a>
               </div>

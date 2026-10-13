@@ -6,43 +6,43 @@ export default function Header() {
   const { setIsSpecialsModalOpen } = usePitmaster();
 
   return (
-    <header className="bg-[#181311] border-b border-[#362A25] relative">
+    <header className="bg-[#181311] border-b border-[#362A25] relative w-full max-w-full overflow-hidden">
       {/* Solid hickory-fired top border line */}
       <div className="h-1 w-full bg-[#D9381E]"></div>
 
-      <div className="max-w-7xl mx-auto px-4 py-4 sm:py-5">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-3 py-3 sm:py-5 sm:px-4">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4">
 
           {/* Left: Brand & Pig Logo with Crisp Craftsman Frame */}
-          <div className="flex items-center gap-3.5 sm:gap-4 text-center md:text-left">
+          <div className="flex items-center gap-3 sm:gap-4 text-left w-full md:w-auto">
             <div className="relative group shrink-0">
               <img
                 src="./images/truck-logo-wrap.jpg"
                 alt="Tisdale's Southern BBQ Logo"
-                className="w-16 h-16 sm:w-20 sm:h-20 rounded-none object-cover border-2 border-amber-500/80 shadow-lg shadow-orange-950/40 ring-1 ring-black/60 group-hover:scale-105 transition"
+                className="w-14 h-14 sm:w-20 sm:h-20 rounded-none object-cover border-2 border-amber-500/80 shadow-lg shadow-orange-950/40 ring-1 ring-black/60 group-hover:scale-105 transition"
               />
-              <span className="absolute -bottom-1 -right-1 bg-[#D9381E] text-white p-1 rounded-none shadow border border-black/50">
-                <Flame className="w-3.5 h-3.5 fill-amber-300 text-amber-300" />
+              <span className="absolute -bottom-1 -right-1 bg-[#D9381E] text-white p-0.5 sm:p-1 rounded-none shadow border border-black/50">
+                <Flame className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-amber-300 text-amber-300" />
               </span>
             </div>
 
-            <div>
-              <div className="flex items-center gap-2 justify-center md:justify-start">
-                <span className="text-amber-400 text-[11px] font-bold uppercase tracking-widest bg-amber-950/70 px-2.5 py-0.5 rounded-none border border-amber-500/30">
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 justify-start">
+                <span className="text-amber-400 text-[9px] sm:text-[11px] font-bold uppercase tracking-wider bg-amber-950/70 px-2 py-0.5 rounded-none border border-amber-500/30 truncate">
                   Andrews, SC Roots • Fayetteville, NC
                 </span>
               </div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-wide text-white uppercase font-['Bebas_Neue'] leading-none mt-1">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-wide text-white uppercase font-['Bebas_Neue'] leading-none mt-1 truncate">
                 Tisdale's <span className="text-[#FF6B35]">Southern BBQ</span>
               </h1>
-              <p className="text-xs sm:text-sm text-stone-300 font-medium tracking-tight mt-0.5">
-                Mouth-Watering, Tongue-Twisting BBQ • <span className="text-amber-400 font-semibold">Real Hickory-Smoked Meats</span>
+              <p className="text-[11px] sm:text-sm text-stone-300 font-medium tracking-tight mt-0.5 truncate">
+                Mouth-Watering, Tongue-Twisting BBQ • <span className="text-amber-400 font-semibold">Hickory-Smoked</span>
               </p>
             </div>
           </div>
 
-          {/* Right: Friendly Navigation & Direct Call */}
-          <div className="flex items-center flex-wrap justify-center gap-2 sm:gap-3">
+          {/* Right: Desktop Navigation & Action Buttons (Hidden on mobile to keep page slim) */}
+          <div className="hidden md:flex items-center flex-wrap justify-end gap-2 sm:gap-3">
             
             {/* Quick in-page links */}
             <nav className="hidden lg:flex items-center gap-3 text-xs font-bold text-stone-300 mr-2">

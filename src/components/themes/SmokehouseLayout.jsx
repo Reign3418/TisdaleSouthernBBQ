@@ -10,7 +10,7 @@ import Footer from '../Footer';
 
 export default function SmokehouseLayout() {
   return (
-    <div className="bg-[#120F0E] text-[#F3EFEA]">
+    <div className="bg-[#120F0E] text-[#F3EFEA] w-full max-w-full overflow-x-hidden">
       <TopMarqueeBar />
       <Header />
       <HeroLocationCard />

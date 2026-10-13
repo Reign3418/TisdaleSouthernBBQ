@@ -49,7 +49,7 @@ export default function OrderDrawer() {
   return (
     <div className="fixed inset-0 z-50 flex justify-end bg-black/75 backdrop-blur-sm animate-fadeIn">
       <div 
-        className="bg-[#191412] border-l-2 border-[#3D2C24] w-full max-w-md h-full flex flex-col shadow-2xl relative"
+        className="bg-[#191412] border-l-2 border-[#3D2C24] w-full max-w-full sm:max-w-md h-full flex flex-col shadow-2xl relative overflow-hidden"
         onClick={e => e.stopPropagation()}
       >
         

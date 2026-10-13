@@ -3,20 +3,20 @@ import { Heart, Flame, Award, Smile, Phone } from 'lucide-react';
 
 export default function DonaldPassionSection() {
   return (
-    <section id="about-donald" className="py-12 bg-[#14100E] border-t border-b border-[#2C211B] relative">
-      <div className="max-w-7xl mx-auto px-4">
+    <section id="about-donald" className="py-8 sm:py-12 bg-[#14100E] border-t border-b border-[#2C211B] relative w-full max-w-full overflow-hidden">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
           
           {/* Left 7 Cols: The Story & The Passion */}
-          <div className="lg:col-span-7 space-y-4">
+          <div className="lg:col-span-7 space-y-3.5 sm:space-y-4">
             
-            <div className="inline-flex items-center gap-2 text-amber-400 text-xs font-mono font-bold uppercase tracking-widest bg-[#221814] px-3 py-1 rounded-none border border-[#483327]">
-              <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
-              <span>[ CRAFTSMAN STORY // THE HEART BEHIND THE SMOKE ]</span>
+            <div className="inline-flex items-center gap-1.5 text-amber-400 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider bg-[#221814] px-2.5 py-1 rounded-none border border-[#483327] max-w-full truncate">
+              <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500 shrink-0" />
+              <span className="truncate">[ CRAFTSMAN STORY // THE HEART BEHIND THE SMOKE ]</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase font-['Bebas_Neue'] tracking-wide leading-tight">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white uppercase font-['Bebas_Neue'] tracking-wide leading-tight">
               Cooking From the Heart <br />
               <span className="text-[#FF7043]">
                 Since Donald Was 9 Years Old
@@ -24,7 +24,7 @@ export default function DonaldPassionSection() {
             </h2>
 
             {/* Featured Quote Callout - Real Pitmaster Words with Crisp Hairline Borders */}
-            <div className="relative bg-[#1C1512] border-l-4 border-[#D9381E] border-y border-r border-[#382821] p-4 sm:p-5 rounded-none space-y-2 shadow-md">
+            <div className="relative bg-[#1C1512] border-l-4 border-[#D9381E] border-y border-r border-[#382821] p-3.5 sm:p-5 rounded-none space-y-2 shadow-md">
               <p className="text-sm sm:text-base text-amber-200 font-serif italic leading-relaxed">
                 "I grew up in a small town called Andrews, SC. As I watched my mom and Dad compete against each other on the stove, I developed a true passion for cooking. I started cooking at the age of 9. I love cooking like a carpenter love building houses. This food trailer is a dream come true and a gift from God."
               </p>

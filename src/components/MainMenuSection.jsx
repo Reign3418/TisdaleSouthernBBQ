@@ -32,30 +32,30 @@ export default function MainMenuSection() {
   };
 
   return (
-    <section id="main-menu" className="py-12 bg-[#15110F]">
-      <div className="max-w-7xl mx-auto px-4">
+    <section id="main-menu" className="py-8 sm:py-12 bg-[#15110F] w-full max-w-full overflow-hidden">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8">
-          <div className="inline-flex items-center gap-1.5 text-amber-500 text-xs font-bold uppercase tracking-widest bg-amber-950/40 px-3 py-1 rounded-none border border-amber-500/30 mb-2">
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
+          <div className="inline-flex items-center gap-1.5 text-amber-500 text-[11px] sm:text-xs font-bold uppercase tracking-widest bg-amber-950/40 px-2.5 py-1 rounded-none border border-amber-500/30 mb-2">
             <Flame className="w-3.5 h-3.5 fill-amber-500" />
             <span>Official Truck TV Screen Menu</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-black text-white uppercase font-['Bebas_Neue'] tracking-wide">
+          <h2 className="text-3xl sm:text-5xl font-black text-white uppercase font-['Bebas_Neue'] tracking-wide">
             The Main <span className="text-[#FF6B35]">Barbecue Board</span>
           </h2>
-          <p className="text-xs sm:text-sm text-stone-300 mt-2">
+          <p className="text-xs sm:text-sm text-stone-300 mt-1.5 sm:mt-2">
             All dinner plates include your choice of two 8oz homestyle sides and a warm dinner roll. Meats smoked low & slow with pure hickory pellets.
           </p>
         </div>
 
-        {/* Category Navigation with Straight Sharp Lines */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none justify-start md:justify-center">
+        {/* Category Navigation with Smooth Touch Scrolling & Zero Overflow */}
+        <div className="w-full max-w-full overflow-x-auto pb-3 sm:pb-4 mb-6 sm:mb-8 scrollbar-none overscroll-x-contain touch-pan-x flex items-center gap-1.5 sm:gap-2 justify-start md:justify-center px-1">
           {categories.map(cat => (
             <button
               key={cat.key}
               onClick={() => setActiveCategory(cat.key)}
-              className={`px-4 py-2 rounded-none text-xs sm:text-sm font-bold whitespace-nowrap transition cursor-pointer ${
+              className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-none text-xs sm:text-sm font-bold whitespace-nowrap transition cursor-pointer shrink-0 ${
                 activeCategory === cat.key
                   ? 'bg-[#D9381E] text-white shadow'
                   : 'bg-[#221B17] text-stone-300 hover:text-white hover:bg-[#2F2520] border border-[#3D3029]'

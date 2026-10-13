@@ -9,7 +9,7 @@ export default function ChalkboardLayout() {
   const [activeBoard, setActiveBoard] = useState('chalkboard'); // 'chalkboard' | 'tv' | 'photos'
 
   return (
-    <div className="bg-[#141B22] text-[#F0F6FC] font-sans selection:bg-[#38BDF8] selection:text-black min-h-screen">
+    <div className="bg-[#141B22] text-[#F0F6FC] font-sans selection:bg-[#38BDF8] selection:text-black min-h-screen w-full max-w-full overflow-x-hidden">
       
       {/* 1. Street Chalk Header Bar */}
       <div className="bg-[#0D1117] border-b border-[#30363D] py-2 px-3 text-xs text-stone-300">

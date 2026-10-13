@@ -39,8 +39,78 @@ export default function DesignSwitcherBar() {
   ];
 
   return (
-    <div className="bg-[#0A0807] border-b border-[#2C201B] py-2 px-3 text-xs z-50 relative">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
+    <div className="bg-[#0A0807] border-b border-[#2C201B] py-1.5 px-2.5 sm:py-2 sm:px-3 text-xs z-50 relative w-full max-w-full overflow-hidden">
+      
+      {/* ===================================================================== */}
+      {/* MOBILE SLIM BAR (<768px): 100% Zero Overflow, Smooth & Compact        */}
+      {/* ===================================================================== */}
+      <div className="md:hidden flex items-center justify-between gap-1.5 w-full">
+        {/* Compact Theme Dropdown */}
+        <div className="flex items-center gap-1 min-w-0">
+          <Palette className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+          <select
+            value={themeVersion}
+            onChange={(e) => setThemeVersion(e.target.value)}
+            className="bg-[#1C1512] text-amber-200 border border-[#3E2E25] text-[11px] font-bold py-1 px-1.5 rounded-none focus:outline-none focus:border-amber-500 max-w-[130px] truncate"
+            aria-label="Select design layout"
+          >
+            <option value="smokehouse">🔥 Smokehouse</option>
+            <option value="carolinagold">🍗 Carolina Gold</option>
+            <option value="chalkboard">📋 Chalkboard</option>
+          </select>
+        </div>
+
+        {/* Compact Tool Icons for Mobile */}
+        <div className="flex items-center gap-1 shrink-0">
+          {/* Embers Toggle */}
+          <button
+            onClick={() => setIsPitFxActive(!isPitFxActive)}
+            className={`p-1 px-1.5 rounded-none text-[11px] font-bold border transition ${
+              isPitFxActive
+                ? 'bg-[#251712] text-amber-300 border-amber-600/70'
+                : 'bg-[#140F0D] text-stone-500 border-stone-800'
+            }`}
+            title="Toggle embers canvas"
+            aria-label="Toggle pit fire embers effect"
+          >
+            {isPitFxActive ? '🔥' : '💨'}
+          </button>
+
+          {/* Quick Pitmaster Menu Edit */}
+          <button
+            onClick={() => setIsPitmasterMode(true)}
+            className="p-1 px-1.5 rounded-none bg-amber-500 text-stone-950 font-black text-[11px] flex items-center gap-0.5"
+            title="Pitmaster Quick Admin"
+          >
+            <ChefHat className="w-3 h-3" />
+            <span>Edit</span>
+          </button>
+
+          {/* TV Menu */}
+          <button
+            onClick={() => setIsTvMenuOpen(true)}
+            className="p-1 px-1.5 rounded-none bg-[#241A15] border border-amber-600/40 text-amber-300 font-bold text-[11px] flex items-center gap-0.5"
+            title="1080p TV Menu"
+          >
+            <Tv className="w-3 h-3 text-amber-400" />
+            <span>TV</span>
+          </button>
+
+          {/* GPS Options */}
+          <button
+            onClick={() => setIsGpsWhitePageOpen(true)}
+            className="p-1 px-1.5 rounded-none bg-stone-800 text-stone-200 border border-stone-700 font-bold text-[11px]"
+            title="GPS Tracking Options"
+          >
+            📍
+          </button>
+        </div>
+      </div>
+
+      {/* ===================================================================== */}
+      {/* DESKTOP BAR (>=768px): Full Rich Control Strip                        */}
+      {/* ===================================================================== */}
+      <div className="hidden md:flex max-w-7xl mx-auto items-center justify-between gap-2">
         
         {/* Label */}
         <div className="flex items-center gap-2 text-stone-300">

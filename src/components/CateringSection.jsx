@@ -32,13 +32,13 @@ export default function CateringSection() {
   };
 
   return (
-    <section id="about-catering" className="py-14 bg-[#120F0E] border-t border-[#342721]">
-      <div className="max-w-7xl mx-auto px-4">
+    <section id="about-catering" className="py-8 sm:py-14 bg-[#120F0E] border-t border-[#342721] w-full max-w-full overflow-hidden">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
           
           {/* Left 5 Cols: Catering Info & Donald's Hospitality */}
-          <div className="lg:col-span-5 bg-[#1A1412] border border-[#3C2E27] rounded-none p-6 sm:p-8 flex flex-col justify-between shadow-xl">
+          <div className="lg:col-span-5 bg-[#1A1412] border border-[#3C2E27] rounded-none p-4 sm:p-8 flex flex-col justify-between shadow-xl">
             <div className="space-y-4">
               <div className="inline-flex items-center gap-1.5 text-amber-500 text-xs font-bold uppercase tracking-widest bg-amber-950/60 px-3 py-1 rounded-none border border-amber-500/30">
                 <Utensils className="w-3.5 h-3.5" />
@@ -90,7 +90,7 @@ export default function CateringSection() {
           </div>
 
           {/* Right 7 Cols: Working Intake Form with Straight Lines */}
-          <div className="lg:col-span-7 bg-[#1D1613] border-2 border-[#3E2E25] rounded-none p-6 sm:p-8 shadow-xl">
+          <div className="lg:col-span-7 bg-[#1D1613] border-2 border-[#3E2E25] rounded-none p-4 sm:p-8 shadow-xl">
             <div>
               <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-widest mb-1">
                 <Calendar className="w-4 h-4" />

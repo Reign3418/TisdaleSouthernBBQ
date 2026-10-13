@@ -39,7 +39,7 @@ export default function SpecialsDrawerModal() {
         </div>
 
         {/* Notice Bar */}
-        <div className="bg-amber-950/40 border-b border-amber-900/40 px-4 py-2 text-xs text-amber-200 flex items-center justify-between">
+        <div className="bg-amber-950/40 border-b border-amber-900/40 px-3 sm:px-4 py-2 text-xs text-amber-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1">
           <span>★ Limited daily quantities on specialty meats & fresh catfish</span>
           <a href="tel:9107092900" className="flex items-center gap-1 font-bold text-amber-400 hover:underline">
             <Phone className="w-3 h-3" /> Call to Hold: 910-709-2900

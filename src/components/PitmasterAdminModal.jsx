@@ -337,54 +337,58 @@ export default function PitmasterAdminModal() {
           </button>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="bg-[#1C1512] border-b border-[#35261F] px-4 py-2 flex items-center gap-2 overflow-x-auto shrink-0">
+        {/* Tab Navigation with Touch Scroll & Zero Overflow */}
+        <div className="bg-[#1C1512] border-b border-[#35261F] px-2.5 sm:px-4 py-2 flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none overscroll-x-contain touch-pan-x shrink-0 w-full max-w-full">
           <button
             onClick={() => setActiveTab('menuEditor')}
-            className={`px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+            className={`px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-none text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
               activeTab === 'menuEditor'
                 ? 'bg-amber-500 text-stone-950 shadow'
                 : 'text-stone-300 hover:text-white bg-[#281D18]'
             }`}
           >
             <Pencil className="w-3.5 h-3.5" />
-            <span>📋 Menu & Price Editor (Add / Edit / Hide)</span>
+            <span className="sm:hidden">📋 Menu</span>
+            <span className="hidden sm:inline">📋 Menu & Price Editor</span>
           </button>
 
           <button
             onClick={() => setActiveTab('rush86')}
-            className={`px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+            className={`px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-none text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
               activeTab === 'rush86'
                 ? 'bg-amber-500 text-stone-950 shadow'
                 : 'text-stone-300 hover:text-white bg-[#281D18]'
             }`}
           >
             <Power className="w-3.5 h-3.5" />
-            <span>⚡ Fast 86 Rush (Sold Out Toggles)</span>
+            <span className="sm:hidden">⚡ 86 Rush</span>
+            <span className="hidden sm:inline">⚡ Fast 86 Rush (Sold Out)</span>
           </button>
 
           <button
             onClick={() => setActiveTab('location')}
-            className={`px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+            className={`px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-none text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
               activeTab === 'location'
                 ? 'bg-amber-500 text-stone-950 shadow'
                 : 'text-stone-300 hover:text-white bg-[#281D18]'
             }`}
           >
             <MapPin className="w-3.5 h-3.5" />
-            <span>📍 Today's Location</span>
+            <span className="sm:hidden">📍 Location</span>
+            <span className="hidden sm:inline">📍 Today's Location</span>
           </button>
 
           <button
             onClick={() => setActiveTab('marquee')}
-            className={`px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+            className={`px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-none text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
               activeTab === 'marquee'
                 ? 'bg-amber-500 text-stone-950 shadow'
                 : 'text-stone-300 hover:text-white bg-[#281D18]'
             }`}
           >
             <SquareIcon className="w-3.5 h-3.5" />
-            <span>📢 Top Banner & Square</span>
+            <span className="sm:hidden">📢 Banner</span>
+            <span className="hidden sm:inline">📢 Banner & Square</span>
           </button>
 
           <div className="h-4 w-px bg-stone-700 mx-1 hidden sm:block"></div>
@@ -395,11 +399,12 @@ export default function PitmasterAdminModal() {
               setIsPitmasterMode(false);
               setIsTvMenuOpen(true);
             }}
-            className="px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap bg-emerald-700 hover:bg-emerald-600 text-white shadow-md"
+            className="px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-none text-xs font-bold transition cursor-pointer flex items-center gap-1.5 whitespace-nowrap bg-emerald-700 hover:bg-emerald-600 text-white shadow-md shrink-0"
             title="Launch 1080p TV Menu to download USB image or sync TV"
           >
             <Tv className="w-3.5 h-3.5" />
-            <span>📺 Export TV Menu / USB Image</span>
+            <span className="sm:hidden">📺 TV</span>
+            <span className="hidden sm:inline">📺 Export TV Menu</span>
           </button>
         </div>
 
