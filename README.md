@@ -71,6 +71,15 @@ For comprehensive auditing and operational policies, see [`COMPLIANCE.md`](./COM
 
 ---
 
+## 🔍 Search Dominance & Discovery White Paper
+
+For the complete technical blueprint on dominating Google Search, Google Maps 3-Pack, Voice/AI Search (Siri/Gemini), and 1,000-product scaling, see [`WHITE_PAPER_DISCOVERY.md`](./WHITE_PAPER_DISCOVERY.md):
+- **5-Engine Discovery Architecture:** Schema.org v4.0 microdata, multi-territory geo-landing networks, and real-time pit telemetry.
+- **The "Moving Kitchen" Solution:** Real-time GPS coordinate broadcasts and municipal satellite hubs (Selma, Smithfield, Clayton).
+- **1,000-Product Scaling:** Automated XML sitemaps, edge pre-rendering, and Google Merchant Center integration.
+
+---
+
 ## 🤝 Mission & Attribution
 Crafted with passion in support of local Carolina small business owners and pitmasters.
 Owner: Donald Tisdale (Andrews, SC / Fayetteville, NC)

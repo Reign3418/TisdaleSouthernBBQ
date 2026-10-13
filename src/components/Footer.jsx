@@ -1,6 +1,6 @@
 import React from 'react';
 import { usePitmaster } from '../context/PitmasterContext';
-import { Phone, MapPin, Flame, Heart, ChefHat, Sparkles, Radio, Tv, ShieldCheck } from 'lucide-react';
+import { Phone, MapPin, Flame, Heart, ChefHat, Sparkles, Radio, Tv, ShieldCheck, Search } from 'lucide-react';
 import FacebookIcon from './icons/FacebookIcon';
 
 export default function Footer() {
@@ -92,6 +92,16 @@ export default function Footer() {
               </li>
               <li>
                 <a
+                  href="https://github.com/Reign3418/TisdaleSouthernBBQ/blob/main/WHITE_PAPER_DISCOVERY.md"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-stone-400 hover:text-amber-400 flex items-center gap-1"
+                >
+                  <Search className="w-3 h-3 text-amber-400" /> Search Dominance (White Paper)
+                </a>
+              </li>
+              <li>
+                <a
                   href="https://github.com/Reign3418/TisdaleSouthernBBQ/blob/main/COMPLIANCE.md"
                   target="_blank"
                   rel="noreferrer"
@@ -138,6 +148,16 @@ export default function Footer() {
               <ChefHat className="w-3 h-3 text-amber-500" />
               <span>Pitmaster Admin</span>
             </button>
+            <span>•</span>
+            <a
+              href="https://github.com/Reign3418/TisdaleSouthernBBQ/blob/main/WHITE_PAPER_DISCOVERY.md"
+              target="_blank"
+              rel="noreferrer"
+              className="text-stone-400 hover:text-amber-400 transition flex items-center gap-1"
+            >
+              <Search className="w-3 h-3 text-amber-400" />
+              <span>DISCOVERY.md</span>
+            </a>
             <span>•</span>
             <a
               href="https://github.com/Reign3418/TisdaleSouthernBBQ/blob/main/COMPLIANCE.md"
