@@ -7,7 +7,10 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "npm run build && node -e \"const fs = require('fs'); fs.copyFileSync('dist/index.html', 'dist/404.html');\"",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "valkyrie": "python \"C:\\Users\\laure\\.gemini\\config\\skills\\project-valkyrie\\scripts\\valkyrie_engine.py\" --target . --tier forge --recon --llm",
+    "loki": "python \"C:\\Users\\laure\\.gemini\\config\\skills\\project-loki\\scripts\\loki_engine.py\" --url \"https://reign3418.github.io/TisdaleSouthernBBQ/\" --mode advisory",
+    "thor": "python \"C:\\Users\\laure\\.gemini\\config\\skills\\project-thor\\scripts\\thor_engine.py\" --strike all --target . --biz-name \"Tisdale's Southern BBQ\" --url \"https://reign3418.github.io/TisdaleSouthernBBQ/\""
   },
   "keywords": [],
   "author": "",

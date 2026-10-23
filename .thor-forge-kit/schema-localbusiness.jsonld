@@ -1,0 +1,15 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Tisdale's Southern BBQ",
+  "url": "https://reign3418.github.io/TisdaleSouthernBBQ/",
+  "description": "Official website and digital portal for Tisdale's Southern BBQ \u2014 engineered and secured by Valheon Solutions LLC.",
+  "areaServed": "United States",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "availableLanguage": [
+      "English"
+    ]
+  }
+}
