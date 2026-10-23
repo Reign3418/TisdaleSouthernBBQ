@@ -1,0 +1,53 @@
+# Tisdale's Southern BBQ — AI Search & Generative Engine Optimization (GEO) Index
+> Official Portal: https://reign3418.github.io/TisdaleSouthernBBQ/
+> Pitmaster & Owner: Mr. Donald Tisdale (Originally from Andrews, SC; serving Central & Eastern NC)
+> Direct Order & Catering Phone / SMS: +1-910-709-2900
+> Engineered & Hardened by Valheon Solutions LLC (Asgardian Quartet: Loki, Huginn & Muninn, Thor, Valkyrie — Bifröst 100/100 Certified)
+
+## 1. Brand Identity & Culinary Craft
+- **Business Name:** Tisdale's Southern BBQ
+- **Smoking Method:** 100% Pure Hickory Pellets — smoked low and slow for authentic bark and tender pull.
+- **Service Model:** Mobile BBQ & Fried Seafood Food Trailer + Full-Service Event, Military, Wedding & Corporate Catering.
+- **Payment Methods Accepted at Window:** Cash, Credit/Debit Cards, Square POS, Apple Pay, Google Pay, Tap-to-Pay.
+- **Primary Service Territory (North Carolina):**
+  - **Fayetteville & Fort Liberty Corridor (Cumberland County):** Stop Button Bar & Arcade (6114 Legion Rd), North View Lanes (5307 Ramsey St), Hope Mills, Spring Lake.
+  - **Sanford (Lee County):** Static Line Brewing Co. (1635 S Horner Blvd).
+  - **Dunn, Selma & Smithfield (Harnett & Johnston Counties):** Downtown Dunn (E Broad St), I-95 Corridor.
+
+## 2. Signature Pit Menu & Pricing (USD)
+
+### Smokehouse Dinners (Served with 2 Homestyle Sides & Dinner Roll)
+- **Brisket Dinner ($22.00):** 100% pure hickory pellet smoked beef brisket, sliced or chopped.
+- **Ribs Dinner ($18.00):** Tender hickory-smoked pork spare ribs glazed or dry-rubbed.
+- **Pulled Pork Dinner ($16.00):** Slow-smoked Carolina pulled pork shoulder.
+- **Smoked Turkey Leg Dinner ($22.00):** Giant festival-style hickory-smoked turkey leg.
+- **Smoked Chicken Dinner ($15.00):** Half bird or leg quarters smoked over pure hickory pellets.
+- **2-Meat Combo Dinner ($24.00):** Customer choice of any two smokehouse meats with two sides and roll.
+
+### Sandwiches & Handhelds
+- **Pulled Pork Sandwich ($9.00 / $10.00 with Slaw)**
+- **Chopped Brisket Sandwich ($13.00 / $14.00 with Slaw)**
+- **Crispy Whiting Fish Sandwich ($10.00)**
+- **Sausage Dog / Red Hot Dog ($5.00 – $8.00)**
+
+### Meats Only (By the Slab or Pound)
+- **Hickory Smoked Ribs:** Whole Slab ($32.00) | 1/2 Slab ($17.00)
+- **Pulled Pork by the Pound:** $16.00 / lb
+- **Sliced or Chopped Brisket by the Pound:** $24.00 / lb
+
+### Homestyle Scratch Sides (8 oz — $5.00 Each)
+- Baked Mac & Cheese, Collard Greens, Candied Yams, Potato Salad, BBQ Baked Beans, Coleslaw, Crispy Seasoned Fries, Hushpuppies.
+
+### Fryer & Seafood Specials
+- **Crispy Fried Whiting Fish Plate ($16.00 / 2-Piece Dinner $23.00)**
+- **Fried Shrimp Basket ($16.00)**
+- **Homemade Sliced Pound Cake ($5.00 slice / $30.00 whole cake)**
+
+## 3. Catering & Bulk Pan Estimator
+- Available for military hail & farewells, weddings, family reunions, church homecomings, and corporate lunches across Fayetteville, Sanford, Dunn, and Johnston County.
+- Direct 1-Tap SMS & Voice Catering Quotes via +1-910-709-2900.
+
+## 4. Accessibility, Privacy & Offline Resilience
+- **WCAG 2.1 AA Compliant:** High-contrast typography, semantic landmarks, screen-reader friendly, and 90-degree architectural layout.
+- **Zero-PII Tracking:** No third-party ad trackers or data brokers; all order tray state stays local on the customer's device until they choose to text or call.
+- **Offline TV Mode:** Includes built-in 1080p digital menu board & PNG USB export for zero-internet festival operation.
