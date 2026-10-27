@@ -12,6 +12,7 @@ const PitmasterAdminModal = lazy(() => import('./components/PitmasterAdminModal'
 const GpsTrackingWhitePage = lazy(() => import('./components/GpsTrackingWhitePage'));
 const TvMenuModal = lazy(() => import('./components/TvMenuModal'));
 const TvSyncWhitePage = lazy(() => import('./components/TvSyncWhitePage'));
+const TrailerTwinModal = lazy(() => import('./components/TrailerTwinModal'));
 
 function AppContent() {
   const { themeVersion, schedule, setIsSpecialsModalOpen, cartItemCount, setIsCartOpen } = usePitmaster();
@@ -44,6 +45,7 @@ function AppContent() {
         <GpsTrackingWhitePage />
         <TvMenuModal />
         <TvSyncWhitePage />
+        <TrailerTwinModal />
       </Suspense>
 
       {/* Mobile Bottom Quick-Action Bar for Customers */}

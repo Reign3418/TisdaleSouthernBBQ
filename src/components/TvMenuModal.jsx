@@ -26,7 +26,9 @@ export default function TvMenuModal() {
     menu,
     specials,
     schedule,
-    announcements
+    announcements,
+    tvBoardTheme: boardTheme,
+    setTvBoardTheme: setBoardTheme
   } = usePitmaster();
 
   const boardRef = useRef(null);
@@ -36,7 +38,6 @@ export default function TvMenuModal() {
   const [isExporting, setIsExporting] = useState(false);
   const [exportSuccess, setExportSuccess] = useState(false);
   const [showBrainstorm, setShowBrainstorm] = useState(false);
-  const [boardTheme, setBoardTheme] = useState('dark'); // 'dark' | 'classicOrange'
 
   // Fit 1920x1080 into any screen viewport without distortion
   useEffect(() => {

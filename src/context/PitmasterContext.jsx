@@ -9,6 +9,7 @@ const STORAGE_KEY_SCHEDULE = 'tisdales_bbq_schedule_v1';
 const STORAGE_KEY_ANNOUNCE = 'tisdales_bbq_announcements_v1';
 const STORAGE_KEY_THEME = 'tisdales_bbq_theme_v1';
 const STORAGE_KEY_PITFX = 'tisdales_bbq_pitfx_v1';
+const STORAGE_KEY_TV_THEME = 'tisdales_bbq_tv_theme_v1';
 
 export function PitmasterProvider({ children }) {
   // Load from localStorage or defaults
@@ -102,6 +103,21 @@ export function PitmasterProvider({ children }) {
     }
     return false;
   });
+  const [isTrailerSimOpen, setIsTrailerSimOpen] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.location.hash === '#trailer-sim' || window.location.hash === '#trailer-demo' || window.location.search.includes('trailer=1');
+    }
+    return false;
+  });
+  const [tvBoardTheme, setTvBoardTheme] = useState(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY_TV_THEME);
+      return saved || 'classicOrange';
+    } catch (e) {
+      return 'classicOrange';
+    }
+  });
+  const [lastSyncPulse, setLastSyncPulse] = useState(null);
   const [isPitFxActive, setIsPitFxActive] = useState(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY_PITFX);
@@ -125,10 +141,48 @@ export function PitmasterProvider({ children }) {
       if (window.location.hash === '#tv-whitepaper' || window.location.hash === '#tv-options') {
         setIsTvWhitePageOpen(true);
       }
+      if (window.location.hash === '#trailer-sim' || window.location.hash === '#trailer-demo') {
+        setIsTrailerSimOpen(true);
+      }
     };
     window.addEventListener('hashchange', handleHash);
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
+
+  // Real-time Cross-Window / Dual-Monitor Sync (Dell E5550 Laptop <-> GAEMS HDMI Monitor)
+  useEffect(() => {
+    const handleStorageSync = (e) => {
+      try {
+        if (e.key === STORAGE_KEY_MENU && e.newValue) {
+          setMenu(JSON.parse(e.newValue));
+          setLastSyncPulse(Date.now());
+        } else if (e.key === STORAGE_KEY_SPECIALS && e.newValue) {
+          setSpecials(JSON.parse(e.newValue));
+          setLastSyncPulse(Date.now());
+        } else if (e.key === STORAGE_KEY_SCHEDULE && e.newValue) {
+          setSchedule(JSON.parse(e.newValue));
+          setLastSyncPulse(Date.now());
+        } else if (e.key === STORAGE_KEY_ANNOUNCE && e.newValue) {
+          setAnnouncements(JSON.parse(e.newValue));
+          setLastSyncPulse(Date.now());
+        } else if (e.key === STORAGE_KEY_THEME && e.newValue) {
+          setThemeVersion(e.newValue);
+        } else if (e.key === STORAGE_KEY_TV_THEME && e.newValue) {
+          setTvBoardTheme(e.newValue);
+          setLastSyncPulse(Date.now());
+        }
+      } catch (err) {
+        // Ignore malformed storage payloads
+      }
+    };
+    window.addEventListener('storage', handleStorageSync);
+    return () => window.removeEventListener('storage', handleStorageSync);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY_TV_THEME, tvBoardTheme);
+    setLastSyncPulse(Date.now());
+  }, [tvBoardTheme]);
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY_PITFX, JSON.stringify(isPitFxActive));
@@ -393,6 +447,11 @@ export function PitmasterProvider({ children }) {
       setIsTvMenuOpen,
       isTvWhitePageOpen,
       setIsTvWhitePageOpen,
+      isTrailerSimOpen,
+      setIsTrailerSimOpen,
+      tvBoardTheme,
+      setTvBoardTheme,
+      lastSyncPulse,
       isPitFxActive,
       setIsPitFxActive,
       resetToDefaults

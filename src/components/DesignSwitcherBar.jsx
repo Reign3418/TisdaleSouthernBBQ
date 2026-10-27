@@ -10,6 +10,7 @@ export default function DesignSwitcherBar() {
     setIsPitmasterMode,
     setIsTvMenuOpen,
     setIsTvWhitePageOpen,
+    setIsTrailerSimOpen,
     isPitFxActive,
     setIsPitFxActive
   } = usePitmaster();
@@ -84,6 +85,15 @@ export default function DesignSwitcherBar() {
           >
             <ChefHat className="w-3 h-3" />
             <span>Edit</span>
+          </button>
+
+          {/* Live Trailer Digital Twin Simulator */}
+          <button
+            onClick={() => setIsTrailerSimOpen(true)}
+            className="p-1 px-1.5 rounded-none bg-emerald-600 text-white font-black text-[11px] flex items-center gap-0.5 shadow"
+            title="Live Trailer + Phone Simulator"
+          >
+            <span>🚚 Sim</span>
           </button>
 
           {/* TV Menu */}
@@ -196,6 +206,15 @@ export default function DesignSwitcherBar() {
           >
             <ChefHat className="w-3.5 h-3.5" />
             <span className="whitespace-nowrap">👨‍🍳 Edit Menu</span>
+          </button>
+
+          {/* Live Trailer Digital Twin + Phone Simulator */}
+          <button
+            onClick={() => setIsTrailerSimOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer bg-emerald-600 hover:bg-emerald-500 text-white border border-emerald-400 shadow-md"
+            title="See Donald's actual trailer with the live TV screen controlled by his cell phone"
+          >
+            <span className="whitespace-nowrap font-black">🚚 Trailer + Phone Sim</span>
           </button>
 
           {/* TV Menu 1080p Image & Live Sync Button */}
