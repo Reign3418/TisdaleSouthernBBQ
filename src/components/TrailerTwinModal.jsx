@@ -236,22 +236,22 @@ export default function TrailerTwinModal() {
                 </div>
               </div>
 
-              {/* Card 2: The Private Control Network */}
+              {/* Card 2: The Laptop's Built-In Wi-Fi Card = The Router! */}
               <div className="bg-[#100C0A] border border-emerald-600/50 p-3.5 rounded-none space-y-2">
                 <div className="text-emerald-400 font-black font-mono uppercase">
-                  2. Private Phone → TV Control Network
+                  2. Zero Router Needed (Dell E5550 Built-In Wi-Fi!)
                 </div>
                 <p className="text-stone-300 leading-relaxed">
-                  The exact same router broadcasts a hidden/password-protected second network (<strong><code>Tisdale_Pit_Control</code></strong>) that links <strong>Donald's Cell Phone</strong> directly to the <strong>Closed-Lid Dell E5550</strong> driving the 55" TV via HDMI.
+                  Your <strong>Dell Latitude E5550 already has a built-in Wi-Fi card</strong> that can broadcast a Windows Mobile Hotspot (<strong><code>192.168.137.1</code></strong>) directly! Donald's cell phone connects straight to the closed-lid laptop—<strong>zero external router box needed!</strong>
                 </p>
                 <div className="bg-emerald-950/40 border border-emerald-700/50 p-2 font-mono text-[11px] text-emerald-300">
                   {lanSyncInfo?.active ? (
                     <>
-                      <div>🟢 <strong>LIVE LAN RELAY ACTIVE:</strong></div>
+                      <div>🟢 <strong>LIVE LAPTOP WIFI RELAY ACTIVE:</strong></div>
                       <div>Phone URL: <code>http://{lanSyncInfo.lanIp}:{lanSyncInfo.port}/#trailer-sim</code></div>
                     </>
                   ) : (
-                    <div>📡 Works 100% offline inside the trailer with zero monthly internet bill!</div>
+                    <div>📡 Default Laptop Hotspot IP: <code>http://192.168.137.1:3000</code></div>
                   )}
                 </div>
               </div>
@@ -259,12 +259,12 @@ export default function TrailerTwinModal() {
               {/* Card 3: Closed-Lid Dell E5550 Space & Power Spec */}
               <div className="bg-[#100C0A] border border-stone-800 p-3.5 rounded-none space-y-2">
                 <div className="text-amber-400 font-black font-mono uppercase">
-                  3. Closed-Lid Dell E5550 (Zero Counter Space &amp; Low Power)
+                  3. Closed-Lid Dell E5550 (1 Cable, 0 Counter Space)
                 </div>
                 <ul className="list-disc list-inside space-y-1 text-stone-300">
-                  <li><strong>Lid Closed &amp; Tucked Away:</strong> Set Windows <em>Power Options → Choose what closing the lid does → "Do Nothing"</em>. Slide the closed laptop vertically on a top cabinet shelf out of the grease zone.</li>
-                  <li><strong>Only ~15W Power Draw:</strong> With the laptop screen off, the E5550 draws ~15 Watts (less than a lightbulb) and its battery acts as a <strong>free 4-hour UPS backup</strong> if the generator surges!</li>
-                  <li><strong>USB-Powered Pocket Router:</strong> A palm-sized travel router (e.g. GL.iNet Opal, 5W) plugs into the Dell’s USB port—<strong>needing zero extra wall outlets!</strong></li>
+                  <li><strong>1-Click Script Included:</strong> Run <code>Start-TisdalePitBox.ps1</code>—it automatically sets Windows <em>Lid Close Action = Do Nothing</em> via <code>powercfg</code>!</li>
+                  <li><strong>Only ~15W Power Draw:</strong> With the lid closed and screen off, the E5550 draws ~15W and its internal battery acts as a <strong>free 4-hour UPS backup</strong> if the generator surges!</li>
+                  <li><strong>Only 1 HDMI Cord:</strong> Literally just the closed Dell E5550 tucked on a shelf + 1 HDMI cord to the TV!</li>
                 </ul>
               </div>
 

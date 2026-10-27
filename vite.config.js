@@ -5,14 +5,21 @@ import os from 'os';
 
 function getLocalLanIp() {
   const nets = os.networkInterfaces();
+  let fallbackIp = '127.0.0.1';
   for (const name of Object.keys(nets)) {
     for (const net of nets[name] || []) {
       if (net.family === 'IPv4' && !net.internal) {
-        return net.address;
+        // Prioritize Windows Built-In Mobile Hotspot IP (192.168.137.1)
+        if (net.address === '192.168.137.1') {
+          return net.address;
+        }
+        if (fallbackIp === '127.0.0.1') {
+          fallbackIp = net.address;
+        }
       }
     }
   }
-  return '127.0.0.1';
+  return fallbackIp;
 }
 
 // Built-in Local Wi-Fi Router Sync Relay (Phone <-> Closed-Lid Dell E5550 <-> HDMI TV)
