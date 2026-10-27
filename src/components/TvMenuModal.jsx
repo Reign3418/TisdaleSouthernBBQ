@@ -743,6 +743,28 @@ export default function TvMenuModal() {
             </div>
 
             {/* 3. BOTTOM FOOTER & LOCATION TICKER (EXACT 95px HEIGHT) */}
+            {announcements.flashSpecialActive ? (
+              <div className="h-[95px] px-10 flex items-center justify-between shrink-0 shadow-2xl border-t-4 border-amber-300 bg-gradient-to-r from-rose-700 via-[#D9381E] to-amber-600 text-white animate-pulse">
+                <div className="flex items-center gap-4">
+                  <span className="bg-amber-300 text-stone-950 font-black text-base uppercase px-4 py-2 rounded-none font-mono tracking-wider shadow-lg">
+                    ⚡ FLASH DROP LIVE
+                  </span>
+                  <div>
+                    <h4 className="text-3xl font-black uppercase font-['Bebas_Neue'] tracking-wider leading-none text-white">
+                      {announcements.flashSpecialTitle || "🚨 PITMASTER FLASH SPECIAL — NEXT 15 MINUTES!"}
+                    </h4>
+                    <p className="text-base font-mono mt-1 text-amber-200 font-extrabold">
+                      {announcements.flashSpecialDeal || "🔥 Hot Brisket Sandwich + Side $15 • Free Honey Bun Cake w/ 2-Meat Combo!"}
+                    </p>
+                  </div>
+                </div>
+                <div className="text-right font-mono">
+                  <div className="text-lg font-black uppercase bg-black/40 px-4 py-1.5 border border-amber-300">
+                    📲 TAP NFC AT WINDOW OR STEP UP NOW!
+                  </div>
+                </div>
+              </div>
+            ) : (
             <div className={`h-[95px] px-10 flex items-center justify-between shrink-0 shadow-2xl border-t-4 ${
               boardTheme === 'classicOrange'
                 ? 'bg-[#FFFFFF] border-[#B95000] text-[#1F1510]'
@@ -770,7 +792,7 @@ export default function TvMenuModal() {
               <div className="text-center font-mono text-xs">
                 <div className="font-bold uppercase tracking-wider">★ ALL DINNER PLATES INCLUDE 2 SIDES & WARM DINNER ROLL ★</div>
                 <div className="text-stone-500 text-[11px] mt-0.5">
-                  "I love cooking like a carpenter loves building houses." — Donald Tisdale
+                  📲 Tap Your Phone on Our Window NFC Chip to Build Your Plate in Line!
                 </div>
               </div>
 
@@ -785,6 +807,7 @@ export default function TvMenuModal() {
               </div>
 
             </div>
+            )}
 
           </div>
 

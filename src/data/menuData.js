@@ -25,7 +25,11 @@ export const INITIAL_ANNOUNCEMENTS = {
   specialAlert: "Today's Smoker & Fryer Special: Fried Pork Chop Dinners & 12pc XL Shrimp Catch!",
   squareAccepted: true,
   squareSiteUrl: "", // Donald can paste his Square Online / Square checkout link if desired
-  paymentNotice: "Square POS at Trailer: Tap to Pay, Apple Pay, Google Pay, Cash App, Chip Cards & Cash Accepted"
+  paymentNotice: "Square POS at Trailer: Tap to Pay, Apple Pay, Google Pay, Cash App, Chip Cards & Cash Accepted",
+  flashSpecialActive: false,
+  flashSpecialTitle: "🚨 PITMASTER FLASH SPECIAL — NEXT 15 MINUTES!",
+  flashSpecialDeal: "🔥 Hot Brisket Sandwich + Any Side $15 • Free Honey Bun Cake Slice w/ Any 2-Meat Combo!",
+  tvRotateMode: false
 };
 
 // "Specials in a couple different spots"

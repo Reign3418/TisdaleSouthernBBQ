@@ -31,6 +31,7 @@ export default function TrailerTwinModal() {
     specials,
     schedule,
     announcements,
+    setAnnouncements,
     toggleItemStock,
     editMenuItem,
     toggleSpecialStock,
@@ -50,6 +51,19 @@ export default function TrailerTwinModal() {
   const [showHotspots, setShowHotspots] = useState(true);
   const [showRigGuide, setShowRigGuide] = useState(false);
   const [syncFlash, setSyncFlash] = useState(false);
+  const [rotateSlide, setRotateSlide] = useState(0); // 0 = Full Menu, 1 = Giant Spotlight + NFC
+
+  // Auto-rotate the TV screen between Full Menu and Giant Spotlight when tvRotateMode is enabled
+  useEffect(() => {
+    if (!announcements.tvRotateMode) {
+      setRotateSlide(0);
+      return;
+    }
+    const timer = setInterval(() => {
+      setRotateSlide(prev => (prev === 0 ? 1 : 0));
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [announcements.tvRotateMode]);
 
   // Trigger a brief visual wireless pulse whenever state changes
   useEffect(() => {
@@ -601,15 +615,37 @@ export default function TrailerTwinModal() {
 
                   <div
                     className={`text-center font-mono uppercase font-bold ${
-                      tvBoardTheme === 'classicOrange'
+                      announcements.flashSpecialActive
+                        ? 'bg-rose-600 text-white animate-pulse'
+                        : tvBoardTheme === 'classicOrange'
                         ? 'bg-amber-100 text-amber-950'
                         : 'bg-amber-500/20 text-amber-300'
                     } ${isTvZoomed ? 'text-[11px] py-1 px-2' : 'text-[3.6px] py-[0.5px]'}`}
                   >
-                    📍 {current.isActive ? current.name : 'Off-Duty / Private'}
+                    {announcements.flashSpecialActive
+                      ? `⚡ FLASH: ${announcements.flashSpecialDeal || 'Brisket Sandwich + Side $15!'}`
+                      : `📍 ${current.isActive ? current.name : 'Off-Duty / Private'} • 📲 NFC TAP WINDOW`}
                   </div>
                 </div>
               </div>
+
+              {/* Rotating Giant Spotlight / Flash Special Overlay inside Trailer TV */}
+              {(announcements.flashSpecialActive || rotateSlide === 1) && (
+                <div
+                  className={`absolute inset-x-0 bottom-0 z-20 flex items-center justify-between px-2 py-1 border-t-2 border-amber-300 bg-gradient-to-r from-rose-800 via-[#D9381E] to-amber-600 text-white shadow-lg ${
+                    isTvZoomed ? 'py-3 px-5 text-sm' : 'text-[4.5px] leading-tight py-0.5 px-1'
+                  }`}
+                >
+                  <div className="font-black uppercase tracking-wider truncate">
+                    {announcements.flashSpecialActive
+                      ? `🚨 ${announcements.flashSpecialTitle || 'FLASH SPECIAL'} — ${announcements.flashSpecialDeal}`
+                      : '🔥 ROTATING SPOTLIGHT: SMOKED BRISKET ($22) • SPARE RIBS ($18) • 📲 TAP PHONE ON WINDOW NFC CHIP!'}
+                  </div>
+                  <span className="bg-amber-300 text-stone-950 font-mono font-black px-1 shrink-0 ml-1">
+                    LIVE NOW
+                  </span>
+                </div>
+              )}
 
               {/* Zoomed Close Hint Bar */}
               {isTvZoomed && (
@@ -629,20 +665,31 @@ export default function TrailerTwinModal() {
             </div>
 
             {/* ============================================================= */}
-            {/* RETIRED HANDWRITTEN CHALKBOARD CALLOUT (Below TV on Trailer)  */}
+            {/* RETIRED HANDWRITTEN CHALKBOARD + NFC COUNTER CALLOUTS         */}
             {/* ============================================================= */}
             {showHotspots && !isTvZoomed && (
-              <div
-                style={{ left: '59.5%', top: '58.5%' }}
-                onClick={() => {
-                  setActiveZone('tv');
-                  setPhoneTab('specials');
-                }}
-                className="absolute z-20 bg-emerald-600/95 hover:bg-emerald-500 text-white text-[9px] sm:text-[10px] font-mono font-black uppercase px-1.5 py-0.5 border border-emerald-300 shadow-lg cursor-pointer transition"
-                title="In the photo, Donald had to hand-write specials on this hanging chalkboard. Now his phone updates the TV screen above!"
-              >
-                ✨ Chalkboard → Live on TV!
-              </div>
+              <>
+                <div
+                  style={{ left: '41%', top: '59%' }}
+                  onClick={() => setActiveZone('window')}
+                  className="absolute z-20 bg-amber-500 hover:bg-amber-400 text-stone-950 text-[9px] sm:text-[10px] font-mono font-black uppercase px-1.5 py-0.5 border border-white shadow-lg cursor-pointer transition"
+                  title="Stick a $0.25 waterproof NFC chip here so customers tap their phone to open the live menu!"
+                >
+                  📲 Tap Phone Here (NFC Menu Chip)
+                </div>
+
+                <div
+                  style={{ left: '59.5%', top: '58.5%' }}
+                  onClick={() => {
+                    setActiveZone('tv');
+                    setPhoneTab('specials');
+                  }}
+                  className="absolute z-20 bg-emerald-600/95 hover:bg-emerald-500 text-white text-[9px] sm:text-[10px] font-mono font-black uppercase px-1.5 py-0.5 border border-emerald-300 shadow-lg cursor-pointer transition"
+                  title="In the photo, Donald had to hand-write specials on this hanging chalkboard. Now his phone updates the TV screen above!"
+                >
+                  ✨ Chalkboard → Live on TV!
+                </div>
+              </>
             )}
 
             {/* ============================================================= */}
@@ -794,9 +841,58 @@ export default function TrailerTwinModal() {
             {/* ============================================================= */}
             <div className="p-3.5 space-y-3.5 max-h-[540px] overflow-y-auto bg-[#120E0C]">
               
-              {/* TAB 1: 1-TAP SOLD OUT & FRYER CUTOFF */}
+              {/* TAB 1: 1-TAP SOLD OUT, FLASH SPECIAL & FRYER CUTOFF */}
               {phoneTab === 'pit' && (
                 <>
+                  {/* 1-Tap Flash Special Crowd Magnet + Rotating Screen */}
+                  <div className="bg-gradient-to-r from-amber-950/60 to-rose-950/60 border-2 border-amber-500/70 p-3 space-y-2">
+                    <div className="flex items-center justify-between gap-2">
+                      <div>
+                        <div className="text-xs font-black uppercase text-amber-300 flex items-center gap-1">
+                          <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                          <span>Crowd-Magnet Live TV Controls</span>
+                        </div>
+                        <p className="text-[10px] text-stone-300">
+                          Slow crowd? Fire a flashing promo banner or auto-rotate the TV screen!
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-1.5">
+                      <button
+                        onClick={() =>
+                          setAnnouncements(prev => ({
+                            ...prev,
+                            flashSpecialActive: !prev.flashSpecialActive
+                          }))
+                        }
+                        className={`py-2 px-2 font-mono font-black text-[10px] uppercase cursor-pointer border transition ${
+                          announcements.flashSpecialActive
+                            ? 'bg-rose-600 text-white border-amber-300 animate-pulse shadow-lg'
+                            : 'bg-amber-500 hover:bg-amber-400 text-stone-950 border-amber-300'
+                        }`}
+                      >
+                        {announcements.flashSpecialActive ? '🚨 STOP FLASH DROP' : '⚡ FLASH SPECIAL ON TV'}
+                      </button>
+
+                      <button
+                        onClick={() =>
+                          setAnnouncements(prev => ({
+                            ...prev,
+                            tvRotateMode: !prev.tvRotateMode
+                          }))
+                        }
+                        className={`py-2 px-2 font-mono font-black text-[10px] uppercase cursor-pointer border transition ${
+                          announcements.tvRotateMode
+                            ? 'bg-emerald-600 text-white border-emerald-300'
+                            : 'bg-stone-800 hover:bg-stone-700 text-stone-200 border-stone-600'
+                        }`}
+                      >
+                        {announcements.tvRotateMode ? '🔄 ROTATING: ON' : '🔄 AUTO-ROTATE TV'}
+                      </button>
+                    </div>
+                  </div>
+
                   {/* Master Fryer Grease Cutoff Switch */}
                   <div
                     className={`p-3 border-2 transition ${
