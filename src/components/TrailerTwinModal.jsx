@@ -40,6 +40,7 @@ export default function TrailerTwinModal() {
     tvBoardTheme,
     setTvBoardTheme,
     lastSyncPulse,
+    lanSyncInfo,
     resetToDefaults
   } = usePitmaster();
 
@@ -170,7 +171,7 @@ export default function TrailerTwinModal() {
             <span>Pop Out TV to GAEMS HDMI Screen</span>
           </button>
 
-          {/* Toggle Dell E5550 + GAEMS Hardware Wiring Guide */}
+          {/* Toggle Dell E5550 + GAEMS + Wi-Fi Billboard Guide */}
           <button
             onClick={() => setShowRigGuide(!showRigGuide)}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-none text-xs font-bold border transition cursor-pointer ${
@@ -179,8 +180,8 @@ export default function TrailerTwinModal() {
                 : 'bg-stone-800 hover:bg-stone-700 text-amber-300 border-stone-700'
             }`}
           >
-            <Layers className="w-3.5 h-3.5" />
-            <span>{showRigGuide ? 'Hide Dell + GAEMS Setup' : 'Dell E5550 + GAEMS Setup'}</span>
+            <Wifi className="w-3.5 h-3.5" />
+            <span>{showRigGuide ? 'Hide Wi-Fi & Closed-Lid Rig' : '📡 Wi-Fi Billboard + Closed-Lid PC Blueprint'}</span>
           </button>
 
           {/* Close Button */}
@@ -195,53 +196,88 @@ export default function TrailerTwinModal() {
       </div>
 
       {/* =================================================================== */}
-      {/* COLLAPSIBLE HARDWARE GUIDE: DELL LATITUDE E5550 + GAEMS MONITOR     */}
+      {/* COLLAPSIBLE HARDWARE GUIDE: WI-FI SSID BILLBOARD + CLOSED-LID DELL  */}
       {/* =================================================================== */}
       {showRigGuide && (
         <div className="bg-[#18120F] border-b-2 border-amber-500/60 px-4 sm:px-8 py-4 text-xs text-stone-200">
-          <div className="max-w-7xl mx-auto space-y-3">
+          <div className="max-w-7xl mx-auto space-y-4">
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-black uppercase tracking-wider text-amber-400 font-mono flex items-center gap-2">
-                <Monitor className="w-4 h-4" />
-                <span>How to Run Your Tabletop Demo (With OR Without Your Dell Latitude E5550 &amp; GAEMS Monitor)</span>
+                <Wifi className="w-4 h-4 text-emerald-400" />
+                <span>Tactical Field Architecture: Dual-SSID Wi-Fi Billboard + Closed-Lid Dell E5550 + 55" TV</span>
               </h3>
               <button
                 onClick={() => setShowRigGuide(false)}
                 className="text-stone-400 hover:text-white font-mono text-[11px] underline cursor-pointer"
               >
-                Close Guide
+                Close Blueprint
               </button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-[#100C0A] border border-stone-800 p-3.5 rounded-none space-y-1.5">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              {/* Card 1: The Guest Wi-Fi SSID Billboard */}
+              <div className="bg-[#100C0A] border border-amber-500/50 p-3.5 rounded-none space-y-2">
                 <div className="text-amber-400 font-black font-mono uppercase">
-                  Option A: Zero Extra Hardware (Just This Screen!)
+                  1. Free 250ft Wi-Fi Billboard (No Internet Needed!)
                 </div>
                 <p className="text-stone-300 leading-relaxed">
-                  You don’t even need to turn on the PC or carry the monitor if you don't want to. Show Donald this exact screen on your tablet, laptop, or phone: <strong>his actual trailer is on the left</strong> (with the live TV mounted inside his TV frame) and <strong>his simulated cell phone is on the right</strong>.
+                  At a crowded festival or brewery, cell service slows down and people open their phone’s <strong>Wi-Fi Settings</strong>. Your router broadcasts a public Guest SSID right to the top of every phone within 250 feet:
                 </p>
+                <div className="bg-stone-950 border border-stone-700 p-2 font-mono text-[11px] space-y-1">
+                  <div className="text-stone-400 text-[9px] uppercase">Customer iPhone Wi-Fi List:</div>
+                  <div className="text-emerald-400 font-black flex items-center justify-between">
+                    <span>🔥 Tisdale_BBQ_Smoked_Brisket</span>
+                    <span>📶</span>
+                  </div>
+                  <div className="text-amber-300 font-bold flex items-center justify-between">
+                    <span>🍖 Order_BBQ_910-709-2900</span>
+                    <span>📶</span>
+                  </div>
+                </div>
               </div>
 
-              <div className="bg-[#100C0A] border border-emerald-600/50 p-3.5 rounded-none space-y-1.5">
+              {/* Card 2: The Private Control Network */}
+              <div className="bg-[#100C0A] border border-emerald-600/50 p-3.5 rounded-none space-y-2">
                 <div className="text-emerald-400 font-black font-mono uppercase">
-                  Option B: Dell Latitude E5550 + GAEMS HDMI Monitor Rig
+                  2. Private Phone → TV Control Network
+                </div>
+                <p className="text-stone-300 leading-relaxed">
+                  The exact same router broadcasts a hidden/password-protected second network (<strong><code>Tisdale_Pit_Control</code></strong>) that links <strong>Donald's Cell Phone</strong> directly to the <strong>Closed-Lid Dell E5550</strong> driving the 55" TV via HDMI.
+                </p>
+                <div className="bg-emerald-950/40 border border-emerald-700/50 p-2 font-mono text-[11px] text-emerald-300">
+                  {lanSyncInfo?.active ? (
+                    <>
+                      <div>🟢 <strong>LIVE LAN RELAY ACTIVE:</strong></div>
+                      <div>Phone URL: <code>http://{lanSyncInfo.lanIp}:{lanSyncInfo.port}/#trailer-sim</code></div>
+                    </>
+                  ) : (
+                    <div>📡 Works 100% offline inside the trailer with zero monthly internet bill!</div>
+                  )}
+                </div>
+              </div>
+
+              {/* Card 3: Closed-Lid Dell E5550 Space & Power Spec */}
+              <div className="bg-[#100C0A] border border-stone-800 p-3.5 rounded-none space-y-2">
+                <div className="text-amber-400 font-black font-mono uppercase">
+                  3. Closed-Lid Dell E5550 (Zero Counter Space &amp; Low Power)
+                </div>
+                <ul className="list-disc list-inside space-y-1 text-stone-300">
+                  <li><strong>Lid Closed &amp; Tucked Away:</strong> Set Windows <em>Power Options → Choose what closing the lid does → "Do Nothing"</em>. Slide the closed laptop vertically on a top cabinet shelf out of the grease zone.</li>
+                  <li><strong>Only ~15W Power Draw:</strong> With the laptop screen off, the E5550 draws ~15 Watts (less than a lightbulb) and its battery acts as a <strong>free 4-hour UPS backup</strong> if the generator surges!</li>
+                  <li><strong>USB-Powered Pocket Router:</strong> A palm-sized travel router (e.g. GL.iNet Opal, 5W) plugs into the Dell’s USB port—<strong>needing zero extra wall outlets!</strong></li>
+                </ul>
+              </div>
+
+              {/* Card 4: Tabletop Demo with GAEMS Monitor */}
+              <div className="bg-[#100C0A] border border-stone-800 p-3.5 rounded-none space-y-2">
+                <div className="text-amber-400 font-black font-mono uppercase">
+                  4. How to Demo With Your GAEMS Monitor
                 </div>
                 <ol className="list-decimal list-inside space-y-1 text-stone-300">
-                  <li>Plug your <strong>GAEMS Monitor</strong> into the HDMI port on your <strong>Dell Latitude E5550</strong>.</li>
-                  <li>Press <kbd className="bg-stone-800 px-1.5 py-0.5 border border-stone-600 font-mono">Win + P</kbd> and choose <strong>Extend</strong>.</li>
-                  <li>Click the green <strong>"Pop Out TV to GAEMS HDMI Screen"</strong> button above, drag that new window onto the GAEMS monitor, and press <kbd className="bg-stone-800 px-1.5 py-0.5 border border-stone-600 font-mono">F11</kbd>.</li>
-                  <li>Now tap any button on the simulated phone below—<strong>both the trailer photo AND the physical GAEMS HDMI monitor update in &lt;4ms!</strong></li>
+                  <li>Plug the <strong>GAEMS HDMI monitor</strong> into your Dell E5550 (<kbd className="bg-stone-800 px-1 border border-stone-600 font-mono">Win+P</kbd> → <strong>Extend</strong>).</li>
+                  <li>Click <strong>"Pop Out TV to GAEMS HDMI Screen"</strong> above, drag it to the GAEMS screen, press <kbd className="bg-stone-800 px-1 border border-stone-600 font-mono">F11</kbd>.</li>
+                  <li>Close the Dell lid partway or use your real cell phone on the same Wi-Fi (`npm run dev`) to control the GAEMS screen from across the table!</li>
                 </ol>
-              </div>
-
-              <div className="bg-[#100C0A] border border-stone-800 p-3.5 rounded-none space-y-1.5">
-                <div className="text-amber-400 font-black font-mono uppercase">
-                  Option C: Inside Donald's Real Trailer (Zero PC Required)
-                </div>
-                <p className="text-stone-300 leading-relaxed">
-                  In his real trailer, Donald does <strong>not</strong> need a laptop running. His 55" TV either takes a <strong>$0 USB thumb drive</strong> (using our 1-click 1080p PNG export) or a <strong>$30 Amazon Fire TV Stick</strong> connected to his phone hotspot so his cell phone updates the trailer TV over the air.
-                </p>
               </div>
             </div>
           </div>

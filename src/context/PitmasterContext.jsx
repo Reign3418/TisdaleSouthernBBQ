@@ -118,6 +118,9 @@ export function PitmasterProvider({ children }) {
     }
   });
   const [lastSyncPulse, setLastSyncPulse] = useState(null);
+  const [lanSyncInfo, setLanSyncInfo] = useState({ active: false, lanIp: '192.168.8.100', port: 3000 });
+  const lastLanVersionRef = React.useRef(0);
+  const isApplyingRemoteRef = React.useRef(false);
   const [isPitFxActive, setIsPitFxActive] = useState(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY_PITFX);
@@ -178,6 +181,67 @@ export function PitmasterProvider({ children }) {
     window.addEventListener('storage', handleStorageSync);
     return () => window.removeEventListener('storage', handleStorageSync);
   }, []);
+
+  // Local Wi-Fi Router Relay Sync (Donald's Real Cell Phone <-> Closed-Lid Dell E5550 <-> HDMI TV)
+  useEffect(() => {
+    if (typeof window === 'undefined' || window.location.hostname.includes('github.io')) {
+      return;
+    }
+
+    let isMounted = true;
+    const pollLanRelay = async () => {
+      try {
+        const res = await fetch('/__pit_sync', { cache: 'no-store' });
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!isMounted || !data.ok) return;
+
+        setLanSyncInfo({ active: true, lanIp: data.lanIp || '192.168.8.100', port: data.port || 3000 });
+
+        const remote = data.state;
+        if (remote && remote.updatedAt > lastLanVersionRef.current) {
+          isApplyingRemoteRef.current = true;
+          lastLanVersionRef.current = remote.updatedAt;
+          if (remote.menu) setMenu(remote.menu);
+          if (remote.specials) setSpecials(remote.specials);
+          if (remote.schedule) setSchedule(remote.schedule);
+          if (remote.announcements) setAnnouncements(remote.announcements);
+          if (remote.tvBoardTheme) setTvBoardTheme(remote.tvBoardTheme);
+          setLastSyncPulse(Date.now());
+          setTimeout(() => {
+            isApplyingRemoteRef.current = false;
+          }, 120);
+        }
+      } catch (e) {
+        // Offline static mode fallback
+      }
+    };
+
+    pollLanRelay();
+    const timer = setInterval(pollLanRelay, 800);
+    return () => {
+      isMounted = false;
+      clearInterval(timer);
+    };
+  }, []);
+
+  // Push local changes to the Dell E5550 Wi-Fi Relay when active
+  useEffect(() => {
+    if (!lanSyncInfo.active || isApplyingRemoteRef.current) return;
+    const now = Date.now();
+    lastLanVersionRef.current = now;
+    fetch('/__pit_sync', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        menu,
+        specials,
+        schedule,
+        announcements,
+        tvBoardTheme
+      })
+    }).catch(() => {});
+  }, [menu, specials, schedule, announcements, tvBoardTheme, lanSyncInfo.active]);
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY_TV_THEME, tvBoardTheme);
@@ -452,6 +516,7 @@ export function PitmasterProvider({ children }) {
       tvBoardTheme,
       setTvBoardTheme,
       lastSyncPulse,
+      lanSyncInfo,
       isPitFxActive,
       setIsPitFxActive,
       resetToDefaults
