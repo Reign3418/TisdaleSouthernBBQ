@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { usePitmaster } from '../context/PitmasterContext';
 import {
   X,
@@ -46,14 +46,38 @@ export default function TrailerTwinModal() {
     resetToDefaults
   } = usePitmaster();
 
-  const [activeZone, setActiveZone] = useState('tv'); // 'ac' | 'logo' | 'window' | 'tv'
   const [phoneTab, setPhoneTab] = useState('pit'); // 'pit' | 'specials' | 'gps'
   const [isTvZoomed, setIsTvZoomed] = useState(false);
-  const [showHotspots, setShowHotspots] = useState(true);
   const [showRigGuide, setShowRigGuide] = useState(false);
   const [syncFlash, setSyncFlash] = useState(false);
-  const [rotateSlide, setRotateSlide] = useState(0); // 0 = Full Menu, 1 = Giant Spotlight + NFC
+  const [rotateSlide, setRotateSlide] = useState(0); // 0 = Full Menu, 1 = Giant Spotlight
   const [pigFlashing, setPigFlashing] = useState(false);
+
+  // Measure the TV bezel container so our 1280x720 HD TV board scales with pixel-perfect sharpness
+  const tvBezelRef = useRef(null);
+  const [tvScale, setTvScale] = useState({ x: 0.1, y: 0.1 });
+
+  useEffect(() => {
+    const el = tvBezelRef.current;
+    if (!el) return;
+    const updateScale = () => {
+      const rect = el.getBoundingClientRect();
+      if (rect.width > 0 && rect.height > 0) {
+        setTvScale({
+          x: rect.width / 1280,
+          y: rect.height / 720
+        });
+      }
+    };
+    updateScale();
+    const ro = new ResizeObserver(updateScale);
+    ro.observe(el);
+    window.addEventListener('resize', updateScale);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('resize', updateScale);
+    };
+  }, [isTrailerSimOpen, isTvZoomed]);
 
   // Trigger the 1.3-second "Pig Emblem Screen Blank & Flash" whenever Price Fade changes
   useEffect(() => {
@@ -110,52 +134,6 @@ export default function TrailerTwinModal() {
       'width=1280,height=720,menubar=no,toolbar=no,location=no,status=no'
     );
   };
-
-  // Left-to-Right Trailer Architecture Zones (matching Donald's actual trailer photo)
-  const trailerZones = [
-    {
-      id: 'ac',
-      number: '1',
-      label: 'AC Bay & Roof Wrap',
-      shortTitle: 'Left: AC Unit + 910.709.2900 / Website Wrap',
-      coords: { left: '12%', top: '34%' },
-      box: { left: '3.5%', top: '21%', width: '21%', height: '37%' },
-      description:
-        'Upper-left wrap displays 910.709.2900 & TISDALESOUTHERNBBQ.COM above the Gree mini-split AC hatch. Connecting his domain to this platform turns that vinyl wrap into a 24/7 Google Maps & mobile pre-order magnet.'
-    },
-    {
-      id: 'logo',
-      number: '2',
-      label: 'Company Logo Crest',
-      shortTitle: 'Center-Left: Tisdale’s Southern BBQ Emblem',
-      coords: { left: '32.5%', top: '48%' },
-      box: { left: '26%', top: '36%', width: '13%', height: '27%' },
-      description:
-        'His signature "Mouth Watering Tongue Twisting BBQ" emblem and 100% Pure Hickory Pellet craft are preserved across all 3 website design concepts and the 1080p TV board.'
-    },
-    {
-      id: 'window',
-      number: '3',
-      label: 'Order & Pickup Window',
-      shortTitle: 'Center: Sliding Counter Window (Fast-Lane)',
-      coords: { left: '47%', top: '46%' },
-      box: { left: '39.2%', top: '35%', width: '16.5%', height: '24%' },
-      description:
-        'Where walk-up orders and Square POS payments happen. Customers standing in line scan the QR code to build their plate on their phone BEFORE reaching this window—cutting window wait times in half.'
-    },
-    {
-      id: 'tv',
-      number: '4',
-      label: '55" Exterior TV + Chalkboard',
-      shortTitle: 'Right: Live 55" TV Enclosure (Chalkboard Retired!)',
-      coords: { left: '65%', top: '36%' },
-      box: { left: '57.3%', top: '36.5%', width: '15.2%', height: '21%' },
-      description:
-        'The live digital menu board is mounted inside his exterior TV frame! Notice the small handwritten chalkboard hanging below the TV in the photo—now Donald can update "Today’s Specials", prices, and "SOLD OUT" badges straight from his cell phone!'
-    }
-  ];
-
-  const activeZoneData = trailerZones.find(z => z.id === activeZone) || trailerZones[3];
 
   // Key items for quick 1-tap demo on the simulated cell phone
   const quickDinners = menu.dinners?.items.slice(0, 5) || [];
@@ -330,30 +308,47 @@ export default function TrailerTwinModal() {
         {/* ================================================================= */}
         {/* LEFT 8 COLUMNS: DONALD'S ACTUAL TRAILER WITH LIVE MOUNTED TV      */}
         {/* ================================================================= */}
-        <div className="lg:col-span-8 space-y-4">
+        {/* LEFT 8 COLUMNS: DONALD'S ACTUAL TRAILER WITH CLEAN INTERACTIVE TV */}
+        {/* ================================================================= */}
+        <div className="lg:col-span-8 space-y-3">
           
-          {/* Trailer Control Sub-Bar */}
+          {/* Clean Interactive TV Control Bar */}
           <div className="bg-[#140F0D] border border-[#2E221D] p-3 flex flex-wrap items-center justify-between gap-2">
-            <div className="flex items-center flex-wrap gap-1.5">
-              <span className="text-[11px] font-mono uppercase text-stone-400 font-bold mr-1">
-                Left-to-Right Trailer Zones:
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 bg-emerald-400 animate-pulse" />
+              <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-white font-mono">
+                {isTvZoomed
+                  ? '📺 Interactive 55" Trailer TV (Magnified HD View)'
+                  : '🚚 Live 55" TV Mounted on Trailer (Click TV to Magnify)'}
               </span>
-              {trailerZones.map(z => (
-                <button
-                  key={z.id}
-                  onClick={() => setActiveZone(z.id)}
-                  className={`px-2.5 py-1 rounded-none text-xs font-bold font-mono transition cursor-pointer border ${
-                    activeZone === z.id
-                      ? 'bg-amber-500 text-stone-950 border-amber-300 font-black shadow'
-                      : 'bg-[#1C1512] text-stone-300 border-stone-700 hover:border-amber-500/50'
-                  }`}
-                >
-                  {z.number}. {z.label}
-                </button>
-              ))}
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center flex-wrap gap-2">
+              {/* Switch TV Theme directly */}
+              <button
+                onClick={() =>
+                  setTvBoardTheme(tvBoardTheme === 'darkPit' ? 'classicOrange' : 'darkPit')
+                }
+                className="px-2.5 py-1 rounded-none text-xs font-mono font-bold bg-[#1C1512] hover:bg-stone-800 text-stone-200 border border-stone-700 cursor-pointer transition"
+              >
+                🎨 Theme: {tvBoardTheme === 'classicOrange' ? 'Classic Orange' : 'Dark Pit'}
+              </button>
+
+              {/* Toggle Auto-Rotate */}
+              <button
+                onClick={() =>
+                  setAnnouncements(prev => ({ ...prev, tvRotateMode: !prev.tvRotateMode }))
+                }
+                className={`px-2.5 py-1 rounded-none text-xs font-mono font-bold border cursor-pointer transition ${
+                  announcements.tvRotateMode
+                    ? 'bg-emerald-600 text-white border-emerald-400'
+                    : 'bg-[#1C1512] text-stone-300 border-stone-700 hover:text-white'
+                }`}
+              >
+                🔄 Rotate: {announcements.tvRotateMode ? 'ON' : 'OFF'}
+              </button>
+
+              {/* Magnify / Shrink TV */}
               <button
                 onClick={() => setIsTvZoomed(!isTvZoomed)}
                 className={`flex items-center gap-1.5 px-3 py-1 rounded-none text-xs font-black uppercase tracking-wider transition cursor-pointer border ${
@@ -363,490 +358,654 @@ export default function TrailerTwinModal() {
                 }`}
               >
                 {isTvZoomed ? <ZoomOut className="w-3.5 h-3.5" /> : <ZoomIn className="w-3.5 h-3.5" />}
-                <span>{isTvZoomed ? 'Show Full Trailer' : 'Magnify Trailer TV'}</span>
+                <span>{isTvZoomed ? 'Show Full Trailer' : 'Magnify TV Screen'}</span>
               </button>
 
-              <button
-                onClick={() => setShowHotspots(!showHotspots)}
-                className="px-2.5 py-1 rounded-none text-[11px] font-mono font-bold bg-stone-800 text-stone-300 hover:text-white border border-stone-700 cursor-pointer"
-              >
-                {showHotspots ? 'Hide Pins' : 'Show Pins'}
-              </button>
-            </div>
-          </div>
-
-          {/* =============================================================== */}
-          {/* INTERACTIVE TRAILER STAGE (EXACT SUNSET PHOTO + LIVE TV OVERLAY)*/}
-          {/* =============================================================== */}
-          <div className="relative w-full border-2 border-amber-600/50 bg-black shadow-2xl overflow-hidden select-none">
-            
-            {/* Actual Photo of Donald's Trailer */}
-            <img
-              src="./images/trailer-side-full.jpg"
-              alt="Tisdale's Southern BBQ Food Trailer — Left to right: AC unit, Pig Logo, Order & Pickup Window, and 55-inch Exterior TV"
-              className={`w-full h-auto block transition-transform duration-500 ease-out ${
-                isTvZoomed ? 'scale-[2.35] origin-[66%_46%]' : 'scale-100 origin-center'
-              }`}
-            />
-
-            {/* ============================================================= */}
-            {/* LIVE INTERACTIVE TV SCREEN SUPERIMPOSED INSIDE TRAILER BEZEL   */}
-            {/* Coordinates mapped directly to Donald's TV LCD:               */}
-            {/* left: 59.1%, top: 40.2%, width: 11.6%, height: 13.6%          */}
-            {/* ============================================================= */}
-            <div
-              onClick={() => setIsTvZoomed(!isTvZoomed)}
-              title="Click to magnify or shrink the live TV screen on the trailer"
-              style={{
-                left: isTvZoomed ? '12%' : '59.1%',
-                top: isTvZoomed ? '8%' : '40.2%',
-                width: isTvZoomed ? '76%' : '11.6%',
-                height: isTvZoomed ? '78%' : '13.6%'
-              }}
-              className={`absolute z-30 transition-all duration-500 ease-out cursor-pointer overflow-hidden flex flex-col justify-between ${
-                tvBoardTheme === 'classicOrange'
-                  ? 'bg-[#D86018] text-[#1A120E]'
-                  : 'bg-[#0E0B0A] text-[#F5EFE6]'
-              } ${
-                syncFlash
-                  ? 'ring-4 ring-emerald-400 shadow-[0_0_30px_rgba(16,185,129,0.9)]'
-                  : isTvZoomed
-                  ? 'ring-4 ring-amber-500 shadow-[0_0_60px_rgba(0,0,0,0.95)]'
-                  : 'ring-1 ring-amber-400/80 shadow-inner'
-              }`}
-            >
-              {/* =========================================================== */}
-              {/* PIG EMBLEM SCREEN BLANK & FLASH OVERLAY (PRICE FADE EVENT)  */}
-              {/* =========================================================== */}
-              {pigFlashing && (
-                <div className="absolute inset-0 z-50 bg-[#070504] flex flex-col items-center justify-center p-2 text-center animate-fadeIn">
-                  <img
-                    src="./images/truck-logo-wrap.jpg"
-                    alt="Tisdale's Southern BBQ Pig Emblem Flash"
-                    className={`${
-                      isTvZoomed ? 'w-36 h-36' : 'w-10 h-10'
-                    } rounded-none object-cover border-2 border-amber-400 shadow-[0_0_40px_rgba(245,158,11,0.95)] animate-bounce`}
-                  />
-                  <div
-                    className={`font-black uppercase font-['Bebas_Neue'] text-amber-400 tracking-widest mt-1 ${
-                      isTvZoomed ? 'text-3xl mt-3' : 'text-[6px] leading-none'
-                    }`}
-                  >
-                    {fadeAmt > 0
-                      ? `🔥 SMOKER PRICE FADE: -$${fadeAmt} OFF PLATES!`
-                      : '🔥 FULL PIT MENU RESTORED'}
-                  </div>
-                </div>
-              )}
-
-              {/* TV Top Banner */}
-              <div
-                className={`px-1.5 py-0.5 flex items-center justify-between border-b ${
-                  tvBoardTheme === 'classicOrange'
-                    ? 'bg-[#211510] text-white border-amber-500/40'
-                    : 'bg-[#1A120E] text-amber-300 border-amber-600/40'
-                } ${isTvZoomed ? 'text-xs py-2 px-4' : 'text-[4.5px] leading-tight'}`}
-              >
-                <div className="font-black uppercase tracking-wider truncate">
-                  🔥 TISDALE'S SOUTHERN BBQ • {fadeAmt > 0 ? `EVENING PRICE FADE (-$${fadeAmt} OFF!)` : '100% HICKORY SMOKED'}
-                </div>
-                <div className="flex items-center gap-1 font-mono font-bold shrink-0">
-                  {fadeAmt > 0 && (
-                    <span className="bg-emerald-500 text-stone-950 px-1 rounded-none uppercase font-black">
-                      🐷 -${fadeAmt} FADE
-                    </span>
-                  )}
-                  {!announcements.fryerOpen && (
-                    <span className="bg-rose-600 text-white px-1 rounded-none uppercase">
-                      🛑 GREASE OFF
-                    </span>
-                  )}
-                  <span className="text-amber-400">910-709-2900</span>
-                </div>
-              </div>
-
-              {/* 3-Column Live Menu Grid inside Trailer TV */}
-              <div
-                className={`flex-1 grid grid-cols-3 gap-1 p-1 overflow-hidden ${
-                  isTvZoomed ? 'gap-3 p-4' : 'gap-0.5 p-0.5'
-                }`}
-              >
-                {/* Col 1: Dinners */}
-                <div
-                  className={`flex flex-col justify-between p-1 border ${
-                    tvBoardTheme === 'classicOrange'
-                      ? 'bg-white border-[#C86010] text-stone-900'
-                      : 'bg-[#16110E] border-amber-600/30 text-stone-100'
-                  } ${isTvZoomed ? 'p-3' : ''}`}
-                >
-                  <div>
-                    <div
-                      className={`font-black uppercase border-b pb-0.5 mb-0.5 ${
-                        tvBoardTheme === 'classicOrange'
-                          ? 'border-[#E65100] text-[#B95000]'
-                          : 'border-amber-500 text-amber-400'
-                      } ${isTvZoomed ? 'text-sm pb-1 mb-2' : 'text-[5px]'}`}
-                    >
-                      Dinners (w/ 2 Sides)
-                    </div>
-                    <div className={isTvZoomed ? 'space-y-1.5' : 'space-y-0.5'}>
-                      {menu.dinners?.items
-                        .filter(i => !i.hidden)
-                        .slice(0, 6)
-                        .map(item => {
-                          const isFryerOff = !announcements.fryerOpen && item.isFryerItem;
-                          const isOut = !item.inStock || isFryerOff;
-                          return (
-                            <div
-                              key={item.id}
-                              className={`flex items-center justify-between border-b border-stone-300/20 ${
-                                isOut ? 'opacity-45' : ''
-                              } ${isTvZoomed ? 'text-xs py-0.5' : 'text-[4.2px] leading-none py-[0.5px]'}`}
-                            >
-                              <span className="font-bold uppercase truncate pr-1">{item.name}</span>
-                              {isOut ? (
-                                <span
-                                  className={`bg-rose-600 text-white font-black font-mono px-0.5 shrink-0 ${
-                                    isTvZoomed ? 'text-[10px] px-1.5 py-0.5' : 'text-[3.8px]'
-                                  }`}
-                                >
-                                  {isFryerOff ? 'GREASE OFF' : 'SOLD OUT'}
-                                </span>
-                              ) : (
-                                (() => {
-                                  const fp = getFadedPriceObj(item.price, item.numericPrice);
-                                  return (
-                                    <span className="font-black font-mono shrink-0 flex items-center gap-0.5">
-                                      {fp.isFaded && (
-                                        <span className="line-through opacity-50 text-rose-500">
-                                          {fp.old}
-                                        </span>
-                                      )}
-                                      <span
-                                        className={
-                                          fp.isFaded
-                                            ? 'text-emerald-500'
-                                            : tvBoardTheme === 'classicOrange'
-                                            ? 'text-[#B95000]'
-                                            : 'text-amber-400'
-                                        }
-                                      >
-                                        {fp.current}
-                                      </span>
-                                    </span>
-                                  );
-                                })()
-                              )}
-                            </div>
-                          );
-                        })}
-                    </div>
-                  </div>
-                  <div
-                    className={`text-center font-mono uppercase font-bold opacity-75 ${
-                      isTvZoomed ? 'text-[10px] pt-2 border-t border-stone-500/20' : 'text-[3.5px]'
-                    }`}
-                  >
-                    Pure Hickory Pellets
-                  </div>
-                </div>
-
-                {/* Col 2: Sandwiches & Meats by Slab/LB */}
-                <div
-                  className={`flex flex-col justify-between p-1 border ${
-                    tvBoardTheme === 'classicOrange'
-                      ? 'bg-white border-[#C86010] text-stone-900'
-                      : 'bg-[#16110E] border-amber-600/30 text-stone-100'
-                  } ${isTvZoomed ? 'p-3' : ''}`}
-                >
-                  <div>
-                    <div
-                      className={`font-black uppercase border-b pb-0.5 mb-0.5 ${
-                        tvBoardTheme === 'classicOrange'
-                          ? 'border-[#E65100] text-[#B95000]'
-                          : 'border-amber-500 text-amber-400'
-                      } ${isTvZoomed ? 'text-sm pb-1 mb-2' : 'text-[5px]'}`}
-                    >
-                      Sandwiches &amp; Ribs
-                    </div>
-                    <div className={isTvZoomed ? 'space-y-1.5' : 'space-y-0.5'}>
-                      {[...(menu.sandwiches?.items || []).slice(0, 3), ...(menu.meatsOnly?.items || []).slice(0, 3)]
-                        .filter(i => !i.hidden)
-                        .map(item => {
-                          const isFryerOff = !announcements.fryerOpen && item.isFryerItem;
-                          const isOut = !item.inStock || isFryerOff;
-                          return (
-                            <div
-                              key={item.id}
-                              className={`flex items-center justify-between border-b border-stone-300/20 ${
-                                isOut ? 'opacity-45' : ''
-                              } ${isTvZoomed ? 'text-xs py-0.5' : 'text-[4.2px] leading-none py-[0.5px]'}`}
-                            >
-                              <span className="font-bold uppercase truncate pr-1">{item.name}</span>
-                              {isOut ? (
-                                <span
-                                  className={`bg-rose-600 text-white font-black font-mono px-0.5 shrink-0 ${
-                                    isTvZoomed ? 'text-[10px] px-1.5 py-0.5' : 'text-[3.8px]'
-                                  }`}
-                                >
-                                  {isFryerOff ? 'GREASE OFF' : 'SOLD OUT'}
-                                </span>
-                              ) : (
-                                (() => {
-                                  const fp = getFadedPriceObj(item.price, item.numericPrice);
-                                  return (
-                                    <span className="font-black font-mono shrink-0 flex items-center gap-0.5">
-                                      {fp.isFaded && (
-                                        <span className="line-through opacity-50 text-rose-500">
-                                          {fp.old}
-                                        </span>
-                                      )}
-                                      <span
-                                        className={
-                                          fp.isFaded
-                                            ? 'text-emerald-500'
-                                            : tvBoardTheme === 'classicOrange'
-                                            ? 'text-[#B95000]'
-                                            : 'text-amber-400'
-                                        }
-                                      >
-                                        {fp.current}
-                                      </span>
-                                    </span>
-                                  );
-                                })()
-                              )}
-                            </div>
-                          );
-                        })}
-                    </div>
-                  </div>
-                  <div
-                    className={`text-center font-mono uppercase font-bold opacity-75 ${
-                      isTvZoomed ? 'text-[10px] pt-2 border-t border-stone-500/20' : 'text-[3.5px]'
-                    }`}
-                  >
-                    Slaw • Kraut • Chili • Cheese
-                  </div>
-                </div>
-
-                {/* Col 3: Sides & Today's Specials (Replaces the Hanging Chalkboard!) */}
-                <div
-                  className={`flex flex-col justify-between p-1 border ${
-                    tvBoardTheme === 'classicOrange'
-                      ? 'bg-white border-[#C86010] text-stone-900'
-                      : 'bg-[#16110E] border-amber-600/30 text-stone-100'
-                  } ${isTvZoomed ? 'p-3' : ''}`}
-                >
-                  <div>
-                    <div
-                      className={`font-black uppercase border-b pb-0.5 mb-0.5 ${
-                        tvBoardTheme === 'classicOrange'
-                          ? 'border-[#E65100] text-[#B95000]'
-                          : 'border-amber-500 text-amber-400'
-                      } ${isTvZoomed ? 'text-sm pb-1 mb-1.5' : 'text-[5px]'}`}
-                    >
-                      Today's Specials &amp; Sides
-                    </div>
-                    <div className={isTvZoomed ? 'space-y-1.5' : 'space-y-0.5'}>
-                      {specials
-                        .filter(s => !s.hidden)
-                        .slice(0, 3)
-                        .map(s => {
-                          const isFryerOff = !announcements.fryerOpen && s.isFryerItem;
-                          const isOut = !s.inStock || isFryerOff;
-                          return (
-                            <div
-                              key={s.id}
-                              className={`flex items-center justify-between border-b border-stone-300/20 ${
-                                isOut ? 'opacity-45' : ''
-                              } ${isTvZoomed ? 'text-xs py-0.5' : 'text-[4.2px] leading-none py-[0.5px]'}`}
-                            >
-                              <span className="font-extrabold uppercase truncate pr-1">{s.title}</span>
-                              {isOut ? (
-                                <span
-                                  className={`bg-rose-600 text-white font-black font-mono px-0.5 shrink-0 ${
-                                    isTvZoomed ? 'text-[10px] px-1.5 py-0.5' : 'text-[3.8px]'
-                                  }`}
-                                >
-                                  {isFryerOff ? 'GREASE OFF' : 'SOLD OUT'}
-                                </span>
-                              ) : (
-                                <span
-                                  className={`font-black font-mono shrink-0 ${
-                                    tvBoardTheme === 'classicOrange' ? 'text-[#B95000]' : 'text-amber-400'
-                                  }`}
-                                >
-                                  {s.price}
-                                </span>
-                              )}
-                            </div>
-                          );
-                        })}
-
-                      {/* Sides summary */}
-                      <div
-                        className={`pt-0.5 font-mono font-bold ${
-                          isTvZoomed ? 'text-[11px] pt-2 text-stone-500' : 'text-[3.8px] opacity-80'
-                        }`}
-                      >
-                        8oz Sides ($5): Mac, Collards, Yams, Beans, Slaw,{' '}
-                        <span className={!announcements.fryerOpen ? 'line-through text-rose-500' : ''}>
-                          Fries, Okra, Hushpuppies
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div
-                    className={`text-center font-mono uppercase font-bold ${
-                      announcements.flashSpecialActive
-                        ? 'bg-rose-600 text-white animate-pulse'
-                        : tvBoardTheme === 'classicOrange'
-                        ? 'bg-amber-100 text-amber-950'
-                        : 'bg-amber-500/20 text-amber-300'
-                    } ${isTvZoomed ? 'text-[11px] py-1 px-2' : 'text-[3.6px] py-[0.5px]'}`}
-                  >
-                    {announcements.flashSpecialActive
-                      ? `⚡ FLASH: ${announcements.flashSpecialDeal || 'Brisket Sandwich + Side $15!'}`
-                      : `📍 ${current.isActive ? current.name : 'Off-Duty / Private'} • 📲 NFC TAP WINDOW`}
-                  </div>
-                </div>
-              </div>
-
-              {/* Rotating Giant Spotlight / Flash Special / Price Fade Overlay inside Trailer TV */}
-              {(fadeAmt > 0 || announcements.flashSpecialActive || rotateSlide === 1) && (
-                <div
-                  className={`absolute inset-x-0 bottom-0 z-20 flex items-center justify-between px-2 py-1 border-t-2 ${
-                    fadeAmt > 0
-                      ? 'border-emerald-300 bg-gradient-to-r from-emerald-900 via-emerald-600 to-amber-600 text-white'
-                      : 'border-amber-300 bg-gradient-to-r from-rose-800 via-[#D9381E] to-amber-600 text-white'
-                  } shadow-lg ${
-                    isTvZoomed ? 'py-3 px-5 text-sm' : 'text-[4.5px] leading-tight py-0.5 px-1'
-                  }`}
-                >
-                  <div className="font-black uppercase tracking-wider truncate">
-                    {fadeAmt > 0
-                      ? `🐷 PITMASTER PRICE FADE ACTIVE: -$${fadeAmt} OFF SMOKED PLATES & SANDWICHES UNTIL SOLD OUT!`
-                      : announcements.flashSpecialActive
-                      ? `🚨 ${announcements.flashSpecialTitle || 'FLASH SPECIAL'} — ${announcements.flashSpecialDeal}`
-                      : '🔥 ROTATING SPOTLIGHT: SMOKED BRISKET ($22) • SPARE RIBS ($18) • 📲 TAP PHONE ON WINDOW NFC CHIP!'}
-                  </div>
-                  <span className="bg-amber-300 text-stone-950 font-mono font-black px-1 shrink-0 ml-1">
-                    {fadeAmt > 0 ? `-$${fadeAmt} FADE` : 'LIVE NOW'}
-                  </span>
-                </div>
-              )}
-
-              {/* Zoomed Close Hint Bar */}
-              {isTvZoomed && (
-                <div className="bg-stone-950 text-amber-300 px-4 py-1.5 text-xs font-mono flex items-center justify-between border-t border-amber-500/40">
-                  <span>🔍 MAGNIFIED TRAILER TV VIEW — Tap buttons on Donald's Phone (Right) to test live changes!</span>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setIsTvZoomed(false);
-                    }}
-                    className="bg-amber-500 text-stone-950 font-black px-2.5 py-0.5 uppercase cursor-pointer"
-                  >
-                    Shrink Back to Trailer Bezel
-                  </button>
-                </div>
-              )}
-            </div>
-
-            {/* ============================================================= */}
-            {/* RETIRED HANDWRITTEN CHALKBOARD + NFC COUNTER CALLOUTS         */}
-            {/* ============================================================= */}
-            {showHotspots && !isTvZoomed && (
-              <>
-                <div
-                  style={{ left: '41%', top: '59%' }}
-                  onClick={() => setActiveZone('window')}
-                  className="absolute z-20 bg-amber-500 hover:bg-amber-400 text-stone-950 text-[9px] sm:text-[10px] font-mono font-black uppercase px-1.5 py-0.5 border border-white shadow-lg cursor-pointer transition"
-                  title="Stick a $0.25 waterproof NFC chip here so customers tap their phone to open the live menu!"
-                >
-                  📲 Tap Phone Here (NFC Menu Chip)
-                </div>
-
-                <div
-                  style={{ left: '59.5%', top: '58.5%' }}
-                  onClick={() => {
-                    setActiveZone('tv');
-                    setPhoneTab('specials');
-                  }}
-                  className="absolute z-20 bg-emerald-600/95 hover:bg-emerald-500 text-white text-[9px] sm:text-[10px] font-mono font-black uppercase px-1.5 py-0.5 border border-emerald-300 shadow-lg cursor-pointer transition"
-                  title="In the photo, Donald had to hand-write specials on this hanging chalkboard. Now his phone updates the TV screen above!"
-                >
-                  ✨ Chalkboard → Live on TV!
-                </div>
-              </>
-            )}
-
-            {/* ============================================================= */}
-            {/* LEFT-TO-RIGHT ARCHITECTURE PINS (1. AC, 2. LOGO, 3. WINDOW, 4. TV) */}
-            {/* ============================================================= */}
-            {showHotspots &&
-              !isTvZoomed &&
-              trailerZones.map(z => {
-                const isSelected = activeZone === z.id;
-                return (
-                  <React.Fragment key={z.id}>
-                    {/* Highlight Box when Selected */}
-                    {isSelected && (
-                      <div
-                        style={z.box}
-                        className="absolute z-10 border-2 border-amber-400 bg-amber-500/10 pointer-events-none animate-pulse"
-                      />
-                    )}
-                    {/* Numbered Pin */}
-                    <button
-                      style={z.coords}
-                      onClick={() => setActiveZone(z.id)}
-                      className={`absolute z-30 -translate-x-1/2 -translate-y-1/2 w-6 h-6 sm:w-7 sm:h-7 rounded-none font-mono font-black text-xs flex items-center justify-center transition cursor-pointer shadow-lg border-2 ${
-                        isSelected
-                          ? 'bg-amber-400 text-stone-950 border-white scale-125 ring-4 ring-amber-500/40'
-                          : 'bg-stone-950/90 text-amber-400 border-amber-400 hover:scale-110'
-                      }`}
-                      title={z.shortTitle}
-                    >
-                      {z.number}
-                    </button>
-                  </React.Fragment>
-                );
-              })}
-          </div>
-
-          {/* Selected Zone Architecture Explanation Card */}
-          <div className="bg-[#16100E] border-l-4 border-amber-500 border border-[#2E221D] p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <span className="bg-amber-500 text-stone-950 font-mono font-black text-xs px-2 py-0.5">
-                  ZONE {activeZoneData.number} OF 4 (LEFT-TO-RIGHT)
-                </span>
-                <h3 className="text-sm sm:text-base font-black text-white uppercase tracking-wide">
-                  {activeZoneData.shortTitle}
-                </h3>
-              </div>
-              <p className="text-xs text-stone-300 leading-relaxed">{activeZoneData.description}</p>
-            </div>
-
-            <div className="flex sm:flex-col gap-2 shrink-0">
-              <button
-                onClick={() => setIsTvZoomed(!isTvZoomed)}
-                className="px-3 py-1.5 bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-stone-950 border border-amber-500/50 text-xs font-bold font-mono uppercase transition cursor-pointer whitespace-nowrap"
-              >
-                {isTvZoomed ? '🔍 Zoom Out' : '🔍 Zoom Into TV'}
-              </button>
+              {/* Open Full 1080p TV */}
               <button
                 onClick={() => {
                   setIsTrailerSimOpen(false);
                   setIsTvMenuOpen(true);
                 }}
-                className="px-3 py-1.5 bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-700 text-xs font-bold font-mono uppercase transition cursor-pointer whitespace-nowrap"
+                className="px-2.5 py-1 rounded-none text-xs font-mono font-bold bg-stone-800 hover:bg-stone-700 text-stone-200 border border-stone-700 cursor-pointer transition"
               >
-                📺 Open Full 1080p TV
+                📺 Full 1080p
               </button>
+            </div>
+          </div>
+
+          {/* =============================================================== */}
+          {/* INTERACTIVE TRAILER STAGE (CLEAN TRAILER PHOTO + HD TV OVERLAY) */}
+          {/* =============================================================== */}
+          <div className="relative w-full border-2 border-amber-600/50 bg-black shadow-2xl overflow-hidden select-none">
+            
+            {/* Clean Photo of Donald's Trailer (Zero clutter pins) */}
+            <img
+              src="./images/trailer-side-full.jpg"
+              alt="Tisdale's Southern BBQ Food Trailer with Live 55-inch Exterior TV"
+              className={`w-full h-auto block transition-all duration-500 ease-out ${
+                isTvZoomed ? 'scale-[2.2] origin-[65%_46%] brightness-[0.35] blur-[1px]' : 'scale-100 origin-center'
+              }`}
+            />
+
+            {/* ============================================================= */}
+            {/* LIVE 1280x720 HD INTERACTIVE TV SCREEN                        */}
+            {/* Unzoomed: sits cleanly inside Donald's TV enclosure bezel     */}
+            {/* Zoomed: expands to crisp full-stage HD view                   */}
+            {/* ============================================================= */}
+            <div
+              ref={tvBezelRef}
+              onClick={() => setIsTvZoomed(!isTvZoomed)}
+              title={isTvZoomed ? 'Click to return to full trailer view' : 'Click to magnify the live TV screen'}
+              style={{
+                left: isTvZoomed ? '3%' : '59.1%',
+                top: isTvZoomed ? '4%' : '40.2%',
+                width: isTvZoomed ? '94%' : '11.6%',
+                height: isTvZoomed ? '92%' : '13.6%'
+              }}
+              className={`absolute z-30 transition-all duration-500 ease-out cursor-pointer overflow-hidden bg-[#0E0B0A] ${
+                syncFlash
+                  ? 'ring-4 ring-emerald-400 shadow-[0_0_35px_rgba(16,185,129,0.95)]'
+                  : isTvZoomed
+                  ? 'ring-4 ring-amber-500 shadow-[0_0_70px_rgba(0,0,0,0.95)]'
+                  : 'ring-1 ring-amber-400/90 shadow-[0_0_15px_rgba(245,158,11,0.35)] hover:ring-2 hover:ring-amber-300'
+              }`}
+            >
+              {/* True 1280x720 HD Canvas scaled proportionally into the bezel */}
+              <div
+                style={{
+                  width: '1280px',
+                  height: '720px',
+                  transform: `scale(${tvScale.x}, ${tvScale.y})`,
+                  transformOrigin: 'top left'
+                }}
+                className={`relative flex flex-col justify-between select-none ${
+                  tvBoardTheme === 'classicOrange'
+                    ? 'bg-[#D86018] text-[#1A120E]'
+                    : 'bg-[#0E0B0A] text-[#F5EFE6]'
+                }`}
+              >
+                {/* ========================================================= */}
+                {/* 1. PIG EMBLEM SCREEN BLANK & FLASH OVERLAY (PRICE FADE)   */}
+                {/* ========================================================= */}
+                {pigFlashing && (
+                  <div className="absolute inset-0 z-50 bg-[#050403] flex flex-col items-center justify-center text-center animate-fadeIn">
+                    <div className="relative mb-5">
+                      <div className="absolute -inset-6 bg-amber-500/30 blur-2xl animate-pulse" />
+                      <img
+                        src="./images/truck-logo-wrap.jpg"
+                        alt="Tisdale's Southern BBQ Pig Emblem"
+                        className="relative w-52 h-52 rounded-none object-cover border-4 border-amber-400 shadow-[0_0_60px_rgba(245,158,11,0.9)] animate-bounce"
+                      />
+                    </div>
+                    <div className="bg-amber-400 text-stone-950 font-mono font-black text-xl uppercase px-6 py-1.5 tracking-widest mb-2">
+                      🐷 PITMASTER PRICE FADE INCOMING
+                    </div>
+                    <h2 className="text-6xl font-black uppercase font-['Bebas_Neue'] tracking-wider text-white">
+                      {fadeAmt > 0
+                        ? `🔥 EVENING SMOKER FADE: -$${fadeAmt} OFF PLATES & SANDWICHES!`
+                        : '🔥 FULL PITMASTER MENU PRICING RESTORED'}
+                    </h2>
+                  </div>
+                )}
+
+                {/* ========================================================= */}
+                {/* 2. TOP HEADER BAR (78px)                                  */}
+                {/* ========================================================= */}
+                <div
+                  className={`h-[78px] px-7 flex items-center justify-between border-b-4 shrink-0 ${
+                    tvBoardTheme === 'classicOrange'
+                      ? 'bg-[#1F140E] text-white border-amber-400'
+                      : 'bg-[#16100C] text-white border-[#E65100]'
+                  }`}
+                >
+                  <div className="flex items-center gap-4">
+                    <img
+                      src="./images/truck-logo-wrap.jpg"
+                      alt="Tisdale Logo"
+                      className="w-13 h-13 object-cover border-2 border-amber-400 shrink-0"
+                    />
+                    <div>
+                      <div className="flex items-center gap-2.5">
+                        <span className="bg-[#E65100] text-white text-xs font-mono font-black uppercase px-2 py-0.5 tracking-wider">
+                          100% HICKORY SMOKED
+                        </span>
+                        <span className="text-amber-300 text-xs font-mono font-bold uppercase tracking-widest">
+                          Mouth Watering • Tongue Twisting BBQ
+                        </span>
+                      </div>
+                      <h1 className="text-4xl font-black uppercase font-['Bebas_Neue'] tracking-wider leading-none mt-0.5">
+                        TISDALE’S SOUTHERN BBQ
+                      </h1>
+                    </div>
+                  </div>
+
+                  {/* Right Status Badges */}
+                  <div className="flex items-center gap-3">
+                    {fadeAmt > 0 && (
+                      <div className="bg-emerald-500 text-stone-950 px-4 py-1.5 font-mono font-black text-base uppercase tracking-wider border-2 border-white shadow-lg">
+                        🐷 -${fadeAmt} PRICE FADE ACTIVE
+                      </div>
+                    )}
+
+                    <div
+                      className={`px-4 py-1.5 font-mono font-black text-sm uppercase border-2 ${
+                        announcements.fryerOpen
+                          ? 'bg-emerald-950/90 text-emerald-300 border-emerald-500'
+                          : 'bg-rose-700 text-white border-rose-300 animate-pulse'
+                      }`}
+                    >
+                      {announcements.fryerOpen ? '🟢 FRYER HOT' : '🛑 FRYER GREASE OFF'}
+                    </div>
+
+                    <div className="text-right font-mono pl-2 border-l border-stone-700">
+                      <div className="text-[11px] text-stone-400 uppercase font-bold">Call / Text Orders</div>
+                      <div className="text-xl font-black text-amber-400 leading-tight">910-709-2900</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ========================================================= */}
+                {/* 3. MAIN 3-COLUMN HD MENU GRID OR ROTATING SPOTLIGHT       */}
+                {/* ========================================================= */}
+                {rotateSlide === 1 && announcements.tvRotateMode ? (
+                  /* ROTATING GIANT PITMASTER SPOTLIGHT SLIDE */
+                  <div className="flex-1 p-8 flex flex-col justify-between bg-gradient-to-br from-[#1A110D] via-[#120C0A] to-[#26140C] text-white">
+                    <div className="flex items-center justify-between border-b-2 border-amber-500/40 pb-4">
+                      <div>
+                        <span className="bg-amber-400 text-stone-950 font-mono font-black text-sm uppercase px-3 py-1 tracking-widest">
+                          🔥 LIVE FROM THE HICKORY SMOKER
+                        </span>
+                        <h2 className="text-6xl font-black uppercase font-['Bebas_Neue'] tracking-wider mt-2 text-amber-400">
+                          TODAY’S PITMASTER FEATURE PLATES
+                        </h2>
+                      </div>
+                      <div className="text-right font-mono">
+                        <div className="text-sm text-stone-400 uppercase">All Dinners Include</div>
+                        <div className="text-2xl font-black text-white">2 Sides + Dinner Roll</div>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-6 my-auto py-4">
+                      {[
+                        ...(menu.dinners?.items.filter(i => i.inStock && !i.hidden).slice(0, 2) || []),
+                        ...(specials.filter(s => s.inStock && !s.hidden).slice(0, 1) || [])
+                      ].map((feat, idx) => {
+                        const fp = getFadedPriceObj(feat.price, feat.numericPrice);
+                        return (
+                          <div
+                            key={feat.id || idx}
+                            className="bg-[#18120E] border-2 border-amber-500/60 p-6 flex flex-col justify-between shadow-2xl"
+                          >
+                            <div>
+                              <span className="text-xs font-mono uppercase tracking-widest text-amber-400 font-bold">
+                                ★ Pitmaster Favorite #{idx + 1}
+                              </span>
+                              <h3 className="text-4xl font-black uppercase font-['Bebas_Neue'] tracking-wide text-white mt-1">
+                                {feat.name || feat.title}
+                              </h3>
+                              <p className="text-sm text-stone-300 mt-2 line-clamp-2">
+                                {feat.description || 'Slow-smoked over 100% pure hickory pellets and served hot.'}
+                              </p>
+                            </div>
+                            <div className="mt-6 pt-4 border-t border-stone-800 flex items-baseline justify-between">
+                              <span className="text-xs font-mono uppercase text-emerald-400 font-bold">
+                                Hot &amp; Ready Now
+                              </span>
+                              <div className="font-mono font-black flex items-baseline gap-2">
+                                {fp.isFaded && (
+                                  <span className="text-2xl line-through text-rose-500 opacity-75">
+                                    {fp.old}
+                                  </span>
+                                )}
+                                <span className={`text-5xl ${fp.isFaded ? 'text-emerald-400' : 'text-amber-400'}`}>
+                                  {fp.current}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ) : (
+                  /* STANDARD 3-COLUMN HD MENU BOARD */
+                  <div className="flex-1 grid grid-cols-3 gap-4 p-4 overflow-hidden">
+                    
+                    {/* COLUMN 1: SMOKED BBQ DINNERS */}
+                    <div
+                      className={`flex flex-col justify-between p-4 border-2 ${
+                        tvBoardTheme === 'classicOrange'
+                          ? 'bg-[#FFFDF9] border-[#2B1B12] text-[#1A120E]'
+                          : 'bg-[#15100D] border-amber-600/40 text-stone-100'
+                      }`}
+                    >
+                      <div>
+                        <div
+                          className={`flex items-baseline justify-between border-b-2 pb-1.5 mb-2.5 ${
+                            tvBoardTheme === 'classicOrange'
+                              ? 'border-[#D86018] text-[#B95000]'
+                              : 'border-[#E65100] text-amber-400'
+                          }`}
+                        >
+                          <h2 className="text-3xl font-black uppercase font-['Bebas_Neue'] tracking-wider leading-none">
+                            Smoked BBQ Dinners
+                          </h2>
+                          <span className="text-xs font-mono font-bold uppercase opacity-80">
+                            w/ 2 Sides &amp; Roll
+                          </span>
+                        </div>
+
+                        <div className="space-y-2">
+                          {menu.dinners?.items
+                            .filter(i => !i.hidden)
+                            .slice(0, 8)
+                            .map(item => {
+                              const isFryerOff = !announcements.fryerOpen && item.isFryerItem;
+                              const isOut = !item.inStock || isFryerOff;
+                              const fp = getFadedPriceObj(item.price, item.numericPrice);
+                              return (
+                                <div
+                                  key={item.id}
+                                  className={`flex items-center justify-between py-1 border-b ${
+                                    tvBoardTheme === 'classicOrange' ? 'border-stone-200' : 'border-stone-800/90'
+                                  } ${isOut ? 'opacity-45' : ''}`}
+                                >
+                                  <div className="pr-2 truncate">
+                                    <span
+                                      className={`text-[19px] font-extrabold uppercase tracking-tight ${
+                                        isOut ? 'line-through' : ''
+                                      }`}
+                                    >
+                                      {item.name}
+                                    </span>
+                                  </div>
+
+                                  {isOut ? (
+                                    <span className="bg-rose-600 text-white text-xs font-mono font-black px-2 py-0.5 uppercase shrink-0">
+                                      {isFryerOff ? 'GREASE OFF' : 'SOLD OUT'}
+                                    </span>
+                                  ) : (
+                                    <div className="font-mono font-black shrink-0 flex items-baseline gap-1.5">
+                                      {fp.isFaded && (
+                                        <span className="text-sm line-through text-rose-500 opacity-75">
+                                          {fp.old}
+                                        </span>
+                                      )}
+                                      <span
+                                        className={`text-[21px] ${
+                                          fp.isFaded
+                                            ? 'text-emerald-400'
+                                            : tvBoardTheme === 'classicOrange'
+                                            ? 'text-[#B95000]'
+                                            : 'text-amber-400'
+                                        }`}
+                                      >
+                                        {fp.current}
+                                      </span>
+                                    </div>
+                                  )}
+                                </div>
+                              );
+                            })}
+                        </div>
+                      </div>
+
+                      <div
+                        className={`pt-2 border-t text-xs font-mono font-bold flex items-center justify-between ${
+                          tvBoardTheme === 'classicOrange'
+                            ? 'border-stone-300 text-stone-600'
+                            : 'border-stone-800 text-amber-400/80'
+                        }`}
+                      >
+                        <span>★ 100% Pure Hickory Pellets</span>
+                        <span>Choice of 2 Sides</span>
+                      </div>
+                    </div>
+
+                    {/* COLUMN 2: SANDWICHES & RIBS / MEATS ONLY */}
+                    <div
+                      className={`flex flex-col justify-between p-4 border-2 ${
+                        tvBoardTheme === 'classicOrange'
+                          ? 'bg-[#FFFDF9] border-[#2B1B12] text-[#1A120E]'
+                          : 'bg-[#15100D] border-amber-600/40 text-stone-100'
+                      }`}
+                    >
+                      <div className="space-y-4">
+                        {/* Sandwiches */}
+                        <div>
+                          <div
+                            className={`flex items-baseline justify-between border-b-2 pb-1.5 mb-2 ${
+                              tvBoardTheme === 'classicOrange'
+                                ? 'border-[#D86018] text-[#B95000]'
+                                : 'border-[#E65100] text-amber-400'
+                            }`}
+                          >
+                            <h2 className="text-3xl font-black uppercase font-['Bebas_Neue'] tracking-wider leading-none">
+                              Sandwiches &amp; Baskets
+                            </h2>
+                            <span className="text-xs font-mono font-bold uppercase opacity-80">
+                              Handheld Favorites
+                            </span>
+                          </div>
+
+                          <div className="space-y-1.5">
+                            {menu.sandwiches?.items
+                              .filter(i => !i.hidden)
+                              .slice(0, 4)
+                              .map(item => {
+                                const isFryerOff = !announcements.fryerOpen && item.isFryerItem;
+                                const isOut = !item.inStock || isFryerOff;
+                                const fp = getFadedPriceObj(item.price, item.numericPrice);
+                                return (
+                                  <div
+                                    key={item.id}
+                                    className={`flex items-center justify-between py-1 border-b ${
+                                      tvBoardTheme === 'classicOrange' ? 'border-stone-200' : 'border-stone-800/90'
+                                    } ${isOut ? 'opacity-45' : ''}`}
+                                  >
+                                    <span
+                                      className={`text-[18px] font-extrabold uppercase truncate pr-2 ${
+                                        isOut ? 'line-through' : ''
+                                      }`}
+                                    >
+                                      {item.name}
+                                    </span>
+                                    {isOut ? (
+                                      <span className="bg-rose-600 text-white text-xs font-mono font-black px-2 py-0.5 uppercase shrink-0">
+                                        {isFryerOff ? 'GREASE OFF' : 'SOLD OUT'}
+                                      </span>
+                                    ) : (
+                                      <div className="font-mono font-black shrink-0 flex items-baseline gap-1.5">
+                                        {fp.isFaded && (
+                                          <span className="text-sm line-through text-rose-500 opacity-75">
+                                            {fp.old}
+                                          </span>
+                                        )}
+                                        <span
+                                          className={`text-[20px] ${
+                                            fp.isFaded
+                                              ? 'text-emerald-400'
+                                              : tvBoardTheme === 'classicOrange'
+                                              ? 'text-[#B95000]'
+                                              : 'text-amber-400'
+                                          }`}
+                                        >
+                                          {fp.current}
+                                        </span>
+                                      </div>
+                                    )}
+                                  </div>
+                                );
+                              })}
+                          </div>
+                        </div>
+
+                        {/* Meats Only */}
+                        <div>
+                          <div
+                            className={`flex items-baseline justify-between border-b-2 pb-1 mb-2 ${
+                              tvBoardTheme === 'classicOrange'
+                                ? 'border-stone-300 text-[#B95000]'
+                                : 'border-amber-600/50 text-amber-300'
+                            }`}
+                          >
+                            <h3 className="text-2xl font-black uppercase font-['Bebas_Neue'] tracking-wider leading-none">
+                              By The Slab &amp; Pound
+                            </h3>
+                            <span className="text-[11px] font-mono font-bold uppercase opacity-75">
+                              Meats Only
+                            </span>
+                          </div>
+
+                          <div className="space-y-1.5">
+                            {menu.meatsOnly?.items
+                              .filter(i => !i.hidden)
+                              .slice(0, 4)
+                              .map(item => {
+                                const isFryerOff = !announcements.fryerOpen && item.isFryerItem;
+                                const isOut = !item.inStock || isFryerOff;
+                                const fp = getFadedPriceObj(item.price, item.numericPrice);
+                                return (
+                                  <div
+                                    key={item.id}
+                                    className={`flex items-center justify-between py-0.5 border-b ${
+                                      tvBoardTheme === 'classicOrange' ? 'border-stone-200' : 'border-stone-800/80'
+                                    } ${isOut ? 'opacity-45' : ''}`}
+                                  >
+                                    <span
+                                      className={`text-[17px] font-bold uppercase truncate pr-2 ${
+                                        isOut ? 'line-through' : ''
+                                      }`}
+                                    >
+                                      {item.name}
+                                    </span>
+                                    {isOut ? (
+                                      <span className="bg-rose-600 text-white text-xs font-mono font-black px-2 py-0.5 uppercase shrink-0">
+                                        {isFryerOff ? 'GREASE OFF' : 'SOLD OUT'}
+                                      </span>
+                                    ) : (
+                                      <div className="font-mono font-black shrink-0 flex items-baseline gap-1.5">
+                                        {fp.isFaded && (
+                                          <span className="text-xs line-through text-rose-500 opacity-75">
+                                            {fp.old}
+                                          </span>
+                                        )}
+                                        <span
+                                          className={`text-[19px] ${
+                                            fp.isFaded
+                                              ? 'text-emerald-400'
+                                              : tvBoardTheme === 'classicOrange'
+                                              ? 'text-[#B95000]'
+                                              : 'text-amber-400'
+                                          }`}
+                                        >
+                                          {fp.current}
+                                        </span>
+                                      </div>
+                                    )}
+                                  </div>
+                                );
+                              })}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div
+                        className={`pt-2 border-t text-xs font-mono font-bold text-center ${
+                          tvBoardTheme === 'classicOrange'
+                            ? 'border-stone-300 text-stone-600'
+                            : 'border-stone-800 text-stone-400'
+                        }`}
+                      >
+                        Toppings: Slaw • Kraut • Homemade Chili • Cheese
+                      </div>
+                    </div>
+
+                    {/* COLUMN 3: TODAY'S SPECIALS & 8OZ SIDES */}
+                    <div
+                      className={`flex flex-col justify-between p-4 border-2 ${
+                        tvBoardTheme === 'classicOrange'
+                          ? 'bg-[#FFFDF9] border-[#2B1B12] text-[#1A120E]'
+                          : 'bg-[#15100D] border-amber-600/40 text-stone-100'
+                      }`}
+                    >
+                      <div className="space-y-3">
+                        {/* Today's Specials Box */}
+                        <div
+                          className={`p-3 border-2 ${
+                            tvBoardTheme === 'classicOrange'
+                              ? 'bg-amber-50/90 border-[#D86018]'
+                              : 'bg-[#1E140F] border-amber-500/70'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between border-b border-amber-500/40 pb-1 mb-2">
+                            <h2
+                              className={`text-2xl font-black uppercase font-['Bebas_Neue'] tracking-wider leading-none ${
+                                tvBoardTheme === 'classicOrange' ? 'text-[#B95000]' : 'text-amber-400'
+                              }`}
+                            >
+                              ★ Today’s Pit Specials
+                            </h2>
+                            <span className="bg-amber-400 text-stone-950 text-[10px] font-mono font-black px-1.5 py-0.5 uppercase">
+                              Live Board
+                            </span>
+                          </div>
+
+                          <div className="space-y-1.5">
+                            {specials
+                              .filter(s => !s.hidden)
+                              .slice(0, 4)
+                              .map(s => {
+                                const isFryerOff = !announcements.fryerOpen && s.isFryerItem;
+                                const isOut = !s.inStock || isFryerOff;
+                                return (
+                                  <div
+                                    key={s.id}
+                                    className={`flex items-center justify-between py-0.5 border-b border-amber-500/20 ${
+                                      isOut ? 'opacity-45' : ''
+                                    }`}
+                                  >
+                                    <span
+                                      className={`text-[16px] font-extrabold uppercase truncate pr-2 ${
+                                        isOut ? 'line-through' : ''
+                                      }`}
+                                    >
+                                      {s.title}
+                                    </span>
+                                    {isOut ? (
+                                      <span className="bg-rose-600 text-white text-[11px] font-mono font-black px-1.5 py-0.5 uppercase shrink-0">
+                                        {isFryerOff ? 'GREASE OFF' : 'SOLD OUT'}
+                                      </span>
+                                    ) : (
+                                      <span
+                                        className={`text-[18px] font-mono font-black shrink-0 ${
+                                          tvBoardTheme === 'classicOrange' ? 'text-[#B95000]' : 'text-amber-400'
+                                        }`}
+                                      >
+                                        {s.price}
+                                      </span>
+                                    )}
+                                  </div>
+                                );
+                              })}
+                          </div>
+                        </div>
+
+                        {/* Southern Sides (8oz = $5) */}
+                        <div>
+                          <div
+                            className={`flex items-baseline justify-between border-b-2 pb-1 mb-2 ${
+                              tvBoardTheme === 'classicOrange'
+                                ? 'border-stone-300 text-[#B95000]'
+                                : 'border-amber-600/50 text-amber-300'
+                            }`}
+                          >
+                            <h3 className="text-2xl font-black uppercase font-['Bebas_Neue'] tracking-wider leading-none">
+                              Southern Sides
+                            </h3>
+                            <span className="text-xs font-mono font-black uppercase">
+                              All 8oz Sides $5.00
+                            </span>
+                          </div>
+
+                          <div className="grid grid-cols-2 gap-x-3 gap-y-1">
+                            {menu.sides?.items
+                              .filter(i => !i.hidden)
+                              .map(side => {
+                                const isFryerOff = !announcements.fryerOpen && side.isFryerItem;
+                                const isOut = !side.inStock || isFryerOff;
+                                return (
+                                  <div
+                                    key={side.id}
+                                    className={`flex items-center justify-between text-[14px] font-bold uppercase py-0.5 border-b ${
+                                      tvBoardTheme === 'classicOrange' ? 'border-stone-200' : 'border-stone-800/70'
+                                    } ${isOut ? 'opacity-40 line-through text-rose-400' : ''}`}
+                                  >
+                                    <span className="truncate">{side.name}</span>
+                                    {isOut && (
+                                      <span className="text-[10px] font-mono font-black text-rose-500 ml-1 shrink-0">
+                                        OFF
+                                      </span>
+                                    )}
+                                  </div>
+                                );
+                              })}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div
+                        className={`pt-2 border-t text-xs font-mono font-bold flex items-center justify-between ${
+                          tvBoardTheme === 'classicOrange'
+                            ? 'border-stone-300 text-stone-700'
+                            : 'border-stone-800 text-amber-300'
+                        }`}
+                      >
+                        <span>🍰 Honey Bun Cake &amp; Banana Pudding ($6)</span>
+                        <span>Drinks $2–$4</span>
+                      </div>
+                    </div>
+
+                  </div>
+                )}
+
+                {/* ========================================================= */}
+                {/* 4. BOTTOM STATUS / PRICE FADE / FLASH TICKER BAR (66px)   */}
+                {/* ========================================================= */}
+                {fadeAmt > 0 ? (
+                  <div className="h-[66px] px-7 flex items-center justify-between bg-gradient-to-r from-emerald-900 via-emerald-700 to-teal-800 text-white border-t-4 border-emerald-300 shrink-0">
+                    <div className="flex items-center gap-3">
+                      <span className="bg-amber-400 text-stone-950 font-mono font-black text-sm uppercase px-3 py-1">
+                        🐷 PRICE FADE (-${fadeAmt})
+                      </span>
+                      <span className="text-2xl font-black uppercase font-['Bebas_Neue'] tracking-wider">
+                        EVENING SMOKER CLEAR-OUT: -${fadeAmt} OFF SMOKED PLATES &amp; SANDWICHES UNTIL SOLD OUT!
+                      </span>
+                    </div>
+                    <span className="font-mono text-xs font-black uppercase bg-black/40 px-3 py-1 border border-emerald-300">
+                      GREEN PRICES ACTIVE ABOVE
+                    </span>
+                  </div>
+                ) : announcements.flashSpecialActive ? (
+                  <div className="h-[66px] px-7 flex items-center justify-between bg-gradient-to-r from-rose-800 via-[#D9381E] to-amber-600 text-white border-t-4 border-amber-300 shrink-0 animate-pulse">
+                    <div className="flex items-center gap-3">
+                      <span className="bg-amber-300 text-stone-950 font-mono font-black text-sm uppercase px-3 py-1">
+                        ⚡ FLASH SPECIAL
+                      </span>
+                      <span className="text-2xl font-black uppercase font-['Bebas_Neue'] tracking-wider">
+                        {announcements.flashSpecialTitle}: {announcements.flashSpecialDeal}
+                      </span>
+                    </div>
+                    <span className="font-mono text-xs font-black uppercase bg-black/40 px-3 py-1 border border-amber-300">
+                      LIMITED TIME AT WINDOW
+                    </span>
+                  </div>
+                ) : (
+                  <div
+                    className={`h-[66px] px-7 flex items-center justify-between border-t-4 shrink-0 ${
+                      tvBoardTheme === 'classicOrange'
+                        ? 'bg-white border-[#B95000] text-[#1F1510]'
+                        : 'bg-[#140E0C] border-[#E65100] text-white'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="bg-[#E65100] text-white font-mono font-black text-xs uppercase px-2.5 py-1">
+                        TODAY’S LOCATION
+                      </span>
+                      <span className="text-2xl font-black uppercase font-['Bebas_Neue'] tracking-wider">
+                        {current.name} • {current.hours}
+                      </span>
+                      <span className="text-xs font-mono text-stone-400 hidden sm:inline">
+                        ({current.address})
+                      </span>
+                    </div>
+                    <div className="text-xs font-mono font-bold text-emerald-400">
+                      Square • Tap To Pay • Apple Pay • Cash
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
