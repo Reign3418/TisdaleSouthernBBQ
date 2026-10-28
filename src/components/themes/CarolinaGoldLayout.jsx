@@ -145,8 +145,16 @@ export default function CarolinaGoldLayout() {
         </div>
       </section>
 
-      {/* 4. Today's Location Signboard */}
-      <section id="gold-location" className="py-6 px-4 max-w-7xl mx-auto">
+      {/* Mobile Only (<768px): Compact 1-Line Stop Strip -> Straight to Menu */}
+      <div className="md:hidden bg-[#261B14] text-amber-200 px-3 py-2 text-xs flex items-center justify-between border-b border-[#3E2E25]">
+        <span className="truncate font-bold">📍 {current.name} ({current.hours})</span>
+        <span className="text-[10px] font-mono text-amber-400 shrink-0 ml-2">
+          {announcements.fryerOpen ? '🟢 Fryer Hot' : '🛑 Grease Off'}
+        </span>
+      </div>
+
+      {/* 4. Today's Location Signboard (Desktop Only) */}
+      <section id="gold-location" className="hidden md:block py-6 px-4 max-w-7xl mx-auto">
         <div className="bg-[#261B14] text-white rounded-none p-6 sm:p-8 shadow-lg border-2 border-[#3E2E25]">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="space-y-2 text-center md:text-left">

@@ -14,12 +14,12 @@ export default function Header() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4">
 
           {/* Left: Brand & Pig Logo with Crisp Craftsman Frame */}
-          <div className="flex items-center gap-3 sm:gap-4 text-left w-full md:w-auto">
+          <div className="flex items-center gap-3 sm:gap-4 text-left w-full md:w-auto shrink-0">
             <div className="relative group shrink-0">
               <img
                 src="./images/truck-logo-wrap.jpg"
                 alt="Tisdale's Southern BBQ Logo"
-                className="w-14 h-14 sm:w-20 sm:h-20 rounded-none object-cover border-2 border-amber-500/80 shadow-lg shadow-orange-950/40 ring-1 ring-black/60 group-hover:scale-105 transition"
+                className="w-12 h-12 sm:w-20 sm:h-20 rounded-none object-cover border-2 border-amber-500/80 shadow-lg shadow-orange-950/40 ring-1 ring-black/60 group-hover:scale-105 transition"
               />
               <span className="absolute -bottom-1 -right-1 bg-[#D9381E] text-white p-0.5 sm:p-1 rounded-none shadow border border-black/50">
                 <Flame className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-amber-300 text-amber-300" />
@@ -28,24 +28,24 @@ export default function Header() {
 
             <div className="min-w-0">
               <div className="flex items-center gap-1.5 justify-start">
-                <span className="text-amber-400 text-[9px] sm:text-[11px] font-bold uppercase tracking-wider bg-amber-950/70 px-2 py-0.5 rounded-none border border-amber-500/30 truncate">
+                <span className="text-amber-400 text-[9px] sm:text-[11px] font-bold uppercase tracking-wider bg-amber-950/70 px-2 py-0.5 rounded-none border border-amber-500/30">
                   Andrews, SC Roots • Fayetteville, NC
                 </span>
               </div>
-              <h1 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-wide text-white uppercase font-['Bebas_Neue'] leading-none mt-1 truncate">
+              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-wide text-white uppercase font-['Bebas_Neue'] leading-none mt-1 whitespace-nowrap">
                 Tisdale's <span className="text-[#FF6B35]">Southern BBQ</span>
               </h1>
-              <p className="text-[11px] sm:text-sm text-stone-300 font-medium tracking-tight mt-0.5 truncate">
+              <p className="text-[11px] sm:text-sm text-stone-300 font-medium tracking-tight mt-0.5">
                 Mouth-Watering, Tongue-Twisting BBQ • <span className="text-amber-400 font-semibold">Hickory-Smoked</span>
               </p>
             </div>
           </div>
 
           {/* Right: Desktop Navigation & Action Buttons (Hidden on mobile to keep page slim) */}
-          <div className="hidden md:flex items-center flex-wrap justify-end gap-2 sm:gap-3">
+          <div className="hidden md:flex items-center flex-wrap justify-end gap-2 sm:gap-2.5">
             
             {/* Quick in-page links */}
-            <nav className="hidden lg:flex items-center gap-3 text-xs font-bold text-stone-300 mr-2">
+            <nav className="hidden xl:flex items-center gap-3 text-xs font-bold text-stone-300 mr-1">
               <a href="#location" className="hover:text-amber-400 transition">Today's Stop</a>
               <a href="#about-donald" className="hover:text-amber-400 transition flex items-center gap-1">
                 <Heart className="w-3 h-3 text-rose-400" /> Donald's Story
