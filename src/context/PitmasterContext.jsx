@@ -78,7 +78,12 @@ export function PitmasterProvider({ children }) {
   // Cart state for customer ordering/budgeting
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isSpecialsModalOpen, setIsSpecialsModalOpen] = useState(false);
+  const [isSpecialsModalOpen, setIsSpecialsModalOpen] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.location.hash === '#specials' || window.location.search.includes('specials=1');
+    }
+    return false;
+  });
   const [isPitmasterMode, setIsPitmasterMode] = useState(() => {
     if (typeof window !== 'undefined') {
       return window.location.hash === '#admin' || window.location.search.includes('admin=1');
@@ -109,6 +114,19 @@ export function PitmasterProvider({ children }) {
     }
     return false;
   });
+
+  // Listen for NFC tag taps that change the URL hash while the page is already open
+  useEffect(() => {
+    const handleHashChange = () => {
+      const h = window.location.hash;
+      if (h === '#admin') setIsPitmasterMode(true);
+      if (h === '#specials') setIsSpecialsModalOpen(true);
+      if (h === '#tv-menu' || h === '#tv-display') setIsTvMenuOpen(true);
+      if (h === '#trailer-sim' || h === '#trailer-demo') setIsTrailerSimOpen(true);
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
   const [tvBoardTheme, setTvBoardTheme] = useState(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY_TV_THEME);
