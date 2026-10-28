@@ -1,8 +1,8 @@
 import React from 'react';
 import { usePitmaster } from '../context/PitmasterContext';
-import { Palette, Flame, UtensilsCrossed, ClipboardList, Radio, ChefHat, Tv, Search } from 'lucide-react';
+import { Palette, Flame, UtensilsCrossed, ClipboardList, Radio, ChefHat, Tv, Search, Lock } from 'lucide-react';
 
-export default function DesignSwitcherBar() {
+export default function DesignSwitcherBar({ onLockSite }) {
   const {
     themeVersion,
     setThemeVersion,
@@ -124,6 +124,17 @@ export default function DesignSwitcherBar() {
           >
             🔍
           </button>
+
+          {/* Re-Lock Site Button */}
+          {onLockSite && (
+            <button
+              onClick={onLockSite}
+              className="p-1 px-1.5 rounded-none bg-rose-950 text-rose-300 border border-rose-700/70 font-bold text-[11px]"
+              title="Lock Site"
+            >
+              🔒
+            </button>
+          )}
         </div>
       </div>
 
@@ -235,6 +246,18 @@ export default function DesignSwitcherBar() {
             <Tv className="w-3.5 h-3.5 text-amber-400" />
             <span className="whitespace-nowrap font-black">📺 TV Board</span>
           </button>
+
+          {/* Re-Lock Site Button */}
+          {onLockSite && (
+            <button
+              onClick={onLockSite}
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-none text-xs font-bold transition cursor-pointer bg-rose-950/90 hover:bg-rose-800 text-rose-200 border border-rose-700/70 shadow-sm"
+              title="Lock entire site behind the 4-digit PIN gate"
+            >
+              <Lock className="w-3.5 h-3.5 text-rose-400" />
+              <span className="whitespace-nowrap font-black">Lock</span>
+            </button>
+          )}
         </div>
 
       </div>

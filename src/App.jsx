@@ -1,9 +1,10 @@
-import React, { Suspense, lazy } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import { PitmasterProvider, usePitmaster } from './context/PitmasterContext';
 import DesignSwitcherBar from './components/DesignSwitcherBar';
 import SmokehouseLayout from './components/themes/SmokehouseLayout';
 import SpecialsDrawerModal from './components/SpecialsDrawerModal';
 import OrderDrawer from './components/OrderDrawer';
+import SiteGateModal from './components/SiteGateModal';
 import { Sparkles, Phone, Navigation, Utensils } from 'lucide-react';
 
 const CarolinaGoldLayout = lazy(() => import('./components/themes/CarolinaGoldLayout'));
@@ -15,7 +16,7 @@ const TvSyncWhitePage = lazy(() => import('./components/TvSyncWhitePage'));
 const TrailerTwinModal = lazy(() => import('./components/TrailerTwinModal'));
 const DiscoveryWhitePage = lazy(() => import('./components/DiscoveryWhitePage'));
 
-function AppContent() {
+function AppContent({ onLockSite }) {
   const { themeVersion, schedule, setIsSpecialsModalOpen, cartItemCount, setIsCartOpen } = usePitmaster();
   const current = schedule.currentLocation;
 
@@ -29,7 +30,7 @@ function AppContent() {
     }`}>
       
       {/* 0. Top Design Switcher Bar (Switch between 3 distinct layouts for Donald) */}
-      <DesignSwitcherBar />
+      <DesignSwitcherBar onLockSite={onLockSite} />
 
       {/* Dynamic Concept Layout */}
       <Suspense fallback={<div className="min-h-screen flex items-center justify-center font-mono text-xs uppercase tracking-widest text-amber-400">Loading Concept Layout...</div>}>
@@ -113,9 +114,30 @@ function AppContent() {
 }
 
 export default function App() {
+  const [isUnlocked, setIsUnlocked] = useState(() => {
+    try {
+      return sessionStorage.getItem('tisdale_site_unlocked') === 'true';
+    } catch {
+      return false;
+    }
+  });
+
+  const handleLockSite = () => {
+    try {
+      sessionStorage.removeItem('tisdale_site_unlocked');
+    } catch {
+      // ignore storage errors
+    }
+    setIsUnlocked(false);
+  };
+
+  if (!isUnlocked) {
+    return <SiteGateModal onUnlock={() => setIsUnlocked(true)} />;
+  }
+
   return (
     <PitmasterProvider>
-      <AppContent />
+      <AppContent onLockSite={handleLockSite} />
     </PitmasterProvider>
   );
 }
