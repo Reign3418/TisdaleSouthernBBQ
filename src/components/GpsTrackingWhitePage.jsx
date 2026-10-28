@@ -320,6 +320,26 @@ export default function GpsTrackingWhitePage() {
               </div>
 
             </div>
+
+            {/* Bonus Option: Home-Base Geofence Auto-Shutoff + 30-Min Pi Heartbeat */}
+            <div className="bg-emerald-50 border-2 border-emerald-600 p-4 text-xs space-y-2">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <span className="bg-emerald-700 text-white font-mono font-black text-[10px] uppercase px-2.5 py-0.5">
+                  Automatic Safety Net • Zero Buttons to Remember at Night
+                </span>
+                <span className="font-mono font-bold text-emerald-900">100% Home Privacy Protection</span>
+              </div>
+              <h3 className="font-black text-sm text-stone-900">
+                🛡️ Bonus Option: &quot;Home-Base Geofence&quot; Auto-Shutoff + 30-Minute TV Heartbeat
+              </h3>
+              <p className="text-stone-700 leading-relaxed">
+                After a 14-hour cook, the last thing you should worry about on your drive home is <em>&quot;Did I remember to turn off the website tracker?&quot;</em> We can build in <strong>two automatic safety nets</strong> so you never even have to remember:
+              </p>
+              <ul className="space-y-1 text-stone-700 list-disc list-inside">
+                <li><strong>1. Invisible 0.5-Mile Home Geofence:</strong> If your phone or trailer gets within 0.5 miles of your home / storage spot, the website <strong>automatically shuts off live GPS sharing</strong> and switches the banner to <em>&quot;Off-Duty — Pit Resting for the Night.&quot;</em> Your home address can never be shown by accident.</li>
+                <li><strong>2. 30-Minute Raspberry Pi TV Heartbeat:</strong> While your 55&quot; Trailer TV is turned on, its USB-powered Raspberry Pi pings the website every 5 minutes. If the website doesn&apos;t hear from the Pi for <strong>30 minutes</strong> (either because festival cell service dropped, or because you turned off the TV and hitched up for the night), the website automatically shifts out of live mode and resets for tomorrow!</li>
+              </ul>
+            </div>
           </section>
 
           {/* Section 4: Full Comparison Matrix */}

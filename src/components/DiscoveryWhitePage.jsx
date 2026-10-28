@@ -280,6 +280,27 @@ export default function DiscoveryWhitePage() {
                 </ul>
               </div>
 
+              {/* Option 6: 30-Minute Raspberry Pi Heartbeat Watchdog & Home-Base Geofence */}
+              <div className="border-2 border-emerald-500 bg-emerald-50/40 p-5 space-y-2">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="bg-emerald-700 text-white font-mono font-black text-[10px] uppercase px-2.5 py-0.5">
+                    Option 6 • 30-Min Pi "Heartbeat" &amp; Home Geofence Auto-Shutoff
+                  </span>
+                  <span className="text-xs font-mono font-bold text-emerald-900">100% Hands-Free Automation</span>
+                </div>
+                <h3 className="font-black text-base text-stone-900">
+                  💓 30-Minute Raspberry Pi Heartbeat + Home-Base Geofence Auto-Shutoff
+                </h3>
+                <p className="text-xs text-stone-700 leading-relaxed">
+                  What if a festival cell tower dies mid-shift, or what if you are exhausted after a 14-hour cook and forget to tap <strong>"Close Kitchen / Off-Duty"</strong> on your drive home?
+                </p>
+                <ul className="text-xs space-y-1.5 text-stone-700 list-disc list-inside">
+                  <li><strong>30-Minute Pi-to-Website "Heartbeat" (Auto-Offline Mode):</strong> Whenever your 55&quot; Trailer TV is powered on, the Raspberry Pi quietly sends a tiny &quot;I&apos;m alive&quot; ping to the master website every 5 minutes. If the master website doesn&apos;t hear from the Pi for <strong>30 minutes during open shift hours</strong> (because festival cell towers are jammed), the online website automatically kicks into <strong>Festival Offline Mode</strong>—reverting to safe base prices and displaying a banner: <em>&quot;📡 Trailer is at a high-traffic event! Check the 55&quot; Trailer TV at the window for live Sold-Out updates &amp; Evening Price Fades.&quot;</em></li>
+                  <li><strong>Automatic Nightly Reset When TV Turns Off:</strong> When you turn off the 55&quot; Trailer TV at the end of the night, the Pi turns off with it. After 30 minutes of no heartbeat after closing time, the website automatically flips to <em>&quot;Pit Resting for the Night&quot;</em> and resets all Sold-Out / Price Fade badges fresh for tomorrow!</li>
+                  <li><strong>Home-Base Geofence Auto-Shutoff (100% Home Privacy):</strong> We set an invisible 0.5-mile circle (geofence) around your home / overnight trailer parking spot. As soon as your phone or trailer enters that circle on your drive home, the system <strong>automatically shuts off live GPS location sharing and closes the digital kitchen</strong>—so even if you forget to tap a button after a long night, your home address is 100% protected.</li>
+                </ul>
+              </div>
+
             </div>
           </section>
 
