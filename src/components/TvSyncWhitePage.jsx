@@ -453,15 +453,15 @@ export default function TvSyncWhitePage() {
                   <span className="text-xs font-mono font-bold text-amber-900">$0 Cost</span>
                 </div>
                 <h3 className="font-black text-base text-stone-900">
-                  🐷 &quot;Flash the Pig&quot; &amp; Event-Specific Pricing (Silent Menu Tier Sync)
+                  🐷 &quot;Flash the Pig&quot; &amp; Event-Specific Pricing (Instant Event Menu Sync)
                 </h3>
                 <p className="text-xs text-stone-700 leading-relaxed">
-                  <strong>Never Advertise That You Drop Prices:</strong> Putting up a &quot;Clearance&quot; or &quot;Discount&quot; sign gives away your pricing strategy and trains customers to wait until late at night. Instead, you can silently switch between <strong>Event-Specific Pricing Tiers</strong> right from your phone:
+                  <strong>Clean Event &amp; Venue Pricing:</strong> Instead of making a brand-new graphic every time you work a special festival, brewery night, or community event, you can switch between <strong>Event-Specific Pricing Tiers</strong> right from your phone:
                 </p>
                 <ul className="text-xs space-y-1 text-stone-700 list-disc list-inside">
                   <li>Your 55&quot; TV briefly blanks for 1 second, <strong>flashes your Tisdale Pig Logo</strong> like a natural brand bumper, and comes right back up with the new event prices in the normal gold font.</li>
-                  <li><strong>Zero Crossed-Out Numbers:</strong> There are no crossed-out old prices and no &quot;discount&quot; banners—to anyone walking up to the window, that is simply today&apos;s Event Menu price!</li>
-                  <li>Lets you adjust pricing seamlessly for different venues, breweries, or late shifts without ever giving away a trade secret.</li>
+                  <li><strong>Clean, Natural Menu Board:</strong> There are no messy crossed-out numbers—to anyone walking up to the window, that is simply today&apos;s Event Menu price!</li>
+                  <li>Lets you adjust pricing effortlessly for different venues, festivals, or special events with 1 tap.</li>
                 </ul>
               </div>
 

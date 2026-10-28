@@ -121,7 +121,7 @@ export default function SiteGateModal({ onUnlock }) {
             </p>
           ) : (
             <p className="text-center text-[10px] font-mono text-stone-500 uppercase tracking-wider">
-              Protected Trade-Secret Environment
+              100% Pure Hickory Smoked • Design Preview
             </p>
           )}
         </div>

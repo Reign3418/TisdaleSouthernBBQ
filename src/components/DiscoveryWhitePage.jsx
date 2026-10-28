@@ -209,10 +209,10 @@ export default function DiscoveryWhitePage() {
                   <span className="text-xs font-mono font-bold text-amber-900">Built In • $0 Cost</span>
                 </div>
                 <h3 className="font-black text-base text-stone-900">
-                  🐷 &quot;Flash the Pig&quot; &amp; Event-Specific Pricing (Never Advertise That You Drop Prices!)
+                  🐷 &quot;Flash the Pig&quot; &amp; Event-Specific Pricing (Flexible Venue &amp; Event Menus)
                 </h3>
                 <p className="text-xs text-stone-700 leading-relaxed">
-                  <strong>Protecting Our Trade Secret:</strong> You never want to put up a sign that says &quot;Clearance&quot; or advertise to customers that you drop prices later in the shift—because that trains people to wait until late at night or makes them think the food isn&apos;t fresh. Instead, your phone has 1-tap <strong>Event-Specific Pricing Tiers</strong> (<code>Standard</code>, <code>Event -$2</code>, <code>Event -$4</code>, <code>Event -$5</code>):
+                  <strong>Seamless Event &amp; Venue Pricing:</strong> Different festivals, breweries, and special events call for different menu pricing—and you never want messy crossed-out numbers on your board. Your phone gives you 1-tap <strong>Event-Specific Pricing Tiers</strong> (<code>Standard</code>, <code>Event -$2</code>, <code>Event -$4</code>, <code>Event -$5</code>):
                 </p>
                 <ul className="text-xs space-y-1 text-stone-700 list-disc list-inside">
                   <li><strong>The Seamless Brand Bumper:</strong> When you tap an Event Pricing Tier on your phone, your 55&quot; TV briefly blanks for 1.3 seconds and <strong>flashes your Tisdale Pig Emblem</strong> like a natural TV commercial bumper.</li>
