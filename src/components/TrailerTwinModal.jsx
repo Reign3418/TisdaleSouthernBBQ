@@ -163,7 +163,7 @@ export default function TrailerTwinModal() {
             <span>Virtual Trailer Digital Twin</span>
           </span>
           <span className="text-xs sm:text-sm font-bold text-stone-200 hidden sm:inline">
-            Cell Phone → Trailer 55" TV &amp; Dell E5550 / GAEMS HDMI Rig
+            Cell Phone → Trailer 55" TV &amp; Raspberry Pi "Pit-Box" Rig
           </span>
           <span
             className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded-none border transition-all ${
@@ -187,7 +187,7 @@ export default function TrailerTwinModal() {
             <span>Pop Out TV to GAEMS HDMI Screen</span>
           </button>
 
-          {/* Toggle Dell E5550 + GAEMS + Wi-Fi Billboard Guide */}
+          {/* Toggle Raspberry Pi Pit-Box + Wi-Fi Billboard + NFC Guide */}
           <button
             onClick={() => setShowRigGuide(!showRigGuide)}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-none text-xs font-bold border transition cursor-pointer ${
@@ -197,7 +197,7 @@ export default function TrailerTwinModal() {
             }`}
           >
             <Wifi className="w-3.5 h-3.5" />
-            <span>{showRigGuide ? 'Hide Wi-Fi & Closed-Lid Rig' : '📡 Wi-Fi Billboard + Closed-Lid PC Blueprint'}</span>
+            <span>{showRigGuide ? 'Hide Raspberry Pi & NFC Blueprint' : '🍓 Raspberry Pi + Wi-Fi Billboard + NFC Blueprint'}</span>
           </button>
 
           {/* Close Button */}
@@ -212,7 +212,7 @@ export default function TrailerTwinModal() {
       </div>
 
       {/* =================================================================== */}
-      {/* COLLAPSIBLE HARDWARE GUIDE: WI-FI SSID BILLBOARD + CLOSED-LID DELL  */}
+      {/* COLLAPSIBLE HARDWARE GUIDE: RASPBERRY PI + WI-FI BILLBOARD + NFC    */}
       {/* =================================================================== */}
       {showRigGuide && (
         <div className="bg-[#18120F] border-b-2 border-amber-500/60 px-4 sm:px-8 py-4 text-xs text-stone-200">
@@ -220,7 +220,7 @@ export default function TrailerTwinModal() {
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-black uppercase tracking-wider text-amber-400 font-mono flex items-center gap-2">
                 <Wifi className="w-4 h-4 text-emerald-400" />
-                <span>Tactical Field Architecture: Dual-SSID Wi-Fi Billboard + Closed-Lid Dell E5550 + 55" TV</span>
+                <span>Tactical Field Architecture: Raspberry Pi "Pit-Box" + 250ft Wi-Fi Billboard + NFC Table Coasters</span>
               </h3>
               <button
                 onClick={() => setShowRigGuide(false)}
@@ -237,7 +237,7 @@ export default function TrailerTwinModal() {
                   1. Free 250ft Wi-Fi Billboard (No Internet Needed!)
                 </div>
                 <p className="text-stone-300 leading-relaxed">
-                  At a crowded festival or brewery, cell service slows down and people open their phone’s <strong>Wi-Fi Settings</strong>. Your router broadcasts a public Guest SSID right to the top of every phone within 250 feet:
+                  At a crowded festival or brewery, cell service slows down and people open their phone’s <strong>Wi-Fi Settings</strong>. Your Raspberry Pi broadcasts a public Wi-Fi SSID right to the top of every phone within 250 feet:
                 </p>
                 <div className="bg-stone-950 border border-stone-700 p-2 font-mono text-[11px] space-y-1">
                   <div className="text-stone-400 text-[9px] uppercase">Customer iPhone Wi-Fi List:</div>
@@ -252,47 +252,41 @@ export default function TrailerTwinModal() {
                 </div>
               </div>
 
-              {/* Card 2: The Laptop's Built-In Wi-Fi Card = The Router! */}
+              {/* Card 2: Raspberry Pi Zero 2 W / Pi 4 "Pit-Box" Appliance */}
               <div className="bg-[#100C0A] border border-emerald-600/50 p-3.5 rounded-none space-y-2">
                 <div className="text-emerald-400 font-black font-mono uppercase">
-                  2. Zero Router Needed (Dell E5550 Built-In Wi-Fi!)
+                  2. Raspberry Pi "Pit-Box" (Zero Troubleshooting!)
                 </div>
                 <p className="text-stone-300 leading-relaxed">
-                  Your <strong>Dell Latitude E5550 already has a built-in Wi-Fi card</strong> that can broadcast a Windows Mobile Hotspot (<strong><code>192.168.137.1</code></strong>) directly! Donald's cell phone connects straight to the closed-lid laptop—<strong>zero external router box needed!</strong>
+                  A stick-of-gum sized <strong>Raspberry Pi Zero 2 W (~$15 board)</strong> or <strong>Pi 4</strong> Velcroed behind the 55" TV. It plugs into the <strong>TV’s USB port for power</strong> and <strong>HDMI 1</strong> for video—no wall outlet needed!
                 </p>
-                <div className="bg-emerald-950/40 border border-emerald-700/50 p-2 font-mono text-[11px] text-emerald-300">
-                  {lanSyncInfo?.active ? (
-                    <>
-                      <div>🟢 <strong>LIVE LAPTOP WIFI RELAY ACTIVE:</strong></div>
-                      <div>Phone URL: <code>http://{lanSyncInfo.lanIp}:{lanSyncInfo.port}/#trailer-sim</code></div>
-                    </>
-                  ) : (
-                    <div>📡 Default Laptop Hotspot IP: <code>http://192.168.137.1:3000</code></div>
-                  )}
-                </div>
+                <ul className="list-disc list-inside space-y-1 text-stone-300 text-[11px]">
+                  <li><strong>Auto-On With TV:</strong> Turn on the TV and the Pi boots straight into the 1080p menu board in ~15 seconds.</li>
+                  <li><strong>Read-Only SD Card:</strong> Killing the generator never corrupts it—100% solid-state appliance.</li>
+                </ul>
               </div>
 
-              {/* Card 3: Closed-Lid Dell E5550 Space & Power Spec */}
+              {/* Card 3: NFC Coasters & Stickers (Bowling Alleys & Breweries) */}
               <div className="bg-[#100C0A] border border-stone-800 p-3.5 rounded-none space-y-2">
                 <div className="text-amber-400 font-black font-mono uppercase">
-                  3. Closed-Lid Dell E5550 (1 Cable, 0 Counter Space)
+                  3. NFC Table Coasters + Register Keycard
                 </div>
                 <ul className="list-disc list-inside space-y-1 text-stone-300">
-                  <li><strong>1-Click Script Included:</strong> Run <code>Start-TisdalePitBox.ps1</code>—it automatically sets Windows <em>Lid Close Action = Do Nothing</em> via <code>powercfg</code>!</li>
-                  <li><strong>Only ~15W Power Draw:</strong> With the lid closed and screen off, the E5550 draws ~15W and its internal battery acts as a <strong>free 4-hour UPS backup</strong> if the generator surges!</li>
-                  <li><strong>Only 1 HDMI Cord:</strong> Literally just the closed Dell E5550 tucked on a shelf + 1 HDMI cord to the TV!</li>
+                  <li><strong>Bowling Alley / Brewery Coasters:</strong> Customers tap their phone on a Tisdale NFC coaster/sticker at their bowling lane, pre-pay on their phone, and stay inside until their phone buzzes!</li>
+                  <li><strong>Vibrating Pager Coins:</strong> Stick an NFC coin on each of Donald's plastic coaster pagers so friends at the table can tap to order too.</li>
+                  <li><strong>Register Keycard (<code>#admin</code>):</strong> 1 tap inside the window opens Donald's phone controller!</li>
                 </ul>
               </div>
 
               {/* Card 4: Tabletop Demo with GAEMS Monitor */}
               <div className="bg-[#100C0A] border border-stone-800 p-3.5 rounded-none space-y-2">
                 <div className="text-amber-400 font-black font-mono uppercase">
-                  4. How to Demo With Your GAEMS Monitor
+                  4. Live Tabletop Demo (GAEMS HDMI Monitor)
                 </div>
                 <ol className="list-decimal list-inside space-y-1 text-stone-300">
-                  <li>Plug the <strong>GAEMS HDMI monitor</strong> into your Dell E5550 (<kbd className="bg-stone-800 px-1 border border-stone-600 font-mono">Win+P</kbd> → <strong>Extend</strong>).</li>
+                  <li>Plug your <strong>GAEMS HDMI monitor</strong> into your laptop (<kbd className="bg-stone-800 px-1 border border-stone-600 font-mono">Win+P</kbd> → <strong>Extend</strong>).</li>
                   <li>Click <strong>"Pop Out TV to GAEMS HDMI Screen"</strong> above, drag it to the GAEMS screen, press <kbd className="bg-stone-800 px-1 border border-stone-600 font-mono">F11</kbd>.</li>
-                  <li>Close the Dell lid partway or use your real cell phone on the same Wi-Fi (`npm run dev`) to control the GAEMS screen from across the table!</li>
+                  <li>Tap <strong>"-$4 Fade"</strong> or <strong>"SOLD OUT"</strong> on the phone controller (or tap your physical NFC coins) to show Donald live!</li>
                 </ol>
               </div>
             </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { usePitmaster } from '../context/PitmasterContext';
-import { Palette, Flame, UtensilsCrossed, ClipboardList, Radio, ChefHat, Tv } from 'lucide-react';
+import { Palette, Flame, UtensilsCrossed, ClipboardList, Radio, ChefHat, Tv, Search } from 'lucide-react';
 
 export default function DesignSwitcherBar() {
   const {
@@ -11,6 +11,7 @@ export default function DesignSwitcherBar() {
     setIsTvMenuOpen,
     setIsTvWhitePageOpen,
     setIsTrailerSimOpen,
+    setIsDiscoveryWhitePageOpen,
     isPitFxActive,
     setIsPitFxActive
   } = usePitmaster();
@@ -114,6 +115,15 @@ export default function DesignSwitcherBar() {
           >
             📍
           </button>
+
+          {/* Being Found White Paper */}
+          <button
+            onClick={() => setIsDiscoveryWhitePageOpen(true)}
+            className="p-1 px-1.5 rounded-none bg-stone-800 text-amber-300 border border-amber-500/50 font-bold text-[11px]"
+            title="Being Found & Revenue White Paper"
+          >
+            🔍
+          </button>
         </div>
       </div>
 
@@ -177,6 +187,16 @@ export default function DesignSwitcherBar() {
           </button>
 
           <div className="h-4 w-px bg-stone-700 mx-1 hidden sm:block"></div>
+
+          {/* Being Found & Venue Revenue White Paper */}
+          <button
+            onClick={() => setIsDiscoveryWhitePageOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer bg-white text-stone-900 hover:bg-amber-100 border border-amber-400 shadow-sm"
+            title="Review the 'Being Found' Search Dominance & Field Revenue White Paper"
+          >
+            <Search className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+            <span className="whitespace-nowrap font-black">🔍 Being Found</span>
+          </button>
 
           {/* GPS Tracking White Paper Option */}
           <button

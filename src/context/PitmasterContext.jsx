@@ -114,6 +114,12 @@ export function PitmasterProvider({ children }) {
     }
     return false;
   });
+  const [isDiscoveryWhitePageOpen, setIsDiscoveryWhitePageOpen] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.location.hash === '#discovery' || window.location.hash === '#whitepaper' || window.location.search.includes('discovery=1');
+    }
+    return false;
+  });
 
   // Listen for NFC tag taps that change the URL hash while the page is already open
   useEffect(() => {
@@ -123,6 +129,7 @@ export function PitmasterProvider({ children }) {
       if (h === '#specials') setIsSpecialsModalOpen(true);
       if (h === '#tv-menu' || h === '#tv-display') setIsTvMenuOpen(true);
       if (h === '#trailer-sim' || h === '#trailer-demo') setIsTrailerSimOpen(true);
+      if (h === '#discovery' || h === '#whitepaper') setIsDiscoveryWhitePageOpen(true);
     };
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
@@ -541,6 +548,8 @@ export function PitmasterProvider({ children }) {
       setIsTvWhitePageOpen,
       isTrailerSimOpen,
       setIsTrailerSimOpen,
+      isDiscoveryWhitePageOpen,
+      setIsDiscoveryWhitePageOpen,
       tvBoardTheme,
       setTvBoardTheme,
       lastSyncPulse,
