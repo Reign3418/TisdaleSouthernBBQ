@@ -629,20 +629,26 @@ export default function TrailerTwinModal() {
                 </div>
               </div>
 
-              {/* Rotating Giant Spotlight / Flash Special Overlay inside Trailer TV */}
-              {(announcements.flashSpecialActive || rotateSlide === 1) && (
+              {/* Rotating Giant Spotlight / Flash Special / Now Serving Overlay inside Trailer TV */}
+              {(announcements.nowServingOrder || announcements.flashSpecialActive || rotateSlide === 1) && (
                 <div
-                  className={`absolute inset-x-0 bottom-0 z-20 flex items-center justify-between px-2 py-1 border-t-2 border-amber-300 bg-gradient-to-r from-rose-800 via-[#D9381E] to-amber-600 text-white shadow-lg ${
+                  className={`absolute inset-x-0 bottom-0 z-20 flex items-center justify-between px-2 py-1 border-t-2 ${
+                    announcements.nowServingOrder
+                      ? 'border-emerald-300 bg-gradient-to-r from-emerald-800 via-emerald-600 to-teal-700 text-white animate-pulse'
+                      : 'border-amber-300 bg-gradient-to-r from-rose-800 via-[#D9381E] to-amber-600 text-white'
+                  } shadow-lg ${
                     isTvZoomed ? 'py-3 px-5 text-sm' : 'text-[4.5px] leading-tight py-0.5 px-1'
                   }`}
                 >
                   <div className="font-black uppercase tracking-wider truncate">
-                    {announcements.flashSpecialActive
+                    {announcements.nowServingOrder
+                      ? `🛎️ NOW SERVING AT PICKUP WINDOW: ORDER ${announcements.nowServingOrder}!`
+                      : announcements.flashSpecialActive
                       ? `🚨 ${announcements.flashSpecialTitle || 'FLASH SPECIAL'} — ${announcements.flashSpecialDeal}`
                       : '🔥 ROTATING SPOTLIGHT: SMOKED BRISKET ($22) • SPARE RIBS ($18) • 📲 TAP PHONE ON WINDOW NFC CHIP!'}
                   </div>
                   <span className="bg-amber-300 text-stone-950 font-mono font-black px-1 shrink-0 ml-1">
-                    LIVE NOW
+                    {announcements.nowServingOrder ? 'ORDER READY' : 'LIVE NOW'}
                   </span>
                 </div>
               )}
@@ -889,6 +895,37 @@ export default function TrailerTwinModal() {
                         }`}
                       >
                         {announcements.tvRotateMode ? '🔄 ROTATING: ON' : '🔄 AUTO-ROTATE TV'}
+                      </button>
+                    </div>
+
+                    {/* 1-Tap "Now Serving Order #" Silent Pager on the 55" TV */}
+                    <div className="pt-1 border-t border-amber-500/30 flex items-center gap-1.5">
+                      <input
+                        type="text"
+                        placeholder="Order # or Name (e.g. #42 Mike)"
+                        value={announcements.nowServingOrder || ''}
+                        onChange={(e) =>
+                          setAnnouncements(prev => ({
+                            ...prev,
+                            nowServingOrder: e.target.value
+                          }))
+                        }
+                        className="flex-1 bg-stone-950 border border-stone-700 px-2 py-1 text-[11px] text-white font-mono focus:outline-none focus:border-emerald-400"
+                      />
+                      <button
+                        onClick={() =>
+                          setAnnouncements(prev => ({
+                            ...prev,
+                            nowServingOrder: prev.nowServingOrder ? '' : '#42 (MIKE)'
+                          }))
+                        }
+                        className={`px-2.5 py-1 font-mono font-black text-[10px] uppercase cursor-pointer border shrink-0 ${
+                          announcements.nowServingOrder
+                            ? 'bg-stone-800 text-stone-300 border-stone-600'
+                            : 'bg-emerald-600 hover:bg-emerald-500 text-white border-emerald-400'
+                        }`}
+                      >
+                        {announcements.nowServingOrder ? 'Clear' : '🛎️ Call #42'}
                       </button>
                     </div>
                   </div>

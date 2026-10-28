@@ -29,7 +29,8 @@ export const INITIAL_ANNOUNCEMENTS = {
   flashSpecialActive: false,
   flashSpecialTitle: "🚨 PITMASTER FLASH SPECIAL — NEXT 15 MINUTES!",
   flashSpecialDeal: "🔥 Hot Brisket Sandwich + Any Side $15 • Free Honey Bun Cake Slice w/ Any 2-Meat Combo!",
-  tvRotateMode: false
+  tvRotateMode: false,
+  nowServingOrder: ""
 };
 
 // "Specials in a couple different spots"

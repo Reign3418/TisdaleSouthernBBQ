@@ -743,7 +743,28 @@ export default function TvMenuModal() {
             </div>
 
             {/* 3. BOTTOM FOOTER & LOCATION TICKER (EXACT 95px HEIGHT) */}
-            {announcements.flashSpecialActive ? (
+            {announcements.nowServingOrder ? (
+              <div className="h-[95px] px-10 flex items-center justify-between shrink-0 shadow-2xl border-t-4 border-emerald-300 bg-gradient-to-r from-emerald-800 via-emerald-600 to-teal-700 text-white animate-pulse">
+                <div className="flex items-center gap-4">
+                  <span className="bg-white text-emerald-950 font-black text-base uppercase px-4 py-2 rounded-none font-mono tracking-wider shadow-lg">
+                    🛎️ ORDER READY
+                  </span>
+                  <div>
+                    <h4 className="text-4xl font-black uppercase font-['Bebas_Neue'] tracking-wider leading-none text-white">
+                      NOW SERVING AT PICKUP WINDOW: {announcements.nowServingOrder}
+                    </h4>
+                    <p className="text-sm font-mono mt-1 text-emerald-100 font-bold">
+                      🔥 Fresh off the smoker &amp; fryer — step right up to the counter window!
+                    </p>
+                  </div>
+                </div>
+                <div className="text-right font-mono">
+                  <div className="text-lg font-black uppercase bg-black/40 px-4 py-1.5 border border-emerald-300">
+                    WINDOW PICKUP READY
+                  </div>
+                </div>
+              </div>
+            ) : announcements.flashSpecialActive ? (
               <div className="h-[95px] px-10 flex items-center justify-between shrink-0 shadow-2xl border-t-4 border-amber-300 bg-gradient-to-r from-rose-700 via-[#D9381E] to-amber-600 text-white animate-pulse">
                 <div className="flex items-center gap-4">
                   <span className="bg-amber-300 text-stone-950 font-black text-base uppercase px-4 py-2 rounded-none font-mono tracking-wider shadow-lg">
