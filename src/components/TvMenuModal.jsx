@@ -337,7 +337,7 @@ export default function TvMenuModal() {
                 : 'bg-[#0E0C0B] border-[#38261E] text-white'
             }`}
           >
-            {/* PIG EMBLEM SCREEN BLANK & FLASH OVERLAY (PRICE FADE EVENT) */}
+            {/* PIG EMBLEM SCREEN BLANK & FLASH OVERLAY (EVENT PRICING SYNC) */}
             {pigFlashing && (
               <div className="absolute inset-0 z-50 bg-[#070504] flex flex-col items-center justify-center p-12 text-center animate-fadeIn">
                 <img
@@ -346,9 +346,7 @@ export default function TvMenuModal() {
                   className="w-72 h-72 rounded-none object-cover border-4 border-amber-400 shadow-[0_0_80px_rgba(245,158,11,0.95)] animate-bounce"
                 />
                 <div className="text-6xl font-black uppercase font-['Bebas_Neue'] text-amber-400 tracking-widest mt-6">
-                  {fadeAmt > 0
-                    ? `🔥 SMOKER PRICE FADE: -$${fadeAmt} OFF SMOKED PLATES & SANDWICHES!`
-                    : '🔥 FULL PIT MENU RESTORED'}
+                  🔥 TISDALE&apos;S SOUTHERN BBQ — 100% PURE HICKORY SMOKED
                 </div>
               </div>
             )}
@@ -480,16 +478,9 @@ export default function TvMenuModal() {
                                 const fp = getFadedPriceObj(item.price, item.numericPrice);
                                 return (
                                   <span className="text-[23px] font-black font-mono tracking-tight flex items-center gap-1.5">
-                                    {fp.isFaded && (
-                                      <span className="line-through text-base opacity-50 text-rose-500">
-                                        {fp.old}
-                                      </span>
-                                    )}
                                     <span
                                       className={
-                                        fp.isFaded
-                                          ? 'text-emerald-500'
-                                          : boardTheme === 'classicOrange'
+                                        boardTheme === 'classicOrange'
                                           ? 'text-[#B95000]'
                                           : 'text-amber-400'
                                       }
@@ -576,16 +567,9 @@ export default function TvMenuModal() {
                                 const fp = getFadedPriceObj(item.price, item.numericPrice);
                                 return (
                                   <span className="text-[21px] font-black font-mono flex items-center gap-1.5">
-                                    {fp.isFaded && (
-                                      <span className="line-through text-sm opacity-50 text-rose-500">
-                                        {fp.old}
-                                      </span>
-                                    )}
                                     <span
                                       className={
-                                        fp.isFaded
-                                          ? 'text-emerald-500'
-                                          : boardTheme === 'classicOrange'
+                                        boardTheme === 'classicOrange'
                                           ? 'text-[#B95000]'
                                           : 'text-amber-400'
                                       }
@@ -645,16 +629,9 @@ export default function TvMenuModal() {
                                 const fp = getFadedPriceObj(item.price, item.numericPrice);
                                 return (
                                   <span className="text-[21px] font-black font-mono flex items-center gap-1.5">
-                                    {fp.isFaded && (
-                                      <span className="line-through text-sm opacity-50 text-rose-500">
-                                        {fp.old}
-                                      </span>
-                                    )}
                                     <span
                                       className={
-                                        fp.isFaded
-                                          ? 'text-emerald-500'
-                                          : boardTheme === 'classicOrange'
+                                        boardTheme === 'classicOrange'
                                           ? 'text-[#B95000]'
                                           : 'text-amber-400'
                                       }
@@ -834,28 +811,7 @@ export default function TvMenuModal() {
             </div>
 
             {/* 3. BOTTOM FOOTER & LOCATION TICKER (EXACT 95px HEIGHT) */}
-            {fadeAmt > 0 ? (
-              <div className="h-[95px] px-10 flex items-center justify-between shrink-0 shadow-2xl border-t-4 border-emerald-300 bg-gradient-to-r from-emerald-900 via-emerald-700 to-teal-800 text-white">
-                <div className="flex items-center gap-4">
-                  <span className="bg-amber-400 text-stone-950 font-black text-base uppercase px-4 py-2 rounded-none font-mono tracking-wider shadow-lg">
-                    🐷 PITMASTER PRICE FADE (-${fadeAmt})
-                  </span>
-                  <div>
-                    <h4 className="text-4xl font-black uppercase font-['Bebas_Neue'] tracking-wider leading-none text-white">
-                      EVENING SMOKER CLEAR-OUT: -${fadeAmt} OFF SMOKED PLATES &amp; SANDWICHES!
-                    </h4>
-                    <p className="text-sm font-mono mt-1 text-emerald-100 font-bold">
-                      🔥 Grab a second sandwich or take-home plate before the smoker sells out for the night!
-                    </p>
-                  </div>
-                </div>
-                <div className="text-right font-mono">
-                  <div className="text-lg font-black uppercase bg-black/40 px-4 py-1.5 border border-emerald-300">
-                    GREEN PRICES ACTIVE ABOVE
-                  </div>
-                </div>
-              </div>
-            ) : announcements.flashSpecialActive ? (
+            {announcements.flashSpecialActive ? (
               <div className="h-[95px] px-10 flex items-center justify-between shrink-0 shadow-2xl border-t-4 border-amber-300 bg-gradient-to-r from-rose-700 via-[#D9381E] to-amber-600 text-white animate-pulse">
                 <div className="flex items-center gap-4">
                   <span className="bg-amber-300 text-stone-950 font-black text-base uppercase px-4 py-2 rounded-none font-mono tracking-wider shadow-lg">

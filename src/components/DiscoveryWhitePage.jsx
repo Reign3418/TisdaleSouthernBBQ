@@ -200,23 +200,23 @@ export default function DiscoveryWhitePage() {
                 </ul>
               </div>
 
-              {/* Option 2: Flash the Pig & Price Fade */}
+              {/* Option 2: Flash the Pig & Event-Specific Pricing */}
               <div className="border-2 border-amber-500 bg-amber-50/40 p-5 space-y-2">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="bg-amber-500 text-stone-950 font-mono font-black text-[10px] uppercase px-2.5 py-0.5">
-                    Option 2 • End-of-Night Profit Recovery
+                    Option 2 • Event-Specific Pricing (Silent Tier Sync)
                   </span>
                   <span className="text-xs font-mono font-bold text-amber-900">Built In • $0 Cost</span>
                 </div>
                 <h3 className="font-black text-base text-stone-900">
-                  🐷 "Flash the Pig &amp; Price Fade" (Turn Leftover Smoker Stock Into Cash)
+                  🐷 &quot;Flash the Pig&quot; &amp; Event-Specific Pricing (Never Advertise That You Drop Prices!)
                 </h3>
                 <p className="text-xs text-stone-700 leading-relaxed">
-                  Once hickory pellets and meat go into the smoker, that money is already spent. Instead of tossing out unsold brisket or pulled pork at the end of the night—or writing "Clearance" on a board—you tap <strong>"-$2 Fade"</strong>, <strong>"-$4 Fade"</strong>, or <strong>"-$5 Clear"</strong> on your cell phone during the last hour of service:
+                  <strong>Protecting Our Trade Secret:</strong> You never want to put up a sign that says &quot;Clearance&quot; or advertise to customers that you drop prices later in the shift—because that trains people to wait until late at night or makes them think the food isn&apos;t fresh. Instead, your phone has 1-tap <strong>Event-Specific Pricing Tiers</strong> (<code>Standard</code>, <code>Event -$2</code>, <code>Event -$4</code>, <code>Event -$5</code>):
                 </p>
                 <ul className="text-xs space-y-1 text-stone-700 list-disc list-inside">
-                  <li><strong>The Head-Turner:</strong> Your 55" TV blanks to pitch black for 1.35 seconds, <strong>flashes your Tisdale Pig Emblem</strong> to catch the whole patio's attention, and snaps back with stepped-down green prices (<code>~~$22~~ $18.00</code>).</li>
-                  <li><strong>Second-Plate Impulse Buys:</strong> Customers who bought dinner earlier look up after two beers and grab an extra pulled pork sandwich or plate to take home—putting pure cash in your pocket instead of throwing food away.</li>
+                  <li><strong>The Seamless Brand Bumper:</strong> When you tap an Event Pricing Tier on your phone, your 55&quot; TV briefly blanks for 1.3 seconds and <strong>flashes your Tisdale Pig Emblem</strong> like a natural TV commercial bumper.</li>
+                  <li><strong>Zero Crossed-Out Numbers or &quot;Discount&quot; Signs:</strong> When the menu reappears 1 second later, the updated prices are simply displayed in the normal gold menu font—with <strong>no crossed-out old prices and zero &quot;discount&quot; banners</strong>. To anyone walking up to the window, that is simply today&apos;s Event Menu price!</li>
                 </ul>
               </div>
 
@@ -276,7 +276,7 @@ export default function DiscoveryWhitePage() {
                 <ul className="text-xs space-y-1 text-stone-700 list-disc list-inside">
                   <li><strong>Direct Phone-to-Pi Ad-Hoc Link (4 Feet):</strong> The Raspberry Pi stores a complete copy of your website on its memory card and creates its own private trailer radio bubble (<code>192.168.4.1</code>). When you tap your register NFC coin, your phone talks directly to the Pi 4 feet away—updating the TV in 2 milliseconds with <strong>zero cell service required</strong>.</li>
                   <li><strong>Free 250ft Wi-Fi Billboard &amp; Captive Portal:</strong> Outside, the Pi broadcasts <strong><code>🔥 Tisdale_BBQ_Smoked_Brisket</code></strong>. When customers with no cell signal tap that Wi-Fi name, your offline menu automatically pops up on their phone screen (just like hotel/airport Wi-Fi!).</li>
-                  <li><strong>Simple 1-Line Menu Disclaimer:</strong> If you trigger a live <em>Evening Price Fade</em> on the trailer TV while a customer inside a bowling alley is looking at the standard online menu, a clean 1-line note on the menu states: <em>"Final availability and live Trailer TV evening price fades are confirmed at the pickup window."</em> When they walk up and find out their plate is $4 cheaper at the window, they are thrilled!</li>
+                  <li><strong>Simple 1-Line Menu Disclaimer:</strong> If you switch to <em>Event-Specific Pricing</em> on the trailer TV while a customer inside a bowling alley is looking at the standard online menu, a clean 1-line note on the menu states: <em>&quot;Final availability and event-specific pricing are confirmed at the pickup window.&quot;</em></li>
                 </ul>
               </div>
 
@@ -295,8 +295,8 @@ export default function DiscoveryWhitePage() {
                   What if a festival cell tower dies mid-shift, or what if you are exhausted after a 14-hour cook and forget to tap <strong>"Close Kitchen / Off-Duty"</strong> on your drive home?
                 </p>
                 <ul className="text-xs space-y-1.5 text-stone-700 list-disc list-inside">
-                  <li><strong>30-Minute Pi-to-Website "Heartbeat" (Auto-Offline Mode):</strong> Whenever your 55&quot; Trailer TV is powered on, the Raspberry Pi quietly sends a tiny &quot;I&apos;m alive&quot; ping to the master website every 5 minutes. If the master website doesn&apos;t hear from the Pi for <strong>30 minutes during open shift hours</strong> (because festival cell towers are jammed), the online website automatically kicks into <strong>Festival Offline Mode</strong>—reverting to safe base prices and displaying a banner: <em>&quot;📡 Trailer is at a high-traffic event! Check the 55&quot; Trailer TV at the window for live Sold-Out updates &amp; Evening Price Fades.&quot;</em></li>
-                  <li><strong>Automatic Nightly Reset When TV Turns Off:</strong> When you turn off the 55&quot; Trailer TV at the end of the night, the Pi turns off with it. After 30 minutes of no heartbeat after closing time, the website automatically flips to <em>&quot;Pit Resting for the Night&quot;</em> and resets all Sold-Out / Price Fade badges fresh for tomorrow!</li>
+                  <li><strong>30-Minute Pi-to-Website "Heartbeat" (Auto-Offline Mode):</strong> Whenever your 55&quot; Trailer TV is powered on, the Raspberry Pi quietly sends a tiny &quot;I&apos;m alive&quot; ping to the master website every 5 minutes. If the master website doesn&apos;t hear from the Pi for <strong>30 minutes during open shift hours</strong> (because festival cell towers are jammed), the online website automatically kicks into <strong>Festival Offline Mode</strong>—reverting to standard base prices and displaying a banner: <em>&quot;📡 Trailer is at a high-traffic event! Check the 55&quot; Trailer TV at the window for live Sold-Out updates &amp; Event-Specific Pricing.&quot;</em></li>
+                  <li><strong>Automatic Nightly Reset When TV Turns Off:</strong> When you turn off the 55&quot; Trailer TV at the end of the night, the Pi turns off with it. After 30 minutes of no heartbeat after closing time, the website automatically flips to <em>&quot;Pit Resting for the Night&quot;</em> and resets all Sold-Out and Event Pricing tiers fresh for tomorrow!</li>
                   <li><strong>Home-Base Geofence Auto-Shutoff (100% Home Privacy):</strong> We set an invisible 0.5-mile circle (geofence) around your home / overnight trailer parking spot. As soon as your phone or trailer enters that circle on your drive home, the system <strong>automatically shuts off live GPS location sharing and closes the digital kitchen</strong>—so even if you forget to tap a button after a long night, your home address is 100% protected.</li>
                 </ul>
               </div>

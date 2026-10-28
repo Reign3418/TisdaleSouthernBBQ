@@ -286,7 +286,7 @@ export default function TrailerTwinModal() {
                 <ol className="list-decimal list-inside space-y-1 text-stone-300">
                   <li>Plug your <strong>GAEMS HDMI monitor</strong> into your laptop (<kbd className="bg-stone-800 px-1 border border-stone-600 font-mono">Win+P</kbd> → <strong>Extend</strong>).</li>
                   <li>Click <strong>"Pop Out TV to GAEMS HDMI Screen"</strong> above, drag it to the GAEMS screen, press <kbd className="bg-stone-800 px-1 border border-stone-600 font-mono">F11</kbd>.</li>
-                  <li>Tap <strong>"-$4 Fade"</strong> or <strong>"SOLD OUT"</strong> on the phone controller (or tap your physical NFC coins) to show Donald live!</li>
+                  <li>Tap <strong>"Event -$4"</strong> or <strong>"SOLD OUT"</strong> on the phone controller (or tap your physical NFC coins) to show Donald live!</li>
                 </ol>
               </div>
             </div>
@@ -420,7 +420,7 @@ export default function TrailerTwinModal() {
                 }`}
               >
                 {/* ========================================================= */}
-                {/* 1. PIG EMBLEM SCREEN BLANK & FLASH OVERLAY (PRICE FADE)   */}
+                {/* 1. PIG EMBLEM SCREEN BLANK & FLASH OVERLAY (EVENT SYNC)   */}
                 {/* ========================================================= */}
                 {pigFlashing && (
                   <div className="absolute inset-0 z-50 bg-[#050403] flex flex-col items-center justify-center text-center animate-fadeIn">
@@ -433,12 +433,10 @@ export default function TrailerTwinModal() {
                       />
                     </div>
                     <div className="bg-amber-400 text-stone-950 font-mono font-black text-xl uppercase px-6 py-1.5 tracking-widest mb-2">
-                      🐷 PITMASTER PRICE FADE INCOMING
+                      🐷 TISDALE&apos;S SOUTHERN BBQ • 100% PURE HICKORY SMOKED
                     </div>
                     <h2 className="text-6xl font-black uppercase font-['Bebas_Neue'] tracking-wider text-white">
-                      {fadeAmt > 0
-                        ? `🔥 EVENING SMOKER FADE: -$${fadeAmt} OFF PLATES & SANDWICHES!`
-                        : '🔥 FULL PITMASTER MENU PRICING RESTORED'}
+                      🔥 MOUTH WATERING • TONGUE TWISTING LIVE EVENT MENU
                     </h2>
                   </div>
                 )}
@@ -476,12 +474,6 @@ export default function TrailerTwinModal() {
 
                   {/* Right Status Badges */}
                   <div className="flex items-center gap-3">
-                    {fadeAmt > 0 && (
-                      <div className="bg-emerald-500 text-stone-950 px-4 py-1.5 font-mono font-black text-base uppercase tracking-wider border-2 border-white shadow-lg">
-                        🐷 -${fadeAmt} PRICE FADE ACTIVE
-                      </div>
-                    )}
-
                     <div
                       className={`px-4 py-1.5 font-mono font-black text-sm uppercase border-2 ${
                         announcements.fryerOpen
@@ -547,12 +539,7 @@ export default function TrailerTwinModal() {
                                 Hot &amp; Ready Now
                               </span>
                               <div className="font-mono font-black flex items-baseline gap-2">
-                                {fp.isFaded && (
-                                  <span className="text-2xl line-through text-rose-500 opacity-75">
-                                    {fp.old}
-                                  </span>
-                                )}
-                                <span className={`text-5xl ${fp.isFaded ? 'text-emerald-400' : 'text-amber-400'}`}>
+                                <span className="text-5xl text-amber-400">
                                   {fp.current}
                                 </span>
                               </div>
@@ -621,16 +608,9 @@ export default function TrailerTwinModal() {
                                     </span>
                                   ) : (
                                     <div className="font-mono font-black shrink-0 flex items-baseline gap-1.5">
-                                      {fp.isFaded && (
-                                        <span className="text-sm line-through text-rose-500 opacity-75">
-                                          {fp.old}
-                                        </span>
-                                      )}
                                       <span
                                         className={`text-[21px] ${
-                                          fp.isFaded
-                                            ? 'text-emerald-400'
-                                            : tvBoardTheme === 'classicOrange'
+                                          tvBoardTheme === 'classicOrange'
                                             ? 'text-[#B95000]'
                                             : 'text-amber-400'
                                         }`}
@@ -711,16 +691,9 @@ export default function TrailerTwinModal() {
                                       </span>
                                     ) : (
                                       <div className="font-mono font-black shrink-0 flex items-baseline gap-1.5">
-                                        {fp.isFaded && (
-                                          <span className="text-sm line-through text-rose-500 opacity-75">
-                                            {fp.old}
-                                          </span>
-                                        )}
                                         <span
                                           className={`text-[20px] ${
-                                            fp.isFaded
-                                              ? 'text-emerald-400'
-                                              : tvBoardTheme === 'classicOrange'
+                                            tvBoardTheme === 'classicOrange'
                                               ? 'text-[#B95000]'
                                               : 'text-amber-400'
                                           }`}
@@ -780,16 +753,9 @@ export default function TrailerTwinModal() {
                                       </span>
                                     ) : (
                                       <div className="font-mono font-black shrink-0 flex items-baseline gap-1.5">
-                                        {fp.isFaded && (
-                                          <span className="text-xs line-through text-rose-500 opacity-75">
-                                            {fp.old}
-                                          </span>
-                                        )}
                                         <span
                                           className={`text-[19px] ${
-                                            fp.isFaded
-                                              ? 'text-emerald-400'
-                                              : tvBoardTheme === 'classicOrange'
+                                            tvBoardTheme === 'classicOrange'
                                               ? 'text-[#B95000]'
                                               : 'text-amber-400'
                                           }`}
@@ -945,23 +911,9 @@ export default function TrailerTwinModal() {
                 )}
 
                 {/* ========================================================= */}
-                {/* 4. BOTTOM STATUS / PRICE FADE / FLASH TICKER BAR (66px)   */}
+                {/* 4. BOTTOM STATUS / FLASH TICKER BAR (66px)                */}
                 {/* ========================================================= */}
-                {fadeAmt > 0 ? (
-                  <div className="h-[66px] px-7 flex items-center justify-between bg-gradient-to-r from-emerald-900 via-emerald-700 to-teal-800 text-white border-t-4 border-emerald-300 shrink-0">
-                    <div className="flex items-center gap-3">
-                      <span className="bg-amber-400 text-stone-950 font-mono font-black text-sm uppercase px-3 py-1">
-                        🐷 PRICE FADE (-${fadeAmt})
-                      </span>
-                      <span className="text-2xl font-black uppercase font-['Bebas_Neue'] tracking-wider">
-                        EVENING SMOKER CLEAR-OUT: -${fadeAmt} OFF SMOKED PLATES &amp; SANDWICHES UNTIL SOLD OUT!
-                      </span>
-                    </div>
-                    <span className="font-mono text-xs font-black uppercase bg-black/40 px-3 py-1 border border-emerald-300">
-                      GREEN PRICES ACTIVE ABOVE
-                    </span>
-                  </div>
-                ) : announcements.flashSpecialActive ? (
+                {announcements.flashSpecialActive ? (
                   <div className="h-[66px] px-7 flex items-center justify-between bg-gradient-to-r from-rose-800 via-[#D9381E] to-amber-600 text-white border-t-4 border-amber-300 shrink-0 animate-pulse">
                     <div className="flex items-center gap-3">
                       <span className="bg-amber-300 text-stone-950 font-mono font-black text-sm uppercase px-3 py-1">
@@ -1136,22 +1088,22 @@ export default function TrailerTwinModal() {
                       </button>
                     </div>
 
-                    {/* 1-Tap "Pig Flash & Price Fade" End-of-Night Stock Clearer */}
+                    {/* 1-Tap "Pig Flash" Event-Specific Pricing Switcher */}
                     <div className="pt-2 border-t border-amber-500/30 space-y-1.5">
                       <div className="flex items-center justify-between text-[10px] font-mono">
                         <span className="text-emerald-400 font-black uppercase">
-                          🐷 Pig Flash &amp; Price Fade (Clear Stock):
+                          🐷 Event-Specific Pricing (Pig Flash):
                         </span>
                         <span className="text-stone-400">
-                          {fadeAmt > 0 ? `Active: -$${fadeAmt}/plate` : 'Full Price'}
+                          {fadeAmt > 0 ? `Event Tier (-$${fadeAmt})` : 'Standard Menu'}
                         </span>
                       </div>
                       <div className="grid grid-cols-4 gap-1">
                         {[
-                          { label: 'Full $', val: 0 },
-                          { label: '-$2 Fade', val: 2 },
-                          { label: '-$4 Fade', val: 4 },
-                          { label: '-$5 Clear', val: 5 }
+                          { label: 'Standard', val: 0 },
+                          { label: 'Event -$2', val: 2 },
+                          { label: 'Event -$4', val: 4 },
+                          { label: 'Event -$5', val: 5 }
                         ].map(tier => (
                           <button
                             key={tier.val}

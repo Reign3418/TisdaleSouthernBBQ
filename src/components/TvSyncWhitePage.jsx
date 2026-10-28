@@ -174,7 +174,7 @@ export default function TvSyncWhitePage() {
                     : 'bg-white text-stone-700 border border-stone-300 hover:bg-stone-50'
                 }`}
               >
-                4. Evening "Pig Flash &amp; Price Fade" (-$4 Clear-Out)
+                4. &quot;Pig Flash&quot; &amp; Event-Specific Pricing
               </button>
             </div>
 
@@ -212,17 +212,13 @@ export default function TvSyncWhitePage() {
                     <div className="flex justify-between items-baseline">
                       <span className="text-stone-200">BBQ Chicken Leg Qtr</span>
                       <span className="font-mono text-amber-400 font-bold">
-                        {simMode === 'priceFade' ? (
-                          <span><s className="text-rose-400 mr-1">$12</s><span className="text-emerald-400">$8.00</span></span>
-                        ) : '$12.00'}
+                        {simMode === 'priceFade' ? '$10.00' : '$12.00'}
                       </span>
                     </div>
                     <div className="flex justify-between items-baseline">
                       <span className="text-stone-200">Smoked Turkey Leg</span>
                       <span className="font-mono text-amber-400 font-bold">
-                        {simMode === 'priceFade' ? (
-                          <span><s className="text-rose-400 mr-1">$14</s><span className="text-emerald-400">$10.00</span></span>
-                        ) : '$14.00'}
+                        {simMode === 'priceFade' ? '$12.00' : '$14.00'}
                       </span>
                     </div>
                     <div className="flex justify-between items-baseline">
@@ -231,10 +227,10 @@ export default function TvSyncWhitePage() {
                         <span className="bg-rose-600 text-white font-mono text-[9px] font-black px-1.5 py-0.2 rounded-none uppercase">
                           SOLD OUT
                         </span>
-                      ) : simMode === 'priceFade' ? (
-                        <span className="font-mono font-bold"><s className="text-rose-400 mr-1">$18</s><span className="text-emerald-400">$14.00</span></span>
                       ) : (
-                        <span className="font-mono text-amber-400 font-bold">$18.00</span>
+                        <span className="font-mono text-amber-400 font-bold">
+                          {simMode === 'priceFade' ? '$14.00' : '$18.00'}
+                        </span>
                       )}
                     </div>
                     <div className="flex justify-between items-baseline">
@@ -243,10 +239,10 @@ export default function TvSyncWhitePage() {
                         <span className="bg-rose-600 text-white font-mono text-[9px] font-black px-1.5 py-0.2 rounded-none uppercase">
                           SOLD OUT
                         </span>
-                      ) : simMode === 'priceFade' ? (
-                        <span className="font-mono font-bold"><s className="text-rose-400 mr-1">$18</s><span className="text-emerald-400">$14.00</span></span>
                       ) : (
-                        <span className="font-mono text-amber-400 font-bold">$30 / $18</span>
+                        <span className="font-mono text-amber-400 font-bold">
+                          {simMode === 'priceFade' ? '$14.00' : '$30 / $18'}
+                        </span>
                       )}
                     </div>
                   </div>
@@ -261,17 +257,13 @@ export default function TvSyncWhitePage() {
                     <div className="flex justify-between items-baseline">
                       <span className="text-stone-200">Pulled Pork Sandwich</span>
                       <span className="font-mono text-amber-400 font-bold">
-                        {simMode === 'priceFade' ? (
-                          <span><s className="text-rose-400 mr-1">$8</s><span className="text-emerald-400">$6.00</span></span>
-                        ) : '$8.00'}
+                        {simMode === 'priceFade' ? '$6.00' : '$8.00'}
                       </span>
                     </div>
                     <div className="flex justify-between items-baseline">
                       <span className="text-stone-200">Beef Brisket Sandwich</span>
                       <span className="font-mono text-amber-400 font-bold">
-                        {simMode === 'priceFade' ? (
-                          <span><s className="text-rose-400 mr-1">$12</s><span className="text-emerald-400">$8.00</span></span>
-                        ) : '$11.50'}
+                        {simMode === 'priceFade' ? '$9.50' : '$11.50'}
                       </span>
                     </div>
                     <div className="flex justify-between items-baseline">
@@ -326,12 +318,10 @@ export default function TvSyncWhitePage() {
 
               {/* Bottom Ticker */}
               <div className="pt-2 border-t border-stone-800 flex items-center justify-between text-[11px] font-mono text-stone-400">
-                <span className={simMode === 'priceFade' ? 'text-emerald-400 font-bold' : 'text-amber-300'}>
+                <span className="text-amber-300">
                   {simMode === 'fryerOff'
                     ? '⚠️ FRYER CUTOFF: Fryer grease is off for the night. Smoked meats hot until sold out!'
-                    : simMode === 'priceFade'
-                    ? '🐷 PIG FLASH & PRICE FADE ACTIVE: -$4 OFF SMOKED PLATES UNTIL THE SMOKER IS EMPTY!'
-                    : '🟢 FRYER IS HOT & COOKING TO ORDER'}
+                    : '🟢 FRYER IS HOT & COOKING TO ORDER • 100% PURE HICKORY SMOKED'}
                 </span>
                 <span>Square POS: Tap to Pay, Cards & Cash</span>
               </div>
@@ -454,24 +444,24 @@ export default function TvSyncWhitePage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               
-              {/* Idea 1: Pig Flash & Price Fade */}
+              {/* Idea 1: Pig Flash & Event-Specific Pricing */}
               <div className="border-2 border-amber-500/80 bg-amber-50/40 p-5 space-y-2.5">
                 <div className="flex items-center justify-between">
                   <span className="bg-amber-500 text-stone-950 font-mono font-black text-[10px] uppercase px-2 py-0.5">
-                    Idea #1 • End-of-Night Profit Saver
+                    Idea #1 • Event-Specific Pricing
                   </span>
                   <span className="text-xs font-mono font-bold text-amber-900">$0 Cost</span>
                 </div>
                 <h3 className="font-black text-base text-stone-900">
-                  🐷 "Flash the Pig &amp; Price Fade" (Turn Leftover Stock Into Cash)
+                  🐷 &quot;Flash the Pig&quot; &amp; Event-Specific Pricing (Silent Menu Tier Sync)
                 </h3>
                 <p className="text-xs text-stone-700 leading-relaxed">
-                  Once hickory pellets and meat go on the smoker, the cost is already spent. Instead of writing "Clearance" on a board or tossing out unsold brisket and pulled pork at the end of the night, you tap <strong>"-$2 Fade"</strong> or <strong>"-$4 Fade"</strong> on your phone during the last hour of service:
+                  <strong>Never Advertise That You Drop Prices:</strong> Putting up a &quot;Clearance&quot; or &quot;Discount&quot; sign gives away your pricing strategy and trains customers to wait until late at night. Instead, you can silently switch between <strong>Event-Specific Pricing Tiers</strong> right from your phone:
                 </p>
                 <ul className="text-xs space-y-1 text-stone-700 list-disc list-inside">
-                  <li>Your 55" TV briefly blanks to black, <strong>flashes your Tisdale Pig Logo</strong> to catch every eye on the patio, and snaps back with stepped-down green prices (e.g., <code>~~$22~~ $18</code>).</li>
-                  <li>Customers who ate at 5:30 PM look up after two beers and say, <em>"Shoot, for $9 I'm grabbing a second pulled pork sandwich to take home!"</em></li>
-                  <li>Every dollar you collect in that final hour is pure cash rescued from going to waste.</li>
+                  <li>Your 55&quot; TV briefly blanks for 1 second, <strong>flashes your Tisdale Pig Logo</strong> like a natural brand bumper, and comes right back up with the new event prices in the normal gold font.</li>
+                  <li><strong>Zero Crossed-Out Numbers:</strong> There are no crossed-out old prices and no &quot;discount&quot; banners—to anyone walking up to the window, that is simply today&apos;s Event Menu price!</li>
+                  <li>Lets you adjust pricing seamlessly for different venues, breweries, or late shifts without ever giving away a trade secret.</li>
                 </ul>
               </div>
 
@@ -534,8 +524,8 @@ export default function TvSyncWhitePage() {
                 <ul className="text-xs space-y-1 text-stone-700 list-disc list-inside">
                   <li><strong>Direct 4-Foot Phone-to-Pi Link:</strong> The Raspberry Pi stores a complete copy of your menu on its memory card (`192.168.4.1`). Tapping your register NFC coin connects your phone directly to the Pi inside the trailer—updating the TV in 2 milliseconds with <strong>zero cell service required</strong>.</li>
                   <li><strong>250ft Wi-Fi Billboard &amp; Captive Portal:</strong> Outside, the Pi broadcasts <strong><code>🔥 Tisdale_BBQ_Smoked_Brisket</code></strong>. When hungry customers with no cell signal tap that Wi-Fi name, your offline menu automatically pops up on their phone!</li>
-                  <li><strong>1-Line Menu Disclaimer:</strong> A simple note on the online menu states: <em>"Final availability and live Trailer TV evening price fades are confirmed at the pickup window"</em>—so if you run an offline Price Fade on the trailer TV, customers inside a venue are thrilled when their plate is $4 cheaper at the window!</li>
-                  <li><strong>30-Minute Raspberry Pi "Heartbeat" Watchdog:</strong> While your 55&quot; TV is on, the Pi sends a heartbeat ping to the master website every 5 minutes. If the master website doesn&apos;t detect the Pi for <strong>30 minutes during open hours</strong> (because festival internet dropped), the main website automatically switches into <strong>Offline Festival Mode</strong>! And when you turn the TV off at night, 30 minutes later the website automatically closes the kitchen and resets all Sold-Out / Price Fade badges for tomorrow.</li>
+                  <li><strong>1-Line Menu Disclaimer:</strong> A simple note on the online menu states: <em>&quot;Final availability and event-specific pricing are confirmed at the pickup window&quot;</em>—so if you run an Event-Specific Pricing tier on the trailer TV, everything stays 100% seamless.</li>
+                  <li><strong>30-Minute Raspberry Pi "Heartbeat" Watchdog:</strong> While your 55&quot; TV is on, the Pi sends a heartbeat ping to the master website every 5 minutes. If the master website doesn&apos;t detect the Pi for <strong>30 minutes during open hours</strong> (because festival internet dropped), the main website automatically switches into <strong>Offline Festival Mode</strong>! And when you turn the TV off at night, 30 minutes later the website automatically closes the kitchen and resets all Sold-Out and Event Pricing tiers for tomorrow.</li>
                 </ul>
               </div>
 
@@ -604,7 +594,7 @@ export default function TvSyncWhitePage() {
                     <td className="p-3 font-bold text-emerald-700">$0</td>
                   </tr>
                   <tr>
-                    <td className="p-3 font-semibold text-stone-700">Live 86, Specials &amp; Price Fade</td>
+                    <td className="p-3 font-semibold text-stone-700">Live 86, Specials &amp; Event Pricing</td>
                     <td className="p-3 text-stone-500">Requires new JPG export</td>
                     <td className="p-3 bg-emerald-50/50 font-bold text-emerald-700 border-x border-emerald-200">Instant (1-Tap on Phone)</td>
                     <td className="p-3 font-bold text-emerald-700">Instant (Over the air)</td>
@@ -656,7 +646,7 @@ export default function TvSyncWhitePage() {
                   <strong>Phase 1 First (Zero Risk):</strong> We start with your live website, your fresh USB backup image, and passive waterproof NFC coins (which have no batteries or computers and can never crash).
                 </li>
                 <li>
-                  <strong>Phase 2 &amp; 3 Only When You Want Them:</strong> Whenever you're ready, we can plug in the Raspberry Pi "Pit-Box" for 1-tap <strong>"Flash the Pig &amp; Price Fade"</strong>, Sold-Out toggles, and bowling alley/brewery NFC coasters at your own pace.
+                  <strong>Phase 2 &amp; 3 Only When You Want Them:</strong> Whenever you're ready, we can plug in the Raspberry Pi "Pit-Box" for 1-tap <strong>"Flash the Pig" Event-Specific Pricing</strong>, Sold-Out toggles, and bowling alley/brewery NFC coasters at your own pace.
                 </li>
               </ol>
             </div>
