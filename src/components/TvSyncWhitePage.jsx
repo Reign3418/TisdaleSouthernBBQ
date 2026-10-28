@@ -141,7 +141,7 @@ export default function TvSyncWhitePage() {
                     : 'bg-white text-stone-700 border border-stone-300 hover:bg-stone-50'
                 }`}
               >
-                1. Normal Shift (All Meats Smoking & Ready)
+                1. Normal Shift (All Meats Hot)
               </button>
 
               <button
@@ -152,7 +152,7 @@ export default function TvSyncWhitePage() {
                     : 'bg-white text-stone-700 border border-stone-300 hover:bg-stone-50'
                 }`}
               >
-                2. 5:00 PM Rush (Ribs & Brisket Sold Out)
+                2. 5:00 PM Rush (Ribs &amp; Brisket Sold Out)
               </button>
 
               <button
@@ -164,6 +164,17 @@ export default function TvSyncWhitePage() {
                 }`}
               >
                 3. 30-Min Cutoff (Fryer Grease OFF)
+              </button>
+
+              <button
+                onClick={() => setSimMode('priceFade')}
+                className={`px-3 py-1.5 rounded-none text-xs font-bold transition cursor-pointer ${
+                  simMode === 'priceFade'
+                    ? 'bg-emerald-700 text-white shadow'
+                    : 'bg-white text-stone-700 border border-stone-300 hover:bg-stone-50'
+                }`}
+              >
+                4. Evening "Pig Flash &amp; Price Fade" (-$4 Clear-Out)
               </button>
             </div>
 
@@ -200,11 +211,19 @@ export default function TvSyncWhitePage() {
                   <div className="space-y-2">
                     <div className="flex justify-between items-baseline">
                       <span className="text-stone-200">BBQ Chicken Leg Qtr</span>
-                      <span className="font-mono text-amber-400 font-bold">$12.00</span>
+                      <span className="font-mono text-amber-400 font-bold">
+                        {simMode === 'priceFade' ? (
+                          <span><s className="text-rose-400 mr-1">$12</s><span className="text-emerald-400">$8.00</span></span>
+                        ) : '$12.00'}
+                      </span>
                     </div>
                     <div className="flex justify-between items-baseline">
                       <span className="text-stone-200">Smoked Turkey Leg</span>
-                      <span className="font-mono text-amber-400 font-bold">$14.00</span>
+                      <span className="font-mono text-amber-400 font-bold">
+                        {simMode === 'priceFade' ? (
+                          <span><s className="text-rose-400 mr-1">$14</s><span className="text-emerald-400">$10.00</span></span>
+                        ) : '$14.00'}
+                      </span>
                     </div>
                     <div className="flex justify-between items-baseline">
                       <span className="text-stone-200">1/2 LB Beef Brisket</span>
@@ -212,6 +231,8 @@ export default function TvSyncWhitePage() {
                         <span className="bg-rose-600 text-white font-mono text-[9px] font-black px-1.5 py-0.2 rounded-none uppercase">
                           SOLD OUT
                         </span>
+                      ) : simMode === 'priceFade' ? (
+                        <span className="font-mono font-bold"><s className="text-rose-400 mr-1">$18</s><span className="text-emerald-400">$14.00</span></span>
                       ) : (
                         <span className="font-mono text-amber-400 font-bold">$18.00</span>
                       )}
@@ -222,6 +243,8 @@ export default function TvSyncWhitePage() {
                         <span className="bg-rose-600 text-white font-mono text-[9px] font-black px-1.5 py-0.2 rounded-none uppercase">
                           SOLD OUT
                         </span>
+                      ) : simMode === 'priceFade' ? (
+                        <span className="font-mono font-bold"><s className="text-rose-400 mr-1">$18</s><span className="text-emerald-400">$14.00</span></span>
                       ) : (
                         <span className="font-mono text-amber-400 font-bold">$30 / $18</span>
                       )}
@@ -237,11 +260,19 @@ export default function TvSyncWhitePage() {
                   <div className="space-y-2">
                     <div className="flex justify-between items-baseline">
                       <span className="text-stone-200">Pulled Pork Sandwich</span>
-                      <span className="font-mono text-amber-400 font-bold">$8.00</span>
+                      <span className="font-mono text-amber-400 font-bold">
+                        {simMode === 'priceFade' ? (
+                          <span><s className="text-rose-400 mr-1">$8</s><span className="text-emerald-400">$6.00</span></span>
+                        ) : '$8.00'}
+                      </span>
                     </div>
                     <div className="flex justify-between items-baseline">
                       <span className="text-stone-200">Beef Brisket Sandwich</span>
-                      <span className="font-mono text-amber-400 font-bold">$11.50</span>
+                      <span className="font-mono text-amber-400 font-bold">
+                        {simMode === 'priceFade' ? (
+                          <span><s className="text-rose-400 mr-1">$12</s><span className="text-emerald-400">$8.00</span></span>
+                        ) : '$11.50'}
+                      </span>
                     </div>
                     <div className="flex justify-between items-baseline">
                       <span className="text-stone-200">1 LB Pulled Pork</span>
@@ -295,21 +326,25 @@ export default function TvSyncWhitePage() {
 
               {/* Bottom Ticker */}
               <div className="pt-2 border-t border-stone-800 flex items-center justify-between text-[11px] font-mono text-stone-400">
-                <span className="text-amber-300">
-                  {simMode === 'fryerOff' ? "⚠️ FRYER CUTOFF: Fryer grease is off for the night. Smoked meats hot until sold out!" : "🟢 FRYER IS HOT & COOKING TO ORDER"}
+                <span className={simMode === 'priceFade' ? 'text-emerald-400 font-bold' : 'text-amber-300'}>
+                  {simMode === 'fryerOff'
+                    ? '⚠️ FRYER CUTOFF: Fryer grease is off for the night. Smoked meats hot until sold out!'
+                    : simMode === 'priceFade'
+                    ? '🐷 PIG FLASH & PRICE FADE ACTIVE: -$4 OFF SMOKED PLATES UNTIL THE SMOKER IS EMPTY!'
+                    : '🟢 FRYER IS HOT & COOKING TO ORDER'}
                 </span>
                 <span>Square POS: Tap to Pay, Cards & Cash</span>
               </div>
             </div>
           </section>
 
-          {/* Section 3: The 4 Equipment Options Explained */}
+          {/* Section 3: The Equipment Options Explained */}
           <section className="space-y-6">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
               <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 3
               </span>
-              The Four Practical Ways You Can Run Your Trailer Screen
+              The Practical Ways You Can Run Your Trailer TV Screen
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -332,54 +367,54 @@ export default function TvSyncWhitePage() {
                   </ul>
                 </div>
                 <div className="text-[11px] text-emerald-800 bg-emerald-50 p-2.5 rounded-none border border-emerald-200">
-                  ✓ Bulletproof for festivals, county fairs, or rural pop-ups where cell service is spotty.
+                  ✓ Bulletproof fallback for festivals or rural pop-ups.
                 </div>
               </div>
 
-              {/* Option B: Smart TV Browser (Recommended) */}
+              {/* Option B: $15-$30 Raspberry Pi "Pit-Box" Appliance */}
               <div className="border-2 border-emerald-500 rounded-none p-5 bg-emerald-50/40 space-y-3 flex flex-col justify-between relative">
                 <div className="absolute -top-3 left-4 bg-emerald-600 text-white text-[10px] font-black uppercase px-2 py-0.5 rounded-none shadow">
-                  ⭐ Top Choice for Zero Extra Gear
+                  ⭐ Recommended "Turn-Key Appliance" (Zero Troubleshooting)
                 </div>
                 <div>
                   <div className="flex items-center gap-2 text-stone-900 pt-1">
                     <Wifi className="w-5 h-5 text-emerald-600 shrink-0" />
-                    <h3 className="font-bold text-base">Option B: Your Smart TV's Web Browser (Live Auto-Sync)</h3>
+                    <h3 className="font-bold text-base">Option B: $15 Raspberry Pi Zero 2 W "Pit-Box" (Or Closed-Lid Laptop)</h3>
                   </div>
                   <p className="text-xs text-stone-600 mt-2">
-                    If your trailer TV is a modern smart TV (Roku, Samsung, LG, TCL, or Fire TV), it already has a free built-in web browser app. You connect the TV to your phone's personal hotspot (the very same hotspot powering your Square card reader) and open your menu page.
+                    A stick-of-gum sized micro-computer (~$15 board / ~$30 total) Velcroed behind your TV. It draws so little power that it plugs straight into your <strong>TV's USB port</strong> for power and <strong>HDMI 1</strong> for video—no extra wall plug needed! When you turn on the TV, it wakes up automatically, puts your live menu on screen, and creates a direct wireless link to your cell phone.
                   </p>
                   <ul className="text-xs space-y-1.5 text-stone-700 mt-3 font-mono">
-                    <li><strong>Equipment Cost:</strong> $0 (uses the TV you already have)</li>
+                    <li><strong>Equipment Cost:</strong> ~$30 one-time (or $0 using an existing closed-lid laptop)</li>
                     <li><strong>Monthly Cost:</strong> $0 / month</li>
-                    <li><strong>Internet Needed:</strong> Yes (your phone mobile hotspot)</li>
-                    <li><strong>Updating:</strong> Instant live over-the-air sync!</li>
+                    <li><strong>Internet Needed:</strong> Works 100% offline phone-to-TV OR via hotspot</li>
+                    <li><strong>Updating:</strong> Instant 1-tap from your cell phone!</li>
                   </ul>
                 </div>
                 <div className="text-[11px] text-emerald-900 bg-white p-2.5 rounded-none border border-emerald-200 font-medium">
-                  ✓ Whenever you mark an item "Sold Out" on your phone, your TV updates live automatically right before your customers' eyes!
+                  ✓ Set on a Read-Only SD card so pulling the generator plug never corrupts it—just turn on the TV and cook!
                 </div>
               </div>
 
-              {/* Option C: $20 Amazon Fire Stick */}
+              {/* Option C: Smart TV Browser / Fire Stick */}
               <div className="border border-stone-300 rounded-none p-5 bg-white space-y-3 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-2 text-stone-900">
                     <Tv className="w-5 h-5 text-blue-600 shrink-0" />
-                    <h3 className="font-bold text-base">Option C: A $20 Amazon Fire TV Stick</h3>
+                    <h3 className="font-bold text-base">Option C: Smart TV Browser or $20 Fire TV Stick</h3>
                   </div>
                   <p className="text-xs text-stone-600 mt-2">
-                    If the TV in your trailer is a basic monitor without built-in web apps, plugging an inexpensive $20 Fire Stick into the HDMI port turns it into a smart display. It connects to your phone hotspot and runs your menu full-screen all shift long.
+                    If your trailer TV is a Smart TV (or has a $20 Fire Stick plugged in), it connects to your phone's hotspot (the same hotspot running your Square reader) and loads your live TV menu page full-screen.
                   </p>
                   <ul className="text-xs space-y-1.5 text-stone-700 mt-3 font-mono">
-                    <li><strong>Equipment Cost:</strong> ~$20.00 one-time</li>
+                    <li><strong>Equipment Cost:</strong> $0 to $20 one-time</li>
                     <li><strong>Monthly Cost:</strong> $0 / month</li>
                     <li><strong>Internet Needed:</strong> Yes (phone hotspot)</li>
                     <li><strong>Updating:</strong> Instant live over-the-air sync</li>
                   </ul>
                 </div>
                 <div className="text-[11px] text-blue-900 bg-blue-50 p-2.5 rounded-none border border-blue-200">
-                  ✓ Turns any standard HDMI monitor into an auto-syncing digital signage board.
+                  ✓ Updates both your customer website and your trailer TV at the exact same time.
                 </div>
               </div>
 
@@ -391,28 +426,125 @@ export default function TvSyncWhitePage() {
                     <h3 className="font-bold text-base">Option D: A $10 Direct HDMI Mirror Cable</h3>
                   </div>
                   <p className="text-xs text-stone-600 mt-2">
-                    If you prefer a wired connection with zero Wi-Fi or hotspot configuration, a simple $10 adapter cable plugs directly from your phone or iPad register straight into the TV monitor. Whatever is on your screen mirrors onto the TV.
+                    If you prefer a physical cord with zero wireless setup, a $10 adapter cable plugs from a phone, tablet, or closed-lid laptop straight into the TV HDMI port.
                   </p>
                   <ul className="text-xs space-y-1.5 text-stone-700 mt-3 font-mono">
                     <li><strong>Equipment Cost:</strong> ~$10.00 (adapter cable)</li>
                     <li><strong>Monthly Cost:</strong> $0 / month</li>
                     <li><strong>Internet Needed:</strong> No Wi-Fi required</li>
-                    <li><strong>Updating:</strong> Direct live mirror of your screen</li>
+                    <li><strong>Updating:</strong> Direct live HDMI signal</li>
                   </ul>
                 </div>
                 <div className="text-[11px] text-purple-900 bg-purple-50 p-2.5 rounded-none border border-purple-200">
-                  ✓ Simple plug-and-play with zero wireless setup or troubleshooting.
+                  ✓ Simple plug-and-play with zero wireless setup.
                 </div>
               </div>
 
             </div>
           </section>
 
-          {/* Section 4: Commercial Digital Signage Comparison */}
-          <section className="space-y-4">
+          {/* Section 4: Next-Level Crowd & Revenue Ideas to Discuss */}
+          <section className="space-y-5">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
               <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 4
+              </span>
+              Four Game-Changing Revenue &amp; Crowd Ideas to Talk About
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              
+              {/* Idea 1: Pig Flash & Price Fade */}
+              <div className="border-2 border-amber-500/80 bg-amber-50/40 p-5 space-y-2.5">
+                <div className="flex items-center justify-between">
+                  <span className="bg-amber-500 text-stone-950 font-mono font-black text-[10px] uppercase px-2 py-0.5">
+                    Idea #1 • End-of-Night Profit Saver
+                  </span>
+                  <span className="text-xs font-mono font-bold text-amber-900">$0 Cost</span>
+                </div>
+                <h3 className="font-black text-base text-stone-900">
+                  🐷 "Flash the Pig &amp; Price Fade" (Turn Leftover Stock Into Cash)
+                </h3>
+                <p className="text-xs text-stone-700 leading-relaxed">
+                  Once hickory pellets and meat go on the smoker, the cost is already spent. Instead of writing "Clearance" on a board or tossing out unsold brisket and pulled pork at the end of the night, you tap <strong>"-$2 Fade"</strong> or <strong>"-$4 Fade"</strong> on your phone during the last hour of service:
+                </p>
+                <ul className="text-xs space-y-1 text-stone-700 list-disc list-inside">
+                  <li>Your 55" TV briefly blanks to black, <strong>flashes your Tisdale Pig Logo</strong> to catch every eye on the patio, and snaps back with stepped-down green prices (e.g., <code>~~$22~~ $18</code>).</li>
+                  <li>Customers who ate at 5:30 PM look up after two beers and say, <em>"Shoot, for $9 I'm grabbing a second pulled pork sandwich to take home!"</em></li>
+                  <li>Every dollar you collect in that final hour is pure cash rescued from going to waste.</li>
+                </ul>
+              </div>
+
+              {/* Idea 2: Bowling Alley & Brewery NFC Stickers / Coasters */}
+              <div className="border-2 border-emerald-600/80 bg-emerald-50/40 p-5 space-y-2.5">
+                <div className="flex items-center justify-between">
+                  <span className="bg-emerald-600 text-white font-mono font-black text-[10px] uppercase px-2 py-0.5">
+                    Idea #2 • Bowling Alleys &amp; Breweries
+                  </span>
+                  <span className="text-xs font-mono font-bold text-emerald-900">~$0.25 / Sticker</span>
+                </div>
+                <h3 className="font-black text-base text-stone-900">
+                  📲 NFC Table Coasters &amp; Stickers ("Order &amp; Pay Without Leaving Your Lane")
+                </h3>
+                <p className="text-xs text-stone-700 leading-relaxed">
+                  Inside a bowling alley or taproom, folks don't want to take off their bowling shoes or leave their beer to stand outside in the cold for 15 minutes. By placing a thin NFC chip behind custom <strong>Tisdale BBQ Coasters or Table Stickers</strong> inside the venue:
+                </p>
+                <ul className="text-xs space-y-1 text-stone-700 list-disc list-inside">
+                  <li><strong>Tap at the Table:</strong> Customers tap their phone right on the coaster/sticker at their bowling lane or barstool to open your live menu.</li>
+                  <li><strong>Pay on the Phone = Guaranteed Pickup:</strong> When they pay right on their phone (Square / Apple Pay / Cash App), you know 100% they are coming to get their food!</li>
+                  <li><strong>Secret Pitmaster Coin (#admin):</strong> We also programmed an NFC coin you stick inside your cash register window—tap your own phone to it and your Pitmaster Remote opens immediately without typing a password or URL!</li>
+                </ul>
+              </div>
+
+              {/* Idea 3: Vibrating Coaster Pagers + Virtual Phone Coaster */}
+              <div className="border border-stone-300 bg-white p-5 space-y-2.5">
+                <div className="flex items-center justify-between">
+                  <span className="bg-stone-900 text-amber-400 font-mono font-black text-[10px] uppercase px-2 py-0.5">
+                    Idea #3 • Pager Integration
+                  </span>
+                  <span className="text-xs font-mono font-bold text-stone-600">Uses Your Existing Coasters</span>
+                </div>
+                <h3 className="font-black text-base text-stone-900">
+                  🛎️ Tying Into Your Vibrating Coaster Pagers (+ Phone Buzz)
+                </h3>
+                <p className="text-xs text-stone-700 leading-relaxed">
+                  You already own physical vibrating coaster pagers! Here are three ways we supercharge them:
+                </p>
+                <ul className="text-xs space-y-1 text-stone-700 list-disc list-inside">
+                  <li><strong>NFC Coin on Every Coaster:</strong> Stick an NFC coin onto the center of each plastic coaster pager. While a customer sits at a picnic table waiting for their coaster to buzz, their friends can tap the coaster with their phone to pull up your menu!</li>
+                  <li><strong>Phone Buzz for Indoor Orders:</strong> When someone orders from inside the bowling alley (and doesn't have a plastic coaster in hand), 1 tap on your phone texts them <em>"🔥 Order Ready at Window!"</em> so their own cell phone buzzes in their pocket.</li>
+                  <li><strong>Optional $4 Pi Radio Bridge:</strong> Your coaster base uses <code>433.92 MHz</code> radio signals. If you ever want your phone/Pi to trigger the physical coasters directly, a $4 radio module on the Raspberry Pi can clone those exact pager signals.</li>
+                </ul>
+              </div>
+
+              {/* Idea 4: Free 250ft Wi-Fi Billboard */}
+              <div className="border border-stone-300 bg-white p-5 space-y-2.5">
+                <div className="flex items-center justify-between">
+                  <span className="bg-stone-900 text-amber-400 font-mono font-black text-[10px] uppercase px-2 py-0.5">
+                    Idea #4 • Guerilla Crowd Magnet
+                  </span>
+                  <span className="text-xs font-mono font-bold text-stone-600">$0 Advertising</span>
+                </div>
+                <h3 className="font-black text-base text-stone-900">
+                  📡 The 250-Foot "Wi-Fi Billboard" (No Internet Required)
+                </h3>
+                <p className="text-xs text-stone-700 leading-relaxed">
+                  At crowded festivals, breweries, and events, cellular data slows down and hungry people open their phone's <strong>Wi-Fi Settings</strong> looking for a signal.
+                </p>
+                <ul className="text-xs space-y-1 text-stone-700 list-disc list-inside">
+                  <li>Your trailer's Raspberry Pi or closed-lid laptop broadcasts a public Wi-Fi name across a 250-foot radius: <strong><code>🔥 Tisdale_BBQ_Smoked_Brisket</code></strong>.</li>
+                  <li>It doesn't need internet—just seeing <em>"Tisdale BBQ Smoked Brisket"</em> pop up at the top of their iPhone makes people hungry and tells the whole crowd you are parked outside!</li>
+                </ul>
+              </div>
+
+            </div>
+          </section>
+
+          {/* Section 5: Commercial Digital Signage Comparison */}
+          <section className="space-y-4">
+            <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
+              <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
+                5
               </span>
               Why We Don't Want You Paying for Commercial Signage Systems
             </h2>
@@ -432,11 +564,11 @@ export default function TvSyncWhitePage() {
             </div>
           </section>
 
-          {/* Section 5: Side-by-Side Matrix */}
+          {/* Section 6: Side-by-Side Matrix */}
           <section className="space-y-4">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
               <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
-                5
+                6
               </span>
               Side-by-Side Comparison of Your Choices
             </h2>
@@ -446,11 +578,11 @@ export default function TvSyncWhitePage() {
                 <thead className="bg-stone-100 text-stone-900 font-bold border-b border-stone-200">
                   <tr>
                     <th className="p-3">Evaluation Factor</th>
-                    <th className="p-3">Option A: Your USB Drive</th>
+                    <th className="p-3">Option A: USB Drive</th>
                     <th className="p-3 bg-emerald-50 text-emerald-900 border-x border-emerald-200">
-                      Option B: Your Smart TV Browser ⭐
+                      Option B: $15 Pi "Pit-Box" / Closed Laptop ⭐
                     </th>
-                    <th className="p-3">Option C: $20 Fire Stick</th>
+                    <th className="p-3">Option C: Smart TV / Fire Stick</th>
                     <th className="p-3">Option D: $10 HDMI Cable</th>
                   </tr>
                 </thead>
@@ -458,8 +590,8 @@ export default function TvSyncWhitePage() {
                   <tr>
                     <td className="p-3 font-semibold text-stone-700">Hardware Cost</td>
                     <td className="p-3 font-bold text-emerald-700">$0</td>
-                    <td className="p-3 bg-emerald-50/50 font-bold text-emerald-700 border-x border-emerald-200">$0</td>
-                    <td className="p-3 text-stone-600">~$20.00</td>
+                    <td className="p-3 bg-emerald-50/50 font-bold text-emerald-700 border-x border-emerald-200">~$30 (or $0 Laptop)</td>
+                    <td className="p-3 text-stone-600">$0 – $20.00</td>
                     <td className="p-3 text-stone-600">~$10.00</td>
                   </tr>
                   <tr>
@@ -470,23 +602,23 @@ export default function TvSyncWhitePage() {
                     <td className="p-3 font-bold text-emerald-700">$0</td>
                   </tr>
                   <tr>
-                    <td className="p-3 font-semibold text-stone-700">Live 86 / Sold Out Sync</td>
+                    <td className="p-3 font-semibold text-stone-700">Live 86, Specials &amp; Price Fade</td>
                     <td className="p-3 text-stone-500">Requires new JPG export</td>
-                    <td className="p-3 bg-emerald-50/50 font-bold text-emerald-700 border-x border-emerald-200">Instant (Over the air)</td>
+                    <td className="p-3 bg-emerald-50/50 font-bold text-emerald-700 border-x border-emerald-200">Instant (1-Tap on Phone)</td>
                     <td className="p-3 font-bold text-emerald-700">Instant (Over the air)</td>
                     <td className="p-3 font-bold text-emerald-700">Instant (Mirrored)</td>
                   </tr>
                   <tr>
-                    <td className="p-3 font-semibold text-stone-700">Internet Connection Needed</td>
-                    <td className="p-3 text-emerald-700 font-bold">None (100% Offline)</td>
-                    <td className="p-3 bg-emerald-50/50 text-stone-700 border-x border-emerald-200">Phone Hotspot</td>
-                    <td className="p-3 text-stone-700">Phone Hotspot</td>
-                    <td className="p-3 text-emerald-700 font-bold">None</td>
+                    <td className="p-3 font-semibold text-stone-700">250ft Free Wi-Fi Billboard SSID</td>
+                    <td className="p-3 text-stone-400">No</td>
+                    <td className="p-3 bg-emerald-50/50 font-bold text-emerald-700 border-x border-emerald-200">Yes (Built-In!)</td>
+                    <td className="p-3 text-stone-400">No</td>
+                    <td className="p-3 text-stone-400">No</td>
                   </tr>
                   <tr>
                     <td className="p-3 font-semibold text-stone-700">Ease of Daily Use</td>
-                    <td className="p-3 text-stone-700">Plug & Play</td>
-                    <td className="p-3 bg-emerald-50/50 font-bold text-emerald-700 border-x border-emerald-200">100% Hands-Free</td>
+                    <td className="p-3 text-stone-700">Plug &amp; Play</td>
+                    <td className="p-3 bg-emerald-50/50 font-bold text-emerald-700 border-x border-emerald-200">Powers on with TV USB!</td>
                     <td className="p-3 text-stone-700">100% Hands-Free</td>
                     <td className="p-3 text-stone-700">Plug in cable</td>
                   </tr>
@@ -495,28 +627,31 @@ export default function TvSyncWhitePage() {
             </div>
           </section>
 
-          {/* Section 6: Action Plan / Partnership */}
+          {/* Section 7: Action Plan / Partnership */}
           <section className="space-y-3 border-t border-stone-200 pt-6">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2">
               <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
-                6
+                7
               </span>
-              How We Can Bring This to Life Together
+              How We Can Roll This Out Together at Your Pace
             </h2>
 
             <div className="bg-stone-50 border border-stone-200 rounded-none p-5 space-y-3 text-xs">
               <h4 className="font-bold text-stone-900 text-sm">
-                Three Simple Steps We Can Take at Your Pace:
+                Four Simple Steps We Can Take Whenever You’re Ready:
               </h4>
               <ol className="space-y-2 text-stone-700 list-decimal list-inside font-medium leading-relaxed">
                 <li>
-                  <strong>Step 1 (Ready Right Now - Your USB Drive):</strong> Whenever you want to refresh the picture on your thumb drive, just tap the green <strong>"Download TV JPG (for USB)"</strong> button. It creates a crisp, perfectly sized 1080p image with your exact trailer colors and prices ready to plug in.
+                  <strong>Step 1 (Ready Right Now — USB &amp; Live Website):</strong> Your live website and 1-click <strong>"Download TV JPG (for USB)"</strong> button are 100% ready today.
                 </li>
                 <li>
-                  <strong>Step 2 (Let's Test Your TV's Browser):</strong> Next time we're together at your trailer, let's look at the TV in your window (Roku, Samsung, LG, TCL, Vizio). We'll connect it to your phone hotspot, load your live menu, and see if live wireless sync is your favorite way to roll.
+                  <strong>Step 2 (NFC Coins on Your Register &amp; Coaster Pagers):</strong> Stick your <strong>Secret Pitmaster NFC Coin (<code>#admin</code>)</strong> inside your register window so you can open your controller with one tap of your phone, and place menu NFC coins on your order window glass and plastic coaster pagers.
                 </li>
                 <li>
-                  <strong>Step 3 (If You Want Live Sync on an Older TV):</strong> If your TV doesn't have a web browser built in, we can grab an inexpensive $20 Amazon Fire Stick and have you syncing live over the air in under 10 minutes.
+                  <strong>Step 3 (Brewery &amp; Bowling Alley Table Stickers):</strong> Place custom Tisdale BBQ NFC coasters or stickers on tables inside the bowling alley or brewery so customers can order and pre-pay from their lane and only walk outside when their food is hot and ready.
+                </li>
+                <li>
+                  <strong>Step 4 (Plug-and-Play TV "Pit-Box"):</strong> Velcro the tiny USB-powered Raspberry Pi Zero 2 W behind your 55" TV so you can trigger <strong>"Flash the Pig &amp; Price Fade"</strong>, mark items sold out, and broadcast the <code>Tisdale_BBQ</code> Wi-Fi Billboard straight from your phone.
                 </li>
               </ol>
             </div>
