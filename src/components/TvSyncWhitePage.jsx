@@ -517,23 +517,24 @@ export default function TvSyncWhitePage() {
                 </ul>
               </div>
 
-              {/* Idea 4: Free 250ft Wi-Fi Billboard */}
+              {/* Idea 4: Free 250ft Wi-Fi Billboard & Dead-Cell-Tower Offline Sync */}
               <div className="border border-stone-300 bg-white p-5 space-y-2.5">
                 <div className="flex items-center justify-between">
                   <span className="bg-stone-900 text-amber-400 font-mono font-black text-[10px] uppercase px-2 py-0.5">
-                    Idea #4 • Guerilla Crowd Magnet
+                    Idea #4 • Dead-Cell-Tower Festival Mode
                   </span>
-                  <span className="text-xs font-mono font-bold text-stone-600">$0 Advertising</span>
+                  <span className="text-xs font-mono font-bold text-stone-600">100% Offline Ready</span>
                 </div>
                 <h3 className="font-black text-base text-stone-900">
-                  📡 The 250-Foot "Wi-Fi Billboard" (No Internet Required)
+                  📡 250ft "Wi-Fi Billboard" + NFC Ad-Hoc Offline Sync + Menu Disclaimer
                 </h3>
                 <p className="text-xs text-stone-700 leading-relaxed">
-                  At crowded festivals, breweries, and events, cellular data slows down and hungry people open their phone's <strong>Wi-Fi Settings</strong> looking for a signal.
+                  At a massive festival where cell towers are overloaded and nobody has internet, how does your phone still update the TV—and how do customers still see your menu?
                 </p>
                 <ul className="text-xs space-y-1 text-stone-700 list-disc list-inside">
-                  <li>Your trailer's Raspberry Pi or closed-lid laptop broadcasts a public Wi-Fi name across a 250-foot radius: <strong><code>🔥 Tisdale_BBQ_Smoked_Brisket</code></strong>.</li>
-                  <li>It doesn't need internet—just seeing <em>"Tisdale BBQ Smoked Brisket"</em> pop up at the top of their iPhone makes people hungry and tells the whole crowd you are parked outside!</li>
+                  <li><strong>Direct 4-Foot Phone-to-Pi Link:</strong> The Raspberry Pi stores a complete copy of your menu on its memory card (`192.168.4.1`). Tapping your register NFC coin connects your phone directly to the Pi inside the trailer—updating the TV in 2 milliseconds with <strong>zero cell service required</strong>.</li>
+                  <li><strong>250ft Wi-Fi Billboard &amp; Captive Portal:</strong> Outside, the Pi broadcasts <strong><code>🔥 Tisdale_BBQ_Smoked_Brisket</code></strong>. When hungry customers with no cell signal tap that Wi-Fi name, your offline menu automatically pops up on their phone!</li>
+                  <li><strong>1-Line Menu Disclaimer:</strong> A simple note on the online menu states: <em>"Final availability and live Trailer TV evening price fades are confirmed at the pickup window"</em>—so if you run an offline Price Fade on the trailer TV, customers inside a venue are thrilled when their plate is $4 cheaper at the window!</li>
                 </ul>
               </div>
 
@@ -627,31 +628,34 @@ export default function TvSyncWhitePage() {
             </div>
           </section>
 
-          {/* Section 7: Action Plan / Partnership */}
-          <section className="space-y-3 border-t border-stone-200 pt-6">
+          {/* Section 7: Zero-Downtime Fail-Safe & Action Plan */}
+          <section className="space-y-4 border-t border-stone-200 pt-6">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2">
-              <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
+              <span className="w-6 h-6 rounded-none bg-emerald-700 text-white flex items-center justify-center text-xs font-bold font-mono">
                 7
               </span>
-              How We Can Roll This Out Together at Your Pace
+              Our #1 Rule: Zero Downtime, Zero Overwhelm &amp; The "2-Second USB Fail-Safe"
             </h2>
 
-            <div className="bg-stone-50 border border-stone-200 rounded-none p-5 space-y-3 text-xs">
-              <h4 className="font-bold text-stone-900 text-sm">
-                Four Simple Steps We Can Take Whenever You’re Ready:
+            <div className="bg-emerald-50 border-2 border-emerald-600 rounded-none p-5 space-y-3 text-xs">
+              <h4 className="font-black text-emerald-950 text-sm uppercase tracking-wide">
+                🛡️ Computers Can Have a Mind of Their Own — Here Is How We Guarantee Zero Lost Revenue:
               </h4>
-              <ol className="space-y-2 text-stone-700 list-decimal list-inside font-medium leading-relaxed">
+              <p className="text-stone-700 leading-relaxed">
+                During a busy dinner rush, you never have time to stop cooking and troubleshoot technology—downtime is lost money. Every idea in this brief is designed as an <strong>optional tool on the shelf</strong> with a built-in fail-safe:
+              </p>
+              <ol className="space-y-2 text-stone-800 list-decimal list-inside font-medium leading-relaxed">
                 <li>
-                  <strong>Step 1 (Ready Right Now — USB &amp; Live Website):</strong> Your live website and 1-click <strong>"Download TV JPG (for USB)"</strong> button are 100% ready today.
+                  <strong>The 2-Second USB Fail-Safe (Always Plugged In):</strong> Your <strong>USB thumb drive stays plugged into your TV permanently</strong> alongside the HDMI cord. If a computer or wireless link ever acts up during a rush, you don't troubleshoot anything—just press <strong>INPUT → USB</strong> on your TV remote and your crisp static menu is back on screen in <strong>2 seconds flat</strong>!
                 </li>
                 <li>
-                  <strong>Step 2 (NFC Coins on Your Register &amp; Coaster Pagers):</strong> Stick your <strong>Secret Pitmaster NFC Coin (<code>#admin</code>)</strong> inside your register window so you can open your controller with one tap of your phone, and place menu NFC coins on your order window glass and plastic coaster pagers.
+                  <strong>100% Tested Beforehand + I’m There With You On-Site:</strong> Nothing goes onto your trailer until it is completely tested on the bench first. Even then, I will be right there with you for the first couple of live runs to watch it work and make sure it’s effortless.
                 </li>
                 <li>
-                  <strong>Step 3 (Brewery &amp; Bowling Alley Table Stickers):</strong> Place custom Tisdale BBQ NFC coasters or stickers on tables inside the bowling alley or brewery so customers can order and pre-pay from their lane and only walk outside when their food is hot and ready.
+                  <strong>Phase 1 First (Zero Risk):</strong> We start with your live website, your fresh USB backup image, and passive waterproof NFC coins (which have no batteries or computers and can never crash).
                 </li>
                 <li>
-                  <strong>Step 4 (Plug-and-Play TV "Pit-Box"):</strong> Velcro the tiny USB-powered Raspberry Pi Zero 2 W behind your 55" TV so you can trigger <strong>"Flash the Pig &amp; Price Fade"</strong>, mark items sold out, and broadcast the <code>Tisdale_BBQ</code> Wi-Fi Billboard straight from your phone.
+                  <strong>Phase 2 &amp; 3 Only When You Want Them:</strong> Whenever you're ready, we can plug in the Raspberry Pi "Pit-Box" for 1-tap <strong>"Flash the Pig &amp; Price Fade"</strong>, Sold-Out toggles, and bowling alley/brewery NFC coasters at your own pace.
                 </li>
               </ol>
             </div>

@@ -259,22 +259,75 @@ export default function DiscoveryWhitePage() {
                 </ul>
               </div>
 
-              {/* Option 5: 250ft Free Wi-Fi Billboard */}
+              {/* Option 5: 250ft Free Wi-Fi Billboard & Dead-Zone Captive Portal */}
               <div className="border border-stone-300 bg-white p-5 space-y-2">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="bg-stone-900 text-amber-400 font-mono font-black text-[10px] uppercase px-2.5 py-0.5">
-                    Option 5 • Free Festival Crowd Magnet
+                    Option 5 • Dead-Cell-Tower Festival Mode &amp; Wi-Fi Billboard
                   </span>
-                  <span className="text-xs font-mono font-bold text-stone-600">$0 Advertising</span>
+                  <span className="text-xs font-mono font-bold text-stone-600">Works 100% Offline</span>
                 </div>
                 <h3 className="font-black text-base text-stone-900">
-                  📡 The 250-Foot "Wi-Fi Billboard" (No Internet Required)
+                  📡 250ft "Wi-Fi Billboard" + NFC Ad-Hoc Offline Sync + Menu Disclaimer
                 </h3>
                 <p className="text-xs text-stone-700 leading-relaxed">
-                  At crowded events where cell service boggs down, people open their phone's <strong>Wi-Fi Settings</strong>. Your Raspberry Pi broadcasts a public Wi-Fi network name across 250 feet: <strong><code>🔥 Tisdale_BBQ_Smoked_Brisket</code></strong>. It doesn't need internet—just seeing your name at the top of their phone's Wi-Fi list makes people hungry and points them straight to your trailer!
+                  At a massive festival where cell towers are overloaded and nobody has internet, how does your phone still update the TV—and how do customers still see your menu?
                 </p>
+                <ul className="text-xs space-y-1 text-stone-700 list-disc list-inside">
+                  <li><strong>Direct Phone-to-Pi Ad-Hoc Link (4 Feet):</strong> The Raspberry Pi stores a complete copy of your website on its memory card and creates its own private trailer radio bubble (<code>192.168.4.1</code>). When you tap your register NFC coin, your phone talks directly to the Pi 4 feet away—updating the TV in 2 milliseconds with <strong>zero cell service required</strong>.</li>
+                  <li><strong>Free 250ft Wi-Fi Billboard &amp; Captive Portal:</strong> Outside, the Pi broadcasts <strong><code>🔥 Tisdale_BBQ_Smoked_Brisket</code></strong>. When customers with no cell signal tap that Wi-Fi name, your offline menu automatically pops up on their phone screen (just like hotel/airport Wi-Fi!).</li>
+                  <li><strong>Simple 1-Line Menu Disclaimer:</strong> If you trigger a live <em>Evening Price Fade</em> on the trailer TV while a customer inside a bowling alley is looking at the standard online menu, a clean 1-line note on the menu states: <em>"Final availability and live Trailer TV evening price fades are confirmed at the pickup window."</em> When they walk up and find out their plate is $4 cheaper at the window, they are thrilled!</li>
+                </ul>
               </div>
 
+            </div>
+          </section>
+
+          {/* Section 4: Zero-Downtime Fail-Safe & Crawl-Walk-Run Rollout */}
+          <section className="space-y-4">
+            <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
+              <span className="w-6 h-6 rounded-none bg-emerald-700 text-white flex items-center justify-center text-xs font-bold font-mono">
+                4
+              </span>
+              Our #1 Rule: Zero Downtime, Zero Overwhelm &amp; The "2-Second Fail-Safe"
+            </h2>
+
+            <div className="bg-emerald-50 border-2 border-emerald-600 p-5 space-y-3 text-xs">
+              <h3 className="font-black text-sm sm:text-base text-emerald-950 uppercase tracking-wide">
+                🛡️ Technology Must Never Slow Down Your Window During a Rush
+              </h3>
+              <p className="text-stone-700 leading-relaxed">
+                Computers and electronics can sometimes have a mind of their own—and during a Friday night dinner rush, <strong>every minute of downtime is lost revenue</strong>. You should never have to stop cooking or serving customers to troubleshoot a gadget. Here is how we guarantee these ideas never overwhelm you or slow you down:
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+                <div className="bg-white border border-emerald-300 p-3.5 space-y-1">
+                  <div className="font-mono font-black text-emerald-800 uppercase text-[11px]">
+                    1. The 2-Second USB Fail-Safe
+                  </div>
+                  <p className="text-stone-600 leading-relaxed">
+                    Your <strong>USB thumb drive stays plugged into your TV permanently</strong> as your indestructible backup while the Raspberry Pi plugs into <code>HDMI 1</code>. If technology ever hiccups, you don't troubleshoot anything—just press <strong>INPUT → USB</strong> on your TV remote and your static menu is back up in 2 seconds flat!
+                  </p>
+                </div>
+
+                <div className="bg-white border border-emerald-300 p-3.5 space-y-1">
+                  <div className="font-mono font-black text-emerald-800 uppercase text-[11px]">
+                    2. On-Site Testing Together
+                  </div>
+                  <p className="text-stone-600 leading-relaxed">
+                    Nothing goes onto your trailer until it is 100% bench-tested beforehand. Even then, I will be right there on-site with you for the first couple of shifts to test it live and make sure it runs hands-free before you ever solo it.
+                  </p>
+                </div>
+
+                <div className="bg-white border border-emerald-300 p-3.5 space-y-1">
+                  <div className="font-mono font-black text-emerald-800 uppercase text-[11px]">
+                    3. "Crawl → Walk → Run" Pace
+                  </div>
+                  <p className="text-stone-600 leading-relaxed">
+                    Every option in this paper is just a tool on the shelf. We start with <strong>Phase 1</strong> (Website + USB backup + passive NFC stickers that have no batteries and can never crash), and only turn on Phase 2 or Phase 3 features if and when you want them.
+                  </p>
+                </div>
+              </div>
             </div>
           </section>
 
