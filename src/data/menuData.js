@@ -30,7 +30,8 @@ export const INITIAL_ANNOUNCEMENTS = {
   flashSpecialTitle: "🚨 PITMASTER FLASH SPECIAL — NEXT 15 MINUTES!",
   flashSpecialDeal: "🔥 Hot Brisket Sandwich + Any Side $15 • Free Honey Bun Cake Slice w/ Any 2-Meat Combo!",
   tvRotateMode: false,
-  nowServingOrder: ""
+  priceFadeAmount: 0, // $0 (Full Price), $2 (Evening Fade), $4 (Late Night Fade), $5 (Last Call Smoker Clear)
+  pigFlashTimestamp: 0
 };
 
 // "Specials in a couple different spots"

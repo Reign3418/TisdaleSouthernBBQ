@@ -37,6 +37,7 @@ export default function TrailerTwinModal() {
     toggleSpecialStock,
     editSpecial,
     toggleFryerStatus,
+    triggerPriceFade,
     updateCurrentLocation,
     tvBoardTheme,
     setTvBoardTheme,
@@ -52,6 +53,29 @@ export default function TrailerTwinModal() {
   const [showRigGuide, setShowRigGuide] = useState(false);
   const [syncFlash, setSyncFlash] = useState(false);
   const [rotateSlide, setRotateSlide] = useState(0); // 0 = Full Menu, 1 = Giant Spotlight + NFC
+  const [pigFlashing, setPigFlashing] = useState(false);
+
+  // Trigger the 1.3-second "Pig Emblem Screen Blank & Flash" whenever Price Fade changes
+  useEffect(() => {
+    if (!announcements.pigFlashTimestamp) return;
+    setPigFlashing(true);
+    const t = setTimeout(() => setPigFlashing(false), 1350);
+    return () => clearTimeout(t);
+  }, [announcements.pigFlashTimestamp]);
+
+  const fadeAmt = Number(announcements.priceFadeAmount || 0);
+  const getFadedPriceObj = (rawPrice, numPrice) => {
+    const base = numPrice || parseFloat(String(rawPrice || '').replace(/[^0-9.]/g, '')) || 0;
+    if (!fadeAmt || base <= 6) {
+      return { isFaded: false, current: rawPrice, old: null };
+    }
+    const discounted = Math.max(5, base - fadeAmt);
+    return {
+      isFaded: true,
+      current: `$${discounted.toFixed(2)}`,
+      old: `$${base.toFixed(0)}`
+    };
+  };
 
   // Auto-rotate the TV screen between Full Menu and Giant Spotlight when tvRotateMode is enabled
   useEffect(() => {
@@ -391,6 +415,30 @@ export default function TrailerTwinModal() {
                   : 'ring-1 ring-amber-400/80 shadow-inner'
               }`}
             >
+              {/* =========================================================== */}
+              {/* PIG EMBLEM SCREEN BLANK & FLASH OVERLAY (PRICE FADE EVENT)  */}
+              {/* =========================================================== */}
+              {pigFlashing && (
+                <div className="absolute inset-0 z-50 bg-[#070504] flex flex-col items-center justify-center p-2 text-center animate-fadeIn">
+                  <img
+                    src="./images/truck-logo-wrap.jpg"
+                    alt="Tisdale's Southern BBQ Pig Emblem Flash"
+                    className={`${
+                      isTvZoomed ? 'w-36 h-36' : 'w-10 h-10'
+                    } rounded-none object-cover border-2 border-amber-400 shadow-[0_0_40px_rgba(245,158,11,0.95)] animate-bounce`}
+                  />
+                  <div
+                    className={`font-black uppercase font-['Bebas_Neue'] text-amber-400 tracking-widest mt-1 ${
+                      isTvZoomed ? 'text-3xl mt-3' : 'text-[6px] leading-none'
+                    }`}
+                  >
+                    {fadeAmt > 0
+                      ? `🔥 SMOKER PRICE FADE: -$${fadeAmt} OFF PLATES!`
+                      : '🔥 FULL PIT MENU RESTORED'}
+                  </div>
+                </div>
+              )}
+
               {/* TV Top Banner */}
               <div
                 className={`px-1.5 py-0.5 flex items-center justify-between border-b ${
@@ -400,9 +448,14 @@ export default function TrailerTwinModal() {
                 } ${isTvZoomed ? 'text-xs py-2 px-4' : 'text-[4.5px] leading-tight'}`}
               >
                 <div className="font-black uppercase tracking-wider truncate">
-                  🔥 TISDALE'S SOUTHERN BBQ • 100% HICKORY SMOKED
+                  🔥 TISDALE'S SOUTHERN BBQ • {fadeAmt > 0 ? `EVENING PRICE FADE (-$${fadeAmt} OFF!)` : '100% HICKORY SMOKED'}
                 </div>
                 <div className="flex items-center gap-1 font-mono font-bold shrink-0">
+                  {fadeAmt > 0 && (
+                    <span className="bg-emerald-500 text-stone-950 px-1 rounded-none uppercase font-black">
+                      🐷 -${fadeAmt} FADE
+                    </span>
+                  )}
                   {!announcements.fryerOpen && (
                     <span className="bg-rose-600 text-white px-1 rounded-none uppercase">
                       🛑 GREASE OFF
@@ -460,13 +513,29 @@ export default function TrailerTwinModal() {
                                   {isFryerOff ? 'GREASE OFF' : 'SOLD OUT'}
                                 </span>
                               ) : (
-                                <span
-                                  className={`font-black font-mono shrink-0 ${
-                                    tvBoardTheme === 'classicOrange' ? 'text-[#B95000]' : 'text-amber-400'
-                                  }`}
-                                >
-                                  {item.price}
-                                </span>
+                                (() => {
+                                  const fp = getFadedPriceObj(item.price, item.numericPrice);
+                                  return (
+                                    <span className="font-black font-mono shrink-0 flex items-center gap-0.5">
+                                      {fp.isFaded && (
+                                        <span className="line-through opacity-50 text-rose-500">
+                                          {fp.old}
+                                        </span>
+                                      )}
+                                      <span
+                                        className={
+                                          fp.isFaded
+                                            ? 'text-emerald-500'
+                                            : tvBoardTheme === 'classicOrange'
+                                            ? 'text-[#B95000]'
+                                            : 'text-amber-400'
+                                        }
+                                      >
+                                        {fp.current}
+                                      </span>
+                                    </span>
+                                  );
+                                })()
                               )}
                             </div>
                           );
@@ -523,13 +592,29 @@ export default function TrailerTwinModal() {
                                   {isFryerOff ? 'GREASE OFF' : 'SOLD OUT'}
                                 </span>
                               ) : (
-                                <span
-                                  className={`font-black font-mono shrink-0 ${
-                                    tvBoardTheme === 'classicOrange' ? 'text-[#B95000]' : 'text-amber-400'
-                                  }`}
-                                >
-                                  {item.price}
-                                </span>
+                                (() => {
+                                  const fp = getFadedPriceObj(item.price, item.numericPrice);
+                                  return (
+                                    <span className="font-black font-mono shrink-0 flex items-center gap-0.5">
+                                      {fp.isFaded && (
+                                        <span className="line-through opacity-50 text-rose-500">
+                                          {fp.old}
+                                        </span>
+                                      )}
+                                      <span
+                                        className={
+                                          fp.isFaded
+                                            ? 'text-emerald-500'
+                                            : tvBoardTheme === 'classicOrange'
+                                            ? 'text-[#B95000]'
+                                            : 'text-amber-400'
+                                        }
+                                      >
+                                        {fp.current}
+                                      </span>
+                                    </span>
+                                  );
+                                })()
                               )}
                             </div>
                           );
@@ -629,26 +714,26 @@ export default function TrailerTwinModal() {
                 </div>
               </div>
 
-              {/* Rotating Giant Spotlight / Flash Special / Now Serving Overlay inside Trailer TV */}
-              {(announcements.nowServingOrder || announcements.flashSpecialActive || rotateSlide === 1) && (
+              {/* Rotating Giant Spotlight / Flash Special / Price Fade Overlay inside Trailer TV */}
+              {(fadeAmt > 0 || announcements.flashSpecialActive || rotateSlide === 1) && (
                 <div
                   className={`absolute inset-x-0 bottom-0 z-20 flex items-center justify-between px-2 py-1 border-t-2 ${
-                    announcements.nowServingOrder
-                      ? 'border-emerald-300 bg-gradient-to-r from-emerald-800 via-emerald-600 to-teal-700 text-white animate-pulse'
+                    fadeAmt > 0
+                      ? 'border-emerald-300 bg-gradient-to-r from-emerald-900 via-emerald-600 to-amber-600 text-white'
                       : 'border-amber-300 bg-gradient-to-r from-rose-800 via-[#D9381E] to-amber-600 text-white'
                   } shadow-lg ${
                     isTvZoomed ? 'py-3 px-5 text-sm' : 'text-[4.5px] leading-tight py-0.5 px-1'
                   }`}
                 >
                   <div className="font-black uppercase tracking-wider truncate">
-                    {announcements.nowServingOrder
-                      ? `🛎️ NOW SERVING AT PICKUP WINDOW: ORDER ${announcements.nowServingOrder}!`
+                    {fadeAmt > 0
+                      ? `🐷 PITMASTER PRICE FADE ACTIVE: -$${fadeAmt} OFF SMOKED PLATES & SANDWICHES UNTIL SOLD OUT!`
                       : announcements.flashSpecialActive
                       ? `🚨 ${announcements.flashSpecialTitle || 'FLASH SPECIAL'} — ${announcements.flashSpecialDeal}`
                       : '🔥 ROTATING SPOTLIGHT: SMOKED BRISKET ($22) • SPARE RIBS ($18) • 📲 TAP PHONE ON WINDOW NFC CHIP!'}
                   </div>
                   <span className="bg-amber-300 text-stone-950 font-mono font-black px-1 shrink-0 ml-1">
-                    {announcements.nowServingOrder ? 'ORDER READY' : 'LIVE NOW'}
+                    {fadeAmt > 0 ? `-$${fadeAmt} FADE` : 'LIVE NOW'}
                   </span>
                 </div>
               )}
@@ -898,35 +983,36 @@ export default function TrailerTwinModal() {
                       </button>
                     </div>
 
-                    {/* 1-Tap "Now Serving Order #" Silent Pager on the 55" TV */}
-                    <div className="pt-1 border-t border-amber-500/30 flex items-center gap-1.5">
-                      <input
-                        type="text"
-                        placeholder="Order # or Name (e.g. #42 Mike)"
-                        value={announcements.nowServingOrder || ''}
-                        onChange={(e) =>
-                          setAnnouncements(prev => ({
-                            ...prev,
-                            nowServingOrder: e.target.value
-                          }))
-                        }
-                        className="flex-1 bg-stone-950 border border-stone-700 px-2 py-1 text-[11px] text-white font-mono focus:outline-none focus:border-emerald-400"
-                      />
-                      <button
-                        onClick={() =>
-                          setAnnouncements(prev => ({
-                            ...prev,
-                            nowServingOrder: prev.nowServingOrder ? '' : '#42 (MIKE)'
-                          }))
-                        }
-                        className={`px-2.5 py-1 font-mono font-black text-[10px] uppercase cursor-pointer border shrink-0 ${
-                          announcements.nowServingOrder
-                            ? 'bg-stone-800 text-stone-300 border-stone-600'
-                            : 'bg-emerald-600 hover:bg-emerald-500 text-white border-emerald-400'
-                        }`}
-                      >
-                        {announcements.nowServingOrder ? 'Clear' : '🛎️ Call #42'}
-                      </button>
+                    {/* 1-Tap "Pig Flash & Price Fade" End-of-Night Stock Clearer */}
+                    <div className="pt-2 border-t border-amber-500/30 space-y-1.5">
+                      <div className="flex items-center justify-between text-[10px] font-mono">
+                        <span className="text-emerald-400 font-black uppercase">
+                          🐷 Pig Flash &amp; Price Fade (Clear Stock):
+                        </span>
+                        <span className="text-stone-400">
+                          {fadeAmt > 0 ? `Active: -$${fadeAmt}/plate` : 'Full Price'}
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-4 gap-1">
+                        {[
+                          { label: 'Full $', val: 0 },
+                          { label: '-$2 Fade', val: 2 },
+                          { label: '-$4 Fade', val: 4 },
+                          { label: '-$5 Clear', val: 5 }
+                        ].map(tier => (
+                          <button
+                            key={tier.val}
+                            onClick={() => triggerPriceFade(tier.val)}
+                            className={`py-1.5 px-1 font-mono font-black text-[10px] uppercase cursor-pointer border transition ${
+                              fadeAmt === tier.val
+                                ? 'bg-emerald-500 text-stone-950 border-white shadow'
+                                : 'bg-stone-900 hover:bg-stone-800 text-stone-300 border-stone-700'
+                            }`}
+                          >
+                            {tier.label}
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   </div>
 

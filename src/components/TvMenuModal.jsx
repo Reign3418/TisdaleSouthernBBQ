@@ -38,6 +38,28 @@ export default function TvMenuModal() {
   const [isExporting, setIsExporting] = useState(false);
   const [exportSuccess, setExportSuccess] = useState(false);
   const [showBrainstorm, setShowBrainstorm] = useState(false);
+  const [pigFlashing, setPigFlashing] = useState(false);
+
+  useEffect(() => {
+    if (!announcements.pigFlashTimestamp) return;
+    setPigFlashing(true);
+    const t = setTimeout(() => setPigFlashing(false), 1350);
+    return () => clearTimeout(t);
+  }, [announcements.pigFlashTimestamp]);
+
+  const fadeAmt = Number(announcements.priceFadeAmount || 0);
+  const getFadedPriceObj = (rawPrice, numPrice) => {
+    const base = numPrice || parseFloat(String(rawPrice || '').replace(/[^0-9.]/g, '')) || 0;
+    if (!fadeAmt || base <= 6) {
+      return { isFaded: false, current: rawPrice, old: null };
+    }
+    const discounted = Math.max(5, base - fadeAmt);
+    return {
+      isFaded: true,
+      current: `$${discounted.toFixed(2)}`,
+      old: `$${base.toFixed(0)}`
+    };
+  };
 
   // Fit 1920x1080 into any screen viewport without distortion
   useEffect(() => {
@@ -309,12 +331,27 @@ export default function TvMenuModal() {
           <div
             ref={boardRef}
             id="tv-menu-canvas"
-            className={`w-[1920px] h-[1080px] flex flex-col justify-between overflow-hidden select-none border-4 ${
+            className={`relative w-[1920px] h-[1080px] flex flex-col justify-between overflow-hidden select-none border-4 ${
               boardTheme === 'classicOrange'
                 ? 'bg-[#E58032] border-[#8A3B05] text-[#1A120E]'
                 : 'bg-[#0E0C0B] border-[#38261E] text-white'
             }`}
           >
+            {/* PIG EMBLEM SCREEN BLANK & FLASH OVERLAY (PRICE FADE EVENT) */}
+            {pigFlashing && (
+              <div className="absolute inset-0 z-50 bg-[#070504] flex flex-col items-center justify-center p-12 text-center animate-fadeIn">
+                <img
+                  src="./images/truck-logo-wrap.jpg"
+                  alt="Tisdale's Southern BBQ Pig Emblem Flash"
+                  className="w-72 h-72 rounded-none object-cover border-4 border-amber-400 shadow-[0_0_80px_rgba(245,158,11,0.95)] animate-bounce"
+                />
+                <div className="text-6xl font-black uppercase font-['Bebas_Neue'] text-amber-400 tracking-widest mt-6">
+                  {fadeAmt > 0
+                    ? `🔥 SMOKER PRICE FADE: -$${fadeAmt} OFF SMOKED PLATES & SANDWICHES!`
+                    : '🔥 FULL PIT MENU RESTORED'}
+                </div>
+              </div>
+            )}
             
             {/* 1. TOP HEADER (EXACT 115px HEIGHT) */}
             <div className={`h-[115px] px-10 flex items-center justify-between shrink-0 shadow-lg border-b-4 ${
@@ -439,11 +476,29 @@ export default function TvMenuModal() {
                                 {isFryerDisabled ? 'GREASE OFF' : 'SOLD OUT'}
                               </span>
                             ) : (
-                              <span className={`text-[23px] font-black font-mono tracking-tight ${
-                                boardTheme === 'classicOrange' ? 'text-[#B95000]' : 'text-amber-400'
-                              }`}>
-                                {item.price}
-                              </span>
+                              (() => {
+                                const fp = getFadedPriceObj(item.price, item.numericPrice);
+                                return (
+                                  <span className="text-[23px] font-black font-mono tracking-tight flex items-center gap-1.5">
+                                    {fp.isFaded && (
+                                      <span className="line-through text-base opacity-50 text-rose-500">
+                                        {fp.old}
+                                      </span>
+                                    )}
+                                    <span
+                                      className={
+                                        fp.isFaded
+                                          ? 'text-emerald-500'
+                                          : boardTheme === 'classicOrange'
+                                          ? 'text-[#B95000]'
+                                          : 'text-amber-400'
+                                      }
+                                    >
+                                      {fp.current}
+                                    </span>
+                                  </span>
+                                );
+                              })()
                             )}
                           </div>
                         </div>
@@ -517,11 +572,29 @@ export default function TvMenuModal() {
                                 {isFryerDisabled ? 'GREASE OFF' : 'SOLD OUT'}
                               </span>
                             ) : (
-                              <span className={`text-[21px] font-black font-mono ${
-                                boardTheme === 'classicOrange' ? 'text-[#B95000]' : 'text-amber-400'
-                              }`}>
-                                {item.price}
-                              </span>
+                              (() => {
+                                const fp = getFadedPriceObj(item.price, item.numericPrice);
+                                return (
+                                  <span className="text-[21px] font-black font-mono flex items-center gap-1.5">
+                                    {fp.isFaded && (
+                                      <span className="line-through text-sm opacity-50 text-rose-500">
+                                        {fp.old}
+                                      </span>
+                                    )}
+                                    <span
+                                      className={
+                                        fp.isFaded
+                                          ? 'text-emerald-500'
+                                          : boardTheme === 'classicOrange'
+                                          ? 'text-[#B95000]'
+                                          : 'text-amber-400'
+                                      }
+                                    >
+                                      {fp.current}
+                                    </span>
+                                  </span>
+                                );
+                              })()
                             )}
                           </div>
                         </div>
@@ -568,11 +641,29 @@ export default function TvMenuModal() {
                                 SOLD OUT
                               </span>
                             ) : (
-                              <span className={`text-[21px] font-black font-mono ${
-                                boardTheme === 'classicOrange' ? 'text-[#B95000]' : 'text-amber-400'
-                              }`}>
-                                {item.price}
-                              </span>
+                              (() => {
+                                const fp = getFadedPriceObj(item.price, item.numericPrice);
+                                return (
+                                  <span className="text-[21px] font-black font-mono flex items-center gap-1.5">
+                                    {fp.isFaded && (
+                                      <span className="line-through text-sm opacity-50 text-rose-500">
+                                        {fp.old}
+                                      </span>
+                                    )}
+                                    <span
+                                      className={
+                                        fp.isFaded
+                                          ? 'text-emerald-500'
+                                          : boardTheme === 'classicOrange'
+                                          ? 'text-[#B95000]'
+                                          : 'text-amber-400'
+                                      }
+                                    >
+                                      {fp.current}
+                                    </span>
+                                  </span>
+                                );
+                              })()
                             )}
                           </div>
                         </div>
@@ -743,24 +834,24 @@ export default function TvMenuModal() {
             </div>
 
             {/* 3. BOTTOM FOOTER & LOCATION TICKER (EXACT 95px HEIGHT) */}
-            {announcements.nowServingOrder ? (
-              <div className="h-[95px] px-10 flex items-center justify-between shrink-0 shadow-2xl border-t-4 border-emerald-300 bg-gradient-to-r from-emerald-800 via-emerald-600 to-teal-700 text-white animate-pulse">
+            {fadeAmt > 0 ? (
+              <div className="h-[95px] px-10 flex items-center justify-between shrink-0 shadow-2xl border-t-4 border-emerald-300 bg-gradient-to-r from-emerald-900 via-emerald-700 to-teal-800 text-white">
                 <div className="flex items-center gap-4">
-                  <span className="bg-white text-emerald-950 font-black text-base uppercase px-4 py-2 rounded-none font-mono tracking-wider shadow-lg">
-                    🛎️ ORDER READY
+                  <span className="bg-amber-400 text-stone-950 font-black text-base uppercase px-4 py-2 rounded-none font-mono tracking-wider shadow-lg">
+                    🐷 PITMASTER PRICE FADE (-${fadeAmt})
                   </span>
                   <div>
                     <h4 className="text-4xl font-black uppercase font-['Bebas_Neue'] tracking-wider leading-none text-white">
-                      NOW SERVING AT PICKUP WINDOW: {announcements.nowServingOrder}
+                      EVENING SMOKER CLEAR-OUT: -${fadeAmt} OFF SMOKED PLATES &amp; SANDWICHES!
                     </h4>
                     <p className="text-sm font-mono mt-1 text-emerald-100 font-bold">
-                      🔥 Fresh off the smoker &amp; fryer — step right up to the counter window!
+                      🔥 Grab a second sandwich or take-home plate before the smoker sells out for the night!
                     </p>
                   </div>
                 </div>
                 <div className="text-right font-mono">
                   <div className="text-lg font-black uppercase bg-black/40 px-4 py-1.5 border border-emerald-300">
-                    WINDOW PICKUP READY
+                    GREEN PRICES ACTIVE ABOVE
                   </div>
                 </div>
               </div>

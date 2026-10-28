@@ -413,6 +413,15 @@ export function PitmasterProvider({ children }) {
     }));
   };
 
+  // 1-Tap Trigger Pig Flash & Price Fade Tier ($0, -$2, -$4, -$5)
+  const triggerPriceFade = (fadeDollars) => {
+    setAnnouncements(prev => ({
+      ...prev,
+      priceFadeAmount: fadeDollars,
+      pigFlashTimestamp: Date.now()
+    }));
+  };
+
   // Update schedule
   const updateCurrentLocation = (newLoc) => {
     setSchedule(prev => ({
@@ -494,6 +503,7 @@ export function PitmasterProvider({ children }) {
       editSpecial,
       removeSpecial,
       toggleFryerStatus,
+      triggerPriceFade,
       updateCurrentLocation,
       setAnnouncements,
       addToCart,
