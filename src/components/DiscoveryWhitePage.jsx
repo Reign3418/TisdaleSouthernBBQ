@@ -90,7 +90,7 @@ export default function DiscoveryWhitePage() {
                 Trailer Tech Options &amp; &quot;Being Found&quot; Architecture
               </h1>
               <p className="text-sm text-stone-600 mt-1">
-                Six hands-free options to talk about for your 55&quot; Trailer TV, Bowling Alley / Brewery crowds, and Google Search dominance—with <strong>$0/month software bills</strong> and a <strong>2-second USB fail-safe</strong>.
+                Seven hands-free options to talk about for your 55&quot; Trailer TV, Countertop Touch Deck, Bowling Alley / Brewery crowds, and Google Search dominance—with <strong>$0/month software bills</strong> and a <strong>2-second USB fail-safe</strong>.
               </p>
             </div>
 
@@ -129,13 +129,13 @@ export default function DiscoveryWhitePage() {
         {/* Document Body — MEAT & POTATOES AT THE VERY TOP */}
         <div className="p-6 sm:p-10 space-y-10 text-stone-800 leading-relaxed text-sm">
 
-          {/* Section 1: Six Field Hardware & Venue Revenue Options (Moved to #1!) */}
+          {/* Section 1: Seven Field Hardware & Venue Revenue Options (Moved to #1!) */}
           <section className="space-y-5">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
               <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 1
               </span>
-              The Meat &amp; Potatoes: Six Field &amp; Venue Options to Talk About Together
+              The Meat &amp; Potatoes: Seven Field &amp; Venue Options to Talk About Together
             </h2>
 
             <p className="text-xs text-stone-600">
@@ -263,6 +263,27 @@ export default function DiscoveryWhitePage() {
                   <li><strong>30-Minute Pi-to-Website "Heartbeat" (Auto-Offline Mode):</strong> Whenever your 55&quot; Trailer TV is powered on, the Raspberry Pi quietly sends a tiny &quot;I&apos;m alive&quot; ping to the master website every 5 minutes. If the master website doesn&apos;t hear from the Pi for <strong>30 minutes during open shift hours</strong> (because festival cell towers are jammed), the online website automatically kicks into <strong>Festival Offline Mode</strong>—reverting to standard base prices and displaying a banner: <em>&quot;📡 Trailer is at a high-traffic event! Check the 55&quot; Trailer TV at the window for live Sold-Out updates &amp; Event-Specific Pricing.&quot;</em></li>
                   <li><strong>Automatic Nightly Reset When TV Turns Off:</strong> When you turn off the 55&quot; Trailer TV at the end of the night, the Pi turns off with it. After 30 minutes of no heartbeat after closing time, the website automatically flips to <em>&quot;Pit Resting for the Night&quot;</em> and resets all Sold-Out and Event Pricing tiers fresh for tomorrow!</li>
                   <li><strong>Home-Base Geofence Auto-Shutoff (100% Home Privacy):</strong> We set an invisible 0.5-mile circle (geofence) around your home / overnight trailer parking spot. As soon as your phone or trailer enters that circle on your drive home, the system <strong>automatically shuts off live GPS location sharing and closes the digital kitchen</strong>—so even if you forget to tap a button after a long night, your home address is 100% protected.</li>
+                </ul>
+              </div>
+
+              {/* Option 7: 7-Inch Countertop Pitmaster Touch Deck ("One Pi, Two Screens") */}
+              <div className="border-2 border-amber-500 bg-amber-50/40 p-5 space-y-2">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="bg-amber-500 text-stone-950 font-mono font-black text-[10px] uppercase px-2.5 py-0.5">
+                    Option 7 • Countertop Touch Deck (No Fumbling With Your Phone!)
+                  </span>
+                  <span className="text-xs font-mono font-bold text-amber-900">100% Hardwired HDMI • Zero Lag</span>
+                </div>
+                <h3 className="font-black text-base text-stone-900">
+                  🖥️ 7-Inch Countertop &quot;Pitmaster Touch Deck&quot; (Edit While Dropping Fries!)
+                </h3>
+                <p className="text-xs text-stone-700 leading-relaxed">
+                  When you are wearing greasy BBQ gloves, dropping fries in 350°F oil, or taking a phone order on <code>(910) 709-2900</code>, the last thing you want to do is dig your personal cell phone out of your pocket and unlock FaceID. Instead, we can mount your <strong>Raspberry Pi 4 inside a 7-inch Countertop Touchscreen Stand</strong> right next to the fryer/register:
+                </p>
+                <ul className="text-xs space-y-1.5 text-stone-700 list-disc list-inside">
+                  <li><strong>&quot;One Brain, Two Screens&quot; (100% Hardwired):</strong> The Raspberry Pi 4 drives <strong>two screens at once</strong>—the <strong>7&quot; Touchscreen</strong> sitting on your inside counter AND the <strong>55&quot; Exterior Trailer TV</strong> over a single HDMI cord. Because they are wired to the same Pi, it can never lose connection!</li>
+                  <li><strong>Tap With a Gloved Knuckle + Live TV Mirror:</strong> The 7&quot; counter screen never goes to sleep and never asks for a password. It shows giant glove-friendly buttons (<code>SOLD OUT</code>, <code>GREASE OFF</code>, <code>EVENT -$4</code>) plus a <strong>live mirror of what customers see on the outside 55&quot; TV</strong> so you never have to lean out the window to check the board.</li>
+                  <li><strong>Your Cell Phone Still Works Too:</strong> You get the best of both worlds—use the always-on 7&quot; counter screen while cooking inside, and still use your cell phone whenever you step outside the trailer!</li>
                 </ul>
               </div>
 

@@ -529,6 +529,27 @@ export default function TvSyncWhitePage() {
                 </ul>
               </div>
 
+              {/* Idea 5: 7-Inch Countertop Pitmaster Touch Deck ("One Pi, Two Screens") */}
+              <div className="md:col-span-2 border-2 border-amber-500 bg-amber-50/40 p-5 space-y-2.5">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="bg-amber-500 text-stone-950 font-mono font-black text-[10px] uppercase px-2.5 py-0.5">
+                    Idea #5 • 7-Inch Countertop Touch Deck (Zero Phone Fumbling!)
+                  </span>
+                  <span className="text-xs font-mono font-bold text-amber-900">One Pi 4 Drives Both Screens • 100% Wired</span>
+                </div>
+                <h3 className="font-black text-base text-stone-900">
+                  🖥️ 7-Inch Countertop &quot;Pitmaster Touch Deck&quot; (Edit While Dropping Fries — Cell Phone Can Play Too!)
+                </h3>
+                <p className="text-xs text-stone-700 leading-relaxed">
+                  When your hands are in BBQ gloves or you&apos;re dropping fries during a rush, you shouldn&apos;t have to pull your cell phone out of your pocket or unlock FaceID. Because the <strong>Raspberry Pi 4 supports two displays at the same time</strong>, we can snap the Pi 4 into the back of a <strong>7-inch Countertop Touchscreen Stand</strong> right next to your fryer and cash register:
+                </p>
+                <ul className="text-xs space-y-1 text-stone-700 list-disc list-inside">
+                  <li><strong>Screen 1 (Inside Counter by the Fryer):</strong> The 7&quot; Touchscreen stays <strong>always on</strong> (never locks or sleeps) showing giant glove-friendly buttons (<code>SOLD OUT</code>, <code>GREASE OFF</code>, <code>EVENT -$2 / -$4</code>) plus a <strong>live mirror preview of the outside 55&quot; TV</strong> so you never have to stick your head out the window to check the board!</li>
+                  <li><strong>Screen 2 (Outside 55&quot; Trailer TV):</strong> A single HDMI cord runs from the back of that 7&quot; counter stand straight to your 55&quot; TV. Because both screens are plugged into the exact same Pi 4, updates are <strong>100% hardwired and instantaneous</strong>—zero Wi-Fi or cell service required.</li>
+                  <li><strong>Your Cell Phone Can Still Play Too:</strong> Whenever you step outside to check the smoker or talk to customers, your phone can still connect to the Pi to flip switches remotely!</li>
+                </ul>
+              </div>
+
             </div>
           </section>
 

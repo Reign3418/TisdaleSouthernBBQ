@@ -47,6 +47,7 @@ export default function TrailerTwinModal() {
   } = usePitmaster();
 
   const [phoneTab, setPhoneTab] = useState('pit'); // 'pit' | 'specials' | 'gps'
+  const [controlDevice, setControlDevice] = useState('counter7'); // 'counter7' | 'phone'
   const [isTvZoomed, setIsTvZoomed] = useState(false);
   const [showRigGuide, setShowRigGuide] = useState(false);
   const [syncFlash, setSyncFlash] = useState(false);
@@ -255,13 +256,13 @@ export default function TrailerTwinModal() {
               {/* Card 2: Raspberry Pi Zero 2 W / Pi 4 "Pit-Box" Appliance */}
               <div className="bg-[#100C0A] border border-emerald-600/50 p-3.5 rounded-none space-y-2">
                 <div className="text-emerald-400 font-black font-mono uppercase">
-                  2. Raspberry Pi "Pit-Box" (Zero Troubleshooting!)
+                  2. Raspberry Pi "Pit-Box" + 7" Counter Touch Deck
                 </div>
                 <p className="text-stone-300 leading-relaxed">
-                  A stick-of-gum sized <strong>Raspberry Pi Zero 2 W (~$15 board)</strong> or <strong>Pi 4</strong> Velcroed behind the 55" TV. It plugs into the <strong>TV’s USB port for power</strong> and <strong>HDMI 1</strong> for video—no wall outlet needed!
+                  Run a <strong>Raspberry Pi Zero 2 W (~$15)</strong> Velcroed behind the 55" TV, OR snap a <strong>Raspberry Pi 4 into a 7" Countertop Touchscreen Stand</strong> by the fryer so one Pi drives <strong>both</strong> the inside counter screen and the outside 55" TV over HDMI!
                 </p>
                 <ul className="list-disc list-inside space-y-1 text-stone-300 text-[11px]">
-                  <li><strong>Auto-On With TV:</strong> Turn on the TV and the Pi boots straight into the 1080p menu board in ~15 seconds.</li>
+                  <li><strong>No Phone Fumbling While Dropping Fries:</strong> Tap giant buttons on the always-on 7" counter screen with a gloved knuckle (+ cell phone still works too!).</li>
                   <li><strong>Read-Only SD Card:</strong> Killing the generator never corrupts it—100% solid-state appliance.</li>
                 </ul>
               </div>
@@ -957,34 +958,98 @@ export default function TrailerTwinModal() {
         </div>
 
         {/* ================================================================= */}
-        {/* RIGHT 4 COLUMNS: SIMULATED "DONALD'S CELL PHONE" REMOTE CONTROL   */}
+        {/* RIGHT 4 COLUMNS: 7" COUNTER TOUCH DECK OR DONALD'S CELL PHONE     */}
         {/* ================================================================= */}
-        <div className="lg:col-span-4 flex flex-col items-center">
+        <div className="lg:col-span-4 flex flex-col items-center space-y-2.5">
           
-          {/* Smartphone Hardware Frame */}
-          <div className="w-full max-w-[390px] bg-[#0B0908] border-4 border-stone-700 rounded-none shadow-[0_25px_70px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col">
+          {/* 1-Click Switcher: 7" Countertop Touch Deck (By Fryer) vs Cell Phone */}
+          <div className="w-full max-w-[420px] grid grid-cols-2 gap-1.5 bg-[#140F0D] p-1.5 border border-[#2E221D]">
+            <button
+              onClick={() => setControlDevice('counter7')}
+              className={`py-2 px-2 text-[11px] font-mono font-black uppercase transition cursor-pointer border ${
+                controlDevice === 'counter7'
+                  ? 'bg-amber-400 text-stone-950 border-white shadow'
+                  : 'bg-stone-900 text-stone-300 border-stone-700 hover:bg-stone-800'
+              }`}
+            >
+              🖥️ 7&quot; Counter Screen (By Fryer)
+            </button>
+            <button
+              onClick={() => setControlDevice('phone')}
+              className={`py-2 px-2 text-[11px] font-mono font-black uppercase transition cursor-pointer border ${
+                controlDevice === 'phone'
+                  ? 'bg-emerald-500 text-stone-950 border-white shadow'
+                  : 'bg-stone-900 text-stone-300 border-stone-700 hover:bg-stone-800'
+              }`}
+            >
+              📱 Cell Phone Remote
+            </button>
+          </div>
+
+          {/* Hardware Frame: 7" CanaKit Pi 4 Stand OR Smartphone */}
+          <div
+            className={`w-full bg-[#0B0908] rounded-none shadow-[0_25px_70px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col transition-all ${
+              controlDevice === 'counter7'
+                ? 'max-w-[420px] border-[10px] border-stone-900 ring-2 ring-amber-500/60'
+                : 'max-w-[390px] border-4 border-stone-700'
+            }`}
+          >
             
-            {/* Phone Top Speaker / Status Notch */}
-            <div className="bg-stone-950 px-4 py-2 border-b border-stone-800 flex items-center justify-between text-[11px] font-mono text-stone-400">
-              <span className="font-bold text-white flex items-center gap-1">
-                <Smartphone className="w-3.5 h-3.5 text-amber-400" />
-                <span>DONALD'S PHONE</span>
-              </span>
-              <span className="flex items-center gap-1.5 text-emerald-400 font-bold">
-                <Wifi className="w-3.5 h-3.5 animate-pulse" />
-                <span>5G • TRAILER LINKED</span>
-              </span>
+            {/* Top Bezel / Status Bar */}
+            <div className="bg-stone-950 px-3.5 py-2 border-b border-stone-800 flex items-center justify-between text-[10px] font-mono text-stone-400">
+              {controlDevice === 'counter7' ? (
+                <>
+                  <span className="font-black text-amber-300 flex items-center gap-1.5">
+                    <Tv className="w-3.5 h-3.5 text-amber-400" />
+                    <span>7&quot; PI 4 COUNTER TOUCH DECK (BY FRYER)</span>
+                  </span>
+                  <span className="flex items-center gap-1 text-emerald-400 font-black">
+                    <span>⚡ HDMI WIRED TO 55&quot; TV</span>
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="font-bold text-white flex items-center gap-1">
+                    <Smartphone className="w-3.5 h-3.5 text-amber-400" />
+                    <span>DONALD&apos;S PHONE</span>
+                  </span>
+                  <span className="flex items-center gap-1.5 text-emerald-400 font-bold">
+                    <Wifi className="w-3.5 h-3.5 animate-pulse" />
+                    <span>5G • TRAILER LINKED</span>
+                  </span>
+                </>
+              )}
             </div>
 
-            {/* Phone App Header */}
+            {/* Live Outside 55" TV Mini-Mirror Strip (Shown on 7" Counter Screen so Donald never has to lean out the window!) */}
+            {controlDevice === 'counter7' && (
+              <div className="bg-[#18110E] border-b-2 border-amber-500/40 px-3.5 py-2 flex items-center justify-between gap-2 text-[10px] font-mono">
+                <div className="flex items-center gap-1.5 min-w-0">
+                  <span className="px-1.5 py-0.5 bg-emerald-500 text-stone-950 font-black uppercase shrink-0">
+                    Live 55&quot; TV Mirror
+                  </span>
+                  <span className="text-stone-200 truncate font-bold">
+                    {announcements.fryerOpen ? '🟢 Fryer Hot' : '🔴 Grease Off'} •{' '}
+                    {fadeAmt > 0 ? `🐷 Event -$${fadeAmt} Active` : 'Standard Menu'}
+                  </span>
+                </div>
+                <span className="text-amber-300 font-bold shrink-0">Always On • No Lock</span>
+              </div>
+            )}
+
+            {/* Controller App Header */}
             <div className="bg-gradient-to-r from-[#261710] to-[#18100C] p-3.5 border-b border-amber-600/30">
               <div className="flex items-center justify-between">
                 <div>
                   <span className="text-[10px] font-mono uppercase tracking-widest text-amber-400 block font-bold">
-                    Pitmaster Pocket Remote
+                    {controlDevice === 'counter7'
+                      ? 'Glove-Friendly Countertop KDS (No Phone Needed!)'
+                      : 'Pitmaster Pocket Remote'}
                   </span>
                   <h3 className="text-base font-black text-white uppercase tracking-wide font-['Bebas_Neue']">
-                    Tap Here → Watch Trailer TV Change
+                    {controlDevice === 'counter7'
+                      ? 'Tap With BBQ Gloves While Dropping Fries → Updates 55" TV'
+                      : 'Tap Here → Watch Trailer TV Change'}
                   </h3>
                 </div>
                 <button
