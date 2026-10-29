@@ -17,7 +17,13 @@ import {
 } from 'lucide-react';
 
 export default function DiscoveryWhitePage() {
-  const { isDiscoveryWhitePageOpen, setIsDiscoveryWhitePageOpen } = usePitmaster();
+  const {
+    isDiscoveryWhitePageOpen,
+    setIsDiscoveryWhitePageOpen,
+    setIsTrailerSimOpen,
+    setIsTvWhitePageOpen,
+    setIsGpsWhitePageOpen
+  } = usePitmaster();
 
   if (!isDiscoveryWhitePageOpen) return null;
 
@@ -32,17 +38,28 @@ export default function DiscoveryWhitePage() {
       <div className="bg-white text-stone-900 rounded-none shadow-2xl max-w-4xl w-full my-4 border border-stone-200 overflow-hidden print:shadow-none print:border-none print:m-0 print:rounded-none">
         
         {/* Top Control Bar (Hidden on print) */}
-        <div className="bg-stone-900 text-stone-200 px-3 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-2 print:hidden border-b border-stone-800">
+        <div className="bg-stone-900 text-stone-200 px-3 sm:px-6 py-2.5 sm:py-3 flex flex-wrap items-center justify-between gap-2 print:hidden border-b border-stone-800">
           <div className="flex items-center gap-1.5 min-w-0">
-            <span className="bg-amber-500 text-black font-black text-[11px] px-2 py-0.5 rounded-none font-mono uppercase shrink-0">
-              White Paper
+            <span className="bg-amber-400 text-black font-black text-[11px] px-2 py-0.5 rounded-none font-mono uppercase shrink-0">
+              📄 Master White Paper
             </span>
             <span className="text-xs text-stone-300 font-medium truncate">
-              "Being Found" Search Dominance &amp; Venue Revenue Playbook — Prepared for Donald Tisdale
+              Field Hardware, Venue Revenue &amp; &quot;Being Found&quot; Playbook — Prepared for Donald Tisdale
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={() => {
+                setIsDiscoveryWhitePageOpen(false);
+                setIsTrailerSimOpen(true);
+              }}
+              className="px-2.5 py-1.5 rounded-none bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-black transition cursor-pointer"
+              title="Open Live Trailer + Phone Simulator"
+            >
+              🚚 Open Live Sim
+            </button>
+
             <button
               onClick={handlePrint}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-bold transition cursor-pointer border border-stone-700"
@@ -57,120 +74,68 @@ export default function DiscoveryWhitePage() {
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-none bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-bold transition cursor-pointer border border-stone-700"
             >
               <X className="w-3.5 h-3.5" />
-              <span>Close Brief</span>
+              <span>Close</span>
             </button>
           </div>
         </div>
 
         {/* White Paper Header */}
-        <div className="p-6 sm:p-10 border-b border-stone-200 bg-stone-50">
+        <div className="p-6 sm:p-8 border-b border-stone-200 bg-stone-50 space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <span className="text-amber-800 text-xs font-black uppercase tracking-widest block font-mono">
-                Digital Discovery &amp; Field Operations Playbook
+                Meat &amp; Potatoes First • Field Operations &amp; Search Playbook
               </span>
               <h1 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight mt-1">
-                Pushing the Envelope on "Being Found"
+                Trailer Tech Options &amp; &quot;Being Found&quot; Architecture
               </h1>
               <p className="text-sm text-stone-600 mt-1">
-                How Tisdale’s Southern BBQ dominates Google Maps, AI Voice Search, and Brewery / Bowling Alley crowds with zero monthly software bills.
+                Six hands-free options to talk about for your 55&quot; Trailer TV, Bowling Alley / Brewery crowds, and Google Search dominance—with <strong>$0/month software bills</strong> and a <strong>2-second USB fail-safe</strong>.
               </p>
             </div>
 
             <div className="text-left sm:text-right text-xs text-stone-500 shrink-0 font-mono bg-white p-3 rounded-none border border-stone-200">
               <div><strong>Craftsman:</strong> Mr. Donald Tisdale</div>
               <div><strong>Business:</strong> Tisdale’s Southern BBQ</div>
-              <div><strong>Focus:</strong> Google/AI Search + Field Revenue</div>
+              <div><strong>Focus:</strong> Trailer TV + NFC + Google</div>
               <div><strong>Monthly Software Cost:</strong> $0.00 / mo</div>
             </div>
           </div>
+
+          {/* Quick Jump Bar Inside White Paper (Hidden on print) */}
+          <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-stone-200 print:hidden text-xs">
+            <span className="font-mono font-bold text-stone-500 uppercase text-[10px]">Companion Guides:</span>
+            <button
+              onClick={() => {
+                setIsDiscoveryWhitePageOpen(false);
+                setIsTvWhitePageOpen(true);
+              }}
+              className="px-2.5 py-1 bg-white hover:bg-amber-50 border border-stone-300 font-bold text-stone-800 cursor-pointer"
+            >
+              📺 Deep-Dive: TV Sync Guide
+            </button>
+            <button
+              onClick={() => {
+                setIsDiscoveryWhitePageOpen(false);
+                setIsGpsWhitePageOpen(true);
+              }}
+              className="px-2.5 py-1 bg-white hover:bg-amber-50 border border-stone-300 font-bold text-stone-800 cursor-pointer"
+            >
+              📍 Deep-Dive: GPS Options Guide
+            </button>
+          </div>
         </div>
 
-        {/* Document Body */}
+        {/* Document Body — MEAT & POTATOES AT THE VERY TOP */}
         <div className="p-6 sm:p-10 space-y-10 text-stone-800 leading-relaxed text-sm">
-          
-          {/* Section 1: Executive Summary */}
-          <section className="space-y-3">
+
+          {/* Section 1: Six Field Hardware & Venue Revenue Options (Moved to #1!) */}
+          <section className="space-y-5">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
               <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
                 1
               </span>
-              The Digital Smoke Signal: Why 84% of BBQ Customers Start on Their Phone
-            </h2>
-            <p className="text-stone-700">
-              Great barbecue has always had a natural magnet: the thin blue smoke rising from <strong>100% pure hickory pellets</strong>. Today, however, 84% of local dining and catering decisions begin before a customer ever smells the smoker—when someone in Lumberton, Fayetteville, or Sanford taps their phone and asks Siri or Google:
-            </p>
-            <div className="bg-stone-900 text-amber-300 font-mono text-xs sm:text-sm p-4 border-l-4 border-amber-500">
-              “Find the best hickory-smoked brisket and ribs food truck near me right now.”
-            </div>
-            <p className="text-stone-700">
-              Most food truck websites built on standard drag-and-drop builders (like default Wix or Squarespace templates) trap the menu inside heavy scripts or PDFs that search engines cannot read. We engineered your platform from the ground up so Google, Apple Maps, Siri, and AI search engines read every single cut of meat, price, town stop, and catering package automatically.
-            </p>
-          </section>
-
-          {/* Section 2: The 5-Engine Search Dominance Architecture */}
-          <section className="space-y-4">
-            <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
-              <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
-                2
-              </span>
-              The 5 Engines Built Into Your Website to Dominate Local Search
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="border border-stone-300 p-4 bg-white space-y-1.5">
-                <div className="flex items-center gap-2 text-amber-800 font-black text-xs uppercase font-mono">
-                  <Search className="w-4 h-4" />
-                  <span>Engine 1: Schema.org FoodTruck Graph</span>
-                </div>
-                <h3 className="font-bold text-stone-900 text-sm">Google Reads Your Exact Menu &amp; Prices</h3>
-                <p className="text-xs text-stone-600">
-                  Embedded <code>JSON-LD</code> structured data declares your 100% pure hickory pellet smoking method, phone number, active hours, and every dinner plate directly to Google Search so rich snippets show up before customers even click.
-                </p>
-              </div>
-
-              <div className="border border-stone-300 p-4 bg-white space-y-1.5">
-                <div className="flex items-center gap-2 text-emerald-700 font-black text-xs uppercase font-mono">
-                  <Globe className="w-4 h-4" />
-                  <span>Engine 2: AI &amp; Voice Search (llms.txt)</span>
-                </div>
-                <h3 className="font-bold text-stone-900 text-sm">Siri, ChatGPT &amp; Google AI Ready</h3>
-                <p className="text-xs text-stone-600">
-                  Your site includes a dedicated machine-readable AI index (<code>/llms.txt</code>) and structured FAQ answers so when someone asks a voice assistant for barbecue or event catering in Robeson, Cumberland, or Lee County, your trailer is recommended first.
-                </p>
-              </div>
-
-              <div className="border border-stone-300 p-4 bg-white space-y-1.5">
-                <div className="flex items-center gap-2 text-blue-700 font-black text-xs uppercase font-mono">
-                  <Zap className="w-4 h-4" />
-                  <span>Engine 3: Rural 5G Speed (&lt;200ms Load)</span>
-                </div>
-                <h3 className="font-bold text-stone-900 text-sm">Loads Instantly on Crowded Festival Cell Towers</h3>
-                <p className="text-xs text-stone-600">
-                  We compressed your entire initial website bundle under <strong>98 KB</strong>. Even when 2,000 people are overloading a rural cell tower at a county fair or brewery, your menu pops open in a fraction of a second.
-                </p>
-              </div>
-
-              <div className="border border-stone-300 p-4 bg-white space-y-1.5">
-                <div className="flex items-center gap-2 text-rose-700 font-black text-xs uppercase font-mono">
-                  <MapPin className="w-4 h-4" />
-                  <span>Engine 4: Multi-Town &amp; Live Stop Signals</span>
-                </div>
-                <h3 className="font-bold text-stone-900 text-sm">Moving Kitchen Territorial Indexing</h3>
-                <p className="text-xs text-stone-600">
-                  Instead of being locked to one street address, your platform broadcasts your active stop across Lumberton, Fayetteville, Sanford, and surrounding towns—turning your <code>TISDALESOUTHERNBBQ.COM</code> trailer wrap into a 24/7 lead magnet.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* Section 3: Field Hardware & Venue Revenue Options to Discuss */}
-          <section className="space-y-5">
-            <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
-              <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
-                3
-              </span>
-              Five Field &amp; Venue Revenue Options to Talk About Together
+              The Meat &amp; Potatoes: Six Field &amp; Venue Options to Talk About Together
             </h2>
 
             <p className="text-xs text-stone-600">
@@ -304,11 +269,11 @@ export default function DiscoveryWhitePage() {
             </div>
           </section>
 
-          {/* Section 4: Zero-Downtime Fail-Safe & Crawl-Walk-Run Rollout */}
+          {/* Section 2: Zero-Downtime Fail-Safe & Crawl-Walk-Run Rollout */}
           <section className="space-y-4">
             <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
               <span className="w-6 h-6 rounded-none bg-emerald-700 text-white flex items-center justify-center text-xs font-bold font-mono">
-                4
+                2
               </span>
               Our #1 Rule: Zero Downtime, Zero Overwhelm &amp; The "2-Second Fail-Safe"
             </h2>
@@ -348,6 +313,65 @@ export default function DiscoveryWhitePage() {
                     Every option in this paper is just a tool on the shelf. We start with <strong>Phase 1</strong> (Website + USB backup + passive NFC stickers that have no batteries and can never crash), and only turn on Phase 2 or Phase 3 features if and when you want them.
                   </p>
                 </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Section 3: The 5-Engine Search Dominance Architecture ("Being Found") */}
+          <section className="space-y-4">
+            <h2 className="text-lg font-black text-stone-900 flex items-center gap-2 border-b border-stone-200 pb-2">
+              <span className="w-6 h-6 rounded-none bg-amber-600 text-white flex items-center justify-center text-xs font-bold font-mono">
+                3
+              </span>
+              &quot;Being Found&quot;: How Your Website Dominates Google, Siri &amp; AI Search
+            </h2>
+            <p className="text-xs text-stone-700">
+              84% of local dining and catering decisions begin when someone in Lumberton, Fayetteville, or Sanford asks Siri or Google for barbecue near them. Unlike standard drag-and-drop website builders that trap menus inside heavy scripts, your site has <strong>4 built-in search engines</strong> working 24/7:
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="border border-stone-300 p-4 bg-white space-y-1.5">
+                <div className="flex items-center gap-2 text-amber-800 font-black text-xs uppercase font-mono">
+                  <Search className="w-4 h-4" />
+                  <span>Engine 1: Schema.org FoodTruck Graph</span>
+                </div>
+                <h3 className="font-bold text-stone-900 text-sm">Google Reads Your Exact Menu &amp; Prices</h3>
+                <p className="text-xs text-stone-600">
+                  Embedded <code>JSON-LD</code> structured data declares your 100% pure hickory pellet smoking method, phone number, active hours, and every dinner plate directly to Google Search so rich snippets show up before customers even click.
+                </p>
+              </div>
+
+              <div className="border border-stone-300 p-4 bg-white space-y-1.5">
+                <div className="flex items-center gap-2 text-emerald-700 font-black text-xs uppercase font-mono">
+                  <Globe className="w-4 h-4" />
+                  <span>Engine 2: AI &amp; Voice Search (llms.txt)</span>
+                </div>
+                <h3 className="font-bold text-stone-900 text-sm">Siri, ChatGPT &amp; Google AI Ready</h3>
+                <p className="text-xs text-stone-600">
+                  Your site includes a dedicated machine-readable AI index (<code>/llms.txt</code>) and structured FAQ answers so when someone asks a voice assistant for barbecue or event catering in Robeson, Cumberland, or Lee County, your trailer is recommended first.
+                </p>
+              </div>
+
+              <div className="border border-stone-300 p-4 bg-white space-y-1.5">
+                <div className="flex items-center gap-2 text-blue-700 font-black text-xs uppercase font-mono">
+                  <Zap className="w-4 h-4" />
+                  <span>Engine 3: Rural 5G Speed (&lt;200ms Load)</span>
+                </div>
+                <h3 className="font-bold text-stone-900 text-sm">Loads Instantly on Crowded Festival Cell Towers</h3>
+                <p className="text-xs text-stone-600">
+                  We compressed your entire initial website bundle under <strong>98 KB</strong>. Even when 2,000 people are overloading a rural cell tower at a county fair or brewery, your menu pops open in a fraction of a second.
+                </p>
+              </div>
+
+              <div className="border border-stone-300 p-4 bg-white space-y-1.5">
+                <div className="flex items-center gap-2 text-rose-700 font-black text-xs uppercase font-mono">
+                  <MapPin className="w-4 h-4" />
+                  <span>Engine 4: Multi-Town &amp; Live Stop Signals</span>
+                </div>
+                <h3 className="font-bold text-stone-900 text-sm">Moving Kitchen Territorial Indexing</h3>
+                <p className="text-xs text-stone-600">
+                  Instead of being locked to one street address, your platform broadcasts your active stop across Lumberton, Fayetteville, Sanford, and surrounding towns—turning your <code>TISDALESOUTHERNBBQ.COM</code> trailer wrap into a 24/7 lead magnet.
+                </p>
               </div>
             </div>
           </section>
