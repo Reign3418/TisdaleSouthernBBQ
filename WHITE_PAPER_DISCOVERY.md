@@ -13,7 +13,7 @@
 
 Great barbecue has always possessed an organic discovery engine: the thin blue smoke rising from 100% pure hickory pellets and an aroma that pulls hungry people off Highway 87, I-95, or Legion Road from two miles out. 
 
-However, in 2026, **the digital road is where 84% of food truck dining decisions begin**. When a soldier near Fort Liberty in Fayetteville, a brewery patron in Sanford, or an event organizer in Dunn taps their phone and speaks:
+However, in 2026, **the digital road is where 84% of food truck dining decisions begin**. When a soldier near Fort Bragg in Fayetteville, a brewery patron in Sanford, or an event organizer in Dunn taps their phone and speaks:
 > *"Find the best smoked brisket food truck near me right now,"*
 
 Google, Apple, and AI search engines make a split-second decision about who to crown at the **tip of the spear**. 
@@ -71,7 +71,7 @@ graph TD
         L1["/fayetteville-nc Hub"]
         L2["/sanford-nc Hub"]
         L3["/dunn-nc Hub"]
-        L4["/fort-liberty-catering Hub"]
+        L4["/fort-bragg-catering Hub"]
     end
 
     subgraph E3 ["Engine 3: Real-Time Signals"]
@@ -131,14 +131,14 @@ A food truck's market is not a single point; it is a territory. To capture every
 
 | Route URI | Target Search Keywords | Primary Conversion Goal |
 | :--- | :--- | :--- |
-| `/locations/fayetteville-nc` | *"BBQ Fayetteville NC"*, *"Food trucks Hope Mills / Legion Rd"*, *"Best ribs near Fort Liberty"* | Drive traffic to Stop Button Arcade & North View Lanes |
+| `/locations/fayetteville-nc` | *"BBQ Fayetteville NC"*, *"Food trucks Hope Mills / Legion Rd"*, *"Best ribs near Fort Bragg"* | Drive traffic to Stop Button Arcade & North View Lanes |
 | `/locations/sanford-nc` | *"Sanford NC barbecue"*, *"Brewery food truck Sanford"*, *"Static Line Brewing BBQ"* | Capturing craft brewery & weekend dinner crowd |
 | `/locations/dunn-nc` | *"Dunn NC food trucks"*, *"Smoked brisket near I-95 Exit 73"*, *"Downtown Dunn lunch"* | Capturing I-95 corridor & Downtown Dunn patrons |
 | `/catering/central-nc` | *"BBQ catering Fayetteville & Sanford"*, *"Military hail & farewell caterer"* | High-dollar military, corporate, and wedding catering leads |
 
 Each territorial hub contains:
 1. **Canonical Geolocation Coordinates:** Exact latitude/longitude bounds for that municipality.
-2. **Local Landmark Context:** Text referencing recognizable geographic anchors (e.g., *"Serving Fayetteville along Legion Road, Ramsey Street, and Fort Liberty"*), establishing ironclad geographic relevance in Google's local search index.
+2. **Local Landmark Context:** Text referencing recognizable geographic anchors (e.g., *"Serving Fayetteville along Legion Road, Ramsey Street, and Fort Bragg"*), establishing ironclad geographic relevance in Google's local search index.
 3. **Structured Breadcrumb Hierarchy:** Allowing search spiders to crawl between municipal hubs effortlessly.
 
 ---
